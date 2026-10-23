@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宿傩透明半身 · 素材原型</title>
+<!-- THROWAWAY: compare extracted frame / lower-cut alternatives, not app UI. -->
+<style>
+*{box-sizing:border-box}body{margin:0;padding:32px 32px 110px;font:16px/1.65 system-ui,"Microsoft Yahei",sans-serif;color:#222;background:#f7f7f5}main{max-width:1300px;margin:auto}h1{font-size:30px;line-height:1.3;margin:8px 0 12px}p{margin:8px 0}.eyebrow{font-size:13px;color:#66716c;letter-spacing:.1em}.muted{color:#666}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 12px;align-items:center}button{font:inherit;border:1px solid #c7ccc8;background:white;padding:9px 15px;border-radius:8px;cursor:pointer}button[aria-pressed=true]{background:#1e473b;color:white;border-color:#1e473b}input{vertical-align:middle}#state{font-size:14px;color:#52605a;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.panel{min-width:0}h2{font-size:15px;font-weight:500;margin:0 0 8px}.canvas{height:370px;display:flex;align-items:flex-end;justify-content:center;border:1px solid #d9ddd7;border-radius:12px;overflow:hidden}.canvas img{width:288px;max-width:none;image-rendering:auto;flex-shrink:0}.light{background:#f5f1e7}.dark{background:#263347}.texture{background-color:#e2e2e2;background-image:conic-gradient(#bdbdbd 25%,transparent 0 50%,#bdbdbd 0 75%,transparent 0);background-size:32px 32px}.notes{padding:16px 18px;background:white;border:1px solid #deded9;border-radius:12px;margin:22px 0}.notes strong{font-weight:600}.detail{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}.source{width:100%;max-width:576px;display:block;border:1px solid #ddd}.magnifiers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.magnifiers figure{margin:0}.magnifiers canvas{width:100%;border:1px solid #ccc;background-color:#e2e2e2;background-image:conic-gradient(#bdbdbd 25%,transparent 0 50%,#bdbdbd 0 75%,transparent 0);background-size:24px 24px}.magnifiers figcaption{font-size:13px;color:#666}.switcher{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;background:#1d2925;color:white;border-radius:16px;padding:10px 14px;box-shadow:0 3px 20px #0003;z-index:2;white-space:nowrap}.switcher button{border:0;padding:4px 12px;background:#ffffff20;color:white}.switcher span{min-width:220px;text-align:center}a{color:#285c49}#frame-note{min-height:27px}@media(max-width:800px){body{padding:20px 16px 115px}.grid{grid-template-columns:1fr}.canvas{height:330px}.detail{grid-template-columns:1fr}.switcher{gap:6px;font-size:13px}.switcher span{min-width:195px}h1{font-size:25px}}
+</style>
+<main>
+<div class="eyebrow">THROWAWAY PROTOTYPE · 待真人判断</div>
+<h1>这个半身，放到桌面上可以吗？</h1>
+<p class="muted">直接提取原视频像素，比较发丝、衣领和下沿。这里的三张静帧不代表动画或无缝循环已通过验收。</p>
+<div class="controls" id="frames">
+<button data-frame="0">f000 · 原静止姿态</button>
+<button data-frame="36">f036 · 清晰倾斜姿态</button>
+<button data-frame="64">f064 · 模糊压力帧</button>
+<label style="margin-left:auto">显示尺寸 <input id="size" type="range" min="35" max="100" value="50"> <span id="percent">50%</span></label>
+</div>
+<p id="frame-note"></p><div id="state" aria-live="polite"></div>
+<div class="grid">
+<section class="panel"><h2>浅色背景 · 检查黑边与杂背景</h2><div class="canvas light"><img class="cut" alt="浅色背景上的透明角色"></div></section>
+<section class="panel"><h2>深色背景 · 检查亮边与轮廓</h2><div class="canvas dark"><img class="cut" alt="深色背景上的透明角色"></div></section>
+<section class="panel"><h2>纹理背景 · 检查透明区域</h2><div class="canvas texture"><img class="cut" alt="棋盘纹理背景上的透明角色"></div></section>
+</div>
+<div class="notes"><strong id="edge-title"></strong><p id="edge-note"></p><p class="muted">头发与衣领使用人工轮廓种子和背景分割，只改透明度；没有补画头发、身体或抹除文字。发尖贴上缘、源视频模糊及下沿截断仍需你判断。</p></div>
+<div class="detail">
+<section><h2>原始画面 · 同一帧对照</h2><img id="source" class="source" alt="提取前原视频画面"></section>
+<section><h2>边缘局部 · 约 2 倍原始像素</h2><div class="magnifiers"><figure><canvas id="hair" width="420" height="340"></canvas><figcaption>头发：源片中部分发尖已经出画。</figcaption></figure><figure><canvas id="collar" width="420" height="340"></canvas><figcaption>衣领与肩：观察有无栏杆残留。</figcaption></figure></div><p class="muted">可用上方尺寸滑块检查原始大小。底部左右箭头切换下沿处理；键盘 ← / → 也可切换。</p><p><a href="transparency-contact-sheet.jpg" target="_blank">查看三帧 × 三背景总览</a> · <a href="lower-edge-options.jpg" target="_blank">查看下沿方案并排图</a></p></section>
+</div>
+</main>
+<nav class="switcher" aria-label="下沿处理方案"><button id="prev" aria-label="上一个方案">←</button><span id="variant"></span><button id="next" aria-label="下一个方案">→</button></nav>
+<script>
+const variants={A:['A · 保留原截断','保留视频可见的衣服与胸前文字，下沿仍是原片直切边。'],B:['B · 下沿短渐隐','最后 28 个源像素逐渐透明；在一部分背景上较柔和，也会让衣服底部透出背景。'],C:['C · 上移截断','在原裁片 y380 处直接截断，缩短半身，舍弃胸前文字及更多衣服；没有修复被遮挡的原画。']};
+const frameNotes={0:'f000 / 0.000s：原静止姿态。下胸水印已在原图中；A、B 会保留它，C 会裁掉该区域。',36:'f036 / 1.500s：动作中的清晰倾斜姿态，可供比较静止候选。胸前 XEN 原样保留。',64:'f064 / 2.667s：压力帧，用于暴露模糊与上缘截断；不推荐作为静止候选。'};
+const params=new URLSearchParams(location.search);let variant=variants[params.get('variant')]?params.get('variant'):'A';let frame=[0,36,64].includes(Number(params.get('frame')))&&params.has('frame')?Number(params.get('frame')):36;
+const img=new Image();
+function render(){const code=String(frame).padStart(3,'0'),url=`assets/f${code}-${variant}.png`;document.querySelectorAll('.cut').forEach(el=>el.src=url);document.querySelector('#source').src=`assets/f${code}-source.png`;document.querySelectorAll('[data-frame]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.frame)===frame)));document.querySelector('#frame-note').textContent=frameNotes[frame];document.querySelector('#variant').textContent=variants[variant][0];document.querySelector('#edge-title').textContent=variants[variant][0];document.querySelector('#edge-note').textContent=variants[variant][1];document.querySelector('#state').textContent=`当前：f${code} ｜ ${variants[variant][0]} ｜ 原裁片 576 × 450 ｜ RGB 原样，透明度为原型提取`;params.set('variant',variant);params.set('frame',frame);try{history.replaceState(null,'','?'+params)}catch{}img.src=url}
+img.onload=()=>{for(const [id,rect] of [['hair',[170,0,230,180]],['collar',[170,165,250,200]]]){const c=document.getElementById(id),cx=c.getContext('2d');cx.clearRect(0,0,c.width,c.height);cx.imageSmoothingEnabled=false;cx.drawImage(img,...rect,0,0,c.width,c.height)}};
+function cycle(delta){const keys=Object.keys(variants);variant=keys[(keys.indexOf(variant)+delta+3)%3];render()}
+document.querySelectorAll('[data-frame]').forEach(el=>el.onclick=()=>{frame=Number(el.dataset.frame);render()});document.querySelector('#prev').onclick=()=>cycle(-1);document.querySelector('#next').onclick=()=>cycle(1);document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,[contenteditable]'))return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();cycle(e.key==='ArrowLeft'?-1:1)}});document.querySelector('#size').oninput=e=>{document.querySelectorAll('.cut').forEach(el=>el.style.width=(576*Number(e.target.value)/100)+'px');document.querySelector('#percent').textContent=e.target.value+'%'};render();
+</script></html>
