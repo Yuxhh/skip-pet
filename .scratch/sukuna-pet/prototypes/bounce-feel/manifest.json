@@ -1,0 +1,483 @@
+{
+  "purpose": "throwaway HITL prototype; not accepted; not native desktop pet",
+  "source_sha256": "3982a4a6602b4c7670696ee264829cc105f9731176fedba56137342f32bca083",
+  "source_bytes": 312657,
+  "fps": 24,
+  "crop": [
+    0,
+    415,
+    576,
+    865
+  ],
+  "alpha_cutoff_y": 380,
+  "frames": [
+    {
+      "frame": 0,
+      "mask_seed": 0,
+      "alpha_method": "accepted static mask"
+    },
+    {
+      "frame": 16,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 17,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 18,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 19,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 20,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 21,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 22,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 23,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 24,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 25,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 26,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 27,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 28,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 29,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 30,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 31,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 32,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 33,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 34,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 35,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 36,
+      "mask_seed": 36,
+      "alpha_method": "accepted static mask"
+    },
+    {
+      "frame": 37,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 38,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 39,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 40,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 41,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 42,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 43,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 44,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 45,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 46,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 47,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 48,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 49,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 50,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 51,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 52,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 53,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 54,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 55,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 56,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 57,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 58,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 59,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 60,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 61,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 62,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 63,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 64,
+      "mask_seed": 64,
+      "alpha_method": "accepted static mask"
+    },
+    {
+      "frame": 65,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 66,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 67,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 68,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 69,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 70,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 71,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 72,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 73,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 74,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 75,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 76,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 77,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 78,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 79,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 80,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 81,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 82,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 83,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 84,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 85,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 86,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 87,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 88,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 89,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 90,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 91,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 92,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 93,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 94,
+      "mask_seed": 36,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 95,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 96,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 97,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 98,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 99,
+      "mask_seed": 0,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 100,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 101,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    },
+    {
+      "frame": 102,
+      "mask_seed": 64,
+      "alpha_method": "rough backward block-matching mask"
+    }
+  ],
+  "candidate_ranges_inclusive": [
+    [
+      22,
+      62
+    ],
+    [
+      32,
+      72
+    ]
+  ],
+  "cycle_seconds_candidate": 1.7083333333333333,
+  "transition_ms_candidate": 120,
+  "settle_ms_candidate": 160,
+  "display_scale": 0.5,
+  "rgb_before_resizing_unchanged": true,
+  "dynamic_masks": "rough block matching from nearest of accepted f0/f36/f64; not per-frame human-verified",
+  "simulated_only": [
+    "host task signals",
+    "work-area boundary",
+    "alpha hit testing"
+  ],
+  "not_verified": [
+    "Windows topmost",
+    "native cross-app mouse pass-through",
+    "multi-monitor DPI",
+    "real host integration"
+  ],
+  "source_unchanged": true
+}
