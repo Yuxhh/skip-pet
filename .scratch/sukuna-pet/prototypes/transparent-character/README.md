@@ -29,4 +29,6 @@
 python build_preview.py --source-dir <研究分支的diagnostics目录>
 ```
 
-待真人回答：接受哪种下沿；选 f000 还是 f036 静止；发丝和衣领是否可接受，或具体哪里需要继续修边。收到反馈前，本票保持开放，地图不记录成已决策。
+## 真人验收记录
+
+2026-10-24 已收到真人反馈，本素材方向决策票已完成。选定外观、接受范围及后续动画验收约束以[决策票的 resolution comment](https://github.com/xyd-0811/skip-pet/issues/4#issuecomment-6369881312)为准。本目录保留所有备选方案作为原始讨论证据。
