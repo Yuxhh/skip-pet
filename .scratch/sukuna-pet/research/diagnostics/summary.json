@@ -1,0 +1,41 @@
+{
+  "source": "C:\\Users\\xing\\xwechat_files\\wxid_nh9m3kwg5q8b12_c2f1\\msg\\video\\2026-10\\76e9282daa42a701b537343bb5418979.mp4",
+  "source_bytes": 312657,
+  "source_mtime_ns": 1792766867642822900,
+  "size_unchanged": true,
+  "mtime_unchanged": true,
+  "sha256_before": "3982a4a6602b4c7670696ee264829cc105f9731176fedba56137342f32bca083",
+  "sha256_after": "3982a4a6602b4c7670696ee264829cc105f9731176fedba56137342f32bca083",
+  "frame_count": 156,
+  "fps": 24,
+  "frame_indexing": "zero-based",
+  "active_diagnostic_crop_xyxy": [
+    0,
+    415,
+    576,
+    865
+  ],
+  "regions_xyxy": {
+    "head": [
+      160,
+      450,
+      410,
+      730
+    ],
+    "face": [
+      210,
+      530,
+      355,
+      670
+    ],
+    "active": [
+      0,
+      415,
+      576,
+      865
+    ]
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "pillow": "12.3.0"
+}

@@ -1,0 +1,37 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\xing\xwechat_files\wxid_nh9m3kwg5q8b12_c2f1\msg\video\2026-10\76e9282daa42a701b537343bb5418979.mp4':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2mp41
+    copyright       : 
+    copyright-eng   : 
+    wxMeta          : {"WXVer":671108180}
+    encoder         : Lavf58.20.100
+  Duration: 00:00:06.50, start: 0.000000, bitrate: 384 kb/s
+  Stream #0:0[0x1](und): Video: hevc (Main) (hvc1 / 0x31637668), yuv420p(tv, bt470bg/bt470bg/bt709), 576x1280, 374 kb/s, 24 fps, 24 tbr, 90k tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 1 kb/s (default)
+      Metadata:
+        handler_name    : SoundHandler
+        vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (hevc (native) -> rawvideo (native))
+Press [q] to stop, [?] for help
+Output #0, rawvideo, to 'pipe:1':
+  Metadata:
+    minor_version   : 512
+    major_brand     : isom
+    compatible_brands: isomiso2mp41
+    copyright       : 
+    copyright-eng   : 
+    wxMeta          : {"WXVer":671108180}
+    encoder         : Lavf61.7.100
+  Stream #0:0(und): Video: rawvideo (RGB[24] / 0x18424752), rgb24(pc, gbr/bt470bg/bt709, progressive), 576x1280, q=2-31, 424673 kb/s, 24 fps, 24 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.19.100 rawvideo
+frame=   89 fps=0.0 q=-0.0 size=  190080KiB time=00:00:04.04 bitrate=385270.6kbits/s speed=7.87x    frame=  147 fps=143 q=-0.0 size=  315360KiB time=00:00:06.45 bitrate=400014.9kbits/s speed=6.29x    [out#0/rawvideo @ 0000022d4ddaf940] video:336960KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.000000%
+frame=  156 fps=135 q=-0.0 Lsize=  336960KiB time=00:00:06.50 bitrate=424673.3kbits/s speed=5.61x    
