@@ -1,7 +1,7 @@
 # 宿傩桌宠
 
 原生 Windows 透明半身角色，首次启动静止，点击一次推进一个视线阶段并停留。
-当前实现对应 [#13](https://github.com/xyd-0811/skip-pet/issues/13) 和 [#14](https://github.com/xyd-0811/skip-pet/issues/14)，使用已认可原型的重绘素材与固定 3× 眼动，身体不摆动。
+当前实现对应 [#13](https://github.com/xyd-0811/skip-pet/issues/13)、[#14](https://github.com/xyd-0811/skip-pet/issues/14) 和 [#15](https://github.com/xyd-0811/skip-pet/issues/15)，使用已认可原型的重绘素材与固定 3× 眼动，身体不摆动。
 
 ## 从源码运行
 
@@ -14,14 +14,14 @@ python -m venv .venv
 .\.venv\Scripts\pythonw.exe -m sukuna_pet
 ```
 
-单击角色依次进入视线 1、2、3、0，每次结束保持。视线 2 不自行眨眼；下一次单独点击进入视线 3 时眨眼，240ms 完成，闭合 120ms 时直接换位。连点覆盖前方目标，从当前位置衔接。提供基本拖动，拖动后不推进阶段。
+单击角色依次进入视线 1、2、3、0，每次结束保持。视线 2 不自行眨眼；下一次单独点击进入视线 3 时眨眼，240ms 完成，闭合 120ms 时直接换位。连点覆盖前方目标，从当前位置衔接。按住可见角色拖动调整位置，拖动及释放不推进阶段；透明区域鼠标穿透到下方 Windows 应用，其他普通应用前置时角色仍置顶。
 
 右键菜单提供“点击跳动”“持续跳动”和“退出”，勾选当前模式。持续模式连续眼动，仍接受点击互动；切回点击模式完成当前视线阶段后保持，并保留正在进行的眨眼。沿用原型的持续播放规则，睁眼期间已开始下一段眼动时会完成该段，同时让本次眨眼完整结束。
 
 选择模式后立即保存，下次启动恢复；首次无设置或设置损坏时使用点击模式。设置仅包含模式，存放于 Qt 的用户配置目录（Windows 通常为 `%LOCALAPPDATA%\skip-pet\sukuna-pet\mode.json`）。保存失败时提示重试，继续使用原模式。选择“退出”结束进程。
 
 素材已随 Python 包提供，运行不需要 `.scratch`、参考程序、原型网页、原视频或联网。
-这一步交付源码运行入口；完整原生拖动/透明处输入穿透、多屏可见区域和 Setup.exe 分别在 #15–#17 中交付。
+这一步交付源码运行入口；多屏可见区域和 Setup.exe 分别在 #16、#17 中交付。
 
 ## 维护与验证
 
@@ -30,13 +30,19 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m mypy src
 .\.venv\Scripts\python.exe -m pytest tests/test_playback.py -q
 .\.venv\Scripts\python.exe -m pytest tests/test_modes.py -q
+.\.venv\Scripts\python.exe -m pytest tests/test_pointer.py -q
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe tools/visual_check.py --show
 .\.venv\Scripts\python.exe tools/verify_modes_native.py
+.\.venv\Scripts\python.exe tools/verify_pointer_native.py
 ```
 
 `PetApplication.click()`、`select_mode("click" | "always")`、`advance(elapsed_ms)` 与只读 `view`/`mode` 是父规格已确认的应用级测试边界；通过同一设置路径建立新实例验证模式恢复。
 `view` 提供源图坐标下两眼中心、眼皮闭合程度及阶段/停留状态；Qt 仅将真实时间和输入接入此边界。绘制不决定播放时序。
+
+同一入口的 `pointer_press(position, window_position, drag_distance=...)`、`pointer_move(position)`、`pointer_release(position)` 和 `cancel_pointer()` 接收左键手势。坐标与拖动距离采用 Qt 逻辑像素，距离由 `QApplication.startDragDistance()` 提供；移动/释放返回需要移动到的窗口位置，只有未达到拖动阈值的释放才调用统一 `click()`。已进入拖动的手势即使回到起点也不变成点击，丢失鼠标捕获时取消手势。
+
+窗口以绘制裁剪和缩放后的非零 alpha 轮廓建立原生 `QRegion` 掩码；保留半透明边缘，透明空白不在窗口命中区域内。轮廓不随眼动变化，因此无需逐帧重建。原生穿透、拖动与置顶证据见 [#15 验证记录](docs/verification/issue-15/README.md)。
 
 行为基准来自原型提交 `9eef9e2418d536fe6a5b71235841ae98da64329c`。
 测试夹具直接执行该提交中的原始 `StageRules`、`next`、`tick`、`paintSprite` 生成，覆盖普通周期、动作中改目标、闭眼/睁眼中点击、跨周期快速点击及再次眨眼。夹具以 1ms 虚拟绘制步长采样，眼中心比较容许 0.2 个源像素的采样差异；断言不重写轨迹公式。

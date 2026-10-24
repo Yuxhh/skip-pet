@@ -58,6 +58,46 @@ class PetApplication:
         self._moving = False
         self._blink_age: float | None = None
         self._blink_destination: float | None = None
+        self._pointer_start: tuple[int, int] | None = None
+        self._window_start = (0, 0)
+        self._drag_distance = 0
+        self._dragging = False
+
+    def pointer_press(
+        self, position: tuple[int, int], window_position: tuple[int, int], *, drag_distance: int,
+    ) -> None:
+        """Begin a left gesture in Qt's device-independent global coordinates."""
+        self._pointer_start = position
+        self._window_start = window_position
+        self._drag_distance = drag_distance
+        self._dragging = False
+
+    def pointer_move(self, position: tuple[int, int]) -> tuple[int, int] | None:
+        """Return a window position once the platform drag distance is reached."""
+        if self._pointer_start is None:
+            return None
+        dx = position[0] - self._pointer_start[0]
+        dy = position[1] - self._pointer_start[1]
+        if abs(dx) + abs(dy) >= self._drag_distance:
+            self._dragging = True
+        if self._dragging:
+            return self._window_start[0] + dx, self._window_start[1] + dy
+        return None
+
+    def pointer_release(self, position: tuple[int, int]) -> tuple[int, int] | None:
+        """Finish even if the OS coalesced moves; a drag never becomes a click."""
+        if self._pointer_start is None:
+            return None
+        destination = self.pointer_move(position)
+        if not self._dragging:
+            self.click()
+        self.cancel_pointer()
+        return destination
+
+    def cancel_pointer(self) -> None:
+        """An interrupted mouse grab must not leave an unfinished click."""
+        self._pointer_start = None
+        self._dragging = False
 
     @property
     def mode(self) -> Mode:
