@@ -30,6 +30,7 @@ assets['poses']=poses
 assets['boundaries']=[0,13,24,34,41]
 assets['sourceStart']=22
 assets['eyeKeys']=[[0,0,0],[8,-10,-5],[13,-20,-9],[20,-28,-8],[24,-29,-7],[27,-27,-6],[31,-20,3],[34,-15,7],[38,-5,6],[41,0,0]]
+assets['rightEyeStageTwoShift']=-12
 assets['eyeCrops']=[[ (float(rows[i]['face_bright_x'])-16-85)/2,(float(rows[i]['face_bright_y'])-30-415)/2,85,30] for i in range(22,64)]
 html=(root/'stage.template.html').read_text(encoding='utf-8')
 (root/'index.html').write_text(html.replace('/*__ASSETS__*/',json.dumps(assets,separators=(',',':'))),encoding='utf-8')
@@ -41,6 +42,7 @@ manifest={'version':3,'user_confirmed':['click advances one eye-direction stage'
  'rapid_click_candidate':'replace forward stage target; at most one cycle of forward travel remains, no unbounded multi-cycle queue',
  'automatic_modes':'existing simulated comparison; click precedence still candidate',
  'eye_offset_status':'manual interpretation of compressed source; eye opening and exact gaze extrema require human side-by-side validation',
+ 'right_eye_stage_two_correction':'screen-left/anatomical-right iris moves an extra 12 source pixels left at stage-2 end, tapering from stage 1 and back to zero at stage 3; other eye unchanged',
  'blink':'once on the separate click entering stage 3 after stage 2 holds; hold current gaze for 120ms closure, jump directly to stage end while closed, reopen for 120ms; no continuous eye travel in stage 3; no repeat during hold',
  'acceptance':'pending human feedback; old whole-cycle-per-click and body-only stage prototypes rejected'}
 (root/'stage-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
