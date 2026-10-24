@@ -1,7 +1,11 @@
 # 宿傩桌宠
 
 原生 Windows 透明半身角色，首次启动静止，点击一次推进一个视线阶段并停留。
-当前实现对应 [#13](https://github.com/xyd-0811/skip-pet/issues/13)–[#16](https://github.com/xyd-0811/skip-pet/issues/16)，使用已认可原型的重绘素材与固定 3× 眼动，身体不摆动。
+当前实现对应 [#13](https://github.com/xyd-0811/skip-pet/issues/13)–[#17](https://github.com/xyd-0811/skip-pet/issues/17)，使用已认可原型的重绘素材与固定 3× 眼动，身体不摆动。
+
+## 安装版
+
+双击 `dist/release/Setup.exe`，安装后从开始菜单“宿傩桌宠”启动，也可在向导中选择桌面快捷方式。无需安装 Python、保留原视频或配置宿主。通过 Windows“已安装的应用”或开始菜单卸载入口移除；模式偏好保留。详见[使用说明](docs/user-guide.md)、[固定依赖与构建说明](docs/build.md)、[#17 验证记录](docs/verification/issue-17/README.md)。源码 ZIP 与 SHA-256 清单随安装器交付。
 
 ## 从源码运行
 
@@ -22,7 +26,7 @@ python -m venv .venv
 
 素材已随 Python 包提供，运行不需要 `.scratch`、参考程序、原型网页、原视频或联网。
 拖动时按鼠标所在屏幕的可用区域限制角色非透明轮廓，避开任务栏；支持负坐标与各屏幕独立的 Qt 逻辑坐标，不用整个虚拟桌面的外包矩形代替工作区。DPI、屏幕布局或工作区变化后重新检查位置，不保存位置、不增加缩放设置。
-这一步交付源码运行入口；Setup.exe 在 #17 中交付。#16 已完成本机单屏 100% 缩放的真实 Windows 验证；真实多屏和混合 DPI 尚未验证，详见 [#16 验证记录](docs/verification/issue-16/README.md)。
+安装器由 #17 交付。#16 已完成本机单屏 100% 缩放的真实 Windows 验证；真实多屏和混合 DPI 尚未验证，详见 [#16 验证记录](docs/verification/issue-16/README.md)。
 
 ## 维护与验证
 
