@@ -4,8 +4,8 @@ import sys
 from pathlib import Path
 from time import perf_counter
 
-from PySide6.QtCore import QEvent, QRectF, QStandardPaths, Qt, QTimer
-from PySide6.QtGui import QActionGroup, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion
+from PySide6.QtCore import QEvent, QPoint, QRectF, QStandardPaths, Qt, QTimer
+from PySide6.QtGui import QActionGroup, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
 from .playback import PetApplication
@@ -42,7 +42,52 @@ class PetWindow(QWidget):
         screen = QApplication.primaryScreen()
         if screen is not None:
             area = screen.availableGeometry()
-            self.move(area.right() - self.width() - 32, area.bottom() - self.height() - 32)
+            self._move_visible((area.right() - self.width() - 32,
+                                area.bottom() - self.height() - 32), screen)
+        for screen in QApplication.screens():
+            self._watch_screen(screen)
+        app = QApplication.instance()
+        assert isinstance(app, QApplication)
+        app.screenAdded.connect(self._watch_screen)
+        app.screenRemoved.connect(self._schedule_visibility)
+
+    def _watch_screen(self, screen: QScreen) -> None:
+        screen.availableGeometryChanged.connect(self._schedule_visibility)
+        screen.geometryChanged.connect(self._schedule_visibility)
+        self._schedule_visibility()
+
+    def _schedule_visibility(self) -> None:
+        # Let Qt finish its native DPI/screen change before rechecking geometry.
+        QTimer.singleShot(0, self, self._keep_visible)
+
+    def _keep_visible(self) -> None:
+        self._move_visible((self.x(), self.y()), self.screen())
+
+    def _move_visible(self, destination: tuple[int, int], screen: QScreen) -> None:
+        # Both rectangles are in Qt logical pixels, including on negative-origin
+        # screens. Transparent margins may extend outside the work area.
+        area = screen.availableGeometry()
+        visible = self.mask().boundingRect()
+        x = max(area.left() - visible.left(), min(destination[0], area.right() - visible.right()))
+        y = max(area.top() - visible.top(), min(destination[1], area.bottom() - visible.bottom()))
+        if self.screen() != screen:
+            self.setScreen(screen)
+        self.move(x, y)
+
+    def _move_drag(self, destination: tuple[int, int], cursor: QPoint) -> None:
+        screen = QApplication.screenAt(cursor)
+        if screen is None:
+            # Qt's Windows virtual desktop can have gaps between logical screen
+            # rectangles. Never treat their union as one usable work area.
+            def distance(candidate: QScreen) -> int:
+                rect = candidate.geometry()
+                dx = max(rect.left() - cursor.x(), 0, cursor.x() - rect.right())
+                dy = max(rect.top() - cursor.y(), 0, cursor.y() - rect.bottom())
+                return dx * dx + dy * dy
+
+            screen = min(QApplication.screens(), key=distance, default=None)
+        if screen is not None:
+            self._move_visible(destination, screen)
 
     def _advance(self) -> None:
         now = perf_counter()
@@ -75,7 +120,7 @@ class PetWindow(QWidget):
         point = event.globalPosition().toPoint()
         destination = self._pet.pointer_move((point.x(), point.y()))
         if destination is not None:
-            self.move(*destination)
+            self._move_drag(destination, point)
         event.accept()
 
     def mouseReleaseEvent(self, event: QMouseEvent) -> None:
@@ -85,7 +130,7 @@ class PetWindow(QWidget):
         point = event.globalPosition().toPoint()
         destination = self._pet.pointer_release((point.x(), point.y()))
         if destination is not None:
-            self.move(*destination)
+            self._move_drag(destination, point)
         self._frame = self._renderer.render(self._pet.view)
         self.update()
         event.accept()
@@ -95,6 +140,9 @@ class PetWindow(QWidget):
             # QWidget can receive events before our application is constructed.
             if hasattr(self, "_pet"):
                 self._pet.cancel_pointer()
+        if event.type() in (QEvent.Type.DevicePixelRatioChange, QEvent.Type.ScreenChangeInternal):
+            if hasattr(self, "_renderer"):
+                self._schedule_visibility()
         return super().event(event)
 
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:

@@ -1,0 +1,21 @@
+{
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "available_geometry": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "device_pixel_ratio": 1.0
+    }
+  ]
+}

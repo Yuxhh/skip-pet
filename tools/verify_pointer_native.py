@@ -1,18 +1,21 @@
 """Interactive Windows check: use OS mouse input against this pet and Notepad.
 
-Run python tools/verify_pointer_native.py. The production window receives real
+Run python tools/verify_pointer_native.py [--output docs/verification/issue-16].
+The production window receives real
 input; this observer only records its public application view and Qt geometry.
 No synthetic Qt events or OS input injection are used here. Preferences are not
 read or written. Exit using the pet's real context menu.
 """
 
+import argparse
 import ctypes
 from dataclasses import asdict
 import json
 from pathlib import Path
 import sys
 
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QCursor
 from PySide6.QtWidgets import QApplication, QMenu
 
 from sukuna_pet.desktop import PetWindow
@@ -20,9 +23,12 @@ from sukuna_pet.playback import PetApplication
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=Path("docs/verification/issue-15"))
+    args = parser.parse_args()
     app = QApplication(sys.argv)
     assert app.platformName() == "windows", "Requires the real Windows desktop"
-    output = Path("docs/verification/issue-15")
+    output = args.output
     output.mkdir(parents=True, exist_ok=True)
     pet = PetApplication()
     window = PetWindow(pet)
@@ -36,6 +42,16 @@ def main() -> int:
     sample = 0
     menu_saved = False
 
+    def screens() -> list[dict]:
+        return [{"name": screen.name(), "geometry": screen.geometry().getRect(),
+                 "available_geometry": screen.availableGeometry().getRect(),
+                 "device_pixel_ratio": screen.devicePixelRatio()}
+                for screen in app.screens()]
+
+    (output / "screen-layout.json").write_text(json.dumps({
+        "platform": app.platformName(), "screens": screens(),
+    }, indent=2), encoding="utf-8")
+
     with (output / "native-trace.jsonl").open("w", encoding="utf-8") as trace:
         def observe() -> None:
             nonlocal previous, sample, menu_saved
@@ -45,6 +61,14 @@ def main() -> int:
                 menu_saved = True
             record = {
                 "position": [window.x(), window.y()],
+                "visible_bounds": window.mask().boundingRect().translated(window.pos()).getRect(),
+                "screen": window.screen().name(),
+                "available_geometry": window.screen().availableGeometry().getRect(),
+                "fully_visible": window.screen().availableGeometry().contains(
+                    window.mask().boundingRect().translated(window.pos())),
+                "screens": screens(),
+                "cursor": [QCursor.pos().x(), QCursor.pos().y()],
+                "left_pressed": bool(QApplication.mouseButtons() & Qt.MouseButton.LeftButton),
                 "view": asdict(pet.view),
                 "mode": pet.mode,
                 "foreground_is_pet": user32.GetForegroundWindow() == int(window.winId()),
