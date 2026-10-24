@@ -1,0 +1,20 @@
+{
+  "awaiting_user_visual_acceptance": true,
+  "head_parameters_unchanged": true,
+  "stage3_angle_deg": -9,
+  "original_front_collar_and_shoulders": true,
+  "chest_pixel_region": [
+    655,
+    700,
+    1175,
+    790
+  ],
+  "chest_max_channel_delta_on_vs_off": 0,
+  "browser_checks": [
+    "stage3 rear collar on/off",
+    "complete collar layer",
+    "stage2 pose"
+  ],
+  "comparison_before": "prior V2-equivalent rendering with rear fill off",
+  "complete_collar_layer": "generated empty collar; original head remnants removed"
+}
