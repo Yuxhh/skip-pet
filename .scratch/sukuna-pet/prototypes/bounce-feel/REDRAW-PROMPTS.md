@@ -1,0 +1,14 @@
+# 重绘资源和提示词
+
+使用内置 image_gen.imagegen；两次均请求 transparent_background=true，无 CLI 降级。
+
+1. 外观参考：已有 f000-C.png。生成原图复制到 `assets/sukuna-redrawn-v2.png`。
+2. 编辑目标：上述新图。去除虹膜和瞳孔的底图复制到 `assets/sukuna-eye-base-v3.png`。两张原始 PNG 均未修改像素或 alpha；展示时由 Canvas 驱动眼睛。
+
+## 第一次提示词
+
+Use case: stylized-concept. Create one fresh, professionally redrawn transparent desktop-pet sprite using the provided image ONLY as a character appearance reference. The reference is a low quality video crop; do NOT retain or reproduce its background, railings, text, watermark, cropping artifacts, jagged pixel edges, or compression noise. Subject: the same Sukuna anime character appearance seen in the reference: short sharply spiked black hair, pale face, characteristic dark symmetrical facial curse markings and forehead marks, half-lidded eyes, a small sly confident smile, black high-standing collar uniform with small round silver buttons. Framing: a SINGLE front-facing bust, head, neck, shoulders and short upper chest only, arms absent, no lower body. Preserve the face and silhouette proportions of the reference rather than creating a chibi baby. Fresh clean 2D anime cel illustration with crisp deliberate dark outlines, simple two-tone shadows, no gradients or glow. Center the complete hair and both shoulders with at least 12 percent transparent margin on every side, including above hair. A short bust silhouette ends in a clean gently curved lower edge just below the top chest, no text. It is a game sprite to be animated as one cutout, perfectly clean smooth antialiased alpha edges visible on both white and dark backgrounds. Truly transparent outside the subject, no scene, no checkerboard drawn into pixels, no frame, no shadow outside silhouette, no words, no labels, no watermarks, no extra elements. Generate one character only, upright neutral resting pose. This is a NEW redraw, not a restoration of the source pixels.
+
+## 第二次提示词
+
+Edit target: the provided transparent Sukuna bust illustration. Make an eye-animation base layer. Change ONLY the interiors of the two main eyes: remove BOTH reddish irises and BOTH black pupils and their highlights, replacing ONLY those iris/pupil pixels with the surrounding pale sclera color. Both main eyeballs should be blank light sclera inside their original sharp dark eyelid outlines. Keep the eyelids, eyelashes, eyebrow lines, facial curse markings, face shadows, hair, smile, ears, black collar, silver buttons, shoulders, lower bust silhouette, colors, transparent background, camera, pose and ALL other image pixels as close to identical as possible. Do not add any new pupils. Do not change the eye shapes, eye direction, head angle, expression, framing or scale. The blank sclera openings will receive animated pupils programmatically. Same aspect ratio and transparent margins as input. One character only, no text, no scene, no extra features. Preserve existing transparency. Output an RGBA cutout with truly transparent background.
