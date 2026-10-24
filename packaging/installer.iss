@@ -1,3 +1,7 @@
+#if VER != EncodeVer(6, 7, 3)
+  #error Use the locked Inno Setup 6.7.3 compiler
+#endif
+
 #ifndef BundleDir
   #error BundleDir must point to the PyInstaller SukunaPet directory
 #endif
@@ -47,7 +51,3 @@ Name: "{userdesktop}\宿傩桌宠"; Filename: "{app}\SukunaPet.exe"; WorkingDir:
 
 [Run]
 Filename: "{app}\SukunaPet.exe"; Description: "Launch 宿傩桌宠"; Flags: nowait postinstall skipifsilent
-#if VER != EncodeVer(6, 7, 3)
-  #error Use the locked Inno Setup 6.7.3 compiler
-#endif
-
