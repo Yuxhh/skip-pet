@@ -1,0 +1,11 @@
+{
+  "asset": "sukuna-eye-base-v3.png",
+  "sha256": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
+  "source_commit": "9eef9e2418d536fe6a5b71235841ae98da64329c",
+  "source_path": ".scratch/sukuna-pet/prototypes/bounce-feel/assets/sukuna-eye-base-v3.png",
+  "origin": "User-approved imagegen redraw and blank-sclera edit from the project prototype; copied byte-for-byte, no new image generation or pixel editing.",
+  "source_dimensions": [1419, 1108],
+  "draw_bounds": [201, 47, 1217, 1038],
+  "animation": "Original prototype gaze keys, socket paths, iris colours and blink geometry, fixed 3x speed, no body motion.",
+  "runtime": "Only the bundled PNG is required; original video, reference program and prototype checkout are not read."
+}

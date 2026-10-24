@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sukuna-pet"
+version = "0.1.0"
+description = "宿傩桌宠的原生 Windows 点击逐阶段眼动"
+requires-python = ">=3.12"
+dependencies = ["PySide6==6.12.0"]
+
+[project.scripts]
+sukuna-pet = "sukuna_pet.desktop:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sukuna_pet = ["assets/*.png", "assets/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+strict = true
+files = ["src"]

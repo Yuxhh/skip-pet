@@ -1,0 +1,816 @@
+{
+  "source_commit": "9eef9e2418d536fe6a5b71235841ae98da64329c",
+  "sampling_ms": 1,
+  "note": "Literal output of original StageRules/next/tick/paintSprite; allow 0.2 source pixel for 1ms render quantisation.",
+  "traces": [
+    {
+      "name": "ordinary_cycle",
+      "clicks_ms": [
+        0,
+        200,
+        400,
+        700
+      ],
+      "observations": [
+        {
+          "at_ms": 100,
+          "stage": 1,
+          "holding": false,
+          "right_eye": [
+            646.15,
+            471.5
+          ],
+          "left_eye": [
+            809,
+            460.5
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 200,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            639,
+            467
+          ],
+          "left_eye": [
+            798,
+            456
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 250,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            632.3984415584416,
+            467.51428571428573
+          ],
+          "left_eye": [
+            793.8857142857144,
+            456.51428571428573
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 333,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            622.9348545454546,
+            468.64399999999995
+          ],
+          "left_eye": [
+            789.356,
+            457.64399999999995
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 400,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 460,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0.49999999999999994
+        },
+        {
+          "at_ms": 520,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 580,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.5000000000000001
+        },
+        {
+          "at_ms": 640,
+          "stage": 3,
+          "holding": true,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 720,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            644.5900000000001,
+            482.64
+          ],
+          "left_eye": [
+            806.6000000000001,
+            471.64
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 760,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            649.0966666666668,
+            481.3599999999997
+          ],
+          "left_eye": [
+            813.5333333333336,
+            470.3599999999997
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 800,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 5000,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "mid_motion_retarget",
+      "clicks_ms": [
+        0,
+        60
+      ],
+      "observations": [
+        {
+          "at_ms": 60,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            648.49,
+            473.3
+          ],
+          "left_eye": [
+            812.6,
+            462.3
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 100,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            646.15,
+            471.5
+          ],
+          "left_eye": [
+            809,
+            460.5
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 160,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            640.9240000000001,
+            468.184
+          ],
+          "left_eye": [
+            800.96,
+            457.184
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 400,
+          "stage": 2,
+          "holding": true,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 1400,
+          "stage": 2,
+          "holding": true,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "blink_closing_click",
+      "clicks_ms": [
+        0,
+        200,
+        400,
+        460
+      ],
+      "observations": [
+        {
+          "at_ms": 400,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 460,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.49999999999999994
+        },
+        {
+          "at_ms": 500,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            646.9300000000002,
+            482.28
+          ],
+          "left_eye": [
+            810.2000000000003,
+            471.28
+          ],
+          "eyelid_closure": 0.9330127018922194
+        },
+        {
+          "at_ms": 520,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            649.0966666666668,
+            481.3599999999997
+          ],
+          "left_eye": [
+            813.5333333333336,
+            470.3599999999997
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 640,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 1000,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "blink_opening_click",
+      "clicks_ms": [
+        0,
+        200,
+        400,
+        560
+      ],
+      "observations": [
+        {
+          "at_ms": 400,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            621.15,
+            469
+          ],
+          "left_eye": [
+            789,
+            458
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 520,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 560,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.7500000000000002
+        },
+        {
+          "at_ms": 600,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            646.9300000000002,
+            482.28
+          ],
+          "left_eye": [
+            810.2000000000003,
+            471.28
+          ],
+          "eyelid_closure": 0.24999999999999994
+        },
+        {
+          "at_ms": 640,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            650.6566666666669,
+            478.47999999999956
+          ],
+          "left_eye": [
+            815.9333333333337,
+            467.47999999999956
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 1000,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "rapid_across_cycle",
+      "clicks_ms": [
+        0,
+        20,
+        40,
+        60,
+        80
+      ],
+      "observations": [
+        {
+          "at_ms": 20,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            650.83,
+            475.1
+          ],
+          "left_eye": [
+            816.2,
+            464.1
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 40,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            649.66,
+            474.2
+          ],
+          "left_eye": [
+            814.4,
+            463.2
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 60,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.06698729810778065
+        },
+        {
+          "at_ms": 80,
+          "stage": 1,
+          "holding": false,
+          "right_eye": [
+            644.5900000000001,
+            482.64
+          ],
+          "left_eye": [
+            806.6000000000001,
+            471.64
+          ],
+          "eyelid_closure": 0.24999999999999994
+        },
+        {
+          "at_ms": 120,
+          "stage": 1,
+          "holding": false,
+          "right_eye": [
+            649.0966666666668,
+            481.3599999999997
+          ],
+          "left_eye": [
+            813.5333333333336,
+            470.3599999999997
+          ],
+          "eyelid_closure": 0.7499999999999999
+        },
+        {
+          "at_ms": 240,
+          "stage": 1,
+          "holding": false,
+          "right_eye": [
+            647.1574999999996,
+            472.2749999999997
+          ],
+          "left_eye": [
+            810.5499999999994,
+            461.2749999999997
+          ],
+          "eyelid_closure": 0.24999999999999994
+        },
+        {
+          "at_ms": 1000,
+          "stage": 1,
+          "holding": true,
+          "right_eye": [
+            639,
+            467
+          ],
+          "left_eye": [
+            798,
+            456
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 5000,
+          "stage": 1,
+          "holding": true,
+          "right_eye": [
+            639,
+            467
+          ],
+          "left_eye": [
+            798,
+            456
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "many_clicks_replace_target",
+      "clicks_ms": [
+        0,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+        110,
+        120,
+        130,
+        140,
+        150,
+        160,
+        170,
+        180,
+        190
+      ],
+      "observations": [
+        {
+          "at_ms": 30,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.017037086855465844
+        },
+        {
+          "at_ms": 90,
+          "stage": 2,
+          "holding": false,
+          "right_eye": [
+            644.5900000000001,
+            482.64
+          ],
+          "left_eye": [
+            806.6000000000001,
+            471.64
+          ],
+          "eyelid_closure": 0.1464466094067262
+        },
+        {
+          "at_ms": 150,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.017037086855465844
+        },
+        {
+          "at_ms": 190,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0.017037086855465844
+        },
+        {
+          "at_ms": 300,
+          "stage": 0,
+          "holding": false,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 1000,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 5000,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    },
+    {
+      "name": "next_cycle_blinks_again",
+      "clicks_ms": [
+        0,
+        200,
+        400,
+        700,
+        900,
+        1100,
+        1300
+      ],
+      "observations": [
+        {
+          "at_ms": 520,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 640,
+          "stage": 3,
+          "holding": true,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 800,
+          "stage": 0,
+          "holding": true,
+          "right_eye": [
+            652,
+            476
+          ],
+          "left_eye": [
+            818,
+            465
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 1420,
+          "stage": 3,
+          "holding": false,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 1
+        },
+        {
+          "at_ms": 1540,
+          "stage": 3,
+          "holding": true,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0
+        },
+        {
+          "at_ms": 5000,
+          "stage": 3,
+          "holding": true,
+          "right_eye": [
+            642.25,
+            483
+          ],
+          "left_eye": [
+            803,
+            472
+          ],
+          "eyelid_closure": 0
+        }
+      ]
+    }
+  ]
+}
