@@ -1,0 +1,146 @@
+{
+  "source": "D:\\dsh-pet\\app\\dsh-pet-standalone-webm-chat.exe",
+  "source_sha256": "687255faea034bd0e672a870da732650dbbd5b9aae050586e143ac1e55c50407",
+  "source_bytes": 16059497,
+  "cookie_offset": 16059409,
+  "archive_start": 728064,
+  "python_version": 311,
+  "python_magic_int": 3495,
+  "pyz_archive_entry": {
+    "name": "PYZ.pyz",
+    "kind": "z",
+    "absolute_offset": 759743,
+    "compressed_bytes": 15299026,
+    "uncompressed_bytes": 15299026,
+    "compression": 0
+  },
+  "method": "custom CArchive/PYZ parser + xdis 6.3.0 version-independent marshal/opcode311",
+  "target_code_execution": false,
+  "modules": [
+    {
+      "module": "pet.window",
+      "pyz_offset": 10203334,
+      "compressed_bytes": 107540,
+      "marshal_sha256": "873a71ea440b4563903e84ef63091cc5ed4a3d51854ce2a3baf91cf4a20c49dd"
+    },
+    {
+      "module": "pet.pet_sprite",
+      "pyz_offset": 8984372,
+      "compressed_bytes": 33599,
+      "marshal_sha256": "6fefa5482188f5e3a2dabe72b0b7989d27e1c77eecde489582e4bc00b8bb8ed8"
+    },
+    {
+      "module": "pet.overlay_shell",
+      "pyz_offset": 8719191,
+      "compressed_bytes": 173390,
+      "marshal_sha256": "63b3c68f5f438f032ef33c813a084e48f2c4c69cfdde86777f9eb343f8e87256"
+    }
+  ],
+  "records": [
+    {
+      "module": "pet.window",
+      "qualname": "_squash_geometry",
+      "original_file": "pet\\window.py",
+      "original_first_line": 200,
+      "bytecode_sha256": "cb14f9e18c1c8eda226e2f78f736ff8ecda6e5c16f47b265c5d88b9e2166eecf",
+      "complete_method": true
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow.__init__",
+      "original_file": "pet\\window.py",
+      "original_first_line": 361,
+      "bytecode_sha256": "ea68357b7178444d483ae11f448ec3aaf34d6167b06ab7defba6ded986b448db",
+      "complete_method": false
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow._frame_draw_rect",
+      "original_file": "pet\\window.py",
+      "original_first_line": 2143,
+      "bytecode_sha256": "e4af15778c9f2a4053141271b72da9e77ae65d6d7de7bd6dfb25f0af260390a7",
+      "complete_method": true
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow._start_squash",
+      "original_file": "pet\\window.py",
+      "original_first_line": 2388,
+      "bytecode_sha256": "3f8afb6b7cb27dc0a54e527b1c37b59388edacf6f3def71af9c965ab6233b60d",
+      "complete_method": true
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow._on_squash_tick",
+      "original_file": "pet\\window.py",
+      "original_first_line": 2397,
+      "bytecode_sha256": "581e54944c9e9b97c5aae4f04e17ea003ac1a5525d4c97ea1142262fb0b4348c",
+      "complete_method": true
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow.mouseReleaseEvent",
+      "original_file": "pet\\window.py",
+      "original_first_line": 3261,
+      "bytecode_sha256": "f633ce223e68a2c30b984b945ac0a42a617ded2a114538c97d09221663cd8c76",
+      "complete_method": true
+    },
+    {
+      "module": "pet.window",
+      "qualname": "PetWindow._on_click",
+      "original_file": "pet\\window.py",
+      "original_first_line": 3376,
+      "bytecode_sha256": "ae9894665c409b8509af8d5506b0122004a2e0e52b571b9d08c2acc6014f5b2b",
+      "complete_method": true
+    },
+    {
+      "module": "pet.pet_sprite",
+      "qualname": "<module>",
+      "original_file": "pet\\pet_sprite.py",
+      "original_first_line": 1,
+      "bytecode_sha256": "3e4cfc3e089b581425f16d2a67ff58b22e0eb525e5fb7b3ec0ed8160ddfb0f58",
+      "complete_method": false
+    },
+    {
+      "module": "pet.pet_sprite",
+      "qualname": "PetSprite.advance",
+      "original_file": "pet\\pet_sprite.py",
+      "original_first_line": 991,
+      "bytecode_sha256": "f2bea4dec045e08ac5d165ada75be42b086c64a3f5f9ec9f6afbde43c61a9706",
+      "complete_method": false
+    },
+    {
+      "module": "pet.pet_sprite",
+      "qualname": "PetSprite.squash",
+      "original_file": "pet\\pet_sprite.py",
+      "original_first_line": 1120,
+      "bytecode_sha256": "48c15e323439be826e3f8212e03f894e8f147ffb183f9876cba5c3589a9ad0bc",
+      "complete_method": true
+    },
+    {
+      "module": "pet.pet_sprite",
+      "qualname": "PetSprite._squashed_rect",
+      "original_file": "pet\\pet_sprite.py",
+      "original_first_line": 1126,
+      "bytecode_sha256": "650ad9e58772c5621cb7b6c61ea162b20f6027a3d7b65bcf54187808cf146d23",
+      "complete_method": true
+    },
+    {
+      "module": "pet.pet_sprite",
+      "qualname": "PetSprite.paint",
+      "original_file": "pet\\pet_sprite.py",
+      "original_first_line": 1138,
+      "bytecode_sha256": "2f3bc26137f968932b3a2947ee04771b25a4756fba8ddd01bd169e65a7c65bb9",
+      "complete_method": true
+    },
+    {
+      "module": "pet.overlay_shell",
+      "qualname": "ShellOverlayWindow.mouseReleaseEvent",
+      "original_file": "pet\\overlay_shell.py",
+      "original_first_line": 807,
+      "bytecode_sha256": "5be647ce04d30e975b9dde266fff60465c624467c9cde21a55282d24671aeb0b",
+      "complete_method": true
+    }
+  ],
+  "limitation": "Static control flow and constants; not an observed UI click or active configuration."
+}

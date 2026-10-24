@@ -1,0 +1,1461 @@
+
+### pet.window:_squash_geometry — pet\window.py:200
+  200      0 RESUME                       
+  208      2 LOAD_GLOBAL                  NULL + max
+          14 LOAD_CONST                   0.0
+          16 LOAD_GLOBAL                  NULL + min
+          28 LOAD_CONST                   1.0
+          30 LOAD_GLOBAL                  NULL + float
+          42 LOAD_FAST                    progress
+          44 PRECALL                      
+          48 CALL                         
+          58 PRECALL                      
+          62 CALL                         
+          72 PRECALL                      
+          76 CALL                         
+          86 STORE_FAST                   progress
+  209     88 LOAD_GLOBAL                  NULL + math
+         100 LOAD_ATTR                    sin
+         110 LOAD_GLOBAL                  math
+         122 LOAD_ATTR                    pi
+         132 LOAD_FAST                    progress
+         134 BINARY_OP                    *
+         138 PRECALL                      
+         142 CALL                         
+         152 STORE_FAST                   pulse
+  210    154 LOAD_CONST                   1.0
+         156 LOAD_CONST                   0.15
+         158 LOAD_FAST                    pulse
+         160 BINARY_OP                    *
+         164 BINARY_OP                    -
+         168 STORE_FAST                   sy
+  211    170 LOAD_CONST                   1.0
+         172 LOAD_CONST                   0.1
+         174 LOAD_FAST                    pulse
+         176 BINARY_OP                    *
+         180 BINARY_OP                    +
+         184 STORE_FAST                   sx
+  212    186 LOAD_GLOBAL                  NULL + max
+         198 LOAD_CONST                   1
+         200 LOAD_GLOBAL                  NULL + int
+         212 LOAD_GLOBAL                  NULL + round
+         224 LOAD_FAST                    frame_width
+         226 LOAD_FAST                    sx
+         228 BINARY_OP                    *
+         232 PRECALL                      
+         236 CALL                         
+         246 PRECALL                      
+         250 CALL                         
+         260 PRECALL                      
+         264 CALL                         
+         274 STORE_FAST                   width
+  213    276 LOAD_GLOBAL                  NULL + max
+         288 LOAD_CONST                   1
+         290 LOAD_GLOBAL                  NULL + int
+         302 LOAD_GLOBAL                  NULL + round
+         314 LOAD_FAST                    frame_height
+         316 LOAD_FAST                    sy
+         318 BINARY_OP                    *
+         322 PRECALL                      
+         326 CALL                         
+         336 PRECALL                      
+         340 CALL                         
+         350 PRECALL                      
+         354 CALL                         
+         364 STORE_FAST                   height
+  214    366 LOAD_GLOBAL                  NULL + int
+         378 LOAD_GLOBAL                  NULL + round
+         390 LOAD_FAST                    window_width
+         392 LOAD_FAST                    width
+         394 BINARY_OP                    -
+         398 LOAD_CONST                   2
+         400 BINARY_OP                    /
+         404 PRECALL                      
+         408 CALL                         
+         418 PRECALL                      
+         422 CALL                         
+         432 STORE_FAST                   x
+  215    434 LOAD_FAST                    window_height
+         436 LOAD_FAST                    height
+         438 BINARY_OP                    -
+         442 STORE_FAST                   y
+  216    444 LOAD_FAST                    x
+         446 LOAD_FAST                    y
+         448 LOAD_FAST                    width
+         450 LOAD_FAST                    height
+         452 BUILD_TUPLE                  
+         454 RETURN_VALUE                 
+
+### pet.window:PetWindow.__init__ — pet\window.py:361
+  669   7714 LOAD_GLOBAL                  NULL + QTimer
+        7726 LOAD_DEREF                   self
+        7728 PRECALL                      
+        7732 CALL                         
+        7742 LOAD_DEREF                   self
+        7744 STORE_ATTR                   _squash_timer
+  670   7754 LOAD_DEREF                   self
+        7756 LOAD_ATTR                    _squash_timer
+        7766 LOAD_METHOD                  setInterval
+        7788 LOAD_FAST                    _tick_ms
+        7790 PRECALL                      
+        7794 CALL                         
+        7804 POP_TOP                      
+  673   7806 LOAD_DEREF                   self
+        7808 LOAD_ATTR                    _squash_timer
+        7818 LOAD_METHOD                  setTimerType
+        7840 EXTENDED_ARG                 256
+        7842 LOAD_GLOBAL                  Qt
+        7854 LOAD_ATTR                    TimerType
+        7864 LOAD_ATTR                    PreciseTimer
+        7874 PRECALL                      
+        7878 CALL                         
+        7888 POP_TOP                      
+  674   7890 LOAD_DEREF                   self
+        7892 LOAD_ATTR                    _squash_timer
+        7902 LOAD_ATTR                    timeout
+        7912 LOAD_METHOD                  connect
+        7934 LOAD_DEREF                   self
+        7936 LOAD_ATTR                    _on_squash_tick
+        7946 PRECALL                      
+        7950 CALL                         
+        7960 POP_TOP                      
+  675   7962 EXTENDED_ARG                 256
+        7964 LOAD_GLOBAL                  NULL + QElapsedTimer
+        7976 PRECALL                      
+        7980 CALL                         
+        7990 LOAD_DEREF                   self
+        7992 STORE_ATTR                   _squash_clock
+  676   8002 LOAD_CONST                   False
+        8004 LOAD_DEREF                   self
+        8006 STORE_ATTR                   _squash_active
+  677   8016 LOAD_CONST                   220
+        8018 LOAD_DEREF                   self
+        8020 STORE_ATTR                   _squash_duration_ms
+  678   8030 LOAD_CONST                   1.0
+        8032 LOAD_DEREF                   self
+        8034 STORE_ATTR                   _squash_progress
+  679   8044 LOAD_GLOBAL                  NULL + float
+        8056 LOAD_CONST                   "-inf"
+        8058 PRECALL                      
+        8062 CALL                         
+        8072 LOAD_DEREF                   self
+        8074 STORE_ATTR                   _last_collision_sound_at
+  680   8084 LOAD_CONST                   None
+        8086 LOAD_DEREF                   self
+
+### pet.window:PetWindow._frame_draw_rect — pet\window.py:2143
+ 2143      0 RESUME                       
+ 2145      2 LOAD_GLOBAL                  NULL + _content_frame_rect
+          14 LOAD_FAST                    self
+          16 PRECALL                      
+          20 CALL                         
+          30 STORE_FAST                   content
+ 2146     32 LOAD_FAST                    self
+          34 LOAD_ATTR                    _squash_active
+          44 POP_JUMP_FORWARD_IF_FALSE    to 368
+ 2149     46 LOAD_GLOBAL                  NULL + _squash_geometry
+ 2150     58 LOAD_FAST                    content
+          60 LOAD_METHOD                  width
+          82 PRECALL                      
+          86 CALL                         
+ 2151     96 LOAD_FAST                    content
+          98 LOAD_METHOD                  height
+         120 PRECALL                      
+         124 CALL                         
+ 2152    134 LOAD_FAST                    content
+         136 LOAD_METHOD                  width
+         158 PRECALL                      
+         162 CALL                         
+ 2153    172 LOAD_FAST                    content
+         174 LOAD_METHOD                  height
+         196 PRECALL                      
+         200 CALL                         
+ 2154    210 LOAD_FAST                    self
+         212 LOAD_ATTR                    _squash_progress
+ 2149    222 PRECALL                      
+         226 CALL                         
+         236 UNPACK_SEQUENCE              
+         240 STORE_FAST                   x
+         242 STORE_FAST                   y
+         244 STORE_FAST                   w
+         246 STORE_FAST                   h
+ 2156    248 LOAD_GLOBAL                  NULL + QRect
+         260 LOAD_FAST                    content
+         262 LOAD_METHOD                  x
+         284 PRECALL                      
+         288 CALL                         
+         298 LOAD_FAST                    x
+         300 BINARY_OP                    +
+         304 LOAD_FAST                    content
+         306 LOAD_METHOD                  y
+         328 PRECALL                      
+         332 CALL                         
+         342 LOAD_FAST                    y
+         344 BINARY_OP                    +
+         348 LOAD_FAST                    w
+         350 LOAD_FAST                    h
+         352 PRECALL                      
+         356 CALL                         
+         366 RETURN_VALUE                 
+ 2157    368 LOAD_FAST                    content
+         370 RETURN_VALUE                 
+
+### pet.window:PetWindow._start_squash — pet\window.py:2388
+ 2388      0 RESUME                       
+ 2390      2 LOAD_CONST                   True
+           4 LOAD_FAST                    self
+           6 STORE_ATTR                   _squash_active
+ 2391     16 LOAD_CONST                   0.0
+          18 LOAD_FAST                    self
+          20 STORE_ATTR                   _slingshot_rebound_progress
+ 2392     30 LOAD_CONST                   0.0
+          32 LOAD_FAST                    self
+          34 STORE_ATTR                   _squash_progress
+ 2393     44 LOAD_FAST                    self
+          46 LOAD_ATTR                    _squash_clock
+          56 LOAD_METHOD                  start
+          78 PRECALL                      
+          82 CALL                         
+          92 POP_TOP                      
+ 2394     94 LOAD_FAST                    self
+          96 LOAD_ATTR                    _squash_timer
+         106 LOAD_METHOD                  start
+         128 PRECALL                      
+         132 CALL                         
+         142 POP_TOP                      
+ 2395    144 LOAD_FAST                    self
+         146 LOAD_METHOD                  update
+         168 PRECALL                      
+         172 CALL                         
+         182 POP_TOP                      
+         184 LOAD_CONST                   None
+         186 RETURN_VALUE                 
+
+### pet.window:PetWindow._on_squash_tick — pet\window.py:2397
+ 2397      0 RESUME                       
+ 2398      2 LOAD_GLOBAL                  perfstats
+          14 LOAD_ATTR                    ENABLED
+          24 POP_JUMP_FORWARD_IF_FALSE    to 64
+ 2399     26 LOAD_GLOBAL                  NULL + perfstats
+          38 LOAD_ATTR                    clock
+          48 PRECALL                      
+          52 CALL                         
+          62 STORE_FAST                   _sq_t0
+ 2400     64 LOAD_FAST                    self
+          66 LOAD_ATTR                    _squash_clock
+          76 LOAD_METHOD                  elapsed
+          98 PRECALL                      
+         102 CALL                         
+         112 STORE_FAST                   elapsed
+ 2401    114 LOAD_GLOBAL                  NULL + min
+         126 LOAD_CONST                   1.0
+         128 LOAD_FAST                    elapsed
+         130 LOAD_FAST                    self
+         132 LOAD_ATTR                    _squash_duration_ms
+         142 BINARY_OP                    /
+         146 PRECALL                      
+         150 CALL                         
+         160 LOAD_FAST                    self
+         162 STORE_ATTR                   _squash_progress
+ 2402    172 LOAD_FAST                    self
+         174 LOAD_ATTR                    _squash_progress
+         184 LOAD_CONST                   1.0
+         186 COMPARE_OP                   >=
+         192 STORE_FAST                   done
+ 2403    194 LOAD_FAST                    done
+         196 POP_JUMP_FORWARD_IF_FALSE    to 276
+ 2404    198 LOAD_CONST                   False
+         200 LOAD_FAST                    self
+         202 STORE_ATTR                   _squash_active
+ 2405    212 LOAD_CONST                   0.0
+         214 LOAD_FAST                    self
+         216 STORE_ATTR                   _slingshot_rebound_progress
+ 2406    226 LOAD_FAST                    self
+         228 LOAD_ATTR                    _squash_timer
+         238 LOAD_METHOD                  stop
+         260 PRECALL                      
+         264 CALL                         
+         274 POP_TOP                      
+ 2409    276 LOAD_GLOBAL                  time
+         288 LOAD_METHOD                  monotonic
+         310 PRECALL                      
+         314 CALL                         
+         324 STORE_FAST                   now
+ 2410    326 LOAD_FAST                    done
+         328 POP_JUMP_FORWARD_IF_TRUE     to 358
+         330 LOAD_FAST                    now
+         332 LOAD_FAST                    self
+         334 LOAD_ATTR                    _last_mask_sync_at
+         344 BINARY_OP                    -
+         348 LOAD_CONST                   0.033
+         350 COMPARE_OP                   >=
+         356 POP_JUMP_FORWARD_IF_FALSE    to 412
+ 2411    358 LOAD_FAST                    now
+         360 LOAD_FAST                    self
+         362 STORE_ATTR                   _last_mask_sync_at
+ 2412    372 LOAD_FAST                    self
+         374 LOAD_METHOD                  _sync_mask
+         396 PRECALL                      
+         400 CALL                         
+         410 POP_TOP                      
+ 2413    412 LOAD_FAST                    self
+         414 LOAD_METHOD                  update
+         436 PRECALL                      
+         440 CALL                         
+         450 POP_TOP                      
+ 2414    452 LOAD_GLOBAL                  perfstats
+         464 LOAD_ATTR                    ENABLED
+         474 POP_JUMP_FORWARD_IF_FALSE    to 562
+ 2415    476 LOAD_GLOBAL                  NULL + perfstats
+         488 LOAD_ATTR                    time
+         498 LOAD_CONST                   "squash.tick_ms"
+         500 LOAD_GLOBAL                  NULL + perfstats
+         512 LOAD_ATTR                    clock
+         522 PRECALL                      
+         526 CALL                         
+         536 LOAD_FAST                    _sq_t0
+         538 BINARY_OP                    -
+         542 PRECALL                      
+         546 CALL                         
+         556 POP_TOP                      
+         558 LOAD_CONST                   None
+         560 RETURN_VALUE                 
+ 2414    562 LOAD_CONST                   None
+         564 RETURN_VALUE                 
+
+### pet.window:PetWindow.mouseReleaseEvent — pet\window.py:3261
+           0 COPY_FREE_VARS               
+ 3261      2 RESUME                       
+ 3263      4 LOAD_FAST                    self
+           6 LOAD_METHOD                  mark_activity
+          28 PRECALL                      
+          32 CALL                         
+          42 POP_TOP                      
+ 3264     44 LOAD_FAST                    event
+          46 LOAD_METHOD                  button
+          68 PRECALL                      
+          72 CALL                         
+          82 LOAD_GLOBAL                  Qt
+          94 LOAD_ATTR                    MouseButton
+         104 LOAD_ATTR                    RightButton
+         114 COMPARE_OP                   ==
+         120 POP_JUMP_FORWARD_IF_FALSE    to 228
+         122 LOAD_FAST                    self
+         124 LOAD_ATTR                    _interaction_state
+         134 LOAD_CONST                   "SLINGSHOT_AIMING"
+         136 COMPARE_OP                   ==
+         142 POP_JUMP_FORWARD_IF_FALSE    to 228
+ 3265    144 LOAD_FAST                    self
+         146 LOAD_METHOD                  _cancel_slingshot_to_drag
+         168 PRECALL                      
+         172 CALL                         
+         182 POP_TOP                      
+ 3266    184 LOAD_FAST                    event
+         186 LOAD_METHOD                  accept
+         208 PRECALL                      
+         212 CALL                         
+         222 POP_TOP                      
+ 3267    224 LOAD_CONST                   None
+         226 RETURN_VALUE                 
+ 3268    228 LOAD_FAST                    event
+         230 LOAD_METHOD                  button
+         252 PRECALL                      
+         256 CALL                         
+         266 LOAD_GLOBAL                  Qt
+         278 LOAD_ATTR                    MouseButton
+         288 LOAD_ATTR                    LeftButton
+         298 COMPARE_OP                   ==
+         304 POP_JUMP_FORWARD_IF_FALSE    to 486
+         306 LOAD_FAST                    self
+         308 LOAD_ATTR                    _interaction_state
+         318 LOAD_CONST                   "SLINGSHOT_AIMING"
+         320 COMPARE_OP                   ==
+         326 POP_JUMP_FORWARD_IF_FALSE    to 486
+ 3269    328 LOAD_FAST                    self
+         330 LOAD_METHOD                  _launch_slingshot
+         352 LOAD_FAST                    event
+         354 LOAD_METHOD                  globalPosition
+         376 PRECALL                      
+         380 CALL                         
+         390 LOAD_METHOD                  toPoint
+         412 PRECALL                      
+         416 CALL                         
+         426 PRECALL                      
+         430 CALL                         
+         440 POP_TOP                      
+ 3270    442 LOAD_FAST                    event
+         444 LOAD_METHOD                  accept
+         466 PRECALL                      
+         470 CALL                         
+         480 POP_TOP                      
+ 3271    482 LOAD_CONST                   None
+         484 RETURN_VALUE                 
+ 3272    486 LOAD_FAST                    event
+         488 LOAD_METHOD                  button
+         510 PRECALL                      
+         514 CALL                         
+         524 LOAD_GLOBAL                  Qt
+         536 LOAD_ATTR                    MouseButton
+         546 LOAD_ATTR                    LeftButton
+         556 COMPARE_OP                   !=
+         562 POP_JUMP_FORWARD_IF_FALSE    to 634
+ 3273    564 LOAD_GLOBAL                  NULL + super
+         576 PRECALL                      
+         580 CALL                         
+         590 LOAD_METHOD                  mouseReleaseEvent
+         612 LOAD_FAST                    event
+         614 PRECALL                      
+         618 CALL                         
+         628 POP_TOP                      
+ 3274    630 LOAD_CONST                   None
+         632 RETURN_VALUE                 
+ 3275    634 LOAD_FAST                    self
+         636 LOAD_ATTR                    _dragging
+         646 STORE_FAST                   was_dragging
+ 3276    648 LOAD_FAST                    event
+         650 LOAD_METHOD                  globalPosition
+         672 PRECALL                      
+         676 CALL                         
+         686 LOAD_METHOD                  toPoint
+         708 PRECALL                      
+         712 CALL                         
+         722 STORE_FAST                   g
+ 3277    724 LOAD_CONST                   0.0
+         726 STORE_FAST                   dist
+ 3278    728 LOAD_FAST                    self
+         730 LOAD_ATTR                    _press_global
+         740 POP_JUMP_FORWARD_IF_NONE     to 876
+ 3279    742 LOAD_FAST                    g
+         744 LOAD_FAST                    self
+         746 LOAD_ATTR                    _press_global
+         756 BINARY_OP                    -
+         760 STORE_FAST                   d
+ 3280    762 LOAD_GLOBAL                  NULL + math
+         774 LOAD_ATTR                    hypot
+         784 LOAD_FAST                    d
+         786 LOAD_METHOD                  x
+         808 PRECALL                      
+         812 CALL                         
+         822 LOAD_FAST                    d
+         824 LOAD_METHOD                  y
+         846 PRECALL                      
+         850 CALL                         
+         860 PRECALL                      
+         864 CALL                         
+         874 STORE_FAST                   dist
+ 3281    876 LOAD_FAST                    was_dragging
+         878 EXTENDED_ARG                 512
+         880 POP_JUMP_FORWARD_IF_FALSE    to 2104
+ 3282    882 LOAD_FAST                    self
+         884 LOAD_METHOD                  _flush_drag_move
+         906 PRECALL                      
+         910 CALL                         
+         920 POP_TOP                      
+ 3283    922 LOAD_CONST                   True
+         924 LOAD_FAST                    self
+         926 STORE_ATTR                   _just_dragged
+ 3284    936 LOAD_GLOBAL                  NULL + QTimer
+         948 LOAD_ATTR                    singleShot
+         958 LOAD_CONST                   150
+         960 LOAD_FAST                    self
+         962 LOAD_FAST                    self
+         964 LOAD_ATTR                    _clear_just_dragged
+         974 PRECALL                      
+         978 CALL                         
+         988 POP_TOP                      
+ 3285    990 LOAD_FAST                    self
+         992 LOAD_ATTR                    drag_physics
+        1002 EXTENDED_ARG                 256
+        1004 POP_JUMP_FORWARD_IF_FALSE    to 1646
+ 3286   1006 LOAD_GLOBAL                  NULL + physics_mod
+        1018 LOAD_ATTR                    estimate_release_velocity
+ 3287   1028 LOAD_FAST                    self
+        1030 LOAD_ATTR                    _trail
+        1040 LOAD_GLOBAL                  time
+        1052 LOAD_METHOD                  monotonic
+        1074 PRECALL                      
+        1078 CALL                         
+        1088 LOAD_FAST                    self
+        1090 LOAD_ATTR                    _throw_speed_cap
+ 3286   1100 KW_NAMES                     ('cap',)
+        1102 PRECALL                      
+        1106 CALL                         
+        1116 UNPACK_SEQUENCE              
+        1120 STORE_FAST                   rvx
+        1122 STORE_FAST                   rvy
+ 3289   1124 LOAD_GLOBAL                  NULL + math
+        1136 LOAD_ATTR                    hypot
+        1146 LOAD_FAST                    rvx
+        1148 LOAD_FAST                    rvy
+        1150 PRECALL                      
+        1154 CALL                         
+        1164 LOAD_GLOBAL                  physics_mod
+        1176 LOAD_ATTR                    DEAD_ZONE_SPEED
+        1186 COMPARE_OP                   <
+        1192 POP_JUMP_FORWARD_IF_FALSE    to 1510
+ 3290   1194 LOAD_FAST                    self
+        1196 LOAD_ATTR                    _grab_offset
+        1206 POP_JUMP_FORWARD_IF_NONE     to 1428
+ 3291   1208 LOAD_FAST                    self
+        1210 LOAD_METHOD                  _move_window_towards
+        1232 LOAD_FAST                    g
+        1234 LOAD_METHOD                  x
+        1256 PRECALL                      
+        1260 CALL                         
+        1270 LOAD_FAST                    self
+        1272 LOAD_ATTR                    _grab_offset
+        1282 LOAD_METHOD                  x
+        1304 PRECALL                      
+        1308 CALL                         
+        1318 BINARY_OP                    -
+ 3292   1322 LOAD_FAST                    g
+        1324 LOAD_METHOD                  y
+        1346 PRECALL                      
+        1350 CALL                         
+        1360 LOAD_FAST                    self
+        1362 LOAD_ATTR                    _grab_offset
+        1372 LOAD_METHOD                  y
+        1394 PRECALL                      
+        1398 CALL                         
+        1408 BINARY_OP                    -
+ 3291   1412 PRECALL                      
+        1416 CALL                         
+        1426 POP_TOP                      
+ 3293   1428 LOAD_FAST                    self
+        1430 LOAD_METHOD                  _stop_physics
+        1452 PRECALL                      
+        1456 CALL                         
+        1466 POP_TOP                      
+ 3294   1468 LOAD_FAST                    self
+        1470 LOAD_METHOD                  _save_position
+        1492 PRECALL                      
+        1496 CALL                         
+        1506 POP_TOP                      
+        1508 JUMP_FORWARD                 to 1934
+ 3296   1510 LOAD_FAST                    rvx
+        1512 LOAD_FAST                    rvy
+        1514 BUILD_LIST                   
+        1516 LOAD_FAST                    self
+        1518 LOAD_ATTR                    _phys_vel
+        1528 LOAD_CONST                   None
+        1530 LOAD_CONST                   None
+        1532 BUILD_SLICE                  
+        1534 STORE_SUBSCR                 
+ 3297   1538 LOAD_FAST                    self
+        1540 LOAD_METHOD                  _enter_physics_mode
+        1562 LOAD_CONST                   "throw"
+        1564 PRECALL                      
+        1568 CALL                         
+        1578 POP_TOP                      
+ 3298   1580 LOAD_CONST                   None
+        1582 LOAD_FAST                    self
+        1584 STORE_ATTR                   _last_physics_tick_time
+ 3299   1594 LOAD_FAST                    self
+        1596 LOAD_ATTR                    _physics_timer
+        1606 LOAD_METHOD                  start
+        1628 PRECALL                      
+        1632 CALL                         
+        1642 POP_TOP                      
+        1644 JUMP_FORWARD                 to 1934
+ 3301   1646 LOAD_FAST                    self
+        1648 LOAD_ATTR                    _grab_offset
+        1658 POP_JUMP_FORWARD_IF_NONE     to 1880
+ 3302   1660 LOAD_FAST                    self
+        1662 LOAD_METHOD                  _move_window_towards
+        1684 LOAD_FAST                    g
+        1686 LOAD_METHOD                  x
+        1708 PRECALL                      
+        1712 CALL                         
+        1722 LOAD_FAST                    self
+        1724 LOAD_ATTR                    _grab_offset
+        1734 LOAD_METHOD                  x
+        1756 PRECALL                      
+        1760 CALL                         
+        1770 BINARY_OP                    -
+ 3303   1774 LOAD_FAST                    g
+        1776 LOAD_METHOD                  y
+        1798 PRECALL                      
+        1802 CALL                         
+        1812 LOAD_FAST                    self
+        1814 LOAD_ATTR                    _grab_offset
+        1824 LOAD_METHOD                  y
+        1846 PRECALL                      
+        1850 CALL                         
+        1860 BINARY_OP                    -
+ 3302   1864 PRECALL                      
+        1868 CALL                         
+        1878 POP_TOP                      
+ 3304   1880 LOAD_CONST                   None
+        1882 LOAD_FAST                    self
+        1884 STORE_ATTR                   _interaction_area
+ 3305   1894 LOAD_FAST                    self
+        1896 LOAD_METHOD                  _save_position
+        1918 PRECALL                      
+        1922 CALL                         
+        1932 POP_TOP                      
+ 3306   1934 LOAD_FAST                    self
+        1936 LOAD_METHOD                  _position_sync_now
+        1958 PRECALL                      
+        1962 CALL                         
+        1972 POP_TOP                      
+ 3307   1974 LOAD_FAST                    self
+        1976 LOAD_ATTR                    idles
+        1986 POP_JUMP_FORWARD_IF_FALSE    to 2100
+        1988 LOAD_FAST                    self
+        1990 LOAD_ATTR                    _physics_mode
+        2000 LOAD_CONST                   "throw"
+        2002 COMPARE_OP                   !=
+        2008 POP_JUMP_FORWARD_IF_FALSE    to 2100
+ 3311   2010 LOAD_FAST                    self
+        2012 LOAD_METHOD                  _switch
+        2034 LOAD_FAST                    self
+        2036 LOAD_METHOD                  _pick
+        2058 LOAD_FAST                    self
+        2060 LOAD_ATTR                    idles
+        2070 PRECALL                      
+        2074 CALL                         
+        2084 PRECALL                      
+        2088 CALL                         
+        2098 POP_TOP                      
+        2100 EXTENDED_ARG                 256
+        2102 JUMP_FORWARD                 to 2628
+ 3312   2104 LOAD_FAST                    dist
+        2106 LOAD_GLOBAL                  catalog
+        2118 LOAD_ATTR                    DRAG_THRESHOLD
+        2128 LOAD_FAST                    self
+        2130 LOAD_ATTR                    scale
+        2140 BINARY_OP                    *
+        2144 COMPARE_OP                   <
+        2150 POP_JUMP_FORWARD_IF_FALSE    to 2628
+ 3315   2152 LOAD_GLOBAL                  NULL + getattr
+        2164 LOAD_FAST                    self
+        2166 LOAD_CONST                   "_effects_probe_active"
+        2168 LOAD_CONST                   None
+        2170 PRECALL                      
+        2174 CALL                         
+        2184 STORE_FAST                   probe_active
+ 3316   2186 LOAD_GLOBAL                  NULL + callable
+        2198 LOAD_FAST                    probe_active
+        2200 PRECALL                      
+        2204 CALL                         
+        2214 POP_JUMP_FORWARD_IF_FALSE    to 2262
+        2216 LOAD_GLOBAL                  NULL + bool
+        2228 PUSH_NULL                    
+        2230 LOAD_FAST                    probe_active
+        2232 PRECALL                      
+        2236 CALL                         
+        2246 PRECALL                      
+        2250 CALL                         
+        2260 JUMP_FORWARD                 to 2264
+        2262 LOAD_CONST                   False
+        2264 STORE_FAST                   probe_click
+ 3317   2266 LOAD_FAST                    self
+        2268 LOAD_ATTR                    _press_sound_pair
+        2278 POP_JUMP_FORWARD_IF_NONE     to 2462
+        2280 LOAD_FAST                    self
+        2282 LOAD_ATTR                    click_sound_enabled
+        2292 POP_JUMP_FORWARD_IF_FALSE    to 2462
+        2294 LOAD_FAST                    probe_click
+        2296 POP_JUMP_FORWARD_IF_TRUE     to 2462
+ 3318   2298 LOAD_GLOBAL                  NULL + float
+        2310 LOAD_FAST                    self
+        2312 LOAD_ATTR                    cfg
+        2322 LOAD_METHOD                  get
+        2344 LOAD_CONST                   "click_sound_volume"
+        2346 LOAD_CONST                   0.7
+        2348 PRECALL                      
+        2352 CALL                         
+        2362 PRECALL                      
+        2366 CALL                         
+        2376 STORE_FAST                   volume
+ 3319   2378 LOAD_GLOBAL                  NULL + play_press_sound
+        2390 LOAD_FAST                    self
+        2392 LOAD_ATTR                    _press_sound_pair
+        2402 LOAD_FAST                    volume
+        2404 PRECALL                      
+        2408 CALL                         
+        2418 POP_TOP                      
+ 3320   2420 LOAD_GLOBAL                  NULL + play_release_sound
+        2432 LOAD_FAST                    self
+        2434 LOAD_ATTR                    _press_sound_pair
+        2444 LOAD_FAST                    volume
+        2446 PRECALL                      
+        2450 CALL                         
+        2460 POP_TOP                      
+ 3321   2462 LOAD_FAST                    self
+        2464 LOAD_METHOD                  _try_open_quick_chat_from_bubble
+        2486 LOAD_FAST                    g
+        2488 PRECALL                      
+        2492 CALL                         
+        2502 POP_JUMP_FORWARD_IF_TRUE     to 2628
+ 3322   2504 LOAD_FAST                    self
+        2506 LOAD_METHOD                  _on_click
+        2528 PRECALL                      
+        2532 CALL                         
+        2542 POP_TOP                      
+ 3325   2544 LOAD_GLOBAL                  NULL + getattr
+        2556 LOAD_FAST                    self
+        2558 LOAD_CONST                   "on_user_interaction"
+        2560 LOAD_CONST                   None
+        2562 PRECALL                      
+        2566 CALL                         
+        2576 STORE_FAST                   hint
+ 3326   2578 LOAD_GLOBAL                  NULL + callable
+        2590 LOAD_FAST                    hint
+        2592 PRECALL                      
+        2596 CALL                         
+        2606 POP_JUMP_FORWARD_IF_FALSE    to 2628
+ 3327   2608 PUSH_NULL                    
+        2610 LOAD_FAST                    hint
+        2612 PRECALL                      
+        2616 CALL                         
+        2626 POP_TOP                      
+ 3328   2628 LOAD_CONST                   False
+        2630 LOAD_FAST                    self
+        2632 STORE_ATTR                   _dragging
+ 3329   2642 LOAD_CONST                   "IDLE"
+        2644 LOAD_FAST                    self
+        2646 STORE_ATTR                   _interaction_state
+ 3330   2656 LOAD_CONST                   None
+        2658 LOAD_FAST                    self
+        2660 STORE_ATTR                   _press_global
+ 3331   2670 LOAD_CONST                   False
+        2672 LOAD_FAST                    self
+        2674 STORE_ATTR                   _lock_press_active
+ 3332   2684 LOAD_CONST                   None
+        2686 LOAD_FAST                    self
+        2688 STORE_ATTR                   _grab_offset
+ 3333   2698 LOAD_FAST                    self
+        2700 LOAD_METHOD                  _sync_drag_polling
+        2722 LOAD_CONST                   False
+        2724 PRECALL                      
+        2728 CALL                         
+        2738 POP_TOP                      
+ 3334   2740 LOAD_FAST                    self
+        2742 LOAD_ATTR                    _cursor_restore_pending
+        2752 POP_JUMP_FORWARD_IF_TRUE     to 2776
+        2754 LOAD_FAST                    self
+        2756 LOAD_ATTR                    _cursor_visibility
+        2766 LOAD_CONST                   "SHOWING"
+        2768 COMPARE_OP                   ==
+        2774 POP_JUMP_FORWARD_IF_FALSE    to 2804
+ 3335   2776 LOAD_CONST                   False
+        2778 LOAD_FAST                    self
+        2780 STORE_ATTR                   _cursor_restore_pending
+ 3336   2790 LOAD_CONST                   False
+        2792 LOAD_FAST                    self
+        2794 STORE_ATTR                   _auto_cursor_hidden
+ 3337   2804 LOAD_FAST                    self
+        2806 LOAD_METHOD                  _apply_effective_mouse_through
+        2828 PRECALL                      
+        2832 CALL                         
+        2842 POP_TOP                      
+ 3339   2844 LOAD_FAST                    self
+        2846 LOAD_METHOD                  _update_interaction_hold
+        2868 PRECALL                      
+        2872 CALL                         
+        2882 POP_TOP                      
+ 3340   2884 LOAD_FAST                    self
+        2886 LOAD_METHOD                  _effects_on_release
+        2908 LOAD_FAST                    was_dragging
+        2910 PRECALL                      
+        2914 CALL                         
+        2924 POP_TOP                      
+ 3341   2926 LOAD_FAST                    event
+        2928 LOAD_METHOD                  accept
+        2950 PRECALL                      
+        2954 CALL                         
+        2964 POP_TOP                      
+        2966 LOAD_CONST                   None
+        2968 RETURN_VALUE                 
+
+### pet.window:PetWindow._on_click — pet\window.py:3376
+ 3376      0 RESUME                       
+ 3382      2 LOAD_FAST                    self
+           4 LOAD_ATTR                    _just_dragged
+          14 POP_JUMP_FORWARD_IF_FALSE    to 20
+ 3383     16 LOAD_CONST                   None
+          18 RETURN_VALUE                 
+ 3384     20 LOAD_GLOBAL                  NULL + getattr
+          32 LOAD_FAST                    self
+          34 LOAD_CONST                   "_effects_consume_click"
+          36 LOAD_CONST                   None
+          38 PRECALL                      
+          42 CALL                         
+          52 STORE_FAST                   consume_click
+ 3385     54 LOAD_GLOBAL                  NULL + callable
+          66 LOAD_FAST                    consume_click
+          68 PRECALL                      
+          72 CALL                         
+          82 POP_JUMP_FORWARD_IF_FALSE    to 108
+          84 PUSH_NULL                    
+          86 LOAD_FAST                    consume_click
+          88 PRECALL                      
+          92 CALL                         
+         102 POP_JUMP_FORWARD_IF_FALSE    to 108
+ 3386    104 LOAD_CONST                   None
+         106 RETURN_VALUE                 
+ 3387    108 LOAD_GLOBAL                  NULL + callable
+         120 LOAD_FAST                    self
+         122 LOAD_ATTR                    on_restore_fun_windows
+         132 PRECALL                      
+         136 CALL                         
+         146 POP_JUMP_FORWARD_IF_FALSE    to 188
+ 3388    148 LOAD_FAST                    self
+         150 LOAD_METHOD                  on_restore_fun_windows
+         172 PRECALL                      
+         176 CALL                         
+         186 POP_TOP                      
+ 3390    188 LOAD_GLOBAL                  NULL + getattr
+         200 LOAD_FAST                    self
+         202 LOAD_CONST                   "_effects_route_click_golden_spin"
+         204 LOAD_CONST                   None
+         206 PRECALL                      
+         210 CALL                         
+         220 STORE_FAST                   route_spin
+ 3391    222 LOAD_GLOBAL                  NULL + callable
+         234 LOAD_FAST                    route_spin
+         236 PRECALL                      
+         240 CALL                         
+         250 POP_JUMP_FORWARD_IF_FALSE    to 276
+         252 PUSH_NULL                    
+         254 LOAD_FAST                    route_spin
+         256 PRECALL                      
+         260 CALL                         
+         270 POP_JUMP_FORWARD_IF_FALSE    to 276
+ 3392    272 LOAD_CONST                   None
+         274 RETURN_VALUE                 
+ 3393    276 LOAD_FAST                    self
+         278 LOAD_ATTR                    clicks
+         288 POP_JUMP_FORWARD_IF_TRUE     to 294
+ 3394    290 LOAD_CONST                   None
+         292 RETURN_VALUE                 
+ 3398    294 LOAD_FAST                    self
+         296 LOAD_METHOD                  _pick
+         318 LOAD_FAST                    self
+         320 LOAD_ATTR                    clicks
+         330 PRECALL                      
+         334 CALL                         
+         344 STORE_FAST                   click_name
+ 3399    346 LOAD_FAST                    self
+         348 LOAD_METHOD                  _cancel_move
+         370 PRECALL                      
+         374 CALL                         
+         384 POP_TOP                      
+ 3400    386 LOAD_FAST                    self
+         388 LOAD_METHOD                  _start_squash
+         410 PRECALL                      
+         414 CALL                         
+         424 POP_TOP                      
+ 3401    426 LOAD_FAST                    self
+         428 LOAD_METHOD                  _switch
+         450 LOAD_FAST                    click_name
+         452 PRECALL                      
+         456 CALL                         
+         466 POP_TOP                      
+ 3402    468 LOAD_GLOBAL                  NULL + resolve_click_sound_pair
+         480 LOAD_FAST                    self
+         482 LOAD_ATTR                    cfg
+         492 LOAD_METHOD                  get
+         514 LOAD_CONST                   "click_sound_pack"
+         516 PRECALL                      
+         520 CALL                         
+         530 LOAD_FAST                    self
+         532 LOAD_ATTR                    cfg
+         542 LOAD_ATTR                    dir
+         552 KW_NAMES                     ('data_dir',)
+         554 PRECALL                      
+         558 CALL                         
+         568 POP_JUMP_FORWARD_IF_NOT_NONE to 610
+ 3403    570 LOAD_FAST                    self
+         572 LOAD_METHOD                  _schedule_click_sound
+         594 PRECALL                      
+         598 CALL                         
+         608 POP_TOP                      
+ 3404    610 LOAD_FAST                    self
+         612 LOAD_ATTR                    click_show_balance
+         622 POP_JUMP_FORWARD_IF_FALSE    to 710
+         624 LOAD_GLOBAL                  NULL + callable
+         636 LOAD_FAST                    self
+         638 LOAD_ATTR                    on_show_balance
+         648 PRECALL                      
+         652 CALL                         
+         662 POP_JUMP_FORWARD_IF_FALSE    to 710
+ 3405    664 LOAD_FAST                    self
+         666 LOAD_METHOD                  on_show_balance
+         688 LOAD_FAST                    self
+         690 PRECALL                      
+         694 CALL                         
+         704 POP_TOP                      
+         706 LOAD_CONST                   None
+         708 RETURN_VALUE                 
+ 3406    710 LOAD_FAST                    self
+         712 LOAD_ATTR                    click_show_self_talk
+         722 POP_JUMP_FORWARD_IF_FALSE    to 814
+ 3410    724 LOAD_FAST                    self
+         726 LOAD_METHOD                  _show_click_self_talk
+         748 LOAD_FAST                    click_name
+         750 PRECALL                      
+         754 CALL                         
+         764 POP_JUMP_FORWARD_IF_FALSE    to 818
+ 3411    766 LOAD_FAST                    self
+         768 LOAD_METHOD                  _schedule_self_talk
+         790 LOAD_CONST                   True
+         792 KW_NAMES                     ('after_display',)
+         794 PRECALL                      
+         798 CALL                         
+         808 POP_TOP                      
+         810 LOAD_CONST                   None
+         812 RETURN_VALUE                 
+ 3406    814 LOAD_CONST                   None
+         816 RETURN_VALUE                 
+ 3410    818 LOAD_CONST                   None
+         820 RETURN_VALUE                 
+
+### pet.pet_sprite:<module> — pet\pet_sprite.py:1
+   40    154 LOAD_CONST                   "drag"
+         156 STORE_NAME                   INTERACTION_DRAG
+   41    158 LOAD_CONST                   "thrown"
+         160 STORE_NAME                   INTERACTION_THROWN
+   44    162 LOAD_CONST                   220
+         164 STORE_NAME                   SQUASH_DURATION_MS
+   47    166 PUSH_NULL                    
+         168 LOAD_BUILD_CLASS             
+         170 LOAD_CONST                   <Code311 code object PetSprite at 0x204ff2f7710, file pet\pet_sprite.py>, line 47
+         172 MAKE_FUNCTION                No arguments
+         174 LOAD_CONST                   "PetSprite"
+         176 LOAD_NAME                    QObject
+         178 PRECALL                      
+         182 CALL                         
+
+### pet.pet_sprite:PetSprite.advance — pet\pet_sprite.py:991
+        1260 BINARY_OP                    +
+        1264 PRECALL                      
+        1268 CALL                         
+        1278 POP_TOP                      
+ 1033   1280 LOAD_CONST                   False
+        1282 STORE_FAST                   squashing
+ 1034   1284 LOAD_FAST                    self
+        1286 LOAD_ATTR                    _squash_progress
+        1296 POP_JUMP_FORWARD_IF_NONE     to 1392
+ 1035   1298 LOAD_FAST                    self
+        1300 COPY                         
+        1302 LOAD_ATTR                    _squash_progress
+        1312 LOAD_FAST                    dt
+        1314 LOAD_GLOBAL                  SQUASH_DURATION_MS
+        1326 LOAD_CONST                   1000.0
+        1328 BINARY_OP                    /
+        1332 BINARY_OP                    /
+        1336 BINARY_OP                    +=
+        1340 SWAP                         TOS <-> TOS1
+        1342 STORE_ATTR                   _squash_progress
+ 1036   1352 LOAD_FAST                    self
+        1354 LOAD_ATTR                    _squash_progress
+        1364 LOAD_CONST                   1.0
+        1366 COMPARE_OP                   >=
+        1372 POP_JUMP_FORWARD_IF_FALSE    to 1388
+ 1037   1374 LOAD_CONST                   None
+        1376 LOAD_FAST                    self
+        1378 STORE_ATTR                   _squash_progress
+ 1038   1388 LOAD_CONST                   True
+        1390 STORE_FAST                   squashing
+ 1039   1392 LOAD_FAST                    self
+        1394 LOAD_METHOD                  paint_bounds
+        1416 PRECALL                      
+        1420 CALL                         
+        1430 STORE_FAST                   new
+ 1040   1432 LOAD_FAST                    new
+        1434 LOAD_FAST                    old
+        1436 COMPARE_OP                   !=
+        1442 POP_JUMP_FORWARD_IF_TRUE     to 1476
+        1444 LOAD_FAST                    self
+        1446 LOAD_ATTR                    _frame_dirty
+        1456 POP_JUMP_FORWARD_IF_TRUE     to 1476
+        1458 LOAD_FAST                    self
+        1460 LOAD_ATTR                    _squash_progress
+        1470 POP_JUMP_FORWARD_IF_NOT_NONE to 1476
+        1472 LOAD_FAST                    squashing
+        1474 POP_JUMP_FORWARD_IF_FALSE    to 1512
+ 1041   1476 LOAD_CONST                   False
+        1478 LOAD_FAST                    self
+        1480 STORE_ATTR                   _frame_dirty
+ 1042   1490 LOAD_FAST                    new
+        1492 LOAD_FAST                    self
+        1494 STORE_ATTR                   _last_reported_rect
+ 1043   1504 LOAD_FAST                    old
+
+### pet.pet_sprite:PetSprite.squash — pet\pet_sprite.py:1120
+ 1120      0 RESUME                       
+ 1122      2 LOAD_CONST                   0.0
+           4 LOAD_FAST                    self
+           6 STORE_ATTR                   _squash_progress
+ 1123     16 LOAD_FAST                    self
+          18 LOAD_METHOD                  paint_bounds
+          40 PRECALL                      
+          44 CALL                         
+          54 STORE_FAST                   rect
+ 1124     56 LOAD_FAST                    self
+          58 LOAD_METHOD                  _notify_dirty
+          80 LOAD_FAST                    rect
+          82 LOAD_FAST                    rect
+          84 PRECALL                      
+          88 CALL                         
+          98 POP_TOP                      
+         100 LOAD_CONST                   None
+         102 RETURN_VALUE                 
+
+### pet.pet_sprite:PetSprite._squashed_rect — pet\pet_sprite.py:1126
+ 1126      0 RESUME                       
+ 1129      2 LOAD_FAST                    self
+           4 LOAD_METHOD                  rect
+          26 PRECALL                      
+          30 CALL                         
+          40 STORE_FAST                   r
+ 1130     42 LOAD_GLOBAL                  NULL + max
+          54 LOAD_CONST                   0.0
+          56 LOAD_GLOBAL                  NULL + min
+          68 LOAD_CONST                   1.0
+          70 LOAD_GLOBAL                  NULL + float
+          82 LOAD_FAST                    self
+          84 LOAD_ATTR                    _squash_progress
+          94 JUMP_IF_TRUE_OR_POP          to 98
+          96 LOAD_CONST                   0.0
+          98 PRECALL                      
+         102 CALL                         
+         112 PRECALL                      
+         116 CALL                         
+         126 PRECALL                      
+         130 CALL                         
+         140 STORE_FAST                   progress
+ 1131    142 LOAD_GLOBAL                  NULL + math
+         154 LOAD_ATTR                    sin
+         164 LOAD_GLOBAL                  math
+         176 LOAD_ATTR                    pi
+         186 LOAD_FAST                    progress
+         188 BINARY_OP                    *
+         192 PRECALL                      
+         196 CALL                         
+         206 STORE_FAST                   pulse
+ 1132    208 LOAD_GLOBAL                  NULL + max
+         220 LOAD_CONST                   1
+         222 LOAD_GLOBAL                  NULL + int
+         234 LOAD_GLOBAL                  NULL + round
+         246 LOAD_FAST                    r
+         248 LOAD_METHOD                  width
+         270 PRECALL                      
+         274 CALL                         
+         284 LOAD_CONST                   1.0
+         286 LOAD_CONST                   0.1
+         288 LOAD_FAST                    pulse
+         290 BINARY_OP                    *
+         294 BINARY_OP                    +
+         298 BINARY_OP                    *
+         302 PRECALL                      
+         306 CALL                         
+         316 PRECALL                      
+         320 CALL                         
+         330 PRECALL                      
+         334 CALL                         
+         344 STORE_FAST                   w
+ 1133    346 LOAD_GLOBAL                  NULL + max
+         358 LOAD_CONST                   1
+         360 LOAD_GLOBAL                  NULL + int
+         372 LOAD_GLOBAL                  NULL + round
+         384 LOAD_FAST                    r
+         386 LOAD_METHOD                  height
+         408 PRECALL                      
+         412 CALL                         
+         422 LOAD_CONST                   1.0
+         424 LOAD_CONST                   0.15
+         426 LOAD_FAST                    pulse
+         428 BINARY_OP                    *
+         432 BINARY_OP                    -
+         436 BINARY_OP                    *
+         440 PRECALL                      
+         444 CALL                         
+         454 PRECALL                      
+         458 CALL                         
+         468 PRECALL                      
+         472 CALL                         
+         482 STORE_FAST                   h
+ 1134    484 LOAD_FAST                    r
+         486 LOAD_METHOD                  x
+         508 PRECALL                      
+         512 CALL                         
+         522 LOAD_GLOBAL                  NULL + int
+         534 LOAD_GLOBAL                  NULL + round
+         546 LOAD_FAST                    r
+         548 LOAD_METHOD                  width
+         570 PRECALL                      
+         574 CALL                         
+         584 LOAD_FAST                    w
+         586 BINARY_OP                    -
+         590 LOAD_CONST                   2
+         592 BINARY_OP                    /
+         596 PRECALL                      
+         600 CALL                         
+         610 PRECALL                      
+         614 CALL                         
+         624 BINARY_OP                    +
+         628 STORE_FAST                   x
+ 1135    630 LOAD_FAST                    r
+         632 LOAD_METHOD                  y
+         654 PRECALL                      
+         658 CALL                         
+         668 LOAD_FAST                    r
+         670 LOAD_METHOD                  height
+         692 PRECALL                      
+         696 CALL                         
+         706 LOAD_FAST                    h
+         708 BINARY_OP                    -
+         712 BINARY_OP                    +
+         716 STORE_FAST                   y
+ 1136    718 LOAD_GLOBAL                  NULL + QRect
+         730 LOAD_FAST                    x
+         732 LOAD_FAST                    y
+         734 LOAD_FAST                    w
+         736 LOAD_FAST                    h
+         738 PRECALL                      
+         742 CALL                         
+         752 RETURN_VALUE                 
+
+### pet.pet_sprite:PetSprite.paint — pet\pet_sprite.py:1138
+ 1138      0 RESUME                       
+ 1147      2 LOAD_FAST                    self
+           4 LOAD_METHOD                  _rebuild_pixmap
+          26 PRECALL                      
+          30 CALL                         
+          40 POP_TOP                      
+ 1148     42 LOAD_FAST                    self
+          44 LOAD_ATTR                    _pixmap
+          54 POP_JUMP_FORWARD_IF_NOT_NONE to 60
+ 1149     56 LOAD_CONST                   None
+          58 RETURN_VALUE                 
+ 1154     60 LOAD_FAST                    self
+          62 LOAD_ATTR                    _throw_angle
+          72 STORE_FAST                   throw_angle
+ 1155     74 LOAD_GLOBAL                  NULL + abs
+          86 LOAD_FAST                    throw_angle
+          88 PRECALL                      
+          92 CALL                         
+         102 LOAD_CONST                   1e-06
+         104 COMPARE_OP                   >=
+         110 POP_JUMP_FORWARD_IF_FALSE    to 156
+ 1156    112 LOAD_FAST                    self
+         114 LOAD_METHOD                  _begin_throw_rotation
+         136 LOAD_FAST                    painter
+         138 LOAD_FAST                    throw_angle
+         140 PRECALL                      
+         144 CALL                         
+         154 POP_TOP                      
+ 1157    156 LOAD_FAST                    self
+         158 LOAD_ATTR                    _probe_angle
+         168 STORE_FAST                   angle
+ 1158    170 LOAD_GLOBAL                  NULL + begin_rotation
+         182 LOAD_FAST                    painter
+         184 LOAD_FAST                    self
+         186 LOAD_METHOD                  rect
+         208 PRECALL                      
+         212 CALL                         
+         222 LOAD_FAST                    angle
+         224 PRECALL                      
+         228 CALL                         
+         238 POP_TOP                      
+ 1159    240 NOP                          
+ 1160    242 LOAD_FAST                    self
+         244 LOAD_ATTR                    _squash_progress
+         254 POP_JUMP_FORWARD_IF_NONE     to 348
+ 1161    256 LOAD_FAST                    painter
+         258 LOAD_METHOD                  drawPixmap
+         280 LOAD_FAST                    self
+         282 LOAD_METHOD                  _squashed_rect
+         304 PRECALL                      
+         308 CALL                         
+         318 LOAD_FAST                    self
+         320 LOAD_ATTR                    _pixmap
+         330 PRECALL                      
+         334 CALL                         
+         344 POP_TOP                      
+         346 JUMP_FORWARD                 to 412
+ 1163    348 LOAD_FAST                    painter
+         350 LOAD_METHOD                  drawPixmap
+         372 LOAD_FAST                    self
+         374 LOAD_ATTR                    pos
+         384 LOAD_FAST                    self
+         386 LOAD_ATTR                    _pixmap
+         396 PRECALL                      
+         400 CALL                         
+         410 POP_TOP                      
+ 1165    412 LOAD_GLOBAL                  NULL + end_rotation
+         424 LOAD_FAST                    painter
+         426 LOAD_FAST                    angle
+         428 PRECALL                      
+         432 CALL                         
+         442 POP_TOP                      
+         444 JUMP_FORWARD                 to 488
+         446 PUSH_EXC_INFO                
+         448 LOAD_GLOBAL                  NULL + end_rotation
+         460 LOAD_FAST                    painter
+         462 LOAD_FAST                    angle
+         464 PRECALL                      
+         468 CALL                         
+         478 POP_TOP                      
+         480 RERAISE                      
+         482 COPY                         
+         484 POP_EXCEPT                   
+         486 RERAISE                      
+ 1166    488 LOAD_GLOBAL                  NULL + abs
+         500 LOAD_FAST                    throw_angle
+         502 PRECALL                      
+         506 CALL                         
+         516 LOAD_CONST                   1e-06
+         518 COMPARE_OP                   >=
+         524 POP_JUMP_FORWARD_IF_FALSE    to 574
+ 1167    526 LOAD_FAST                    self
+         528 LOAD_METHOD                  _end_throw_rotation
+         550 LOAD_FAST                    painter
+         552 LOAD_FAST                    throw_angle
+         554 PRECALL                      
+         558 CALL                         
+         568 POP_TOP                      
+         570 LOAD_CONST                   None
+         572 RETURN_VALUE                 
+ 1166    574 LOAD_CONST                   None
+         576 RETURN_VALUE                 
+
+### pet.overlay_shell:ShellOverlayWindow.mouseReleaseEvent — pet\overlay_shell.py:807
+           0 COPY_FREE_VARS               
+  807      2 RESUME                       
+  808      4 LOAD_FAST                    self
+           6 LOAD_ATTR                    slingshot
+          16 LOAD_ATTR                    aiming
+          26 POP_JUMP_FORWARD_IF_FALSE    to 112
+  810     28 LOAD_CONST                   None
+          30 LOAD_FAST                    self
+          32 STORE_ATTR                   _press_pos
+  811     42 LOAD_GLOBAL                  NULL + super
+          54 PRECALL                      
+          58 CALL                         
+          68 LOAD_METHOD                  mouseReleaseEvent
+          90 LOAD_FAST                    event
+          92 PRECALL                      
+          96 CALL                         
+         106 POP_TOP                      
+  812    108 LOAD_CONST                   None
+         110 RETURN_VALUE                 
+  813    112 LOAD_FAST                    self
+         114 LOAD_ATTR                    _mouse_grab
+         124 STORE_FAST                   grab
+  814    126 LOAD_FAST                    self
+         128 LOAD_ATTR                    _drag_committed
+         138 STORE_FAST                   committed
+  815    140 LOAD_FAST                    self
+         142 LOAD_ATTR                    _press_click_only
+         152 STORE_FAST                   click_only
+  816    154 LOAD_FAST                    self
+         156 LOAD_ATTR                    _press_pos
+         166 LOAD_CONST                   None
+         168 SWAP                         TOS <-> TOS1
+         170 STORE_FAST                   press
+         172 LOAD_FAST                    self
+         174 STORE_ATTR                   _press_pos
+  817    184 LOAD_GLOBAL                  NULL + super
+         196 PRECALL                      
+         200 CALL                         
+         210 LOAD_METHOD                  mouseReleaseEvent
+         232 LOAD_FAST                    event
+         234 PRECALL                      
+         238 CALL                         
+         248 POP_TOP                      
+  818    250 LOAD_FAST                    self
+         252 LOAD_METHOD                  _behavior_of
+         274 LOAD_FAST                    grab
+         276 PRECALL                      
+         280 CALL                         
+         290 STORE_FAST                   behavior
+  819    292 LOAD_FAST                    self
+         294 LOAD_METHOD                  _probe_of
+         316 LOAD_FAST                    grab
+         318 PRECALL                      
+         322 CALL                         
+         332 STORE_FAST                   probe
+  820    334 LOAD_FAST                    grab
+         336 POP_JUMP_FORWARD_IF_NONE     to 346
+         338 LOAD_FAST                    press
+         340 POP_JUMP_FORWARD_IF_NONE     to 346
+         342 LOAD_FAST                    behavior
+         344 POP_JUMP_FORWARD_IF_NOT_NONE to 350
+  821    346 LOAD_CONST                   None
+         348 RETURN_VALUE                 
+  822    350 LOAD_GLOBAL                  catalog
+         362 LOAD_ATTR                    DRAG_THRESHOLD
+         372 LOAD_GLOBAL                  NULL + getattr
+         384 LOAD_FAST                    grab
+         386 LOAD_CONST                   "scale"
+         388 LOAD_CONST                   1.0
+         390 PRECALL                      
+         394 CALL                         
+         404 BINARY_OP                    *
+         408 STORE_FAST                   threshold
+  825    410 LOAD_FAST                    click_only
+         412 POP_JUMP_FORWARD_IF_TRUE     to 512
+         414 LOAD_FAST                    committed
+         416 EXTENDED_ARG                 256
+         418 POP_JUMP_FORWARD_IF_TRUE     to 1082
+  826    420 LOAD_FAST                    event
+         422 LOAD_METHOD                  position
+         444 PRECALL                      
+         448 CALL                         
+         458 LOAD_FAST                    press
+         460 BINARY_OP                    -
+         464 LOAD_METHOD                  manhattanLength
+         486 PRECALL                      
+         490 CALL                         
+         500 LOAD_FAST                    threshold
+         502 COMPARE_OP                   <
+         508 EXTENDED_ARG                 256
+         510 POP_JUMP_FORWARD_IF_FALSE    to 1082
+  829    512 LOAD_FAST                    probe
+         514 POP_JUMP_FORWARD_IF_NONE     to 562
+         516 LOAD_FAST                    probe
+         518 LOAD_METHOD                  on_sprite_clicked
+         540 LOAD_FAST                    grab
+         542 PRECALL                      
+         546 CALL                         
+         556 POP_JUMP_FORWARD_IF_FALSE    to 562
+  830    558 LOAD_CONST                   None
+         560 RETURN_VALUE                 
+  833    562 LOAD_GLOBAL                  NULL + getattr
+         574 LOAD_FAST                    self
+         576 LOAD_CONST                   "_click_route_spin"
+         578 LOAD_CONST                   None
+         580 PRECALL                      
+         584 CALL                         
+         594 STORE_FAST                   route_spin
+  834    596 LOAD_GLOBAL                  NULL + callable
+         608 LOAD_FAST                    route_spin
+         610 PRECALL                      
+         614 CALL                         
+         624 POP_JUMP_FORWARD_IF_FALSE    to 652
+         626 PUSH_NULL                    
+         628 LOAD_FAST                    route_spin
+         630 LOAD_FAST                    grab
+         632 PRECALL                      
+         636 CALL                         
+         646 POP_JUMP_FORWARD_IF_FALSE    to 652
+  835    648 LOAD_CONST                   None
+         650 RETURN_VALUE                 
+  836    652 LOAD_FAST                    behavior
+         654 LOAD_METHOD                  on_sprite_clicked
+         676 LOAD_FAST                    grab
+         678 PRECALL                      
+         682 CALL                         
+         692 STORE_FAST                   clicked
+  837    694 LOAD_GLOBAL                  NULL + getattr
+         706 LOAD_FAST                    grab
+         708 LOAD_CONST                   "squash"
+         710 LOAD_CONST                   None
+         712 PRECALL                      
+         716 CALL                         
+         726 STORE_FAST                   squash
+  838    728 LOAD_GLOBAL                  NULL + callable
+         740 LOAD_FAST                    squash
+         742 PRECALL                      
+         746 CALL                         
+         756 POP_JUMP_FORWARD_IF_FALSE    to 778
+  839    758 PUSH_NULL                    
+         760 LOAD_FAST                    squash
+         762 PRECALL                      
+         766 CALL                         
+         776 POP_TOP                      
+  840    778 LOAD_GLOBAL                  NULL + getattr
+         790 LOAD_FAST                    self
+         792 LOAD_CONST                   "click_feedback"
+         794 LOAD_CONST                   None
+         796 PRECALL                      
+         800 CALL                         
+         810 STORE_FAST                   cb
+  841    812 LOAD_GLOBAL                  NULL + callable
+         824 LOAD_FAST                    cb
+         826 PRECALL                      
+         830 CALL                         
+         840 POP_JUMP_FORWARD_IF_FALSE    to 862
+  842    842 PUSH_NULL                    
+         844 LOAD_FAST                    cb
+         846 PRECALL                      
+         850 CALL                         
+         860 POP_TOP                      
+  847    862 LOAD_GLOBAL                  NULL + getattr
+         874 LOAD_FAST                    self
+         876 LOAD_CONST                   "_on_sprite_click"
+         878 LOAD_CONST                   None
+         880 PRECALL                      
+         884 CALL                         
+         894 STORE_FAST                   click_cb
+  848    896 LOAD_GLOBAL                  NULL + callable
+         908 LOAD_FAST                    click_cb
+         910 PRECALL                      
+         914 CALL                         
+         924 POP_JUMP_FORWARD_IF_FALSE    to 1078
+  849    926 LOAD_GLOBAL                  NULL + getattr
+         938 LOAD_FAST                    behavior
+         940 LOAD_CONST                   "anim_of"
+         942 LOAD_CONST                   None
+         944 PRECALL                      
+         948 CALL                         
+         958 STORE_FAST                   anim_of
+  850    960 LOAD_FAST                    clicked
+         962 POP_JUMP_FORWARD_IF_FALSE    to 1016
+         964 LOAD_GLOBAL                  NULL + callable
+         976 LOAD_FAST                    anim_of
+         978 PRECALL                      
+         982 CALL                         
+         992 POP_JUMP_FORWARD_IF_FALSE    to 1016
+         994 PUSH_NULL                    
+         996 LOAD_FAST                    anim_of
+         998 LOAD_FAST                    grab
+        1000 PRECALL                      
+        1004 CALL                         
+        1014 JUMP_FORWARD                 to 1018
+        1016 LOAD_CONST                   None
+        1018 STORE_FAST                   click_name
+  851   1020 PUSH_NULL                    
+        1022 LOAD_FAST                    click_cb
+        1024 LOAD_FAST                    grab
+        1026 LOAD_GLOBAL                  NULL + str
+        1038 LOAD_FAST                    click_name
+        1040 JUMP_IF_TRUE_OR_POP          to 1044
+        1042 LOAD_CONST                   ""
+        1044 PRECALL                      
+        1048 CALL                         
+        1058 PRECALL                      
+        1062 CALL                         
+        1072 POP_TOP                      
+        1074 LOAD_CONST                   None
+        1076 RETURN_VALUE                 
+  848   1078 LOAD_CONST                   None
+        1080 RETURN_VALUE                 
+  852   1082 LOAD_FAST                    probe
+        1084 POP_JUMP_FORWARD_IF_NONE     to 1174
+  854   1086 LOAD_FAST                    probe
+        1088 LOAD_METHOD                  on_sprite_drag_released
+        1110 LOAD_FAST                    grab
+        1112 PRECALL                      
+        1116 CALL                         
+        1126 POP_TOP                      
+  858   1128 LOAD_FAST                    behavior
+        1130 LOAD_METHOD                  on_drag_released
+        1152 LOAD_FAST                    grab
+        1154 PRECALL                      
+        1158 CALL                         
+        1168 POP_TOP                      
+        1170 LOAD_CONST                   None
+        1172 RETURN_VALUE                 
+  861   1174 LOAD_FAST                    behavior
+        1176 LOAD_METHOD                  on_drag_released
+        1198 LOAD_FAST                    grab
+        1200 PRECALL                      
+        1204 CALL                         
+        1214 POP_TOP                      
+        1216 LOAD_CONST                   None
+        1218 RETURN_VALUE                 
