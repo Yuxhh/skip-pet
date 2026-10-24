@@ -41,6 +41,7 @@ manifest={'version':3,'user_confirmed':['click advances one eye-direction stage'
  'not_equivalent_to':'source pixel animation or exact reconstructed source pose',
  'rapid_click_candidate':'replace forward stage target; at most one cycle of forward travel remains, no unbounded multi-cycle queue',
  'automatic_modes':'existing simulated comparison; click precedence still candidate',
+ 'speed_comparison':{'options':[1,1.5,2,3],'default':2,'url_parameter':'speed','blink_ms':240,'behavior':'scale phase progression only; manual holds, gaze endpoints, right-eye correction and real-time blink unchanged; switching resets to start'},
  'eye_offset_status':'manual interpretation of compressed source; eye opening and exact gaze extrema require human side-by-side validation',
  'right_eye_stage_two_correction':'screen-left/anatomical-right iris moves an extra 12 source pixels left at stage-2 end, tapering from stage 1 and back to zero at stage 3; other eye unchanged',
  'blink':'once on the separate click entering stage 3 after stage 2 holds; hold current gaze for 120ms closure, jump directly to stage end while closed, reopen for 120ms; no continuous eye travel in stage 3; no repeat during hold',
