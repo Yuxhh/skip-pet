@@ -1,0 +1,23 @@
+{
+  "head_plate_alignment": {
+    "x": 168.3,
+    "y": 10.25,
+    "width": 1118.676,
+    "height": 872.9496,
+    "original_face_fade_top": 634,
+    "original_face_fade_bottom": 658,
+    "method": "uniform alignment using the two eye-white connected-component centers"
+  },
+  "neck_mesh": {
+    "top_y": 700,
+    "bottom_y": 780
+  },
+  "collar_occlusion": "original high collar retained; user says collar may cover the chin",
+  "rear_alignment": {
+    "x": 0,
+    "y": 0,
+    "width": 1419,
+    "height": 1108,
+    "method": "same placement and canvas as approved garment"
+  }
+}

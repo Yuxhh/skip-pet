@@ -1,0 +1,29 @@
+{
+  "kind": "prototype geometry observations, not user visual approval",
+  "sample_count": 4101,
+  "neck_center": [
+    720,
+    735
+  ],
+  "max_center_drift_px": 1.6077746776921858e-13,
+  "max_lower_attachment_drift_px": 0,
+  "max_head_neck_join_gap_px": 0,
+  "max_face_aspect_deviation": 0,
+  "stage3_angle_deg": -9,
+  "left_right": [
+    {
+      "angle": -9,
+      "center": [
+        720,
+        735.0000000000001
+      ]
+    },
+    {
+      "angle": 9,
+      "center": [
+        720,
+        735
+      ]
+    }
+  ]
+}

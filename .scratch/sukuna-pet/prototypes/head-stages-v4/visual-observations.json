@@ -1,0 +1,21 @@
+{
+  "status": "awaiting user visual feedback",
+  "left_center_display": "0.000px",
+  "right_center_display": "0.000px",
+  "stage3_angle_display": "-9.0 degrees",
+  "marker_color_pixel_centroids": [
+    [
+      917.7555555555556,
+      681.4222222222222
+    ],
+    [
+      917.9714285714285,
+      681.7714285714286
+    ]
+  ],
+  "marker_centroid_difference_px": 0.4105438262940158,
+  "neck_mesh_grid_step": [
+    40,
+    8
+  ]
+}
