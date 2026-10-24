@@ -33,15 +33,16 @@ assets['eyeKeys']=[[0,0,0],[8,-10,-5],[13,-20,-9],[20,-28,-8],[24,-29,-7],[27,-2
 assets['eyeCrops']=[[ (float(rows[i]['face_bright_x'])-16-85)/2,(float(rows[i]['face_bright_y'])-30-415)/2,85,30] for i in range(22,64)]
 html=(root/'stage.template.html').read_text(encoding='utf-8')
 (root/'index.html').write_text(html.replace('/*__ASSETS__*/',json.dumps(assets,separators=(',',':'))),encoding='utf-8')
-manifest={'version':3,'user_confirmed':['click advances one eye-direction stage','play short eye-turn to next stage','hold that stage until next click','eye directions follow source video order','redraw authorized due to rough edges'],
- 'candidate_boundaries_source_frames':[22,35,46,56,63],'candidate_fps':24,'candidate_total_seconds':41/24,
+manifest={'version':3,'user_confirmed':['click advances one eye-direction stage','play short eye-turn to next stage','hold that stage until next click','eye directions follow source video order','stage 3 starts with one blink then immediately jumps to its end gaze','redraw authorized due to rough edges'],
+ 'candidate_boundaries_source_frames':[22,35,46,56,63],'candidate_fps':24,'candidate_source_span_seconds':41/24,
  'redrawn_asset':'assets/sukuna-eye-base-v3.png','asset_sha256':hashlib.sha256(image.read_bytes()).hexdigest(),'image_mode':im.mode,'alpha_extrema':im.getchannel('A').getextrema(),'draw_bounds':assets['redrawnBounds'],
  'method':'built-in imagegen redraw and blank-sclera edit; clipped Canvas irises; offsets manually estimated from f22-f63 eye detail contact; source order, not a prescribed cardinal-direction loop; optional auxiliary body motion is off by default',
  'not_equivalent_to':'source pixel animation or exact reconstructed source pose',
  'rapid_click_candidate':'replace forward stage target; at most one cycle of forward travel remains, no unbounded multi-cycle queue',
  'automatic_modes':'existing simulated comparison; click precedence still candidate',
  'eye_offset_status':'manual interpretation of compressed source; eye opening and exact gaze extrema require human side-by-side validation',
- 'blink':'once on crossing into stage 3; 240ms close/open; no repeat during hold',
+ 'blink':'once at stage-3 action start; hold current gaze for 120ms closure, jump directly to stage end while closed, reopen for 120ms; no continuous eye travel in stage 3; no repeat during hold',
  'acceptance':'pending human feedback; old whole-cycle-per-click and body-only stage prototypes rejected'}
 (root/'stage-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({'version':3,'html_bytes':(root/'index.html').stat().st_size,'bounds':assets['redrawnBounds'],'poses':len(poses)}))
+
