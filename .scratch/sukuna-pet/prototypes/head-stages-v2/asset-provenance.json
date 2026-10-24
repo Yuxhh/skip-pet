@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "generated_file": "exec-2a1d8592-e5d9-4aad-99f3-c49ec1a82df2.png",
+  "used_inputs": [
+    "approved character.png",
+    "key-2.jpg",
+    "key-3.jpg"
+  ],
+  "original_replaced": false,
+  "sha256": {
+    "character.png": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
+    "head-neck-repair.png": "b35cb8225913a28e8df847fab077abe9c23018a77c51e8d5b68b7320ed4b7bb4"
+  }
+}

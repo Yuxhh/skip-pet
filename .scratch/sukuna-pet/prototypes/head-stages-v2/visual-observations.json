@@ -1,0 +1,30 @@
+{
+  "status": "awaiting user visual feedback",
+  "collar": "original high collar; user allows jaw occlusion",
+  "uniform_face_scale": true,
+  "stage3_angle_deg": -9,
+  "browser_stage2": {
+    "clicks": 2,
+    "blinks": 0,
+    "holds": true
+  },
+  "browser_stage3": {
+    "clicks": 3,
+    "blinks": 1,
+    "holds": true,
+    "displayed_angle": "-9.0 degrees"
+  },
+  "lower_body_pixel_region": [
+    405,
+    670,
+    724,
+    740
+  ],
+  "lower_body_max_channel_delta": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "complete_neck_layer": "browser-complete-neck.png"
+}
