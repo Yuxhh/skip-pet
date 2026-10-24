@@ -20,6 +20,8 @@ if not base.exists():
     shutil.copyfile(workspace/'src/sukuna_pet/assets/sukuna-eye-base-v3.png',base)
 assets = {'source': uri(source_sheet.read_bytes(),'jpeg'), 'base': uri(base.read_bytes()),
           'sha256': hashlib.sha256(base.read_bytes()).hexdigest()}
+if (root/'head-extension-source.jpg').exists():
+    assets['headEvidence']=uri((root/'head-extension-source.jpg').read_bytes(),'jpeg')
 template = (root/'preview.template.html').read_text(encoding='utf-8')
 (root/'index.html').write_text(template.replace('/*ASSETS*/',json.dumps(assets,separators=(',',':'))),encoding='utf-8')
 print('Self-contained preview:', (root/'index.html').stat().st_size, 'bytes')
