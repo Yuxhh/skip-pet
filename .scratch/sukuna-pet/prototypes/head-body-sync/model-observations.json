@@ -1,0 +1,317 @@
+[
+  {
+    "name": "ordinary_hold",
+    "largest_body_step_per_ms": 0.072,
+    "end": {
+      "body": 34,
+      "eye": 34,
+      "stage": 3,
+      "blinks": 1,
+      "cycles": 0,
+      "moving": false
+    },
+    "rows": [
+      {
+        "ms": 180,
+        "body": 13,
+        "eye": 13,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 330,
+        "body": 22.43,
+        "eye": 22.43,
+        "stage": 2,
+        "blinkAge": null
+      },
+      {
+        "ms": 450,
+        "body": 26.13,
+        "eye": 24,
+        "stage": 3,
+        "blinkAge": 51
+      },
+      {
+        "ms": 570,
+        "body": 31.13,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": 171
+      },
+      {
+        "ms": 900,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      },
+      {
+        "ms": 1500,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      },
+      {
+        "ms": 3000,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      }
+    ]
+  },
+  {
+    "name": "rapid_five",
+    "largest_body_step_per_ms": 0.115,
+    "end": {
+      "body": 54,
+      "eye": 54,
+      "stage": 1,
+      "blinks": 1,
+      "cycles": 1,
+      "moving": false
+    },
+    "rows": [
+      {
+        "ms": 180,
+        "body": 14.95,
+        "eye": 37.31,
+        "stage": 1,
+        "blinkAge": 91
+      },
+      {
+        "ms": 330,
+        "body": 25.75,
+        "eye": 48.11,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 450,
+        "body": 34.39,
+        "eye": 54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 570,
+        "body": 43.03,
+        "eye": 54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 900,
+        "body": 54,
+        "eye": 54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 1500,
+        "body": 54,
+        "eye": 54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 3000,
+        "body": 54,
+        "eye": 54,
+        "stage": 1,
+        "blinkAge": null
+      }
+    ]
+  },
+  {
+    "name": "auto",
+    "largest_body_step_per_ms": 0.072,
+    "end": {
+      "body": 186.80800000000113,
+      "eye": 186.80800000000113,
+      "stage": 1,
+      "blinks": 4,
+      "cycles": 4,
+      "moving": false
+    },
+    "rows": [
+      {
+        "ms": 180,
+        "body": 13.03,
+        "eye": 13.03,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 330,
+        "body": 23.83,
+        "eye": 23.83,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 450,
+        "body": 28.86,
+        "eye": 24,
+        "stage": 3,
+        "blinkAge": 117
+      },
+      {
+        "ms": 570,
+        "body": 33.87,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": 237
+      },
+      {
+        "ms": 900,
+        "body": 57.54,
+        "eye": 57.54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 1500,
+        "body": 93.43,
+        "eye": 93.43,
+        "stage": 0,
+        "blinkAge": null
+      },
+      {
+        "ms": 3000,
+        "body": 186.81,
+        "eye": 186.81,
+        "stage": 1,
+        "blinkAge": null
+      }
+    ]
+  },
+  {
+    "name": "auto_click_in_blink",
+    "largest_body_step_per_ms": 0.144,
+    "end": {
+      "body": 186.80800000000113,
+      "eye": 186.80800000000113,
+      "stage": 1,
+      "blinks": 4,
+      "cycles": 4,
+      "moving": false
+    },
+    "rows": [
+      {
+        "ms": 180,
+        "body": 13.03,
+        "eye": 13.03,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 330,
+        "body": 23.83,
+        "eye": 23.83,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 450,
+        "body": 34,
+        "eye": 34,
+        "stage": 0,
+        "blinkAge": 117
+      },
+      {
+        "ms": 570,
+        "body": 34,
+        "eye": 34,
+        "stage": 0,
+        "blinkAge": 237
+      },
+      {
+        "ms": 900,
+        "body": 57.54,
+        "eye": 57.54,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 1500,
+        "body": 93.43,
+        "eye": 93.43,
+        "stage": 0,
+        "blinkAge": null
+      },
+      {
+        "ms": 3000,
+        "body": 186.81,
+        "eye": 186.81,
+        "stage": 1,
+        "blinkAge": null
+      }
+    ]
+  },
+  {
+    "name": "auto_to_click_opening",
+    "largest_body_step_per_ms": 0.072,
+    "end": {
+      "body": 34,
+      "eye": 34,
+      "stage": 3,
+      "blinks": 1,
+      "cycles": 0,
+      "moving": false
+    },
+    "rows": [
+      {
+        "ms": 180,
+        "body": 13.03,
+        "eye": 13.03,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 330,
+        "body": 23.83,
+        "eye": 23.83,
+        "stage": 1,
+        "blinkAge": null
+      },
+      {
+        "ms": 450,
+        "body": 28.86,
+        "eye": 24,
+        "stage": 3,
+        "blinkAge": 117
+      },
+      {
+        "ms": 570,
+        "body": 33.87,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": 237
+      },
+      {
+        "ms": 900,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      },
+      {
+        "ms": 1500,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      },
+      {
+        "ms": 3000,
+        "body": 34,
+        "eye": 34,
+        "stage": 3,
+        "blinkAge": null
+      }
+    ]
+  }
+]
