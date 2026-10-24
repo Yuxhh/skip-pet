@@ -1,0 +1,10 @@
+{
+  "installer_sha256": "d5512f8a2c72c443b3a04c67b7d148787fc27dbd6b0a761efa51a1da439a3260",
+  "uninstall_exit_code": 0,
+  "install_directory_exists": false,
+  "uninstall_registry_exists": false,
+  "start_menu_directory_exists": false,
+  "desktop_shortcut_exists": false,
+  "pet_process_exists": false,
+  "mode_file_preserved": true
+}
