@@ -1,14 +1,16 @@
 """Qt is an adapter: input and elapsed time enter through PetApplication."""
 
 import sys
+from pathlib import Path
 from time import perf_counter
 
-from PySide6.QtCore import QPoint, QRectF, Qt, QTimer
-from PySide6.QtGui import QContextMenuEvent, QMouseEvent, QPaintEvent, QPainter
-from PySide6.QtWidgets import QApplication, QMenu, QWidget
+from PySide6.QtCore import QPoint, QRectF, QStandardPaths, Qt, QTimer
+from PySide6.QtGui import QActionGroup, QContextMenuEvent, QMouseEvent, QPaintEvent, QPainter
+from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
 from .playback import PetApplication
 from .rendering import CharacterRenderer, DISPLAY_HEIGHT, DISPLAY_WIDTH, SOURCE_BOUNDS
+from .settings import Mode
 
 
 class PetWindow(QWidget):
@@ -21,7 +23,10 @@ class PetWindow(QWidget):
         )
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFixedSize(DISPLAY_WIDTH, DISPLAY_HEIGHT)
-        self._pet = PetApplication()
+        settings_path = Path(QStandardPaths.writableLocation(
+            QStandardPaths.StandardLocation.AppConfigLocation,
+        )) / "mode.json"
+        self._pet = PetApplication(settings_path=settings_path)
         self._renderer = CharacterRenderer()
         self._frame = self._renderer.render(self._pet.view)
         self._last_time = perf_counter()
@@ -85,14 +90,36 @@ class PetWindow(QWidget):
 
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:
         menu = QMenu(self)
+        modes = QActionGroup(menu)
+        for value, label in (("click", "点击跳动"), ("always", "持续跳动")):
+            action = menu.addAction(label)
+            action.setCheckable(True)
+            action.setChecked(self._pet.mode == value)
+            modes.addAction(action)
+        click_action, always_action = modes.actions()
+        click_action.triggered.connect(lambda: self._select_mode("click"))
+        always_action.triggered.connect(lambda: self._select_mode("always"))
+        menu.addSeparator()
         exit_action = menu.addAction("退出")
         exit_action.triggered.connect(self.close)
         menu.exec(event.globalPos())
+        menu.deleteLater()
+
+    def _select_mode(self, mode: Mode) -> None:
+        self._advance()
+        try:
+            self._pet.select_mode(mode)
+        except OSError:
+            QMessageBox.warning(self, "无法保存模式", "请检查设置目录是否可写，然后重试。")
+        self._frame = self._renderer.render(self._pet.view)
+        self.update()
 
 
 def main() -> int:
     app = QApplication(sys.argv)
-    app.setApplicationName("宿傩桌宠")
+    app.setOrganizationName("skip-pet")
+    app.setApplicationName("sukuna-pet")
+    app.setApplicationDisplayName("宿傩桌宠")
     window = PetWindow()
     window.show()
     return app.exec()

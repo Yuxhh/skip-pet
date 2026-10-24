@@ -6,6 +6,9 @@ All coordinates are in the original 1419 x 1108 redraw, before display scaling.
 
 from dataclasses import dataclass
 import math
+from pathlib import Path
+
+from .settings import Mode, load_mode, save_mode
 
 
 _BOUNDS = (0, 13, 24, 34)
@@ -46,7 +49,9 @@ def _eyes(position: float) -> tuple[tuple[float, float], tuple[float, float]]:
 class PetApplication:
     """Accept clicks and elapsed milliseconds; expose the complete drawable view."""
 
-    def __init__(self) -> None:
+    def __init__(self, *, settings_path: Path | None = None) -> None:
+        self._settings_path = settings_path
+        self._mode: Mode = load_mode(settings_path) if settings_path is not None else "click"
         self._position = 0.0
         self._target = 0.0
         self._stage = 0
@@ -55,13 +60,33 @@ class PetApplication:
         self._blink_destination: float | None = None
 
     @property
+    def mode(self) -> Mode:
+        return self._mode
+
+    def select_mode(self, mode: Mode) -> None:
+        if mode not in ("click", "always"):
+            raise ValueError("Unknown playback mode")
+        if mode == self._mode:
+            return
+        if self._settings_path is not None:
+            save_mode(self._settings_path, mode)
+        if mode == "click" and self._blink_destination is None:
+            phase = self._position % 41
+            stop_at = next(bound for bound in (13, 24, 34, 41) if bound > phase)
+            self._target = self._position + stop_at - phase
+            self._stage = (13, 24, 34, 41).index(stop_at) + 1
+            self._stage %= 4
+            self._moving = True
+        self._mode = mode
+
+    @property
     def view(self) -> PetView:
         right, left = _eyes(self._position)
         closure = 0.0
         if self._blink_age is not None:
             closure = 0.5 - 0.5 * math.cos(2 * math.pi * self._blink_age / 240)
         return PetView(
-            self._stage, not self._moving and self._blink_age is None,
+            self._stage, self._mode == "click" and not self._moving and self._blink_age is None,
             right, left, closure,
         )
 
@@ -72,6 +97,8 @@ class PetApplication:
             self._position = self._blink_destination
             self._moving = False
             self._blink_destination = None
+        if self._mode == "always":
+            self._stage = self._phase_at_position()
         self._stage = (self._stage + 1) % 4
         distance = (_BOUNDS[self._stage] - self._position % 41) % 41
         if distance < 0.0001:
@@ -86,6 +113,9 @@ class PetApplication:
     def advance(self, elapsed_ms: float) -> None:
         if not math.isfinite(elapsed_ms) or elapsed_ms < 0:
             raise ValueError("elapsed_ms must be finite and nonnegative")
+        if self._mode == "always":
+            self._advance_continuous(elapsed_ms)
+            return
         if self._blink_destination is not None:
             assert self._blink_age is not None
             closing_ms = min(elapsed_ms, max(0, 120 - self._blink_age))
@@ -104,3 +134,38 @@ class PetApplication:
             self._blink_age += elapsed_ms
             if self._blink_age >= 240:
                 self._blink_age = None
+
+    def _advance_continuous(self, elapsed_ms: float) -> None:
+        # Consume time at event boundaries, so a delayed Qt frame cannot skip a
+        # blink or a cycle. The prototype resumes motion during the opening lid.
+        while elapsed_ms > 0:
+            if self._blink_destination is not None:
+                assert self._blink_age is not None
+                step = min(elapsed_ms, 120 - self._blink_age)
+                self._blink_age += step
+                if self._blink_age >= 120:
+                    self._position = self._blink_destination
+                    self._blink_destination = None
+                    self._moving = False
+            else:
+                next_blink = (math.floor(self._position / 41) * 41) + 24
+                if next_blink < self._position:
+                    next_blink += 41
+                step = min(elapsed_ms, (next_blink - self._position) / 0.072)
+                self._position += step * 0.072
+                if self._blink_age is not None:
+                    self._blink_age += step
+                    if self._blink_age >= 240:
+                        self._blink_age = None
+                if self._position >= next_blink - 0.00000001:
+                    self._position = next_blink
+                    self._stage = 3
+                    self._blink_age = 0
+                    self._blink_destination = next_blink + 10
+            elapsed_ms -= step
+        if self._blink_age is None:
+            self._stage = self._phase_at_position()
+
+    def _phase_at_position(self) -> int:
+        phase = self._position % 41
+        return next((i for i, bound in enumerate((13, 24, 34)) if phase < bound), 3)

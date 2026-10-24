@@ -22,7 +22,7 @@ const scenarios = [
   ['next_cycle_blinks_again', [0, 200, 400, 700, 900, 1100, 1300], [520, 640, 800, 1420, 1540, 5000]],
 ];
 const traces = [];
-for (const [name, clicks, samples] of scenarios) {
+function capture(name, clicks, samples, mode = 'click') {
   const context = vm.createContext({ eyeKeys });
   vm.runInContext(`${rules}
     let state=StageRules.initial(),last=0,autoBefore=false,hidden=false;
@@ -35,9 +35,10 @@ for (const [name, clicks, samples] of scenarios) {
     const spriteCtx=new Proxy({}, {get:(_,name)=>name==='ellipse'
       ? (...args)=>ellipses.push(args.slice(0,2)) : ()=>{}});
     ${functions}
+    state.mode='${mode}';
     function sample(){
       ellipses=[];paintSprite(state.pos,blinkValue(now));
-      return {stage:state.targetStage,holding:!state.moving&&now-blinkStartedAt>=240,
+      return {stage:state.targetStage,holding:state.mode==='click'&&!state.moving&&now-blinkStartedAt>=240,
         right_eye:ellipses[0],left_eye:ellipses[3],eyelid_closure:blinkValue(now)};
     }
   `, context);
@@ -48,8 +49,9 @@ for (const [name, clicks, samples] of scenarios) {
     if (clicks.includes(time)) vm.runInContext('next()', context);
     if (samples.includes(time)) observations.push({ at_ms: time, ...vm.runInContext('sample()', context) });
   }
-  traces.push({ name, clicks_ms: clicks, observations });
+  return { name, clicks_ms: clicks, observations };
 }
+for (const [name, clicks, samples] of scenarios) traces.push(capture(name, clicks, samples));
 mkdirSync('tests/fixtures', { recursive: true });
 writeFileSync('tests/fixtures/prototype-traces.json', JSON.stringify({
   source_commit: commit, sampling_ms: 1,
@@ -57,3 +59,17 @@ writeFileSync('tests/fixtures/prototype-traces.json', JSON.stringify({
   traces,
 }, null, 2) + '\n');
 console.log(`Captured ${traces.length} reference sequences from ${commit}`);
+const modeTraces = [
+  ['continuous_cycles', [], [100, 200, 300, 380, 450, 500, 550, 551, 600, 800, 1000, 1101, 1102, 1500, 2000, 3000]],
+  ['continuous_click_before_blink', [280], [250, 280, 340, 400, 460, 520, 800, 1500]],
+  ['continuous_click_closing', [380], [380, 400, 440, 500, 600, 800, 1500]],
+  ['continuous_click_opening', [490], [490, 520, 600, 800, 1500]],
+  ['continuous_click_opening_across_cycle', [560], [550, 560, 600, 800, 1500]],
+  ['continuous_rapid_clicks', [20, 40, 60, 280, 300, 320, 340], [60, 100, 280, 340, 400, 500, 800, 1500]],
+].map(([name, clicks, samples]) => capture(name, clicks, samples, 'always'));
+writeFileSync('tests/fixtures/prototype-mode-traces.json', JSON.stringify({
+  source_commit: commit, sampling_ms: 1,
+  note: 'Original continuous next/tick/paintSprite, including motion during blink opening. Allow 0.5 source pixel for accumulated 1ms event quantisation.',
+  traces: modeTraces,
+}, null, 2) + '\n');
+console.log(`Captured ${modeTraces.length} continuous reference sequences`);
