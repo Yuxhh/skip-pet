@@ -1,0 +1,38 @@
+{
+  "kind": "browser observations, not user approval",
+  "fixed_lower_body_region": [
+    655,
+    700,
+    1175,
+    790
+  ],
+  "max_channel_delta_vs_stage0": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "observed_after_separate_clicks": {
+    "stage2": {
+      "clicks": 2,
+      "blinks": 0,
+      "holds": true
+    },
+    "stage3": {
+      "clicks": 3,
+      "blinks": 1,
+      "holds": true
+    }
+  },
+  "rapid_five_after_three": {
+    "clicks": 8,
+    "blinks": 2,
+    "stage": 0,
+    "holds": true
+  },
+  "source_comparison": {
+    "stage": 2,
+    "frame": 39,
+    "time_s": 1.625
+  }
+}
