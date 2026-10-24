@@ -63,7 +63,7 @@ D1 行 25–68 定义 `DSH_HOME`，优先级为显式根目录、环境变量、
 
 官方 [App Server](https://learn.chatgpt.com/docs/app-server)描述传输、初始化、thread/read、thread/loaded/list、thread/status/changed 和 turn/completed；它提供状态协议原料。关键缺口是当前桌面运行中的同一 runtime 如何对外提供受支持入口，以及独立只读客户端是否可订阅全部活动任务。文档没有在本文限定搜索内给出 Windows Store 桌面开启该控制 socket 的具体设置。
 
-允许的下一步只读预检应限定为：从当前桌面第一方设置帮助/配置 schema/发行资源中确认是否明确公开 control socket 或外部观察器设置；只取配置字段定义和路径，不读凭据/聊天。若发现受支持端点，先用官方 proxy 的 initialize + loaded-list/read 验证进程/实例身份及覆盖，禁止 thread/start、resume、turn/start 和任何审批响应。当前没有找到足以指导“在哪里改什么”的桌面开关，因此**此刻不提出盲目修改配置的探针**。
+本文末尾已补做一次限定的桌面设置资源/完整官方 schema 定点检索，仍未定位到公开的本地观察开关；具体成员、检索词与边界见补充记录。未来仅在上游给出受支持端点后，才用官方 proxy 的 initialize + loaded-list/read 验证进程/实例身份及覆盖，禁止 thread/start、resume、turn/start 和任何审批响应。当前没有找到足以指导“在哪里改什么”的桌面开关，因此**此刻不提出盲目修改配置的探针**。
 
 若后续明确入口可用，适配器结束即关闭自己的 proxy 连接；不停止宿主，不建立 daemon，不写宿主配置。只有另有官方桌面配置入口且用户批准受限实施时，才备份并改那个确切配置项，撤回时恢复该项；不能预先编造文件和键名。
 
@@ -102,3 +102,47 @@ D1 行 25–68 定义 `DSH_HOME`，优先级为显式根目录、环境变量、
 限定检索了本机同一 Codex 程序的帮助/版本/只读 daemon-version 诊断、既有 DeepSeek 发行成员的路径/加载/恢复代码、DeepSeek 第一方架构/插件管理与迁移文档、OpenAI 官方 Hooks/App Server/[配置参考](https://learn.chatgpt.com/docs/config-file/config-reference)/[开发设置](https://learn.chatgpt.com/docs/developer-settings)及相关检索。配置参考中未找到 `listen` 设置；这不是全产品不存在该能力的证明。一次官方搜索调用长时间未返回，结束等待后未引用其结果。
 
 没有扫描用户消息或令牌、读取认证配置、调用任务业务 API、安装插件、改宿主配置/安装文件、启动 daemon、创建测试任务或执行真实断线。原视频、`D:/dsh-pet` 保持只读。当前结果足以拒绝“纸面已实现双宿主联动”，并把下一步分成明确的入口预检、DeepSeek 等待快照探针和未来产品范围决策。
+
+## 同日补充：Codex 桌面公开设置的限定定点检索
+
+这一步已在研究范围内完成，**不再把“查现有设置/schema”留给用户决定或作为未经执行的建议**。结论仍是：本次限定材料没有给出可配置的本地 Windows 桌面同 runtime 观察端点，不能选定 Codex 接入路径；这不证明产品整体绝对不存在其他入口。
+
+### 官方完整 schema
+
+实际打开 [config.toml JSON schema](https://learn.chatgpt.com/docs/config-schema.json)（官方旧地址 `https://developers.openai.com/codex/config-schema.json` 重定向到此）；工具返回完整页面索引 8,331 行。对该 JSON 页面逐词查询 `control_socket`、`app_server`、`daemon`、`listen`、`observer`，均没有匹配。配置参考的 `socket` 命中是沙箱网络 socket 许可规则，`supports_websockets` 是模型提供方 Responses 传输，不能当作桌面 app-server listener 设置。另一次 Python HTTPS 获取在 TLS 握手超时，未得到可解析字节，因此没有声称程序化遍历或取得该 schema 哈希。
+
+这是当前公开 schema 的文本检索结果，不能推断所有未文档化设置不存在，也不能证明当前发行物完全等同这份最新 schema。
+
+### 当前桌面发行资源
+
+目标固定为 `C:/Program Files/WindowsApps/OpenAI.Codex_26.1016.8622.0_x64__2p2nqsd0c76g0/app/resources/app.asar`。先只读 ASAR JSON 成员索引，再用成员偏移定点读取下面 6 个第一方 JS 成员；没有全量提取、反编译、运行成员或读取用户配置。当前工具清单没有 REA 工具，按 REA 恢复指南使用受限的普通文件静态证据，**没有 REA Evidence ID，也不声称完成语义图分析**。
+
+| ASAR 成员 | 字节数 | SHA-256 |
+| --- | ---: | --- |
+| `/.vite/build/main-CT5a1yCd.js` | 4,080,823 | `cdac659a830908ec5202a887e5a37b302074bfc9e9ab0f52fed3e8abbdb9e713` |
+| `/webview/assets/configuration-fields-14404446a1e8.js` | 157,275 | `fb252bbceeb79c1209ae3d9a30cfdd79406df4f46c246264d4b90e51191eba59` |
+| `/webview/assets/general-settings-27118198cef3.js` | 161,768 | `2104c6f9f0183d8ad2c78fc3c622eab22c9a2a7e2372dd3d0c6d647f092ba19e` |
+| `/webview/assets/security-settings-98d075740c14.js` | 152,927 | `c0696544a4a3a36106709dd2a513860bcf16b665c05e6c5382f21704c8295687` |
+| `/webview/assets/remote-connections-settings-59c3870c0198.js` | 161,564 | `d4c57c4f8a3b975381e7cc6142ab68f728ea9cc4384b300b75c3217d00eaa04d` |
+| `/webview/assets/_virtual_settings-search-documents-c229b8f25f3e.js` | 536,304 | `2fd72bacef280659e9bc6c4023bbd026922688fb0503ba087c1cce542bb1b33c` |
+
+共同精确检索词（不区分大小写）：`app-server-control`、`app-server proxy`、`controlSocket`、`control_socket`、`CODEX_APP_SERVER`、`appServerSocket`、`app_server`、`--listen`、`--sock`。5 个 webview 设置/搜索成员中这些词均为 0 次命中。不能据此证明其全部依赖模块没有动态生成的别名设置。
+
+主进程的直接相关命中与源码上下文：
+
+- UTF-8 解码后字符偏移约 3,503,807 起的 3 个 `app-server-control` 命中构造 `$CODEX_HOME` 下的控制目录、日志和 forwarded SSH agent socket；附近有 SSH 连接参数。
+- 偏移约 3,512,684 的 `--listen unix://` 位于 `runRemoteLoginShellCommand` 的 SSH bootstrap 命令；约 3,516,518 的 `app-server proxy` 在 `createSshProxyStream` 中，使用 `this.options.sshConnection`。两个 proxy 字面量命中均属于这段 SSH 代理/报错路径。**这补充了 proxy 与远程受管 daemon 的实际使用场景，没有给出本地 Windows 桌面开启 socket 的设置。**
+- 两个 `CODEX_APP_SERVER_FORCE_CLI` 命中位于内部路由选择：一处结合 `kind!==ssh`，另一处在本地/远端 websocket 路由选择。只看见内部环境分支不能认定它是面向第三方观察者的受支持接口；改变它还可能改变桌面 backend 行为，因此本报告不建议设置这个环境变量。
+- `--sock`、`controlSocket`、`control_socket`、`appServerSocket` 在该主进程成员中均没有命中。主进程另有 62 个 `app_server` 命中，大量属于日志/请求操作名；没有把这些字符串命中当作公开设置。
+
+偏移为解码后的字符索引，不是 ASAR 原始文件字节偏移；哈希固定源成员后可复核。此检索不遍历所有动态依赖/混淆别名，不能证明无其他内部 IPC，更不能把内部 IPC 存在等同对第三方开放授权。
+
+### 收敛后的下一步
+
+当前没有一个已找到且受支持的本地桌面配置项可以合理改动并撤回；因此暂停 Codex 适配实现门槛，不让用户猜参数、不盲装插件或启动新服务。需要上游明确提供或确认：
+
+1. 当前 Windows 桌面所持有同一 runtime 的第三方只读连接端点、授予方式与实际配置位置；若 socket 是受支持方案，应说明普通桌面启动如何创建/公布它，而非另起 daemon。
+2. 连接后的实例身份判定、全部活动任务覆盖、完整运行/等待快照，以及不改变会话生命周期的订阅/快照序列边界。
+3. 端点失效与恢复语义，允许重建最新状态，而不是依靠事件沉默、日志读取或漏失开始事件。
+
+上游给出确切入口后，才执行前述只读实例身份验证，再讨论可控任务的运行验收。若没有这些材料，产品范围调整仍是未来决策；本研究没有预先缩减功能。此补查没有连接 proxy/daemon、调用业务 API、读取用户配置值/会话/凭据，或执行任何宿主改动。
