@@ -57,12 +57,12 @@ def test_menu_resize_preserves_playback_hit_region_and_work_area(
         assert (window.width(), window.height()) == (width, height)
         assert pet.view == before
         assert pet.mode == "click"
-        assert area.contains(window.mask().boundingRect().translated(window.pos()))
-        assert not window.mask().contains(QPoint(0, 0))
-        assert window.mask().contains(QPoint(width // 2, height // 2))
+        assert area.contains(window.visible_region.boundingRect().translated(window.pos()))
+        assert not window.visible_region.contains(QPoint(0, 0))
+        assert window.visible_region.contains(QPoint(width // 2, height // 2))
         # V5 reserves a fixed motion viewport, including transparent padding.
-        assert window.rect().contains(window.mask().boundingRect())
-        assert 0 < window.mask().boundingRect().height() < height
+        assert window.rect().contains(window.visible_region.boundingRect())
+        assert 0 < window.visible_region.boundingRect().height() < height
         # Reopening the menu reflects the new selection, including shrinking.
         choose_size(window, 188, monkeypatch)
         assert window.height() == 188
@@ -124,9 +124,9 @@ def test_failed_size_save_keeps_previous_geometry(
     monkeypatch.setattr(QMessageBox, "warning", lambda parent, title, text: warnings.append(title))
     window = PetWindow(settings_path=path)
     try:
-        before = window.geometry(), window.mask()
+        before = window.geometry(), window.visible_region
         choose_size(window, 271, monkeypatch)
-        assert (window.geometry(), window.mask()) == before
+        assert (window.geometry(), window.visible_region) == before
         assert warnings == ["无法保存大小"]
     finally:
         window.close()

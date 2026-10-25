@@ -10,7 +10,7 @@ import sukuna_pet.desktop as desktop
 from sukuna_pet.desktop import PetWindow
 from sukuna_pet.playback import PetApplication
 from test_desktop import Screen, pet_window, pointer
-from test_v5_desktop import assert_frame_matches_mask
+from test_v5_desktop import assert_frame_matches_region
 from test_resize import choose_size
 
 
@@ -40,7 +40,7 @@ def screens(app: QApplication, monkeypatch: pytest.MonkeyPatch) -> list[Screen]:
 
 
 def bounds(window: PetWindow) -> QRect:
-    return window.mask().boundingRect().translated(window.pos())
+    return window.visible_region.boundingRect().translated(window.pos())
 
 
 def test_cross_screen_drag_rebuilds_dpr_before_constraining_and_keeps_gesture(
@@ -54,7 +54,7 @@ def test_cross_screen_drag_rebuilds_dpr_before_constraining_and_keeps_gesture(
         pet.advance(55)
         control.advance(55)
         app.processEvents()
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         # Each move must already expose the new physical frame and logical mask,
         # before a deferred native screen notification or another timer tick.
@@ -66,7 +66,7 @@ def test_cross_screen_drag_rebuilds_dpr_before_constraining_and_keeps_gesture(
             assert window.screen() is screens[target]
             assert screens[target].work.contains(bounds(window))
             assert bounds(window).right() == screens[target].work.right()
-            assert_frame_matches_mask(window)
+            assert_frame_matches_region(window)
             pet.advance(55)
             control.advance(55)
             app.processEvents()
@@ -81,7 +81,7 @@ def test_removed_screen_recovers_on_nearest_remaining_work_area(
 ) -> None:
     with pet_window(app, PetApplication()) as window:
         app.processEvents()
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         point = QPoint(-900, 500)
         pointer(window, QEvent.Type.MouseButtonRelease, point)
@@ -94,7 +94,7 @@ def test_removed_screen_recovers_on_nearest_remaining_work_area(
         assert window.screen() is screens[0]
         assert screens[0].work.contains(bounds(window))
         assert window.frame.devicePixelRatio() == 1.0
-        assert_frame_matches_mask(window)
+        assert_frame_matches_region(window)
         assert removed not in screens
 
 
@@ -105,7 +105,7 @@ def test_layout_change_during_held_drag_preserves_release_and_current_edges(
     pet = PetApplication()
     with pet_window(app, pet) as window:
         app.processEvents()
-        point = window.mapToGlobal(window.mask().boundingRect().center())
+        point = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, point)
         end = QPoint(-860, 700)
         pointer(window, QEvent.Type.MouseMove, end)
@@ -140,7 +140,7 @@ def test_playing_cross_screen_release_resize_and_leaving_edges(
     with pet_window(app, pet) as window:
         app.processEvents()
         choose_size(window, height, monkeypatch)
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pointer(window, QEvent.Type.MouseMove, point)
         before = pet.view
@@ -150,7 +150,7 @@ def test_playing_cross_screen_release_resize_and_leaving_edges(
         assert window.frame.devicePixelRatio() == dpr
         area = screens[target].work
         # Release on the target's bottom/right edges while animation continues.
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pointer(window, QEvent.Type.MouseButtonRelease, area.bottomRight())
         for elapsed in (110, 110, 780, 110):
@@ -161,9 +161,9 @@ def test_playing_cross_screen_release_resize_and_leaving_edges(
         for size in (188, 271, 320):
             choose_size(window, size, monkeypatch)
             assert bounds(window).bottomRight() == area.bottomRight()
-            assert_frame_matches_mask(window)
+            assert_frame_matches_region(window)
         # A free placement releases both old edges and keeps a stable anchor.
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pointer(window, QEvent.Type.MouseButtonRelease, area.center())
         position = window.pos()
@@ -182,7 +182,7 @@ def test_dpr_notification_during_held_edge_gesture_refreshes_without_click(
     pet = PetApplication()
     with pet_window(app, pet) as window:
         app.processEvents()
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         end = screens[0].work.bottomRight()
         pointer(window, QEvent.Type.MouseMove, end)
@@ -191,7 +191,7 @@ def test_dpr_notification_during_held_edge_gesture_refreshes_without_click(
         app.processEvents()
         assert window.frame.devicePixelRatio() == 1.25
         assert bounds(window).bottomRight() == screens[0].work.bottomRight()
-        assert_frame_matches_mask(window)
+        assert_frame_matches_region(window)
         position = window.pos()
         before = pet.view
         pointer(window, QEvent.Type.MouseButtonRelease, end)

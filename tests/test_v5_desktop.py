@@ -20,7 +20,7 @@ def app() -> QApplication:
     return QApplication.instance() or QApplication([])
 
 
-def test_visible_head_motion_updates_the_same_final_frame_and_native_mask(
+def test_visible_head_motion_updates_the_same_final_frame_and_visible_region(
     app: QApplication, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     clock = [0.0]
@@ -31,16 +31,16 @@ def test_visible_head_motion_updates_the_same_final_frame_and_native_mask(
         window.show()
         app.processEvents()
         assert (window.width(), window.height()) == (328, 320)
-        initial_frame, initial_mask = window.frame, window.mask()
+        initial_frame, initial_mask = window.frame, window.visible_region
         point = initial_mask.boundingRect().center()
         QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=point)
         clock[0] = .1
         QTest.qWait(25)
         assert -6.44 < pet.view.head_angle < 0
         assert window.frame != initial_frame
-        assert window.mask() != initial_mask
-        assert window.rect().contains(window.mask().boundingRect())
-        assert not window.mask().contains(QPoint(0, 0))
+        assert window.visible_region != initial_mask
+        assert window.rect().contains(window.visible_region.boundingRect())
+        assert not window.visible_region.contains(QPoint(0, 0))
         clock[0] = .3
         QTest.qWait(25)
         clock[0] = .5
@@ -56,8 +56,8 @@ def test_visible_head_motion_updates_the_same_final_frame_and_native_mask(
         app.sendPostedEvents(None, QEvent.Type.DeferredDelete)
 
 
-def assert_frame_matches_mask(window: PetWindow) -> None:
-    frame, region = window.frame, window.mask()
+def assert_frame_matches_region(window: PetWindow) -> None:
+    frame, region = window.frame, window.visible_region
     dpr = frame.devicePixelRatio()
     rgba = frame.convertToFormat(QImage.Format.Format_RGBA8888)
     pixels = bytes(rgba.constBits())
@@ -96,8 +96,8 @@ def test_three_sizes_and_dpr_keep_every_stage_inside_and_alpha_accurate(
             assert pet.view.stage == stage
             frame = window.frame
             assert (frame.width(), frame.height()) == (math.ceil(width * dpr), math.ceil(height * dpr))
-            assert_frame_matches_mask(window)
-            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+            assert_frame_matches_region(window)
+            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
             for _ in range(4):
                 clock[0] += .1
                 QTest.qWait(10)
@@ -108,7 +108,7 @@ def test_three_sizes_and_dpr_keep_every_stage_inside_and_alpha_accurate(
         app.sendPostedEvents(None, QEvent.Type.DeferredDelete)
 
 
-def test_dpr_change_rebuilds_both_frame_and_mask_without_advancing(
+def test_dpr_change_rebuilds_both_frame_and_region_without_advancing(
     app: QApplication, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     clock, dpr = [0.0], [1.0]
@@ -123,7 +123,7 @@ def test_dpr_change_rebuilds_both_frame_and_mask_without_advancing(
         app.processEvents()
         assert window.frame.devicePixelRatio() == 1.5
         assert window.frame.width() == 492
-        assert_frame_matches_mask(window)
+        assert_frame_matches_region(window)
         assert pet.view == initial
     finally:
         window.close()

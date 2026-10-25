@@ -13,7 +13,7 @@ import sukuna_pet.desktop as desktop
 from sukuna_pet.desktop import PetWindow
 from sukuna_pet.playback import PetApplication
 from sukuna_pet.settings import save_size
-from test_v5_desktop import assert_frame_matches_mask
+from test_v5_desktop import assert_frame_matches_region
 from test_desktop import pointer
 
 
@@ -44,7 +44,7 @@ def test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr(
         for at in sample["clicks_ms"]:
             pet.advance(at - time)
             app.processEvents()
-            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
             time = at
         pet.advance(sample["at_ms"] - time)
         QTest.qWait(15)
@@ -53,7 +53,7 @@ def test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr(
         assert frame.size() == expected.size()
         # Full-image oracle catches collar separation and wrong crop/alpha anchors.
         assert max(abs(a - b) for a, b in zip(bytes(frame.constBits()), bytes(expected.constBits()))) <= 1
-        assert_frame_matches_mask(window)
+        assert_frame_matches_region(window)
         assert window.pos() == origin
         held = window.frame
         if "recovered" in sample["file"]:
@@ -76,13 +76,13 @@ def test_changing_silhouette_preserves_drag_and_cancels_interrupted_clicks(
     try:
         window.show()
         app.processEvents()
-        QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+        QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
         control.click()
         pet.advance(55)
         control.advance(55)
         QTest.qWait(15)
         origin = window.pos()
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         delta = QPoint(QApplication.startDragDistance(), 0)
         if gesture in ("threshold", "return"):
@@ -90,12 +90,12 @@ def test_changing_silhouette_preserves_drag_and_cancels_interrupted_clicks(
             assert window.pos() == origin
             pointer(window, QEvent.Type.MouseMove, start + delta)
             assert window.pos() == origin + delta
-        previous_mask = window.mask()
+        previous_mask = window.visible_region
         pet.advance(55)
         control.advance(55)
         QTest.qWait(15)
-        assert window.mask() != previous_mask
-        assert_frame_matches_mask(window)
+        assert window.visible_region != previous_mask
+        assert_frame_matches_region(window)
         if gesture == "ungrab":
             QApplication.sendEvent(window, QEvent(QEvent.Type.UngrabMouse))
         elif gesture == "hide":

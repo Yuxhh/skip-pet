@@ -1,0 +1,467 @@
+{
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "input_kind": "Qt events and application virtual time in --capture; real OS input in interactive mode",
+  "limitations": [
+    "No real multi-monitor or mixed-DPI hardware validation.",
+    "No click bounce or V5 automatic scheduling in issue #23.",
+    "Desktop screenshots and OS routing are current production results, not historical prototype evidence."
+  ],
+  "sizes": [
+    {
+      "height": 188,
+      "canvas": [
+        193,
+        188
+      ],
+      "stages": [
+        {
+          "stage": 0,
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            24,
+            157,
+            154
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 0
+        },
+        {
+          "stage": 1,
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            14,
+            157,
+            164
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 2,
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            22,
+            157,
+            156
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 3,
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            16,
+            157,
+            162
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        }
+      ],
+      "animated_qt_drag": {
+        "moved": true,
+        "stage_unchanged": true
+      },
+      "native_topmost": true
+    },
+    {
+      "height": 271,
+      "canvas": [
+        278,
+        271
+      ],
+      "stages": [
+        {
+          "stage": 0,
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            35,
+            227,
+            221
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 0
+        },
+        {
+          "stage": 1,
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            21,
+            227,
+            235
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 2,
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            31,
+            227,
+            225
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 3,
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            24,
+            227,
+            232
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        }
+      ],
+      "animated_qt_drag": {
+        "moved": true,
+        "stage_unchanged": true
+      },
+      "native_topmost": true
+    },
+    {
+      "height": 320,
+      "canvas": [
+        328,
+        320
+      ],
+      "stages": [
+        {
+          "stage": 0,
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            41,
+            267,
+            266
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 0
+        },
+        {
+          "stage": 1,
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            16,
+            267,
+            291
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 2,
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            37,
+            267,
+            270
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        },
+        {
+          "stage": 3,
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            25,
+            267,
+            282
+          ],
+          "visible_hit": "pet",
+          "transparent_hit": "receiver",
+          "changed_pixels_checked": 20
+        }
+      ],
+      "sampling": {
+        "frames": 165,
+        "all_inside_canvas": true,
+        "input": "Four real Qt clicks; 41 equal virtual time samples per stage, no bounce.",
+        "union_bounds": [
+          15,
+          25,
+          313,
+          308
+        ],
+        "note": "165 reachable head phases; raster samples, not a continuous-space proof."
+      },
+      "animated_qt_drag": {
+        "moved": true,
+        "stage_unchanged": true
+      },
+      "native_topmost": true
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Command: $env:QT_QPA_PLATFORM=offscreen; .venv/Scripts/python.exe -m pytest -q --basetemp=.scratch/ghosting/pytest-full
+Result: 191 passed in 109.67s (0:01:49)

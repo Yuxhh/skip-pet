@@ -54,7 +54,7 @@ def main() -> int:
         while (elapsed := (perf_counter() - start) * 1000) < duration:
             if (name == "click" and not samples) or (name == "rapid-click" and elapsed >= next_click and elapsed < 600):
                 QTest.mouseClick(window, Qt.MouseButton.LeftButton,
-                                 pos=window.mask().boundingRect().center())
+                                 pos=window.visible_region.boundingRect().center())
                 next_click += 75
             samples.append({"elapsed_ms": elapsed, "view": asdict(pet.view)})
             QTest.qWait(8)

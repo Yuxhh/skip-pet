@@ -98,10 +98,10 @@ def main() -> int:
             window.show()
             QTest.qWait(60)
             entry = {"height": height, "canvas": [window.width(), window.height()], "stages": []}
-            previous = window.mask()
+            previous = window.visible_region
             for stage in range(4):
                 assert pet.view.stage == stage and pet.view.holding
-                frame, mask = window.frame, window.mask()
+                frame, mask = window.frame, window.visible_region
                 bounds = mask.boundingRect()
                 assert window.rect().contains(bounds)
                 assert bounds.left() > 0 and bounds.top() > 0
@@ -140,13 +140,13 @@ def main() -> int:
                 pet.advance(1000)
                 QTest.qWait(16)
             if height == 320:
-                sampled_bounds = [window.mask().boundingRect()]
+                sampled_bounds = [window.visible_region.boundingRect()]
                 for stage, duration in ((1, 13 / .072), (2, 11 / .072), (3, 240), (0, 7 / .072)):
-                    QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+                    QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
                     for sample in range(41):
                         pet.advance(duration / 41)
                         QTest.qWait(10)
-                        bounds = window.mask().boundingRect()
+                        bounds = window.visible_region.boundingRect()
                         assert bounds.left() > 0 and bounds.top() > 0
                         assert bounds.right() < window.width() - 1 and bounds.bottom() < window.height() - 1
                         sampled_bounds.append(bounds)
@@ -160,12 +160,12 @@ def main() -> int:
                                                       max(b.right() for b in sampled_bounds), max(b.bottom() for b in sampled_bounds)],
                                      "note": "165 reachable head phases; raster samples, not a continuous-space proof."}
             # Animated drag via Qt events, recorded distinctly from OS input.
-            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+            QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
             pet.advance(60)
             QTest.qWait(16)
             stage = pet.view.stage
             position = window.pos()
-            point = window.mask().boundingRect().center()
+            point = window.visible_region.boundingRect().center()
             QTest.mousePress(window, Qt.MouseButton.LeftButton, pos=point)
             QTest.mouseMove(window, point + QPoint(65, 40))
             pet.advance(60)
@@ -217,7 +217,7 @@ def main() -> int:
         nonlocal previous
         popup = QApplication.activePopupWidget()
         record = {"view": asdict(pet.view), "position": [window.x(), window.y()],
-                  "bounds": window.mask().boundingRect().getRect(), "receiver_clicks": receiver.clicks,
+                  "bounds": window.visible_region.boundingRect().getRect(), "receiver_clicks": receiver.clicks,
                   "cursor": [QCursor.pos().x(), QCursor.pos().y()], "menu_visible": isinstance(popup, QMenu),
                   "visible": window.isVisible(), "background": receiver.background,
                   "native_topmost": bool(user32.GetWindowLongPtrW(int(window.winId()), -20) & 8)}

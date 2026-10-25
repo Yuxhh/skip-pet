@@ -5,7 +5,7 @@ from contextlib import contextmanager
 
 import pytest
 from PySide6.QtCore import QEvent, QObject, QPoint, QPointF, QRect, Qt, Signal
-from PySide6.QtGui import QMouseEvent, QRegion
+from PySide6.QtGui import QMouseEvent
 from PySide6.QtWidgets import QApplication
 
 from sukuna_pet.desktop import PetWindow
@@ -45,9 +45,9 @@ def test_drag_and_release_keep_character_above_taskbar_without_advancing(app: QA
         pointer(window, QEvent.Type.MouseButtonPress, window.pos() + QPoint(120, 120))
         destination = QPoint(area.center().x(), area.bottom() + 200)
         pointer(window, QEvent.Type.MouseMove, destination)
-        assert area.contains(window.mask().boundingRect().translated(window.pos()))
+        assert area.contains(window.visible_region.boundingRect().translated(window.pos()))
         pointer(window, QEvent.Type.MouseButtonRelease, destination)
-        assert area.contains(window.mask().boundingRect().translated(window.pos()))
+        assert area.contains(window.visible_region.boundingRect().translated(window.pos()))
         pet.advance(1000)
         assert pet.view.stage == 0
         assert pet.view.holding
@@ -61,7 +61,7 @@ def test_work_area_change_recovers_a_character_left_outside(app: QApplication) -
         # Same public system notification as taskbar/work-area reconfiguration.
         window.screen().availableGeometryChanged.emit(area)
         app.processEvents()
-        assert area.contains(window.mask().boundingRect().translated(window.pos()))
+        assert area.contains(window.visible_region.boundingRect().translated(window.pos()))
 
 
 @pytest.mark.parametrize("kind", [QEvent.Type.DevicePixelRatioChange, QEvent.Type.ScreenChangeInternal])
@@ -74,7 +74,7 @@ def test_native_screen_notification_rechecks_visible_geometry(
         window.move(area.right(), area.bottom())
         QApplication.sendEvent(window, QEvent(kind))
         app.processEvents()
-        assert area.contains(window.mask().boundingRect().translated(window.pos()))
+        assert area.contains(window.visible_region.boundingRect().translated(window.pos()))
 
 
 class Screen(QObject):
@@ -135,7 +135,7 @@ def test_drag_across_logical_layout_keeps_visible_on_target_and_can_click_again(
         pointer(window, QEvent.Type.MouseButtonRelease, cursor)
         assert window.pos() == dragged
         area = layout[target].availableGeometry()
-        visible = window.mask().boundingRect().translated(window.pos())
+        visible = window.visible_region.boundingRect().translated(window.pos())
         assert area.contains(visible)
         assert (visible.left() == area.left() if horizontal == "left"
                 else visible.right() == area.right())
@@ -154,20 +154,21 @@ def test_drag_across_logical_layout_keeps_visible_on_target_and_can_click_again(
         assert pet.view.holding
 
 
-@pytest.mark.parametrize("cursor, expected", [
-    (QPoint(0, 0), QPoint(-20, -30)),
-    (QPoint(1919, 1079), QPoint(1700, 822)),
+@pytest.mark.parametrize("cursor, horizontal, vertical", [
+    (QPoint(0, 0), "left", "top"),
+    (QPoint(1919, 1079), "right", "bottom"),
 ])
 def test_transparent_padding_can_extend_outside_work_area(
-    app: QApplication, layout: list[Screen], cursor: QPoint, expected: QPoint,
+    app: QApplication, layout: list[Screen], cursor: QPoint, horizontal: str, vertical: str,
 ) -> None:
     with pet_window(app, PetApplication()) as window:
-        # Public native mask stands for a character with transparent margins.
-        window.setMask(QRegion(20, 30, 200, 180))
+        # Use the actual character's transparent padding, not a visual clip.
         pointer(window, QEvent.Type.MouseButtonPress, window.pos() + QPoint(120, 120))
         # Release without an intervening move still needs to apply constraints.
         pointer(window, QEvent.Type.MouseButtonRelease, cursor)
-        assert window.pos() == expected
-        assert layout[0].availableGeometry().contains(
-            window.mask().boundingRect().translated(window.pos()))
+        visible = window.visible_region.boundingRect().translated(window.pos())
+        area = layout[0].availableGeometry()
+        assert getattr(visible, horizontal)() == getattr(area, horizontal)()
+        assert getattr(visible, vertical)() == getattr(area, vertical)()
+        assert area.contains(visible)
         assert not layout[0].availableGeometry().contains(window.geometry())

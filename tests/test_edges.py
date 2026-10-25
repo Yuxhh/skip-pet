@@ -13,7 +13,7 @@ from sukuna_pet.desktop import PetWindow
 from sukuna_pet.playback import PetApplication
 from test_desktop import pet_window, pointer
 from test_resize import choose_size
-from test_v5_desktop import assert_frame_matches_mask
+from test_v5_desktop import assert_frame_matches_region
 
 
 @pytest.fixture(scope="module")
@@ -23,7 +23,7 @@ def app() -> QApplication:
 
 def drag_to(window: PetWindow, horizontal: str | None, vertical: str | None) -> None:
     area = window.screen().availableGeometry()
-    start = window.mapToGlobal(window.mask().boundingRect().center())
+    start = window.mapToGlobal(window.visible_region.boundingRect().center())
     end = QPoint(start)
     if horizontal is not None:
         end.setX(area.left() - window.width() if horizontal == "left"
@@ -38,7 +38,7 @@ def drag_to(window: PetWindow, horizontal: str | None, vertical: str | None) -> 
 
 def assert_contact(window: PetWindow, horizontal: str | None, vertical: str | None) -> None:
     area = window.screen().availableGeometry()
-    visible = window.mask().boundingRect().translated(window.pos())
+    visible = window.visible_region.boundingRect().translated(window.pos())
     assert area.contains(visible)
     if horizontal is not None:
         assert getattr(visible, horizontal)() == getattr(area, horizontal)()
@@ -70,7 +70,7 @@ def test_contact_follows_continuous_frames_bounce_and_all_four_endpoints(
         origin = window.pos()
         previous_frame = window.frame
         for stage in (1, 2, 3, 0):
-            point = window.mapToGlobal(window.mask().boundingRect().center())
+            point = window.mapToGlobal(window.visible_region.boundingRect().center())
             pointer(window, QEvent.Type.MouseButtonPress, point)
             pointer(window, QEvent.Type.MouseButtonRelease, point)
             for elapsed in (22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 780):
@@ -84,7 +84,7 @@ def test_contact_follows_continuous_frames_bounce_and_all_four_endpoints(
             assert window.frame != previous_frame
             previous_frame = window.frame
             assert pet.view.stage == stage and pet.view.holding
-            assert_frame_matches_mask(window)
+            assert_frame_matches_region(window)
         if horizontal or vertical:
             assert not area.contains(window.geometry())
 
@@ -98,14 +98,14 @@ def test_compensation_during_a_held_gesture_preserves_the_drag_anchor(
         window.show()
         app.processEvents()
         drag_to(window, None, "top")
-        point = window.mapToGlobal(window.mask().boundingRect().center())
+        point = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, point)
         pointer(window, QEvent.Type.MouseButtonRelease, point)
         control.click()
         pet.advance(55)
         control.advance(55)
         QTest.qWait(15)
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pet.advance(55)
         control.advance(55)
@@ -134,12 +134,12 @@ def test_leaving_one_edge_releases_only_that_axis(
         window.show()
         app.processEvents()
         drag_to(window, "left", "top")
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         delta = QPoint(90 if axis != "vertical" else 0, 90 if axis != "horizontal" else 0)
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pointer(window, QEvent.Type.MouseButtonRelease, start + delta)
         origin = window.pos()
-        point = window.mapToGlobal(window.mask().boundingRect().center())
+        point = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, point)
         pointer(window, QEvent.Type.MouseButtonRelease, point)
         for elapsed in (110, 110, 780):
@@ -175,13 +175,13 @@ def test_edge_resize_rebuilds_current_frame_and_does_not_persist_contact(
             assert window.height() == height
             assert pet.view == peak
             assert_contact(window, horizontal, vertical)
-            assert_frame_matches_mask(window)
+            assert_frame_matches_region(window)
         # A new instance restores only the saved size and the default placement.
         second = PetWindow(settings_path=path)
         try:
             assert second.height() == 188
             area = second.screen().availableGeometry()
-            visible = second.mask().boundingRect().translated(second.pos())
+            visible = second.visible_region.boundingRect().translated(second.pos())
             assert area.contains(visible)
             assert visible.left() > area.left() and visible.right() < area.right()
             assert visible.top() > area.top() and visible.bottom() < area.bottom()
@@ -207,7 +207,7 @@ def test_edge_compensation_does_not_turn_interrupted_gestures_into_clicks(
         drag_to(window, "right", "top")
         pet.click()
         control.click()
-        start = window.mapToGlobal(window.mask().boundingRect().center())
+        start = window.mapToGlobal(window.visible_region.boundingRect().center())
         pointer(window, QEvent.Type.MouseButtonPress, start)
         pet.advance(110)
         control.advance(110)

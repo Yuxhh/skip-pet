@@ -1,6 +1,8 @@
-# 宿傩桌宠 V5 · 0.2.0
+# 宿傩桌宠 V5 · 0.2.1
 
 Windows 透明置顶桌宠，包含已认可的 V5 头颈与眼动、点击回弹、持续节奏、动态透明命中和贴边。首次无设置启动静止；安装后无需 Python、实验预览、原视频、参考程序或联网。
+
+0.2.1 修复快速连点时头发与衣服边缘的瞬态残影；透明显示和原生命中使用同一张完整图像的 alpha，保留既有动作与交互。复现方式及结果见[残影修复验证](docs/verification/issue-29/README.md)。
 
 ## 安装与使用
 
@@ -12,7 +14,7 @@ Windows 透明置顶桌宠，包含已认可的 V5 头颈与眼动、点击回�
 
 详见[使用说明](docs/user-guide.md)。安装目录的 `验收说明.md` 列出验证范围；[本轮验证记录](docs/verification/issue-28/README.md)区分自动化、本机安装、独立源码和真实硬件结果。真实多屏、负坐标屏、混合 DPI、任务栏及屏幕连接变化仍待硬件补验，不能视为全部验收完成。
 
-交付还包含 `sukuna-pet-0.2.0-source.zip`、`build-report.json` 和 `SHA256SUMS.txt`。报告记录依赖、三张冻结素材与每个运行文件的哈希；程序模型包含在源码中。第三方许可随安装包提供。
+交付还包含 `sukuna-pet-0.2.1-source.zip`、`build-report.json` 和 `SHA256SUMS.txt`。报告记录依赖、三张冻结素材与每个运行文件的哈希；程序模型包含在源码中。第三方许可随安装包提供。
 
 ## 从源码运行
 
@@ -34,6 +36,6 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-测试沿用已确认的两处边界：`PetApplication` 的点击、模式、可控时间、鼠标手势、设置路径及只读可绘制状态；Qt 窗口的公开输入、最终图像和几何结果。冻结轨迹与原生参考帧随测试提供，日常测试无需实验目录或历史 Git 对象。图像与动态原生区域来自同一最终帧，静止时复用该帧；不以降低动作精度换取缓存。
+测试沿用已确认的两处边界：`PetApplication` 的点击、模式、可控时间、鼠标手势、设置路径及只读可绘制状态；Qt 窗口的公开输入、最终图像和几何结果。冻结轨迹与原生参考帧随测试提供，日常测试无需实验目录或历史 Git 对象。可见区域由最终帧计算，仅用于几何限位；Windows 原生显示与透明命中由整帧 alpha 决定。静止时复用该帧，不以降低动作精度换取缓存。
 
 冻结动作提交 `32c9f985d4467c1527b09c34f6868a3ccd3f85b4`，原生路线及自动节奏提交 `4ecb85c8a087ca89fb99a3a2125c826801b53e1c`。素材来源见 `src/sukuna_pet/assets/provenance.json`。历史源码验证保留在 [#23](docs/verification/issue-23/README.md)、[#24](docs/verification/issue-24/README.md)、[#25](docs/verification/issue-25/README.md)、[#26](docs/verification/issue-26/README.md)、[#27](docs/verification/issue-27/README.md)，历史 #17 安装版不代表本版验收。

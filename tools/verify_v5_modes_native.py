@@ -75,7 +75,7 @@ def session(name: str, output: Path) -> int:
                 failures.append(__import__("traceback").format_exc())
                 app.exit(1)
         QTimer.singleShot(80, act)
-        point = window.mask().boundingRect().center()
+        point = window.visible_region.boundingRect().center()
         QApplication.sendEvent(window, QContextMenuEvent(
             QContextMenuEvent.Reason.Mouse, point, window.mapToGlobal(point)))
 
@@ -99,7 +99,7 @@ def session(name: str, output: Path) -> int:
 
     def manual_click() -> None:
         before = pet.view.stage
-        QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+        QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
         actions.append({'elapsed_ms': (perf_counter()-start)*1000, 'choose': 'character click',
                         'before_stage': before, 'after_stage': pet.view.stage})
         window.frame.save(str(output / f'{name}-manual-click.png'))

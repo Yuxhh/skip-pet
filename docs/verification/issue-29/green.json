@@ -1,0 +1,32 @@
+{
+  "height": 320,
+  "background": "dark",
+  "input": "public Qt clicks, real time; separate Windows desktop capture process",
+  "interval_ms": 60,
+  "clicks": 36,
+  "duration_seconds": 4,
+  "screen": {
+    "name": "G24H1",
+    "geometry": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "work_area": [
+      0,
+      0,
+      1920,
+      1032
+    ],
+    "dpr": 1.0
+  },
+  "captures": 389,
+  "unique_frames": 58,
+  "painted_frames": 58,
+  "incomplete_frames": 0,
+  "failures": [],
+  "visible_hit": "pet",
+  "transparent_hit": "receiver",
+  "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+}

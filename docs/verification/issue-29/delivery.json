@@ -1,0 +1,29 @@
+{
+  "version": "0.2.1",
+  "installer_exit_code": 0,
+  "installer_sha256": "35b37f84dfd86df7f020b3fe2de6238f1d6d30eef14e30a1f4b83370953d9ba9",
+  "installer_bytes": 28517021,
+  "installed_files": 161,
+  "file_mismatches": [],
+  "preferences_unchanged": true,
+  "preferences": {
+    "mode": "click",
+    "size": 320
+  },
+  "release_checksums_pass": true,
+  "source_crc": null,
+  "runtime_assets": "build input and bundle hashes match frozen provenance",
+  "build_environment": ".scratch/i28e; locked CPython 3.14.4/PySide6 6.12.0/PyInstaller 6.22.3/Inno Setup 6.7.3",
+  "installed_path": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet",
+  "registry_version": "0.2.1",
+  "preferences_unchanged_after_ui_checks": true,
+  "installed_ui_checks": [
+    "OS five clicks",
+    "context menu",
+    "select always mode",
+    "OS three clicks during always",
+    "restore click mode",
+    "short drag and return"
+  ],
+  "running_installed_process": true
+}

@@ -119,12 +119,12 @@ def main() -> int:
             QTest.qWait(40)
             origin = window.pos()
             entry = {"height": height, "canvas": [window.width(), window.height()], "samples": []}
-            previous = window.mask()
+            previous = window.visible_region
 
             def capture(name: str) -> None:
                 nonlocal previous
                 QTest.qWait(60)  # Allow the layered-window upload after the Qt timer/paint.
-                mask = window.mask()
+                mask = window.visible_region
                 bounds = mask.boundingRect()
                 assert window.rect().contains(bounds) and window.pos() == origin
                 assert hit(window, bounds.center()) == int(window.winId())
@@ -151,7 +151,7 @@ def main() -> int:
 
             capture("initial")
             for stage in (1, 2, 3, 0):
-                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
                 pet.advance(110)
                 assert pet.view.bounce_scale == (1.1, .85)
                 capture(f"to-{stage}-peak")
@@ -168,7 +168,7 @@ def main() -> int:
                 pet.advance(1000)
                 capture(f"stage-{stage}-held")
             for i in range(5):
-                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
                 assert pet.view.bounce_scale == (1, 1)
                 pet.advance(45 if i < 4 else 110)
             capture("rapid-five-peak")
@@ -198,7 +198,7 @@ def main() -> int:
         nonlocal previous
         popup = QApplication.activePopupWidget()
         entry = {"view": asdict(pet.view), "position": [window.x(), window.y()],
-                 "bounds": window.mask().boundingRect().getRect(), "receiver_clicks": receiver.clicks,
+                 "bounds": window.visible_region.boundingRect().getRect(), "receiver_clicks": receiver.clicks,
                  "cursor": [QCursor.pos().x(), QCursor.pos().y()], "visible": window.isVisible(),
                  "menu_visible": isinstance(popup, QMenu),
                  "mouse_grabbed": QApplication.mouseButtons() != Qt.MouseButton.NoButton,

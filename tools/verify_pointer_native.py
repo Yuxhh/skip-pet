@@ -61,11 +61,11 @@ def main() -> int:
                 menu_saved = True
             record = {
                 "position": [window.x(), window.y()],
-                "visible_bounds": window.mask().boundingRect().translated(window.pos()).getRect(),
+                "visible_bounds": window.visible_region.boundingRect().translated(window.pos()).getRect(),
                 "screen": window.screen().name(),
                 "available_geometry": window.screen().availableGeometry().getRect(),
                 "fully_visible": window.screen().availableGeometry().contains(
-                    window.mask().boundingRect().translated(window.pos())),
+                    window.visible_region.boundingRect().translated(window.pos())),
                 "screens": screens(),
                 "cursor": [QCursor.pos().x(), QCursor.pos().y()],
                 "left_pressed": bool(QApplication.mouseButtons() & Qt.MouseButton.LeftButton),

@@ -11,7 +11,7 @@ from PySide6.QtWidgets import QApplication, QMenu, QMessageBox
 import sukuna_pet.desktop as desktop
 from sukuna_pet.desktop import PetWindow
 from sukuna_pet.playback import PetApplication
-from test_v5_desktop import assert_frame_matches_mask
+from test_v5_desktop import assert_frame_matches_region
 
 
 @pytest.fixture(scope="module")
@@ -36,7 +36,7 @@ def choose(
             next(a for a in actions + sizes if a.text() == text).trigger()
 
     monkeypatch.setattr(desktop, "QMenu", Menu)
-    point = window.mask().boundingRect().center()
+    point = window.visible_region.boundingRect().center()
     QApplication.sendEvent(window, QContextMenuEvent(
         QContextMenuEvent.Reason.Mouse, point, window.mapToGlobal(point),
     ))
@@ -64,7 +64,7 @@ def test_real_frame_cap_and_wait_match_native_frame_accounting(
             assert pet.view.stage == control.view.stage
             assert pet.view.head_phase == pytest.approx(control.view.head_phase, abs=1e-8)
             assert pet.view.bounce_scale == pytest.approx(control.view.bounce_scale, abs=1e-8)
-            assert_frame_matches_mask(window)
+            assert_frame_matches_region(window)
         choose(window, "点击跳动", monkeypatch, "持续跳动")
         stage = pet.view.stage
         for _ in range(10):

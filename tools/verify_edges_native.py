@@ -49,7 +49,7 @@ def capture(app: QApplication, receiver: Receiver, output: Path) -> int:
                 Qt.KeyboardModifier.NoModifier))
 
         def drag(end: QPoint) -> None:
-            start = window.mapToGlobal(window.mask().boundingRect().center())
+            start = window.mapToGlobal(window.visible_region.boundingRect().center())
             before = pet.view
             pointer(QEvent.Type.MouseButtonPress, start)
             pointer(QEvent.Type.MouseMove, end)
@@ -60,21 +60,27 @@ def capture(app: QApplication, receiver: Receiver, output: Path) -> int:
                                      ("left", "top"), ("left", "bottom"),
                                      ("right", "top"), ("right", "bottom")):
             drag(area.center())
-            end = window.mapToGlobal(window.mask().boundingRect().center())
+            end = window.mapToGlobal(window.visible_region.boundingRect().center())
             if horizontal:
                 end.setX(area.left() - window.width() if horizontal == "left" else area.right() + window.width())
             if vertical:
                 end.setY(area.top() - window.height() if vertical == "top" else area.bottom() + window.height())
             drag(end)
             for stage in (1, 2, 3, 0):
-                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.mask().boundingRect().center())
+                QTest.mouseClick(window, Qt.MouseButton.LeftButton, pos=window.visible_region.boundingRect().center())
                 for label, elapsed in (("peak", 110), ("held", 890)):
                     pet.advance(elapsed)
                     # A timer observer can run before Qt paints/uploads a new
                     # layered frame. Wait with virtual time fixed before taking
                     # pixel evidence; otherwise grabs may contain old buffers.
                     QTest.qWait(60)
-                    bounds = window.mask().boundingRect().translated(window.pos())
+                    # Other topmost desktop companions can raise status bubbles
+                    # over the test. Keep the isolated background and pet above
+                    # them before comparing desktop pixels.
+                    receiver.raise_()
+                    window.raise_()
+                    QTest.qWait(20)
+                    bounds = window.visible_region.boundingRect().translated(window.pos())
                     assert area.contains(bounds)
                     for edge in (horizontal, vertical):
                         if edge:
@@ -95,6 +101,13 @@ def capture(app: QApplication, receiver: Receiver, output: Path) -> int:
                     if mismatches:
                         actual.save(str(output / f"failure-{name}-actual.png"))
                         expected.save(str(output / f"failure-{name}-expected.png"))
+                        window.frame.save(str(output / f"failure-{name}-frame.png"))
+                        (output / f"failure-{name}.json").write_text(json.dumps({
+                            "position": [window.x(), window.y()],
+                            "geometry": window.geometry().getRect(), "crop": crop.getRect(),
+                            "bounds": bounds.getRect(), "view": asdict(pet.view),
+                            "frame_size": [window.frame.width(), window.frame.height()],
+                        }, indent=2), encoding="utf-8")
                     assert mismatches == 0, (name, mismatches)
                     if stage == 1 and label == "peak":
                         actual.save(str(output / f"settled-{name}.png"))
@@ -160,7 +173,7 @@ def main() -> int:
     def observe() -> None:
         nonlocal samples
         area = window.screen().availableGeometry()
-        bounds = window.mask().boundingRect().translated(window.pos())
+        bounds = window.visible_region.boundingRect().translated(window.pos())
         contact = [edge for edge in ("left", "right", "top", "bottom")
                    if getattr(bounds, edge)() == getattr(area, edge)()]
         cursor = QCursor.pos()

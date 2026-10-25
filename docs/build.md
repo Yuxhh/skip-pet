@@ -1,6 +1,6 @@
 # Windows 运行与构建
 
-交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.2.0-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
+交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.2.1-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
 
 ## 固定工具链
 

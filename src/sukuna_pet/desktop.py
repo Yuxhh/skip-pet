@@ -36,6 +36,7 @@ class PetWindow(QWidget):
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
         self._renderer = CharacterRenderer()
         self._frame = QImage()
+        self._visible_region = QRegion()
         self._render_key: tuple[PetView, int, float] | None = None
         self._edges = Qt.Edge(0)
         self._pointer_compensation: QPoint | None = None
@@ -63,6 +64,11 @@ class PetWindow(QWidget):
         """Read-only snapshot of the final physical-pixel image used by Qt."""
         return self._frame.copy()
 
+    @property
+    def visible_region(self) -> QRegion:
+        """Logical alpha coverage for geometry, without native visual clipping."""
+        return QRegion(self._visible_region)
+
     def _refresh_frame(self) -> None:
         if not self._update_frame():
             return
@@ -73,7 +79,11 @@ class PetWindow(QWidget):
         if key == self._render_key:
             return False
         self._frame = self._renderer.render(*key)
-        self.setMask(_character_region(self._frame))
+        # A native mask changes immediately, before Qt uploads the new layered
+        # image, exposing mixed old/new contours during animation. Windows uses
+        # the uploaded image's alpha for both display and mouse hit testing.
+        # Keep coverage only for layout; upload the full transparent frame.
+        self._visible_region = _character_region(self._frame)
         self._render_key = key
         self.update()
         return True
@@ -90,7 +100,7 @@ class PetWindow(QWidget):
     def _keep_visible(self) -> None:
         screen: QScreen | None = self.screen()
         if screen not in QApplication.screens():
-            screen = _screen_at(self.mask().boundingRect().translated(self.pos()).center())
+            screen = _screen_at(self._visible_region.boundingRect().translated(self.pos()).center())
         if screen is not None:
             self._move_visible((self.x(), self.y()), screen, follow_edges=True)
 
@@ -106,7 +116,7 @@ class PetWindow(QWidget):
         # Native DPI notifications also recheck after Qt completes the change.
         self._update_frame()
         area = screen.availableGeometry()
-        visible = self.mask().boundingRect()
+        visible = self._visible_region.boundingRect()
         if follow_edges:
             x, y = destination
             if self._edges & Qt.Edge.LeftEdge:

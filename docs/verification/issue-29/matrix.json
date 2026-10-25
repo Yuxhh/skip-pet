@@ -1,0 +1,290 @@
+[
+  {
+    "height": 188,
+    "background": "dark",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 43,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 399,
+    "unique_frames": 55,
+    "painted_frames": 55,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 188,
+    "background": "light",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 46,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 398,
+    "unique_frames": 76,
+    "painted_frames": 83,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 188,
+    "background": "texture",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 45,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 399,
+    "unique_frames": 73,
+    "painted_frames": 78,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 271,
+    "background": "dark",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 41,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 399,
+    "unique_frames": 73,
+    "painted_frames": 73,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 271,
+    "background": "light",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 39,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 400,
+    "unique_frames": 55,
+    "painted_frames": 55,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 271,
+    "background": "texture",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 36,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 395,
+    "unique_frames": 60,
+    "painted_frames": 60,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 320,
+    "background": "dark",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 38,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 399,
+    "unique_frames": 68,
+    "painted_frames": 68,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 320,
+    "background": "light",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 39,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 397,
+    "unique_frames": 54,
+    "painted_frames": 54,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  },
+  {
+    "height": 320,
+    "background": "texture",
+    "input": "public Qt clicks, real time; separate Windows desktop capture process",
+    "interval_ms": 60,
+    "clicks": 40,
+    "duration_seconds": 4,
+    "screen": {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    },
+    "captures": 396,
+    "unique_frames": 63,
+    "painted_frames": 63,
+    "incomplete_frames": 0,
+    "failures": [],
+    "visible_hit": "pet",
+    "transparent_hit": "receiver",
+    "limitations": "Single primary screen DPR 1, finite sampling, public Qt input; not physical mouse or mixed-DPI acceptance"
+  }
+]

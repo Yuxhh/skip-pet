@@ -1,0 +1,7686 @@
+{
+  "input": "Qt public mouse events and exact application virtual time; not OS injection",
+  "pixels": "Windows desktop composition vs final frame over receiver; 60ms fixed-time upload wait",
+  "samples": [
+    {
+      "name": "188-top-stage1-peak",
+      "position": [
+        864,
+        -43
+      ],
+      "bounds": [
+        873,
+        0,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.05
+        ],
+        "left_eye": [
+          808.1,
+          460.05
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.919999999999999,
+        "head_angle": -4.258383090832953,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage1-held",
+      "position": [
+        864,
+        -14
+      ],
+      "bounds": [
+        881,
+        0,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage2-peak",
+      "position": [
+        864,
+        -45
+      ],
+      "bounds": [
+        873,
+        0,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105,
+          468.23
+        ],
+        "left_eye": [
+          789.77,
+          457.23
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999998,
+        "head_angle": -0.285762560000002,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage2-held",
+      "position": [
+        864,
+        -22
+      ],
+      "bounds": [
+        881,
+        0,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage3-peak",
+      "position": [
+        864,
+        -44
+      ],
+      "bounds": [
+        873,
+        0,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333332,
+        "head_angle": -3.2808463541666644,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage3-held",
+      "position": [
+        864,
+        -16
+      ],
+      "bounds": [
+        881,
+        0,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage0-peak",
+      "position": [
+        864,
+        -49
+      ],
+      "bounds": [
+        873,
+        0,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-top-stage0-held",
+      "position": [
+        864,
+        -24
+      ],
+      "bounds": [
+        881,
+        0,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage1-peak",
+      "position": [
+        864,
+        853
+      ],
+      "bounds": [
+        873,
+        896,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage1-held",
+      "position": [
+        864,
+        854
+      ],
+      "bounds": [
+        881,
+        868,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage2-peak",
+      "position": [
+        864,
+        853
+      ],
+      "bounds": [
+        873,
+        898,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage2-held",
+      "position": [
+        864,
+        854
+      ],
+      "bounds": [
+        881,
+        876,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage3-peak",
+      "position": [
+        864,
+        853
+      ],
+      "bounds": [
+        873,
+        897,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage3-held",
+      "position": [
+        864,
+        854
+      ],
+      "bounds": [
+        881,
+        870,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage0-peak",
+      "position": [
+        864,
+        853
+      ],
+      "bounds": [
+        873,
+        902,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-bottom-stage0-held",
+      "position": [
+        864,
+        854
+      ],
+      "bounds": [
+        881,
+        878,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage1-peak",
+      "position": [
+        -9,
+        415
+      ],
+      "bounds": [
+        0,
+        458,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage1-held",
+      "position": [
+        -17,
+        415
+      ],
+      "bounds": [
+        0,
+        429,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage2-peak",
+      "position": [
+        -9,
+        415
+      ],
+      "bounds": [
+        0,
+        460,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage2-held",
+      "position": [
+        -17,
+        415
+      ],
+      "bounds": [
+        0,
+        437,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage3-peak",
+      "position": [
+        -9,
+        415
+      ],
+      "bounds": [
+        0,
+        459,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage3-held",
+      "position": [
+        -17,
+        415
+      ],
+      "bounds": [
+        0,
+        431,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage0-peak",
+      "position": [
+        -9,
+        415
+      ],
+      "bounds": [
+        0,
+        464,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-stage0-held",
+      "position": [
+        -17,
+        415
+      ],
+      "bounds": [
+        0,
+        439,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage1-peak",
+      "position": [
+        1738,
+        415
+      ],
+      "bounds": [
+        1747,
+        458,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.04999999999995
+        ],
+        "left_eye": [
+          808.0999999999999,
+          460.04999999999995
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage1-held",
+      "position": [
+        1746,
+        415
+      ],
+      "bounds": [
+        1763,
+        429,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage2-peak",
+      "position": [
+        1738,
+        415
+      ],
+      "bounds": [
+        1747,
+        460,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage2-held",
+      "position": [
+        1746,
+        415
+      ],
+      "bounds": [
+        1763,
+        437,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage3-peak",
+      "position": [
+        1738,
+        415
+      ],
+      "bounds": [
+        1747,
+        459,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage3-held",
+      "position": [
+        1746,
+        415
+      ],
+      "bounds": [
+        1763,
+        431,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage0-peak",
+      "position": [
+        1738,
+        415
+      ],
+      "bounds": [
+        1747,
+        464,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-stage0-held",
+      "position": [
+        1746,
+        415
+      ],
+      "bounds": [
+        1763,
+        439,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage1-peak",
+      "position": [
+        -9,
+        -43
+      ],
+      "bounds": [
+        0,
+        0,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage1-held",
+      "position": [
+        -17,
+        -14
+      ],
+      "bounds": [
+        0,
+        0,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage2-peak",
+      "position": [
+        -9,
+        -45
+      ],
+      "bounds": [
+        0,
+        0,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage2-held",
+      "position": [
+        -17,
+        -22
+      ],
+      "bounds": [
+        0,
+        0,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage3-peak",
+      "position": [
+        -9,
+        -44
+      ],
+      "bounds": [
+        0,
+        0,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage3-held",
+      "position": [
+        -17,
+        -16
+      ],
+      "bounds": [
+        0,
+        0,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage0-peak",
+      "position": [
+        -9,
+        -49
+      ],
+      "bounds": [
+        0,
+        0,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-top-stage0-held",
+      "position": [
+        -17,
+        -24
+      ],
+      "bounds": [
+        0,
+        0,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage1-peak",
+      "position": [
+        -9,
+        853
+      ],
+      "bounds": [
+        0,
+        896,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage1-held",
+      "position": [
+        -17,
+        854
+      ],
+      "bounds": [
+        0,
+        868,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage2-peak",
+      "position": [
+        -9,
+        853
+      ],
+      "bounds": [
+        0,
+        898,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage2-held",
+      "position": [
+        -17,
+        854
+      ],
+      "bounds": [
+        0,
+        876,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage3-peak",
+      "position": [
+        -9,
+        853
+      ],
+      "bounds": [
+        0,
+        897,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage3-held",
+      "position": [
+        -17,
+        854
+      ],
+      "bounds": [
+        0,
+        870,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage0-peak",
+      "position": [
+        -9,
+        853
+      ],
+      "bounds": [
+        0,
+        902,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-left-bottom-stage0-held",
+      "position": [
+        -17,
+        854
+      ],
+      "bounds": [
+        0,
+        878,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage1-peak",
+      "position": [
+        1738,
+        -43
+      ],
+      "bounds": [
+        1747,
+        0,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage1-held",
+      "position": [
+        1746,
+        -14
+      ],
+      "bounds": [
+        1763,
+        0,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage2-peak",
+      "position": [
+        1738,
+        -45
+      ],
+      "bounds": [
+        1747,
+        0,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage2-held",
+      "position": [
+        1746,
+        -22
+      ],
+      "bounds": [
+        1763,
+        0,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage3-peak",
+      "position": [
+        1738,
+        -44
+      ],
+      "bounds": [
+        1747,
+        0,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage3-held",
+      "position": [
+        1746,
+        -16
+      ],
+      "bounds": [
+        1763,
+        0,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage0-peak",
+      "position": [
+        1738,
+        -49
+      ],
+      "bounds": [
+        1747,
+        0,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-top-stage0-held",
+      "position": [
+        1746,
+        -24
+      ],
+      "bounds": [
+        1763,
+        0,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage1-peak",
+      "position": [
+        1738,
+        853
+      ],
+      "bounds": [
+        1747,
+        896,
+        173,
+        136
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000016,
+        "head_angle": -4.258383090832965,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage1-held",
+      "position": [
+        1746,
+        854
+      ],
+      "bounds": [
+        1763,
+        868,
+        157,
+        164
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage2-peak",
+      "position": [
+        1738,
+        853
+      ],
+      "bounds": [
+        1747,
+        898,
+        173,
+        134
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage2-held",
+      "position": [
+        1746,
+        854
+      ],
+      "bounds": [
+        1763,
+        876,
+        157,
+        156
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage3-peak",
+      "position": [
+        1738,
+        853
+      ],
+      "bounds": [
+        1747,
+        897,
+        173,
+        135
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage3-held",
+      "position": [
+        1746,
+        854
+      ],
+      "bounds": [
+        1763,
+        870,
+        157,
+        162
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage0-peak",
+      "position": [
+        1738,
+        853
+      ],
+      "bounds": [
+        1747,
+        902,
+        173,
+        130
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "188-right-bottom-stage0-held",
+      "position": [
+        1746,
+        854
+      ],
+      "bounds": [
+        1763,
+        878,
+        157,
+        154
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage1-peak",
+      "position": [
+        822,
+        -62
+      ],
+      "bounds": [
+        835,
+        0,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.05
+        ],
+        "left_eye": [
+          808.1,
+          460.05
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.919999999999999,
+        "head_angle": -4.258383090832953,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage1-held",
+      "position": [
+        822,
+        -21
+      ],
+      "bounds": [
+        846,
+        0,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage2-peak",
+      "position": [
+        822,
+        -65
+      ],
+      "bounds": [
+        835,
+        0,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105,
+          468.23
+        ],
+        "left_eye": [
+          789.77,
+          457.23
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999998,
+        "head_angle": -0.285762560000002,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage2-held",
+      "position": [
+        822,
+        -31
+      ],
+      "bounds": [
+        846,
+        0,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage3-peak",
+      "position": [
+        822,
+        -64
+      ],
+      "bounds": [
+        835,
+        0,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333332,
+        "head_angle": -3.2808463541666644,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage3-held",
+      "position": [
+        822,
+        -24
+      ],
+      "bounds": [
+        846,
+        0,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage0-peak",
+      "position": [
+        822,
+        -70
+      ],
+      "bounds": [
+        835,
+        0,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-top-stage0-held",
+      "position": [
+        822,
+        -35
+      ],
+      "bounds": [
+        846,
+        0,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage1-peak",
+      "position": [
+        822,
+        774
+      ],
+      "bounds": [
+        835,
+        836,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage1-held",
+      "position": [
+        822,
+        776
+      ],
+      "bounds": [
+        846,
+        797,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage2-peak",
+      "position": [
+        822,
+        774
+      ],
+      "bounds": [
+        835,
+        839,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage2-held",
+      "position": [
+        822,
+        776
+      ],
+      "bounds": [
+        846,
+        807,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage3-peak",
+      "position": [
+        822,
+        774
+      ],
+      "bounds": [
+        835,
+        838,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage3-held",
+      "position": [
+        822,
+        776
+      ],
+      "bounds": [
+        846,
+        800,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage0-peak",
+      "position": [
+        822,
+        774
+      ],
+      "bounds": [
+        835,
+        844,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-bottom-stage0-held",
+      "position": [
+        822,
+        776
+      ],
+      "bounds": [
+        846,
+        811,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage1-peak",
+      "position": [
+        -13,
+        370
+      ],
+      "bounds": [
+        0,
+        432,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage1-held",
+      "position": [
+        -24,
+        370
+      ],
+      "bounds": [
+        0,
+        391,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage2-peak",
+      "position": [
+        -13,
+        370
+      ],
+      "bounds": [
+        0,
+        435,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage2-held",
+      "position": [
+        -24,
+        370
+      ],
+      "bounds": [
+        0,
+        401,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage3-peak",
+      "position": [
+        -13,
+        370
+      ],
+      "bounds": [
+        0,
+        434,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage3-held",
+      "position": [
+        -24,
+        370
+      ],
+      "bounds": [
+        0,
+        394,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage0-peak",
+      "position": [
+        -13,
+        370
+      ],
+      "bounds": [
+        0,
+        440,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-stage0-held",
+      "position": [
+        -24,
+        370
+      ],
+      "bounds": [
+        0,
+        405,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage1-peak",
+      "position": [
+        1658,
+        370
+      ],
+      "bounds": [
+        1671,
+        432,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.04999999999995
+        ],
+        "left_eye": [
+          808.0999999999999,
+          460.04999999999995
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage1-held",
+      "position": [
+        1669,
+        370
+      ],
+      "bounds": [
+        1693,
+        391,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage2-peak",
+      "position": [
+        1658,
+        370
+      ],
+      "bounds": [
+        1671,
+        435,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage2-held",
+      "position": [
+        1669,
+        370
+      ],
+      "bounds": [
+        1693,
+        401,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage3-peak",
+      "position": [
+        1658,
+        370
+      ],
+      "bounds": [
+        1671,
+        434,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage3-held",
+      "position": [
+        1669,
+        370
+      ],
+      "bounds": [
+        1693,
+        394,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage0-peak",
+      "position": [
+        1658,
+        370
+      ],
+      "bounds": [
+        1671,
+        440,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-stage0-held",
+      "position": [
+        1669,
+        370
+      ],
+      "bounds": [
+        1693,
+        405,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage1-peak",
+      "position": [
+        -13,
+        -62
+      ],
+      "bounds": [
+        0,
+        0,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage1-held",
+      "position": [
+        -24,
+        -21
+      ],
+      "bounds": [
+        0,
+        0,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage2-peak",
+      "position": [
+        -13,
+        -65
+      ],
+      "bounds": [
+        0,
+        0,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage2-held",
+      "position": [
+        -24,
+        -31
+      ],
+      "bounds": [
+        0,
+        0,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage3-peak",
+      "position": [
+        -13,
+        -64
+      ],
+      "bounds": [
+        0,
+        0,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage3-held",
+      "position": [
+        -24,
+        -24
+      ],
+      "bounds": [
+        0,
+        0,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage0-peak",
+      "position": [
+        -13,
+        -70
+      ],
+      "bounds": [
+        0,
+        0,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-top-stage0-held",
+      "position": [
+        -24,
+        -35
+      ],
+      "bounds": [
+        0,
+        0,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage1-peak",
+      "position": [
+        -13,
+        774
+      ],
+      "bounds": [
+        0,
+        836,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage1-held",
+      "position": [
+        -24,
+        776
+      ],
+      "bounds": [
+        0,
+        797,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage2-peak",
+      "position": [
+        -13,
+        774
+      ],
+      "bounds": [
+        0,
+        839,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage2-held",
+      "position": [
+        -24,
+        776
+      ],
+      "bounds": [
+        0,
+        807,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage3-peak",
+      "position": [
+        -13,
+        774
+      ],
+      "bounds": [
+        0,
+        838,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage3-held",
+      "position": [
+        -24,
+        776
+      ],
+      "bounds": [
+        0,
+        800,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage0-peak",
+      "position": [
+        -13,
+        774
+      ],
+      "bounds": [
+        0,
+        844,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-left-bottom-stage0-held",
+      "position": [
+        -24,
+        776
+      ],
+      "bounds": [
+        0,
+        811,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage1-peak",
+      "position": [
+        1658,
+        -62
+      ],
+      "bounds": [
+        1671,
+        0,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage1-held",
+      "position": [
+        1669,
+        -21
+      ],
+      "bounds": [
+        1693,
+        0,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage2-peak",
+      "position": [
+        1658,
+        -65
+      ],
+      "bounds": [
+        1671,
+        0,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage2-held",
+      "position": [
+        1669,
+        -31
+      ],
+      "bounds": [
+        1693,
+        0,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage3-peak",
+      "position": [
+        1658,
+        -64
+      ],
+      "bounds": [
+        1671,
+        0,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage3-held",
+      "position": [
+        1669,
+        -24
+      ],
+      "bounds": [
+        1693,
+        0,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage0-peak",
+      "position": [
+        1658,
+        -70
+      ],
+      "bounds": [
+        1671,
+        0,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-top-stage0-held",
+      "position": [
+        1669,
+        -35
+      ],
+      "bounds": [
+        1693,
+        0,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage1-peak",
+      "position": [
+        1658,
+        774
+      ],
+      "bounds": [
+        1671,
+        836,
+        249,
+        196
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000016,
+        "head_angle": -4.258383090832965,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage1-held",
+      "position": [
+        1669,
+        776
+      ],
+      "bounds": [
+        1693,
+        797,
+        227,
+        235
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage2-peak",
+      "position": [
+        1658,
+        774
+      ],
+      "bounds": [
+        1671,
+        839,
+        249,
+        193
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage2-held",
+      "position": [
+        1669,
+        776
+      ],
+      "bounds": [
+        1693,
+        807,
+        227,
+        225
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage3-peak",
+      "position": [
+        1658,
+        774
+      ],
+      "bounds": [
+        1671,
+        838,
+        249,
+        194
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage3-held",
+      "position": [
+        1669,
+        776
+      ],
+      "bounds": [
+        1693,
+        800,
+        227,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage0-peak",
+      "position": [
+        1658,
+        774
+      ],
+      "bounds": [
+        1671,
+        844,
+        249,
+        188
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "271-right-bottom-stage0-held",
+      "position": [
+        1669,
+        776
+      ],
+      "bounds": [
+        1693,
+        811,
+        227,
+        221
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage1-peak",
+      "position": [
+        797,
+        -73
+      ],
+      "bounds": [
+        812,
+        0,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.05
+        ],
+        "left_eye": [
+          808.1,
+          460.05
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.919999999999999,
+        "head_angle": -4.258383090832953,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage1-held",
+      "position": [
+        797,
+        -16
+      ],
+      "bounds": [
+        826,
+        0,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage2-peak",
+      "position": [
+        797,
+        -77
+      ],
+      "bounds": [
+        812,
+        0,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105,
+          468.23
+        ],
+        "left_eye": [
+          789.77,
+          457.23
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999998,
+        "head_angle": -0.285762560000002,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage2-held",
+      "position": [
+        797,
+        -37
+      ],
+      "bounds": [
+        826,
+        0,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage3-peak",
+      "position": [
+        797,
+        -75
+      ],
+      "bounds": [
+        812,
+        0,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333332,
+        "head_angle": -3.2808463541666644,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage3-held",
+      "position": [
+        797,
+        -25
+      ],
+      "bounds": [
+        826,
+        0,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage0-peak",
+      "position": [
+        797,
+        -82
+      ],
+      "bounds": [
+        812,
+        0,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-top-stage0-held",
+      "position": [
+        797,
+        -41
+      ],
+      "bounds": [
+        826,
+        0,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage1-peak",
+      "position": [
+        797,
+        727
+      ],
+      "bounds": [
+        812,
+        800,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage1-held",
+      "position": [
+        797,
+        725
+      ],
+      "bounds": [
+        826,
+        741,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage2-peak",
+      "position": [
+        797,
+        727
+      ],
+      "bounds": [
+        812,
+        804,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage2-held",
+      "position": [
+        797,
+        725
+      ],
+      "bounds": [
+        826,
+        762,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage3-peak",
+      "position": [
+        797,
+        727
+      ],
+      "bounds": [
+        812,
+        802,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage3-held",
+      "position": [
+        797,
+        725
+      ],
+      "bounds": [
+        826,
+        750,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage0-peak",
+      "position": [
+        797,
+        727
+      ],
+      "bounds": [
+        812,
+        809,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-bottom-stage0-held",
+      "position": [
+        797,
+        725
+      ],
+      "bounds": [
+        826,
+        766,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage1-peak",
+      "position": [
+        -15,
+        342
+      ],
+      "bounds": [
+        0,
+        415,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.565,
+          471.05000000000007
+        ],
+        "left_eye": [
+          808.1000000000001,
+          460.05000000000007
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000002,
+        "head_angle": -4.258383090832955,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage1-held",
+      "position": [
+        -29,
+        342
+      ],
+      "bounds": [
+        0,
+        358,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage2-peak",
+      "position": [
+        -15,
+        342
+      ],
+      "bounds": [
+        0,
+        419,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0105000000001,
+          468.22999999999996
+        ],
+        "left_eye": [
+          789.77,
+          457.22999999999996
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.92,
+        "head_angle": -0.28576255999999756,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage2-held",
+      "position": [
+        -29,
+        342
+      ],
+      "bounds": [
+        0,
+        379,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage3-peak",
+      "position": [
+        -15,
+        342
+      ],
+      "bounds": [
+        0,
+        417,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.58333333333333,
+        "head_angle": -3.28084635416666,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage3-held",
+      "position": [
+        -29,
+        342
+      ],
+      "bounds": [
+        0,
+        367,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage0-peak",
+      "position": [
+        -15,
+        342
+      ],
+      "bounds": [
+        0,
+        424,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-stage0-held",
+      "position": [
+        -29,
+        342
+      ],
+      "bounds": [
+        0,
+        383,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage1-peak",
+      "position": [
+        1610,
+        342
+      ],
+      "bounds": [
+        1625,
+        415,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999999,
+          471.04999999999995
+        ],
+        "left_eye": [
+          808.0999999999999,
+          460.04999999999995
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage1-held",
+      "position": [
+        1624,
+        342
+      ],
+      "bounds": [
+        1653,
+        358,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage2-peak",
+      "position": [
+        1610,
+        342
+      ],
+      "bounds": [
+        1625,
+        419,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage2-held",
+      "position": [
+        1624,
+        342
+      ],
+      "bounds": [
+        1653,
+        379,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage3-peak",
+      "position": [
+        1610,
+        342
+      ],
+      "bounds": [
+        1625,
+        417,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage3-held",
+      "position": [
+        1624,
+        342
+      ],
+      "bounds": [
+        1653,
+        367,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage0-peak",
+      "position": [
+        1610,
+        342
+      ],
+      "bounds": [
+        1625,
+        424,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-stage0-held",
+      "position": [
+        1624,
+        342
+      ],
+      "bounds": [
+        1653,
+        383,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage1-peak",
+      "position": [
+        -15,
+        -73
+      ],
+      "bounds": [
+        0,
+        0,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage1-held",
+      "position": [
+        -29,
+        -16
+      ],
+      "bounds": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage2-peak",
+      "position": [
+        -15,
+        -77
+      ],
+      "bounds": [
+        0,
+        0,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage2-held",
+      "position": [
+        -29,
+        -37
+      ],
+      "bounds": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage3-peak",
+      "position": [
+        -15,
+        -75
+      ],
+      "bounds": [
+        0,
+        0,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage3-held",
+      "position": [
+        -29,
+        -25
+      ],
+      "bounds": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage0-peak",
+      "position": [
+        -15,
+        -82
+      ],
+      "bounds": [
+        0,
+        0,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-top-stage0-held",
+      "position": [
+        -29,
+        -41
+      ],
+      "bounds": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage1-peak",
+      "position": [
+        -15,
+        727
+      ],
+      "bounds": [
+        0,
+        800,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage1-held",
+      "position": [
+        -29,
+        725
+      ],
+      "bounds": [
+        0,
+        741,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage2-peak",
+      "position": [
+        -15,
+        727
+      ],
+      "bounds": [
+        0,
+        804,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.919999999999987,
+        "head_angle": -0.28576256000001,
+        "head_scale": 1.03552128,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage2-held",
+      "position": [
+        -29,
+        725
+      ],
+      "bounds": [
+        0,
+        762,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage3-peak",
+      "position": [
+        -15,
+        727
+      ],
+      "bounds": [
+        0,
+        802,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333343,
+        "head_angle": -3.2808463541666795,
+        "head_scale": 1.0425057870370371,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage3-held",
+      "position": [
+        -29,
+        725
+      ],
+      "bounds": [
+        0,
+        750,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage0-peak",
+      "position": [
+        -15,
+        727
+      ],
+      "bounds": [
+        0,
+        809,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-left-bottom-stage0-held",
+      "position": [
+        -29,
+        725
+      ],
+      "bounds": [
+        0,
+        766,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage1-peak",
+      "position": [
+        1610,
+        -73
+      ],
+      "bounds": [
+        1625,
+        0,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.9199999999999875,
+        "head_angle": -4.258383090832945,
+        "head_scale": 1.052899168830223,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage1-held",
+      "position": [
+        1624,
+        -16
+      ],
+      "bounds": [
+        1653,
+        0,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage2-peak",
+      "position": [
+        1610,
+        -77
+      ],
+      "bounds": [
+        1625,
+        0,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage2-held",
+      "position": [
+        1624,
+        -37
+      ],
+      "bounds": [
+        1653,
+        0,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage3-peak",
+      "position": [
+        1610,
+        -75
+      ],
+      "bounds": [
+        1625,
+        0,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage3-held",
+      "position": [
+        1624,
+        -25
+      ],
+      "bounds": [
+        1653,
+        0,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage0-peak",
+      "position": [
+        1610,
+        -82
+      ],
+      "bounds": [
+        1625,
+        0,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-top-stage0-held",
+      "position": [
+        1624,
+        -41
+      ],
+      "bounds": [
+        1653,
+        0,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage1-peak",
+      "position": [
+        1610,
+        727
+      ],
+      "bounds": [
+        1625,
+        800,
+        295,
+        232
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": false,
+        "right_eye": [
+          645.5649999999997,
+          471.04999999999984
+        ],
+        "left_eye": [
+          808.0999999999997,
+          460.04999999999984
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 7.920000000000016,
+        "head_angle": -4.258383090832965,
+        "head_scale": 1.0528991688302232,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage1-held",
+      "position": [
+        1624,
+        725
+      ],
+      "bounds": [
+        1653,
+        741,
+        267,
+        291
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 1,
+        "holding": true,
+        "right_eye": [
+          639.0,
+          467.0
+        ],
+        "left_eye": [
+          798.0,
+          456.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 13.0,
+        "head_angle": -6.44,
+        "head_scale": 1.08,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage2-peak",
+      "position": [
+        1610,
+        727
+      ],
+      "bounds": [
+        1625,
+        804,
+        295,
+        228
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": false,
+        "right_eye": [
+          625.0104999999996,
+          468.2300000000001
+        ],
+        "left_eye": [
+          789.77,
+          457.2300000000001
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 20.920000000000016,
+        "head_angle": -0.2857625599999869,
+        "head_scale": 1.0355212799999998,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage2-held",
+      "position": [
+        1624,
+        725
+      ],
+      "bounds": [
+        1653,
+        762,
+        267,
+        270
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage3-peak",
+      "position": [
+        1610,
+        727
+      ],
+      "bounds": [
+        1625,
+        802,
+        295,
+        230
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": false,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.9829629131445341,
+        "head_phase": 28.583333333333314,
+        "head_angle": -3.2808463541666377,
+        "head_scale": 1.042505787037037,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage3-held",
+      "position": [
+        1624,
+        725
+      ],
+      "bounds": [
+        1653,
+        750,
+        267,
+        282
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 3,
+        "holding": true,
+        "right_eye": [
+          642.25,
+          483.0
+        ],
+        "left_eye": [
+          803.0,
+          472.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 34.0,
+        "head_angle": -9.0,
+        "head_scale": 1.065,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage0-peak",
+      "position": [
+        1610,
+        727
+      ],
+      "bounds": [
+        1625,
+        809,
+        295,
+        223
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.1,
+          0.85
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    },
+    {
+      "name": "320-right-bottom-stage0-held",
+      "position": [
+        1624,
+        725
+      ],
+      "bounds": [
+        1653,
+        766,
+        267,
+        266
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "view": {
+        "stage": 0,
+        "holding": true,
+        "right_eye": [
+          652.0,
+          476.0
+        ],
+        "left_eye": [
+          818.0,
+          465.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 0.0,
+        "head_angle": 0.0,
+        "head_scale": 1.0,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "pixel_mismatches_over_3": 0
+    }
+  ]
+}

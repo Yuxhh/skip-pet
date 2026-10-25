@@ -74,7 +74,7 @@ def main() -> int:
             nonlocal samples
             screen = window.screen()
             area = screen.availableGeometry()
-            bounds = window.mask().boundingRect().translated(window.pos())
+            bounds = window.visible_region.boundingRect().translated(window.pos())
             cursor = QCursor.pos()
             record("sample", screen=screen_info(screen), position=[window.x(), window.y()],
                    height=window.height(), frame_dpr=window.frame.devicePixelRatio(),
