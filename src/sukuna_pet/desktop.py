@@ -111,11 +111,9 @@ class PetWindow(QWidget):
 
     def _advance(self) -> None:
         now = perf_counter()
-        remaining = min(150, (now - self._last_time) * 1000)
-        while remaining > 0:
-            step = min(4, remaining)
-            self._pet.advance(step)
-            remaining -= step
+        # One capped real frame enters the model once. PetApplication splits
+        # motion into <=4ms steps, but keeps automatic waits frame-granular.
+        self._pet.advance(min(150, (now - self._last_time) * 1000))
         self._last_time = now
         self._refresh_frame()
         self._move_visible((self.x(), self.y()), self.screen())

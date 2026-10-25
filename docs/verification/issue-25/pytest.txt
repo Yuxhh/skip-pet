@@ -1,0 +1,9 @@
+Final isolated staged snapshot (excludes concurrent unstaged edge work):
+$env:QT_QPA_PLATFORM='offscreen'
+$env:PYTHONPATH=(Join-Path (Get-Location) '.scratch/issue25-verification-checkout/src')
+.\.venv\Scripts\python.exe -m pytest .scratch/issue25-verification-checkout/tests -q -c .scratch/issue25-verification-checkout/pyproject.toml --basetemp=.scratch/issue25-snapshot-tests
+137 passed in 42.18s
+
+Earlier shared workspace run:
+.\.venv\Scripts\python.exe -m pytest -q --basetemp=.scratch/issue25-full
+137 passed in 39.41s

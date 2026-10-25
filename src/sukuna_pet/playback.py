@@ -1,7 +1,8 @@
 """Application interaction boundary, independent of Qt and wall-clock time.
 
 Eye rules originate in 9eef9e2; independent head progress follows frozen V5
-32c9f985. Rendering never controls playback or blink timing.
+32c9f985. Repeated-stage scheduling follows native V5 4ecb85c8.
+Rendering never controls playback or blink timing.
 All coordinates are in the original 1419 x 1108 redraw, before display scaling.
 """
 
@@ -80,10 +81,13 @@ class PetApplication:
         self._head_age = 0.0
         self._head_duration = 0.0
         self._bounce_age = 220.0
+        self._wait_age = 0.0
         self._pointer_start: tuple[int, int] | None = None
         self._window_start = (0, 0)
         self._drag_distance = 0
         self._dragging = False
+        if self._mode == "always":
+            self.click()
 
     def pointer_press(
         self, position: tuple[int, int], window_position: tuple[int, int], *, drag_distance: int,
@@ -132,15 +136,10 @@ class PetApplication:
             return
         if self._settings_path is not None:
             save_mode(self._settings_path, mode)
-        if mode == "click" and self._blink_destination is None:
-            phase = self._position % 41
-            stop_at = next(bound for bound in (13, 24, 34, 41) if bound > phase)
-            self._target = self._position + stop_at - phase
-            self._stage = (13, 24, 34, 41).index(stop_at) + 1
-            self._stage %= 4
-            self._moving = True
-            self._follow_head(self._target, (self._target - self._head_position) / 0.072)
         self._mode = mode
+        # Native V5 repeats the click action; switching off only stops scheduling.
+        if mode == "always" and not self._busy():
+            self.click()
 
     @property
     def view(self) -> PetView:
@@ -151,7 +150,7 @@ class PetApplication:
         angle, scale = _head_pose(self._head_position)
         pulse = math.sin(math.pi * self._bounce_age / 220) if self._bounce_age < 220 else 0
         return PetView(
-            self._stage, self._mode == "click" and not self._moving
+            self._stage, not self._moving
             and self._blink_age is None and self._head_age >= self._head_duration,
             right, left, closure,
             self._head_position % 41, angle, scale,
@@ -160,14 +159,13 @@ class PetApplication:
 
     def click(self) -> None:
         self._bounce_age = 0
+        self._wait_age = 0
         # The prototype commits a pending closed-eye jump before retargeting.
         # Keep the current blink envelope even when a new target replaces it.
         if self._blink_destination is not None:
             self._position = self._blink_destination
             self._moving = False
             self._blink_destination = None
-        if self._mode == "always":
-            self._stage = self._phase_at_position()
         self._stage = (self._stage + 1) % 4
         distance = (_BOUNDS[self._stage] - self._position % 41) % 41
         if distance < 0.0001:
@@ -194,12 +192,30 @@ class PetApplication:
             self._head_position = self._head_from + (self._head_to - self._head_from) * u
 
     def advance(self, elapsed_ms: float) -> None:
+        """Consume one uncapped virtual frame, scheduling at most one action."""
         if not math.isfinite(elapsed_ms) or elapsed_ms < 0:
             raise ValueError("elapsed_ms must be finite and nonnegative")
+        # One call is one virtual frame: never cap it here. Qt caps real frames
+        # once, before calling us. Only model integration is split into <=4ms.
+        remaining = elapsed_ms
+        while remaining > 0:
+            step = min(4, remaining)
+            self._advance_motion(step)
+            remaining -= step
         self._bounce_age = min(220, self._bounce_age + elapsed_ms)
-        if self._mode == "always":
-            self._advance_continuous(elapsed_ms)
-            return
+        if self._mode == "always" and not self._busy():
+            # Match the native preview's frame-granular wait, including the
+            # entire frame that first observes completion. Do not carry excess
+            # time into another action or queue missed actions after a stall.
+            self._wait_age += elapsed_ms
+            if self._wait_age >= 450:
+                self.click()
+
+    def _busy(self) -> bool:
+        return (self._moving or self._blink_age is not None
+                or self._head_age < self._head_duration or self._bounce_age < 220)
+
+    def _advance_motion(self, elapsed_ms: float) -> None:
         self._advance_head(elapsed_ms)
         if self._blink_destination is not None:
             assert self._blink_age is not None
@@ -219,46 +235,3 @@ class PetApplication:
             self._blink_age += elapsed_ms
             if self._blink_age >= 240:
                 self._blink_age = None
-
-    def _advance_continuous(self, elapsed_ms: float) -> None:
-        # Consume time at event boundaries, so a delayed Qt frame cannot skip a
-        # blink or a cycle. The prototype resumes motion during the opening lid.
-        while elapsed_ms > 0:
-            if self._blink_destination is not None:
-                assert self._blink_age is not None
-                step = min(elapsed_ms, 120 - self._blink_age)
-                self._blink_age += step
-                self._advance_head(step)
-                if self._blink_age >= 120:
-                    self._position = self._blink_destination
-                    self._blink_destination = None
-                    self._moving = False
-            else:
-                next_blink = (math.floor(self._position / 41) * 41) + 24
-                if next_blink < self._position:
-                    next_blink += 41
-                head_remaining = max(0, self._head_duration - self._head_age)
-                step = min(elapsed_ms, (next_blink - self._position) / 0.072,
-                           head_remaining if head_remaining else math.inf)
-                self._position += step * 0.072
-                if head_remaining:
-                    self._advance_head(step)
-                else:
-                    self._head_position += max(0, min(self._position - self._head_position, step * .144))
-                if self._blink_age is not None:
-                    self._blink_age += step
-                    if self._blink_age >= 240:
-                        self._blink_age = None
-                if self._position >= next_blink - 0.00000001:
-                    self._position = next_blink
-                    self._stage = 3
-                    self._blink_age = 0
-                    self._blink_destination = next_blink + 10
-                    self._follow_head(next_blink + 10, 240)
-            elapsed_ms -= step
-        if self._blink_age is None:
-            self._stage = self._phase_at_position()
-
-    def _phase_at_position(self) -> int:
-        phase = self._position % 41
-        return next((i for i, bound in enumerate((13, 24, 34)) if phase < bound), 3)

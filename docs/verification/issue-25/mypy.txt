@@ -1,0 +1,3 @@
+Final isolated staged snapshot:
+.\.venv\Scripts\python.exe -m mypy --config-file .scratch/issue25-verification-checkout/pyproject.toml .scratch/issue25-verification-checkout/src
+Success: no issues found in 6 source files
