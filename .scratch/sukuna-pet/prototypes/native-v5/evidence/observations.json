@@ -1,0 +1,862 @@
+{
+  "kind": "native Windows experiment; no human visual approval",
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "frozen_commit": "32c9f985d4467c1527b09c34f6868a3ccd3f85b4",
+  "sha256": {
+    "bounce.js": "0a92da27632f7fa7c957f7a70a860a1c868178aed966288c8ac44401c230b3d1",
+    "character.png": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
+    "eyes.js": "b6d8fd257df64a0b0341a2f36472d6009380a0689b4fa0556189cf6d93345c5f",
+    "head-neck-repair.png": "b35cb8225913a28e8df847fab077abe9c23018a77c51e8d5b68b7320ed4b7bb4",
+    "motion-parameters.json": "02e00d24d31458a72f61ab5d179dac2517ab63c8ce02d556648e12246e5968e6",
+    "preview.template.html": "10fb18f7c62330e69179fdb57899c2ce5eb041be8b09304f38b75c72eb07ed44",
+    "rear-collar-complete.png": "ac6520d3a7422e8509ec7edf9e0d784050228044e0252a82a5fcd8522f7b8848",
+    "rig.js": "cdb42687b3db170834648491051a4b1ad5879c22d88d8b36811af47495194666"
+  },
+  "sizes": [
+    {
+      "height_setting": 188,
+      "canvas_dip": [
+        193,
+        188
+      ],
+      "poses": [
+        {
+          "stage": 0,
+          "peak": false,
+          "alpha_bounds_dip": [
+            17,
+            24,
+            157,
+            154
+          ],
+          "region_changed": false,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 15.569
+        },
+        {
+          "stage": 0,
+          "peak": true,
+          "alpha_bounds_dip": [
+            9,
+            49,
+            173,
+            130
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 17.116
+        },
+        {
+          "stage": 1,
+          "peak": false,
+          "alpha_bounds_dip": [
+            17,
+            14,
+            157,
+            164
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 19.853
+        },
+        {
+          "stage": 1,
+          "peak": true,
+          "alpha_bounds_dip": [
+            9,
+            41,
+            173,
+            138
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 17.571
+        },
+        {
+          "stage": 2,
+          "peak": false,
+          "alpha_bounds_dip": [
+            17,
+            22,
+            157,
+            156
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 18.081
+        },
+        {
+          "stage": 2,
+          "peak": true,
+          "alpha_bounds_dip": [
+            9,
+            47,
+            173,
+            132
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 18.426
+        },
+        {
+          "stage": 3,
+          "peak": false,
+          "alpha_bounds_dip": [
+            17,
+            16,
+            157,
+            162
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 26.146
+        },
+        {
+          "stage": 3,
+          "peak": true,
+          "alpha_bounds_dip": [
+            9,
+            42,
+            173,
+            137
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 24.094
+        }
+      ],
+      "edge_contacts": [
+        {
+          "corner": [
+            true,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            0,
+            173,
+            137
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1747,
+            0,
+            173,
+            137
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            true,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            895,
+            173,
+            137
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1747,
+            895,
+            173,
+            137
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        }
+      ]
+    },
+    {
+      "height_setting": 271,
+      "canvas_dip": [
+        278,
+        271
+      ],
+      "poses": [
+        {
+          "stage": 0,
+          "peak": false,
+          "alpha_bounds_dip": [
+            24,
+            35,
+            227,
+            221
+          ],
+          "region_changed": false,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 18.504
+        },
+        {
+          "stage": 0,
+          "peak": true,
+          "alpha_bounds_dip": [
+            13,
+            70,
+            249,
+            188
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 19.691
+        },
+        {
+          "stage": 1,
+          "peak": false,
+          "alpha_bounds_dip": [
+            24,
+            21,
+            227,
+            235
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 20.476
+        },
+        {
+          "stage": 1,
+          "peak": true,
+          "alpha_bounds_dip": [
+            13,
+            58,
+            249,
+            200
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 20.253
+        },
+        {
+          "stage": 2,
+          "peak": false,
+          "alpha_bounds_dip": [
+            24,
+            31,
+            227,
+            225
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 23.138
+        },
+        {
+          "stage": 2,
+          "peak": true,
+          "alpha_bounds_dip": [
+            13,
+            67,
+            249,
+            191
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 23.3
+        },
+        {
+          "stage": 3,
+          "peak": false,
+          "alpha_bounds_dip": [
+            24,
+            24,
+            227,
+            232
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 24.548
+        },
+        {
+          "stage": 3,
+          "peak": true,
+          "alpha_bounds_dip": [
+            13,
+            60,
+            249,
+            198
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 22.769
+        }
+      ],
+      "edge_contacts": [
+        {
+          "corner": [
+            true,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            0,
+            249,
+            198
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1671,
+            0,
+            249,
+            198
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            true,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            834,
+            249,
+            198
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1671,
+            834,
+            249,
+            198
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        }
+      ]
+    },
+    {
+      "height_setting": 320,
+      "canvas_dip": [
+        328,
+        320
+      ],
+      "poses": [
+        {
+          "stage": 0,
+          "peak": false,
+          "alpha_bounds_dip": [
+            29,
+            41,
+            267,
+            266
+          ],
+          "region_changed": false,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 18.31
+        },
+        {
+          "stage": 0,
+          "peak": true,
+          "alpha_bounds_dip": [
+            15,
+            82,
+            295,
+            223
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 21.384
+        },
+        {
+          "stage": 1,
+          "peak": false,
+          "alpha_bounds_dip": [
+            29,
+            16,
+            267,
+            291
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 22.518
+        },
+        {
+          "stage": 1,
+          "peak": true,
+          "alpha_bounds_dip": [
+            15,
+            69,
+            295,
+            236
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 20.766
+        },
+        {
+          "stage": 2,
+          "peak": false,
+          "alpha_bounds_dip": [
+            29,
+            37,
+            267,
+            270
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 21.433
+        },
+        {
+          "stage": 2,
+          "peak": true,
+          "alpha_bounds_dip": [
+            15,
+            79,
+            295,
+            226
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 18.511
+        },
+        {
+          "stage": 3,
+          "peak": false,
+          "alpha_bounds_dip": [
+            29,
+            25,
+            267,
+            282
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 21.906
+        },
+        {
+          "stage": 3,
+          "peak": true,
+          "alpha_bounds_dip": [
+            15,
+            71,
+            295,
+            234
+          ],
+          "region_changed": true,
+          "visible_target": "pet",
+          "transparent_target": "receiver",
+          "render_and_mask_ms": 19.191
+        }
+      ],
+      "edge_contacts": [
+        {
+          "corner": [
+            true,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            0,
+            295,
+            234
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            true
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1625,
+            0,
+            295,
+            234
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            true,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            0,
+            798,
+            295,
+            234
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        },
+        {
+          "corner": [
+            false,
+            false
+          ],
+          "all_poses_and_peaks_flush": true,
+          "visible_bounds": [
+            1625,
+            798,
+            295,
+            234
+          ],
+          "work_area": [
+            0,
+            0,
+            1920,
+            1032
+          ]
+        }
+      ]
+    }
+  ],
+  "gestures": {
+    "four_clicks": [
+      {
+        "stage": 1,
+        "eye": 13,
+        "body": 13,
+        "blinks": 0
+      },
+      {
+        "stage": 2,
+        "eye": 24,
+        "body": 24,
+        "blinks": 0
+      },
+      {
+        "stage": 3,
+        "eye": 34,
+        "body": 34,
+        "blinks": 1
+      },
+      {
+        "stage": 0,
+        "eye": 0,
+        "body": 0,
+        "blinks": 1
+      }
+    ],
+    "blink": {
+      "before_120ms": {
+        "eye": 24,
+        "body": 28.958333333333336,
+        "target": 34,
+        "stage": 3,
+        "mode": "click",
+        "moving": false,
+        "blinkAge": 119,
+        "jump": 34,
+        "clicks": 1,
+        "blinks": 1,
+        "cycles": 0,
+        "bodyFrom": 24,
+        "bodyTo": 34,
+        "bodyAge": 119,
+        "bodyMs": 240,
+        "bodyKind": "blink"
+      },
+      "at_120ms": {
+        "eye": 34,
+        "body": 29,
+        "target": 34,
+        "stage": 3,
+        "mode": "click",
+        "moving": false,
+        "blinkAge": 120,
+        "jump": null,
+        "clicks": 1,
+        "blinks": 1,
+        "cycles": 0,
+        "bodyFrom": 24,
+        "bodyTo": 34,
+        "bodyAge": 120,
+        "bodyMs": 240,
+        "bodyKind": "blink"
+      },
+      "at_240ms": {
+        "eye": 34,
+        "body": 34,
+        "target": 34,
+        "stage": 3,
+        "mode": "click",
+        "moving": false,
+        "blinkAge": 240,
+        "jump": null,
+        "clicks": 1,
+        "blinks": 1,
+        "cycles": 0,
+        "bodyFrom": 24,
+        "bodyTo": 34,
+        "bodyAge": 240,
+        "bodyMs": 240,
+        "bodyKind": "blink"
+      }
+    },
+    "animated_drag": {
+      "click_count_unchanged": true,
+      "drag_count": 1,
+      "position_after_release_stable": true
+    },
+    "rapid_five": {
+      "eye": 54,
+      "body": 54,
+      "target": 54,
+      "stage": 1,
+      "mode": "click",
+      "moving": false,
+      "blinkAge": 1635,
+      "jump": null,
+      "clicks": 5,
+      "blinks": 1,
+      "cycles": 1,
+      "bodyFrom": 14.88,
+      "bodyTo": 54,
+      "bodyAge": 543.3333333333334,
+      "bodyMs": 543.3333333333334,
+      "bodyKind": "regular"
+    },
+    "continuous_v5_5000ms": {
+      "state": {
+        "eye": 82,
+        "body": 82,
+        "target": 82,
+        "stage": 0,
+        "mode": "click",
+        "moving": false,
+        "blinkAge": 1020,
+        "jump": null,
+        "clicks": 8,
+        "blinks": 2,
+        "cycles": 2,
+        "bodyFrom": 75,
+        "bodyTo": 82,
+        "bodyAge": 97.22222222222223,
+        "bodyMs": 97.22222222222223,
+        "bodyKind": "regular"
+      },
+      "automatic_action_times_ms": [
+        660,
+        1320,
+        2000,
+        2660,
+        3320,
+        3980,
+        4660
+      ],
+      "pulse_restarts": true,
+      "wait_after_busy_ms": 450
+    },
+    "switch_to_click_hold": {
+      "eye": 82,
+      "body": 82,
+      "target": 82,
+      "stage": 0,
+      "mode": "click",
+      "moving": false,
+      "blinkAge": 2670,
+      "jump": null,
+      "clicks": 8,
+      "blinks": 2,
+      "cycles": 2,
+      "bodyFrom": 75,
+      "bodyTo": 82,
+      "bodyAge": 97.22222222222223,
+      "bodyMs": 97.22222222222223,
+      "bodyKind": "regular"
+    }
+  },
+  "dpr_raster_only": [
+    {
+      "dpr": 1,
+      "physical_pixels": [
+        328,
+        320
+      ],
+      "logical_region": [
+        15,
+        82,
+        295,
+        223
+      ]
+    },
+    {
+      "dpr": 1.25,
+      "physical_pixels": [
+        410,
+        400
+      ],
+      "logical_region": [
+        15,
+        82,
+        295,
+        223
+      ]
+    },
+    {
+      "dpr": 1.5,
+      "physical_pixels": [
+        492,
+        480
+      ],
+      "logical_region": [
+        15,
+        82,
+        295,
+        224
+      ]
+    },
+    {
+      "dpr": 2,
+      "physical_pixels": [
+        656,
+        640
+      ],
+      "logical_region": [
+        15,
+        82,
+        300,
+        223
+      ]
+    }
+  ],
+  "limits": [
+    "Only one physical 100% monitor is present. No real cross-monitor or mixed-DPI drag has been performed.",
+    "QTest gestures are widget events; OS routing is separately read with WindowFromPoint.",
+    "Human feedback is recorded separately on the decision issue; this experiment log does not grant visual approval."
+  ],
+  "sampling": {
+    "phase_samples": 165,
+    "pulse_extrema": 2,
+    "raster_render_count": 330,
+    "union_bounds_dip": [
+      15,
+      16,
+      309,
+      306
+    ],
+    "render_plus_region_median_ms": 18.522950005717576,
+    "render_plus_region_p95_ms": 22.513199946843088,
+    "all_samples_inside_canvas": true,
+    "note": "Dense raster samples, not an analytic proof of all continuous poses."
+  }
+}

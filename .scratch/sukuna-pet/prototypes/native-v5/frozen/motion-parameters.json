@@ -1,0 +1,71 @@
+{
+  "components": [
+    {
+      "angle_deg": 0,
+      "scale": 1
+    },
+    {
+      "angle_deg": -6.44,
+      "scale": 1.08
+    },
+    {
+      "angle_deg": 1.17,
+      "scale": 1.025
+    },
+    {
+      "angle_deg": -9,
+      "scale": 1.065
+    }
+  ],
+  "source_frames": [
+    16,
+    28,
+    39,
+    53
+  ],
+  "preserve_face_ratio": true,
+  "stage3_angle_degrees": -9,
+  "neck_center": [
+    720,
+    735
+  ],
+  "source_pivot": [
+    710,
+    650
+  ],
+  "neck_center_fixed": true,
+  "independent_xy_translation": false,
+  "click_bounce": {
+    "duration_ms": 220,
+    "width_amplitude": 0.1,
+    "height_amplitude": -0.15,
+    "curve": "sin(pi*p)",
+    "anchor": [
+      709.5,
+      1108
+    ],
+    "repeat": "restart, no accumulation"
+  },
+  "note": "Rotation and uniform scale around the fixed neck center; lower neck attachment blends to rest.",
+  "head_plate_alignment": {
+    "x": 168.3,
+    "y": 10.25,
+    "width": 1118.676,
+    "height": 872.9496,
+    "original_face_fade_top": 634,
+    "original_face_fade_bottom": 658,
+    "method": "uniform alignment using the two eye-white connected-component centers"
+  },
+  "neck_mesh": {
+    "top_y": 700,
+    "bottom_y": 780
+  },
+  "collar_occlusion": "original high collar retained; user says collar may cover the chin",
+  "rear_alignment": {
+    "x": 0,
+    "y": 0,
+    "width": 1419,
+    "height": 1108,
+    "method": "same placement and canvas as approved garment"
+  }
+}
