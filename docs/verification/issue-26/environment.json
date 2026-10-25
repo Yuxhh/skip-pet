@@ -1,0 +1,25 @@
+{
+  "platform": "windows",
+  "input": "Real OS mouse via computer-use or manual input",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "limitations": [
+    "Single-screen Windows evidence; no physical mixed-DPI/multi-screen acceptance"
+  ]
+}

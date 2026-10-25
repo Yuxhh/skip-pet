@@ -37,6 +37,8 @@ class PetWindow(QWidget):
         self._renderer = CharacterRenderer()
         self._frame = QImage()
         self._render_key: tuple[PetView, int, float] | None = None
+        self._edges = Qt.Edge(0)
+        self._pointer_compensation: QPoint | None = None
         self._refresh_frame()
         self._last_time = perf_counter()
         self._timer = QTimer(self)
@@ -68,6 +70,13 @@ class PetWindow(QWidget):
         self._frame = self._renderer.render(*key)
         self.setMask(_character_region(self._frame))
         self._render_key = key
+        previous_position = self.pos()
+        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
+        if self._pointer_compensation is not None:
+            # The application drag origin is fixed at press time. Carry only
+            # contour compensation forward so the next pointer event cannot
+            # undo a frame's movement, including release at an unchanged cursor.
+            self._pointer_compensation += self.pos() - previous_position
         self.update()
 
     def _watch_screen(self, screen: QScreen) -> None:
@@ -81,20 +90,45 @@ class PetWindow(QWidget):
 
     def _keep_visible(self) -> None:
         self._refresh_frame()
-        self._move_visible((self.x(), self.y()), self.screen())
+        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
 
-    def _move_visible(self, destination: tuple[int, int], screen: QScreen) -> None:
+    def _move_visible(
+        self, destination: tuple[int, int], screen: QScreen, *, follow_edges: bool = False,
+    ) -> None:
         # Both rectangles are in Qt logical pixels, including on negative-origin
         # screens. Transparent margins may extend outside the work area.
         area = screen.availableGeometry()
         visible = self.mask().boundingRect()
+        if follow_edges:
+            x, y = destination
+            if self._edges & Qt.Edge.LeftEdge:
+                x = area.left() - visible.left()
+            elif self._edges & Qt.Edge.RightEdge:
+                x = area.right() - visible.right()
+            if self._edges & Qt.Edge.TopEdge:
+                y = area.top() - visible.top()
+            elif self._edges & Qt.Edge.BottomEdge:
+                y = area.bottom() - visible.bottom()
+            destination = x, y
         x = max(area.left() - visible.left(), min(destination[0], area.right() - visible.right()))
         y = max(area.top() - visible.top(), min(destination[1], area.bottom() - visible.bottom()))
         if self.screen() != screen:
             self.setScreen(screen)
         self.move(x, y)
+        self._edges = Qt.Edge(0)
+        if x + visible.left() == area.left():
+            self._edges |= Qt.Edge.LeftEdge
+        elif x + visible.right() == area.right():
+            self._edges |= Qt.Edge.RightEdge
+        if y + visible.top() == area.top():
+            self._edges |= Qt.Edge.TopEdge
+        elif y + visible.bottom() == area.bottom():
+            self._edges |= Qt.Edge.BottomEdge
 
     def _move_drag(self, destination: tuple[int, int], cursor: QPoint) -> None:
+        if self._pointer_compensation is not None:
+            destination = (destination[0] + self._pointer_compensation.x(),
+                           destination[1] + self._pointer_compensation.y())
         screen = QApplication.screenAt(cursor)
         if screen is None:
             # Qt's Windows virtual desktop can have gaps between logical screen
@@ -116,7 +150,7 @@ class PetWindow(QWidget):
         self._pet.advance(min(150, (now - self._last_time) * 1000))
         self._last_time = now
         self._refresh_frame()
-        self._move_visible((self.x(), self.y()), self.screen())
+        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
 
     def paintEvent(self, event: QPaintEvent) -> None:
         painter = QPainter(self)
@@ -125,6 +159,7 @@ class PetWindow(QWidget):
     def mousePressEvent(self, event: QMouseEvent) -> None:
         if event.button() == Qt.MouseButton.LeftButton:
             point = event.globalPosition().toPoint()
+            self._pointer_compensation = QPoint()
             self._pet.pointer_press(
                 (point.x(), point.y()), (self.x(), self.y()),
                 drag_distance=QApplication.startDragDistance(),
@@ -150,21 +185,26 @@ class PetWindow(QWidget):
         destination = self._pet.pointer_release((point.x(), point.y()))
         if destination is not None:
             self._move_drag(destination, point)
+        self._pointer_compensation = None
         self._refresh_frame()
         event.accept()
+
+    def _cancel_pointer(self) -> None:
+        self._pet.cancel_pointer()
+        self._pointer_compensation = None
 
     def event(self, event: QEvent) -> bool:
         if event.type() in (QEvent.Type.UngrabMouse, QEvent.Type.Hide):
             # QWidget can receive events before our application is constructed.
             if hasattr(self, "_pet"):
-                self._pet.cancel_pointer()
+                self._cancel_pointer()
         if event.type() in (QEvent.Type.DevicePixelRatioChange, QEvent.Type.ScreenChangeInternal):
             if hasattr(self, "_renderer"):
                 self._schedule_visibility()
         return super().event(event)
 
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:
-        self._pet.cancel_pointer()
+        self._cancel_pointer()
         menu = QMenu(self)
         modes = QActionGroup(menu)
         for value, label in (("click", "点击跳动"), ("always", "持续跳动")):
@@ -201,7 +241,7 @@ class PetWindow(QWidget):
     def _select_size(self, height: int) -> None:
         if height not in DISPLAY_SIZES or height == self.height():
             return
-        self._pet.cancel_pointer()
+        self._cancel_pointer()
         try:
             if self._settings_path is not None:
                 save_size(self._settings_path, height)
@@ -213,7 +253,7 @@ class PetWindow(QWidget):
         bottom = self.y() + self.height()
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._refresh_frame()
-        self._move_visible((centre_x - self.width() // 2, bottom - height), self.screen())
+        self._move_visible((centre_x - self.width() // 2, bottom - height), self.screen(), follow_edges=True)
         self.update()
 
 

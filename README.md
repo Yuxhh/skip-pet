@@ -1,7 +1,7 @@
 # 宿傩桌宠
 
 原生 Windows 透明半身角色，首次启动静止，点击一次使头颈与眼睛推进一个视线阶段并停留。
-当前源码已接入 [#23](https://github.com/xyd-0811/skip-pet/issues/23) 的冻结 V5 分层头颈动作、固定 3× 眼动及动态透明命中、[#24](https://github.com/xyd-0811/skip-pet/issues/24) 的整体点击回弹与连点接续，以及 [#25](https://github.com/xyd-0811/skip-pet/issues/25) 的持续跳动与模式切换。三张素材随包提供；动态贴边由后续票接入。正式窗口证据见 [#23 验证记录](docs/verification/issue-23/README.md)、[#24 验证记录](docs/verification/issue-24/README.md)和 [#25 验证记录](docs/verification/issue-25/README.md)。
+当前源码已接入 [#23](https://github.com/xyd-0811/skip-pet/issues/23) 的冻结 V5 分层头颈动作、固定 3× 眼动及动态透明命中、[#24](https://github.com/xyd-0811/skip-pet/issues/24) 的整体点击回弹与连点接续、[#25](https://github.com/xyd-0811/skip-pet/issues/25) 的持续跳动与模式切换，以及 [#26](https://github.com/xyd-0811/skip-pet/issues/26) 的动态贴边和贴边缩放。三张素材随包提供。正式窗口证据见 [#23 验证记录](docs/verification/issue-23/README.md)、[#24 验证记录](docs/verification/issue-24/README.md)、[#25 验证记录](docs/verification/issue-25/README.md)和 [#26 验证记录](docs/verification/issue-26/README.md)。
 
 ## 安装版
 
@@ -30,6 +30,7 @@ python -m venv .venv
 
 素材已随 Python 包提供，运行不需要 `.scratch`、参考程序、原型网页、原视频或联网。
 拖动时按鼠标所在屏幕的可用区域限制角色非透明轮廓，避开任务栏；支持负坐标与各屏幕独立的 Qt 逻辑坐标，不用整个虚拟桌面的外包矩形代替工作区。DPI、屏幕布局或工作区变化后重新检查位置，不保存位置。
+人物可贴齐工作区四边和四角，透明画布允许越界。偏头和回弹时按当前最终 alpha 轮廓补偿窗口位置，始终接触所贴边；三档缩放后保留贴边。拖离某条边即解除该方向的贴边，居中播放保持窗口位置稳定。贴边状态不保存，重启恢复默认位置。单屏 Windows 操作与透明穿透证据见 [#26 验证记录](docs/verification/issue-26/README.md)；真实跨屏和混合 DPI 仍由后续票验收。
 安装器由 #17 交付。#16 已完成本机单屏 100% 缩放的真实 Windows 验证；真实多屏和混合 DPI 尚未验证，详见 [#16 验证记录](docs/verification/issue-16/README.md)。
 
 ## 维护与验证
@@ -43,6 +44,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pytest tests/test_desktop.py -q
 .\.venv\Scripts\python.exe -m pytest tests/test_v5.py tests/test_v5_desktop.py -q
 .\.venv\Scripts\python.exe -m pytest tests/test_bounce.py tests/test_bounce_desktop.py -q
+.\.venv\Scripts\python.exe -m pytest tests/test_edges.py -q
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe tools/visual_check.py --show
 .\.venv\Scripts\python.exe tools/verify_v5_modes_native.py
@@ -50,6 +52,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe tools/verify_pointer_native.py --output docs/verification/issue-16
 .\.venv\Scripts\python.exe tools/verify_v5_native.py --capture
 .\.venv\Scripts\python.exe tools/verify_bounce_native.py --capture
+.\.venv\Scripts\python.exe tools/verify_edges_native.py --capture
 ```
 
 `PetApplication.click()`、`select_mode("click" | "always")`、`advance(elapsed_ms)` 与只读 `view`/`mode` 是父规格已确认的应用级测试边界；通过同一设置路径建立新实例验证模式恢复。

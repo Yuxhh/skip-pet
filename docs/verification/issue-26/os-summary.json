@@ -1,0 +1,362 @@
+{
+  "samples": 41161,
+  "fully_visible_samples": 41161,
+  "native_capture_samples": 326,
+  "contact_groups": [
+    {
+      "height": 320,
+      "contact": [
+        "right",
+        "bottom"
+      ],
+      "samples": 6610,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 33,
+      "window_x_range": [
+        1602,
+        1624
+      ],
+      "window_y_range": [
+        722,
+        729
+      ]
+    },
+    {
+      "height": 320,
+      "contact": [
+        "right"
+      ],
+      "samples": 6172,
+      "stages": [
+        2
+      ],
+      "peak_samples": 0,
+      "window_x_range": [
+        1624,
+        1624
+      ],
+      "window_y_range": [
+        425,
+        575
+      ]
+    },
+    {
+      "height": 320,
+      "contact": [
+        "left",
+        "top"
+      ],
+      "samples": 6222,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 34,
+      "window_x_range": [
+        -29,
+        -15
+      ],
+      "window_y_range": [
+        -82,
+        -16
+      ]
+    },
+    {
+      "height": 320,
+      "contact": [
+        "right",
+        "top"
+      ],
+      "samples": 1013,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 18,
+      "window_x_range": [
+        1608,
+        1624
+      ],
+      "window_y_range": [
+        -82,
+        -16
+      ]
+    },
+    {
+      "height": 320,
+      "contact": [
+        "left",
+        "bottom"
+      ],
+      "samples": 800,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 14,
+      "window_x_range": [
+        -29,
+        -15
+      ],
+      "window_y_range": [
+        723,
+        729
+      ]
+    },
+    {
+      "height": 320,
+      "contact": [
+        "left"
+      ],
+      "samples": 645,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 14,
+      "window_x_range": [
+        -29,
+        -15
+      ],
+      "window_y_range": [
+        337,
+        337
+      ]
+    },
+    {
+      "height": 188,
+      "contact": [
+        "left"
+      ],
+      "samples": 1084,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 20,
+      "window_x_range": [
+        -17,
+        -9
+      ],
+      "window_y_range": [
+        469,
+        469
+      ]
+    },
+    {
+      "height": 188,
+      "contact": [
+        "top"
+      ],
+      "samples": 1272,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 24,
+      "window_x_range": [
+        853,
+        853
+      ],
+      "window_y_range": [
+        -49,
+        -14
+      ]
+    },
+    {
+      "height": 271,
+      "contact": [
+        "top"
+      ],
+      "samples": 1504,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 23,
+      "window_x_range": [
+        810,
+        810
+      ],
+      "window_y_range": [
+        -70,
+        -21
+      ]
+    },
+    {
+      "height": 271,
+      "contact": [
+        "bottom"
+      ],
+      "samples": 946,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 19,
+      "window_x_range": [
+        810,
+        810
+      ],
+      "window_y_range": [
+        771,
+        776
+      ]
+    },
+    {
+      "height": 271,
+      "contact": [
+        "right"
+      ],
+      "samples": 1681,
+      "stages": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peak_samples": 32,
+      "window_x_range": [
+        1656,
+        1669
+      ],
+      "window_y_range": [
+        366,
+        366
+      ]
+    },
+    {
+      "height": 271,
+      "contact": [
+        "left"
+      ],
+      "samples": 2911,
+      "stages": [
+        3
+      ],
+      "peak_samples": 0,
+      "window_x_range": [
+        -24,
+        -24
+      ],
+      "window_y_range": [
+        371,
+        371
+      ]
+    }
+  ],
+  "receiver_clicks": [
+    {
+      "elapsed_ms": 147441.2206999259,
+      "cursor": [
+        20,
+        80
+      ],
+      "before_stage": 3,
+      "after_stage": 3,
+      "target_is_receiver": true
+    }
+  ],
+  "gestures": [
+    {
+      "start_ms": 38392.9657000117,
+      "end_ms": 40256.95999991149,
+      "mode": "click",
+      "before_stage": 2,
+      "after_stage": 2,
+      "before_bounce": [
+        1.0,
+        1.0
+      ],
+      "after_bounce": [
+        1.0,
+        1.0
+      ],
+      "start_position": [
+        650,
+        300
+      ],
+      "end_position": [
+        1624,
+        725
+      ],
+      "end_contact": [
+        "right",
+        "bottom"
+      ]
+    },
+    {
+      "start_ms": 79273.87999999337,
+      "end_ms": 79312.39629990887,
+      "mode": "click",
+      "before_stage": 2,
+      "after_stage": 2,
+      "before_bounce": [
+        1.0,
+        1.0
+      ],
+      "after_bounce": [
+        1.0,
+        1.0
+      ],
+      "start_position": [
+        1624,
+        725
+      ],
+      "end_position": [
+        1624,
+        575
+      ],
+      "end_contact": [
+        "right"
+      ]
+    },
+    {
+      "start_ms": 97016.80869993288,
+      "end_ms": 97048.88629994821,
+      "mode": "click",
+      "before_stage": 2,
+      "after_stage": 2,
+      "before_bounce": [
+        1.0,
+        1.0
+      ],
+      "after_bounce": [
+        1.0,
+        1.0
+      ],
+      "start_position": [
+        1624,
+        575
+      ],
+      "end_position": [
+        1624,
+        425
+      ],
+      "end_contact": [
+        "right"
+      ]
+    }
+  ]
+}
