@@ -52,7 +52,8 @@ def test_user_sequences_match_approved_prototype(trace: dict) -> None:
             expected = observations[at_ms]
             view = pet.view
             assert view.stage == expected["stage"]
-            assert view.holding == expected["holding"]
+            # This older oracle only knows eye motion; V5 can still be moving
+            # its head after retargeted eyes arrive. Full holding is in test_v5.
             assert view.right_eye == pytest.approx(expected["right_eye"], abs=0.2)
             assert view.left_eye == pytest.approx(expected["left_eye"], abs=0.2)
             assert view.eyelid_closure == pytest.approx(expected["eyelid_closure"], abs=0.001)

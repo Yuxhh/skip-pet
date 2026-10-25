@@ -54,7 +54,7 @@ def session(name: str) -> int:
                 menu = QApplication.activePopupWidget()
                 assert isinstance(menu, QMenu)
                 actions = [action for action in menu.actions() if not action.isSeparator()]
-                assert [action.text() for action in actions] == ["点击跳动", "持续跳动", "退出"]
+                assert [action.text() for action in actions] == ["点击跳动", "持续跳动", "调整大小", "退出"]
                 checked = expected if suffix == "mode" else chosen
                 assert [action.text() for action in actions if action.isChecked()] == [checked]
                 assert menu.grab().save(str(OUTPUT / f"{name}-{suffix}-menu.png"))

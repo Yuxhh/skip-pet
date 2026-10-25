@@ -1,6 +1,7 @@
 """Application interaction boundary, independent of Qt and wall-clock time.
 
-Geometry and forward-target rules originate in the approved prototype 9eef9e2.
+Eye rules originate in 9eef9e2; independent head progress follows frozen V5
+32c9f985. Rendering never controls playback or blink timing.
 All coordinates are in the original 1419 x 1108 redraw, before display scaling.
 """
 
@@ -21,13 +22,27 @@ _KEYS = (
 
 @dataclass(frozen=True)
 class PetView:
-    """Drawable eye centres, eyelid closure (0..1), and user-visible status."""
+    """Source-space eyes, uniform head pose, eyelid closure and visible status."""
 
     stage: int
     holding: bool
     right_eye: tuple[float, float]
     left_eye: tuple[float, float]
     eyelid_closure: float = 0
+    head_phase: float = 0
+    head_angle: float = 0
+    head_scale: float = 1
+
+
+def _head_pose(position: float) -> tuple[float, float]:
+    poses = ((0.0, 1.0), (-6.44, 1.08), (1.17, 1.025), (-9.0, 1.065), (0.0, 1.0))
+    phase = position % 41
+    bounds = (*_BOUNDS, 41)
+    i = next(i for i in range(4) if phase < bounds[i + 1])
+    u = (phase - bounds[i]) / (bounds[i + 1] - bounds[i])
+    t = u * u * (3 - 2 * u)
+    return (poses[i][0] + (poses[i + 1][0] - poses[i][0]) * t,
+            poses[i][1] + (poses[i + 1][1] - poses[i][1]) * t)
 
 
 def _eyes(position: float) -> tuple[tuple[float, float], tuple[float, float]]:
@@ -58,6 +73,11 @@ class PetApplication:
         self._moving = False
         self._blink_age: float | None = None
         self._blink_destination: float | None = None
+        self._head_position = 0.0
+        self._head_from = 0.0
+        self._head_to = 0.0
+        self._head_age = 0.0
+        self._head_duration = 0.0
         self._pointer_start: tuple[int, int] | None = None
         self._window_start = (0, 0)
         self._drag_distance = 0
@@ -117,6 +137,7 @@ class PetApplication:
             self._stage = (13, 24, 34, 41).index(stop_at) + 1
             self._stage %= 4
             self._moving = True
+            self._follow_head(self._target, (self._target - self._head_position) / 0.072)
         self._mode = mode
 
     @property
@@ -125,9 +146,12 @@ class PetApplication:
         closure = 0.0
         if self._blink_age is not None:
             closure = 0.5 - 0.5 * math.cos(2 * math.pi * self._blink_age / 240)
+        angle, scale = _head_pose(self._head_position)
         return PetView(
-            self._stage, self._mode == "click" and not self._moving and self._blink_age is None,
+            self._stage, self._mode == "click" and not self._moving
+            and self._blink_age is None and self._head_age >= self._head_duration,
             right, left, closure,
+            self._head_position % 41, angle, scale,
         )
 
     def click(self) -> None:
@@ -145,10 +169,24 @@ class PetApplication:
             distance = 41
         self._target = self._position + distance
         self._moving = True
+        self._follow_head(self._target, (self._target - self._head_position) / 0.072)
         if self._stage == 3:
             self._blink_age = 0.0
             self._blink_destination = self._target
             self._moving = False
+            self._follow_head(self._target, 240)
+
+    def _follow_head(self, target: float, duration: float) -> None:
+        self._head_from = self._head_position
+        self._head_to = target
+        self._head_age = 0
+        self._head_duration = max(duration, 1)
+
+    def _advance_head(self, elapsed_ms: float) -> None:
+        if self._head_age < self._head_duration:
+            self._head_age = min(self._head_duration, self._head_age + elapsed_ms)
+            u = self._head_age / self._head_duration
+            self._head_position = self._head_from + (self._head_to - self._head_from) * u
 
     def advance(self, elapsed_ms: float) -> None:
         if not math.isfinite(elapsed_ms) or elapsed_ms < 0:
@@ -156,6 +194,7 @@ class PetApplication:
         if self._mode == "always":
             self._advance_continuous(elapsed_ms)
             return
+        self._advance_head(elapsed_ms)
         if self._blink_destination is not None:
             assert self._blink_age is not None
             closing_ms = min(elapsed_ms, max(0, 120 - self._blink_age))
@@ -183,6 +222,7 @@ class PetApplication:
                 assert self._blink_age is not None
                 step = min(elapsed_ms, 120 - self._blink_age)
                 self._blink_age += step
+                self._advance_head(step)
                 if self._blink_age >= 120:
                     self._position = self._blink_destination
                     self._blink_destination = None
@@ -191,8 +231,14 @@ class PetApplication:
                 next_blink = (math.floor(self._position / 41) * 41) + 24
                 if next_blink < self._position:
                     next_blink += 41
-                step = min(elapsed_ms, (next_blink - self._position) / 0.072)
+                head_remaining = max(0, self._head_duration - self._head_age)
+                step = min(elapsed_ms, (next_blink - self._position) / 0.072,
+                           head_remaining if head_remaining else math.inf)
                 self._position += step * 0.072
+                if head_remaining:
+                    self._advance_head(step)
+                else:
+                    self._head_position += max(0, min(self._position - self._head_position, step * .144))
                 if self._blink_age is not None:
                     self._blink_age += step
                     if self._blink_age >= 240:
@@ -202,6 +248,7 @@ class PetApplication:
                     self._stage = 3
                     self._blink_age = 0
                     self._blink_destination = next_blink + 10
+                    self._follow_head(next_blink + 10, 240)
             elapsed_ms -= step
         if self._blink_age is None:
             self._stage = self._phase_at_position()

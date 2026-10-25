@@ -1,11 +1,36 @@
 {
-  "asset": "sukuna-eye-base-v3.png",
-  "sha256": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
-  "source_commit": "9eef9e2418d536fe6a5b71235841ae98da64329c",
-  "source_path": ".scratch/sukuna-pet/prototypes/bounce-feel/assets/sukuna-eye-base-v3.png",
-  "origin": "User-approved imagegen redraw and blank-sclera edit from the project prototype; copied byte-for-byte, no new image generation or pixel editing.",
-  "source_dimensions": [1419, 1108],
-  "draw_bounds": [201, 47, 1217, 1038],
-  "animation": "Original prototype gaze keys, socket paths, iris colours and blink geometry, fixed 3x speed, no body motion.",
-  "runtime": "Only the bundled PNG is required; original video, reference program and prototype checkout are not read."
+  "assets": [
+    {
+      "asset": "sukuna-eye-base-v3.png",
+      "sha256": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
+      "source_commit": "32c9f985d4467c1527b09c34f6868a3ccd3f85b4",
+      "source_path": ".scratch/sukuna-pet/prototypes/head-stages-v5/character.png"
+    },
+    {
+      "asset": "head-neck-repair.png",
+      "sha256": "b35cb8225913a28e8df847fab077abe9c23018a77c51e8d5b68b7320ed4b7bb4",
+      "source_commit": "32c9f985d4467c1527b09c34f6868a3ccd3f85b4",
+      "source_path": ".scratch/sukuna-pet/prototypes/head-stages-v5/head-neck-repair.png"
+    },
+    {
+      "asset": "rear-collar-complete.png",
+      "sha256": "ac6520d3a7422e8509ec7edf9e0d784050228044e0252a82a5fcd8522f7b8848",
+      "source_commit": "32c9f985d4467c1527b09c34f6868a3ccd3f85b4",
+      "source_path": ".scratch/sukuna-pet/prototypes/head-stages-v5/rear-collar-complete.png"
+    }
+  ],
+  "native_reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+  "origin": "User-approved V5 RGBA layers, copied byte-for-byte from the immutable action prototype.",
+  "source_dimensions": [
+    1419,
+    1108
+  ],
+  "source_viewport": [
+    90,
+    -110,
+    1250,
+    1220
+  ],
+  "animation": "Fixed-neck uniform head poses and feathered neck mesh; original 3x eyes and 240ms blink. Click bounce is a subsequent ticket.",
+  "runtime": "Only bundled package assets; no prototype checkout, browser, reference program or original video."
 }

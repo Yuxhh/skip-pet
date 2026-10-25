@@ -1,0 +1,27 @@
+{
+  "wheel_sha256": "18638c63226c5b5a2ab45cae4e48be2f3ebf274606874df1e817bc11933565e6",
+  "assets": [
+    {
+      "asset": "sukuna-eye-base-v3.png",
+      "sha256": "0fbd9ef2a9b03d2f6f795a0e17a92a6402d761f72dea17f709ae50572bb27a92",
+      "verified": true
+    },
+    {
+      "asset": "head-neck-repair.png",
+      "sha256": "b35cb8225913a28e8df847fab077abe9c23018a77c51e8d5b68b7320ed4b7bb4",
+      "verified": true
+    },
+    {
+      "asset": "rear-collar-complete.png",
+      "sha256": "ac6520d3a7422e8509ec7edf9e0d784050228044e0252a82a5fcd8522f7b8848",
+      "verified": true
+    }
+  ],
+  "isolated_unpacked_package": true,
+  "module_path": ".scratch\\issue23-wheel\\unpacked\\sukuna_pet\\__init__.py",
+  "canvas": [
+    328,
+    320
+  ],
+  "head_angle": -6.44
+}

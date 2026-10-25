@@ -12,7 +12,7 @@ from PySide6.QtGui import QColor, QImage, QPainter, QPixmap
 from PySide6.QtWidgets import QApplication, QLabel, QScrollArea
 
 from sukuna_pet.playback import PetApplication
-from sukuna_pet.rendering import CharacterRenderer, SOURCE_BOUNDS
+from sukuna_pet.rendering import CharacterRenderer
 
 
 app = QApplication(sys.argv)
@@ -43,10 +43,9 @@ for row, background in enumerate(("#f3f2ee", "#263347", "checker")):
         painter.setPen(QColor("white" if row == 1 else "#25332e"))
         painter.drawText(x + 10, y + 20, name)
         frame = renderer.render(view)
-        painter.drawImage(QRectF(x + 8, y + 30, 253, 247), frame, SOURCE_BOUNDS)
-        painter.drawImage(QRectF(x + 10, y + 280, 250, 53), frame, QRectF(575, 440, 290, 62))
+        painter.drawImage(QRectF(x + 8, y + 30, 253, 247), frame)
 painter.end()
-output = Path("docs/verification/issue-13/qt-contact-sheet.png")
+output = Path("docs/verification/issue-23/qt-contact-sheet.png")
 output.parent.mkdir(parents=True, exist_ok=True)
 if not sheet.save(str(output)):
     raise RuntimeError(f"Could not write {output}")

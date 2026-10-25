@@ -1,0 +1,102 @@
+{
+  "reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+  "note": "Current production final frames versus frozen native rest images, same Qt and DPR 1.0; no bounce.",
+  "results": [
+    {
+      "size": 188,
+      "stage": 0,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 188,
+      "stage": 1,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 188,
+      "stage": 2,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 188,
+      "stage": 3,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 271,
+      "stage": 0,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 271,
+      "stage": 1,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 271,
+      "stage": 2,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 271,
+      "stage": 3,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 320,
+      "stage": 0,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 320,
+      "stage": 1,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 320,
+      "stage": 2,
+      "channels_differ": 0,
+      "channels_over_4": 0,
+      "max_channel_difference": 0,
+      "mean_channel_difference": 0.0
+    },
+    {
+      "size": 320,
+      "stage": 3,
+      "channels_differ": 1,
+      "channels_over_4": 0,
+      "max_channel_difference": 1,
+      "mean_channel_difference": 2.381859756097561e-06
+    }
+  ]
+}

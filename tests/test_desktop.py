@@ -114,27 +114,36 @@ def layout(app: QApplication, monkeypatch: pytest.MonkeyPatch) -> list[Screen]:
     return screens
 
 
-@pytest.mark.parametrize("cursor, expected, target", [
-    (QPoint(-2560, -230), QPoint(-2528, -240), 1),
-    (QPoint(-900, 700), QPoint(-1106, 473), 1),
+@pytest.mark.parametrize("cursor, horizontal, vertical, target", [
+    (QPoint(-2560, -230), "left", "top", 1),
+    (QPoint(-900, 700), "right", "bottom", 1),
     # A point in a logical gap uses the nearest individual screen.
-    (QPoint(-500, 100), QPoint(-1106, -20), 1),
-    (QPoint(1930, -1400), QPoint(1920, -1400), 2),
-    (QPoint(1910, 1070), QPoint(1667, 785), 0),
+    (QPoint(-500, 100), "right", None, 1),
+    (QPoint(1930, -1400), "left", "top", 2),
+    (QPoint(1910, 1070), "right", "bottom", 0),
 ])
 def test_drag_across_logical_layout_keeps_visible_on_target_and_can_click_again(
-    app: QApplication, layout: list[Screen], cursor: QPoint, expected: QPoint, target: int,
+    app: QApplication, layout: list[Screen], cursor: QPoint,
+    horizontal: str, vertical: str | None, target: int,
 ) -> None:
     pet = PetApplication()
     with pet_window(app, pet) as window:
         app.processEvents()
         pointer(window, QEvent.Type.MouseButtonPress, window.pos() + QPoint(120, 120))
         pointer(window, QEvent.Type.MouseMove, cursor)
-        assert window.pos() == expected
+        dragged = window.pos()
         pointer(window, QEvent.Type.MouseButtonRelease, cursor)
-        assert window.pos() == expected
-        assert layout[target].availableGeometry().contains(
-            window.mask().boundingRect().translated(window.pos()))
+        assert window.pos() == dragged
+        area = layout[target].availableGeometry()
+        visible = window.mask().boundingRect().translated(window.pos())
+        assert area.contains(visible)
+        assert (visible.left() == area.left() if horizontal == "left"
+                else visible.right() == area.right())
+        if vertical is not None:
+            assert (visible.top() == area.top() if vertical == "top"
+                    else visible.bottom() == area.bottom())
+        else:
+            assert window.y() == -20  # Unconstrained vertical drag in the gap.
         pet.advance(1000)
         assert pet.view.stage == 0
         click = window.pos() + QPoint(120, 120)

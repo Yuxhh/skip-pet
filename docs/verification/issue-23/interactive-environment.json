@@ -1,0 +1,28 @@
+{
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "input_kind": "Qt events and application virtual time in --capture; real OS input in interactive mode",
+  "limitations": [
+    "No real multi-monitor or mixed-DPI hardware validation.",
+    "No click bounce or V5 automatic scheduling in issue #23.",
+    "Desktop screenshots and OS routing are current production results, not historical prototype evidence."
+  ],
+  "sizes": []
+}

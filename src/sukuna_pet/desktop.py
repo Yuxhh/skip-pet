@@ -1,20 +1,24 @@
 """Qt is an adapter: input and elapsed time enter through PetApplication."""
 
+import math
+import re
 import sys
 from pathlib import Path
 from time import perf_counter
 
-from PySide6.QtCore import QEvent, QPoint, QRectF, QStandardPaths, Qt, QTimer
+from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer
 from PySide6.QtGui import QActionGroup, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
-from .playback import PetApplication
-from .rendering import CharacterRenderer, DISPLAY_HEIGHT, DISPLAY_WIDTH, SOURCE_BOUNDS
-from .settings import Mode
+from .playback import PetApplication, PetView
+from .rendering import CharacterRenderer, SOURCE_BOUNDS
+from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
 
 
 class PetWindow(QWidget):
-    def __init__(self, application: PetApplication | None = None) -> None:
+    def __init__(
+        self, application: PetApplication | None = None, *, settings_path: Path | None = None,
+    ) -> None:
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
         self.setWindowFlags(
@@ -22,17 +26,18 @@ class PetWindow(QWidget):
             | Qt.WindowType.WindowStaysOnTopHint
         )
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.setFixedSize(DISPLAY_WIDTH, DISPLAY_HEIGHT)
-        settings_path = Path(QStandardPaths.writableLocation(
-            QStandardPaths.StandardLocation.AppConfigLocation,
-        )) / "mode.json"
+        if application is None and settings_path is None:
+            settings_path = Path(QStandardPaths.writableLocation(
+                QStandardPaths.StandardLocation.AppConfigLocation,
+            )) / "mode.json"
+        self._settings_path = settings_path
+        height = load_size(settings_path) if settings_path is not None else DEFAULT_SIZE
+        self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
         self._renderer = CharacterRenderer()
-        self._frame = self._renderer.render(self._pet.view)
-        # A real native window region, not just transparent painting. Keep every
-        # nonzero-alpha pixel, including antialiased edges. The silhouette is
-        # invariant: eye animation stays within the opaque face.
-        self.setMask(_character_region(self._frame))
+        self._frame = QImage()
+        self._render_key: tuple[PetView, int, float] | None = None
+        self._refresh_frame()
         self._last_time = perf_counter()
         self._timer = QTimer(self)
         self._timer.setTimerType(Qt.TimerType.PreciseTimer)
@@ -51,6 +56,20 @@ class PetWindow(QWidget):
         app.screenAdded.connect(self._watch_screen)
         app.screenRemoved.connect(self._schedule_visibility)
 
+    @property
+    def frame(self) -> QImage:
+        """Read-only snapshot of the final physical-pixel image used by Qt."""
+        return self._frame.copy()
+
+    def _refresh_frame(self) -> None:
+        key = (self._pet.view, self.height(), self.devicePixelRatioF())
+        if key == self._render_key:
+            return
+        self._frame = self._renderer.render(*key)
+        self.setMask(_character_region(self._frame))
+        self._render_key = key
+        self.update()
+
     def _watch_screen(self, screen: QScreen) -> None:
         screen.availableGeometryChanged.connect(self._schedule_visibility)
         screen.geometryChanged.connect(self._schedule_visibility)
@@ -61,6 +80,7 @@ class PetWindow(QWidget):
         QTimer.singleShot(0, self, self._keep_visible)
 
     def _keep_visible(self) -> None:
+        self._refresh_frame()
         self._move_visible((self.x(), self.y()), self.screen())
 
     def _move_visible(self, destination: tuple[int, int], screen: QScreen) -> None:
@@ -91,17 +111,18 @@ class PetWindow(QWidget):
 
     def _advance(self) -> None:
         now = perf_counter()
-        before = self._pet.view
-        self._pet.advance((now - self._last_time) * 1000)
+        remaining = min(150, (now - self._last_time) * 1000)
+        while remaining > 0:
+            step = min(4, remaining)
+            self._pet.advance(step)
+            remaining -= step
         self._last_time = now
-        if self._pet.view != before:
-            self._frame = self._renderer.render(self._pet.view)
-            self.update()
+        self._refresh_frame()
+        self._move_visible((self.x(), self.y()), self.screen())
 
     def paintEvent(self, event: QPaintEvent) -> None:
         painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform)
-        painter.drawImage(QRectF(self.rect()), self._frame, SOURCE_BOUNDS)
+        painter.drawImage(QPointF(0, 0), self._frame)
 
     def mousePressEvent(self, event: QMouseEvent) -> None:
         if event.button() == Qt.MouseButton.LeftButton:
@@ -131,8 +152,7 @@ class PetWindow(QWidget):
         destination = self._pet.pointer_release((point.x(), point.y()))
         if destination is not None:
             self._move_drag(destination, point)
-        self._frame = self._renderer.render(self._pet.view)
-        self.update()
+        self._refresh_frame()
         event.accept()
 
     def event(self, event: QEvent) -> bool:
@@ -158,6 +178,15 @@ class PetWindow(QWidget):
         click_action.triggered.connect(lambda: self._select_mode("click"))
         always_action.triggered.connect(lambda: self._select_mode("always"))
         menu.addSeparator()
+        size_menu = menu.addMenu("调整大小")
+        sizes = QActionGroup(size_menu)
+        for size in DISPLAY_SIZES:
+            action = size_menu.addAction(f"{size}px")
+            action.setCheckable(True)
+            action.setChecked(self.height() == size)
+            sizes.addAction(action)
+            action.triggered.connect(lambda checked=False, height=size: self._select_size(height))
+        menu.addSeparator()
         exit_action = menu.addAction("退出")
         exit_action.triggered.connect(self.close)
         menu.exec(event.globalPos())
@@ -169,28 +198,40 @@ class PetWindow(QWidget):
             self._pet.select_mode(mode)
         except OSError:
             QMessageBox.warning(self, "无法保存模式", "请检查设置目录是否可写，然后重试。")
-        self._frame = self._renderer.render(self._pet.view)
+        self._refresh_frame()
+
+    def _select_size(self, height: int) -> None:
+        if height not in DISPLAY_SIZES or height == self.height():
+            return
+        self._pet.cancel_pointer()
+        try:
+            if self._settings_path is not None:
+                save_size(self._settings_path, height)
+        except OSError:
+            QMessageBox.warning(self, "无法保存大小", "请检查设置目录是否可写，然后重试。")
+            return
+        # Anchor the feet and horizontal centre while the character grows.
+        centre_x = self.x() + self.width() // 2
+        bottom = self.y() + self.height()
+        self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
+        self._refresh_frame()
+        self._move_visible((centre_x - self.width() // 2, bottom - height), self.screen())
         self.update()
 
 
 def _character_region(frame: QImage) -> QRegion:
-    """Match the painted crop in logical pixels; Qt scales the region for DPI."""
-    image = QImage(DISPLAY_WIDTH, DISPLAY_HEIGHT, QImage.Format.Format_ARGB32_Premultiplied)
-    image.fill(Qt.GlobalColor.transparent)
-    painter = QPainter(image)
-    painter.setRenderHint(QPainter.RenderHint.SmoothPixmapTransform)
-    painter.drawImage(QRectF(image.rect()), frame, SOURCE_BOUNDS)
-    painter.end()
+    """Outward logical coverage of every nonzero alpha pixel in the final frame."""
+    dpr = frame.devicePixelRatio()
+    image = frame.convertToFormat(QImage.Format.Format_RGBA8888)
+    pixels = bytes(image.constBits())
     region = QRegion()
     for y in range(image.height()):
-        start: int | None = None
-        for x in range(image.width() + 1):
-            visible = x < image.width() and image.pixelColor(x, y).alpha() > 0
-            if visible and start is None:
-                start = x
-            elif not visible and start is not None:
-                region |= QRegion(start, y, x - start, 1)
-                start = None
+        offset = y * image.bytesPerLine()
+        alpha = pixels[offset + 3:offset + image.width() * 4:4]
+        for run in re.finditer(b"[^\x00]+", alpha):
+            left, top = math.floor(run.start() / dpr), math.floor(y / dpr)
+            right, bottom = math.ceil(run.end() / dpr), math.ceil((y + 1) / dpr)
+            region |= QRegion(left, top, right - left, bottom - top)
     return region
 
 

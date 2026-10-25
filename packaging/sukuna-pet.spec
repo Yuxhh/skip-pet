@@ -12,7 +12,7 @@ analysis = Analysis(
     excludes=["PySide6.QtWebEngineCore", "PySide6.QtWebEngineWidgets", "PySide6.QtPdf",
               "PySide6.QtQml", "PySide6.QtQuick", "PySide6.QtNetwork", "tkinter"],
 )
-# Optional image plugins pull in PDF/QML engines; our sole image is a PNG,
+# Optional image plugins pull in PDF/QML engines; all character images are PNGs,
 # decoded by QtGui itself. Keep the native Windows platform/style plugins.
 analysis.binaries = [entry for entry in analysis.binaries
                      if "plugins\\imageformats\\" not in entry[0].lower()

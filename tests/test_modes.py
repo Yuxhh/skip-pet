@@ -113,6 +113,10 @@ def test_switch_during_opening_finishes_the_blink_even_after_eye_motion_has_stop
     assert 0 < pet.view.eyelid_closure < closure
     assert not pet.view.holding
     pet.advance(23)
+    assert pet.view.eyelid_closure == 0
+    # V5's independently moving head can still be catching the stage endpoint
+    # after these old continuous-eye timings have finished the blink.
+    pet.advance(1000)
     assert pet.view.holding
     assert pet.view.eyelid_closure == 0
 

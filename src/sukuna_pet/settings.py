@@ -1,4 +1,4 @@
-"""Persist only the selected playback mode, independently of the desktop UI."""
+"""Persist playback mode and display size independently of the desktop UI."""
 
 import json
 import os
@@ -8,19 +8,46 @@ from typing import Literal
 
 
 Mode = Literal["click", "always"]
+DISPLAY_SIZES = (188, 271, 320)
+DEFAULT_SIZE = 320
 
 
-def load_mode(path: Path) -> Mode:
+def _load_settings(path: Path) -> dict[str, object]:
     try:
         saved = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, ValueError):
-        return "click"
-    if isinstance(saved, dict) and saved.get("mode") == "always":
+        return {}
+    return saved if isinstance(saved, dict) else {}
+
+
+def load_mode(path: Path) -> Mode:
+    if _load_settings(path).get("mode") == "always":
         return "always"
     return "click"
 
 
 def save_mode(path: Path, mode: Mode) -> None:
+    _save_setting(path, "mode", mode)
+
+
+def load_size(path: Path) -> int:
+    size = _load_settings(path).get("size")
+    if type(size) is not int:
+        return DEFAULT_SIZE
+    # Keep previous medium/large preferences usable after reducing the presets.
+    size = {461: 271, 544: 320}.get(size, size)
+    return size if size in DISPLAY_SIZES else DEFAULT_SIZE
+
+
+def save_size(path: Path, size: int) -> None:
+    if type(size) is not int or size not in DISPLAY_SIZES:
+        raise ValueError("Unsupported display size")
+    _save_setting(path, "size", size)
+
+
+def _save_setting(path: Path, key: str, value: object) -> None:
+    saved = _load_settings(path)
+    saved[key] = value
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary: Path | None = None
     try:
@@ -28,7 +55,7 @@ def save_mode(path: Path, mode: Mode) -> None:
             mode="w", encoding="utf-8", dir=path.parent, delete=False,
         ) as stream:
             temporary = Path(stream.name)
-            json.dump({"mode": mode}, stream)
+            json.dump(saved, stream)
             stream.write("\n")
         os.replace(temporary, path)
     finally:
