@@ -1,0 +1,153 @@
+{
+  "errors": [],
+  "observations": [
+    {
+      "variant": "A",
+      "text": "哼，2 个还在办。小鬼，1 个等你点头。"
+    },
+    {
+      "variant": "B",
+      "text": "DeepSeek\n哼，2 个还在办。\nCodex\n小鬼，1 个等你点头。"
+    },
+    {
+      "variant": "C",
+      "text": "2 运行\n1 等你\n哼，2 个还在办。小鬼，1 个等你点头。"
+    },
+    {
+      "same_round": "1 运行\n另有 1 处待审批\n还在办。小鬼，另有 1 处等你点头。"
+    },
+    {
+      "scenario": "unknown",
+      "hidden": true,
+      "moving": false
+    },
+    {
+      "scenario": "disconnect",
+      "hidden": true,
+      "moving": true
+    },
+    {
+      "disconnect_after_10s": false
+    },
+    {
+      "terminal_expired": true
+    },
+    {
+      "change_expired": true
+    },
+    {
+      "click_advanced": true
+    },
+    {
+      "drag_stage": 3
+    }
+  ],
+  "positions": [
+    {
+      "size": "188",
+      "pos": "top",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "188",
+      "pos": "left",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "188",
+      "pos": "right",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "188",
+      "pos": "corner",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "188",
+      "pos": "seam",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "271",
+      "pos": "top",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "271",
+      "pos": "left",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "271",
+      "pos": "right",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "271",
+      "pos": "corner",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "271",
+      "pos": "seam",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "320",
+      "pos": "top",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "320",
+      "pos": "left",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "320",
+      "pos": "right",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    },
+    {
+      "size": "320",
+      "pos": "corner",
+      "in_bounds": true,
+      "side": "below",
+      "click_through": "none"
+    },
+    {
+      "size": "320",
+      "pos": "seam",
+      "in_bounds": true,
+      "side": "above",
+      "click_through": "none"
+    }
+  ],
+  "note": "Simulated HTML only; no human verdict, host integration or native multi-DPI validation."
+}

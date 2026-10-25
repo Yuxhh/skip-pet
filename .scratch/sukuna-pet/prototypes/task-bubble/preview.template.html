@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宿傩 · 任务状态气泡原型</title>
+<!-- Three structural bubble variants, ?variant=A|B|C. Simulation only; awaiting human feedback. -->
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eeeae5;color:#292326;font:14px/1.6 'Microsoft YaHei',sans-serif}main{max-width:1180px;margin:auto;padding:22px 24px 95px}h1{font-size:24px;font-weight:600;margin:3px 0 15px}.eyebrow{font-size:12px;color:#786367;letter-spacing:1px}.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}.toolbar label{display:flex;align-items:center;gap:7px}select,button{font:inherit;color:inherit;border:1px solid #c9bdb6;border-radius:7px;background:#fffaf5;padding:7px 11px;cursor:pointer}button:hover{background:#e5dcd4}select{max-width:100%}#scenario{min-width:260px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px}#screen{height:530px;position:relative;overflow:hidden;border-radius:12px;border:1px solid #b7a9a1;background:linear-gradient(150deg,#c8c4bf,#e9dcd0 60%,#acb4b8);touch-action:none}#screen.dark{background:linear-gradient(150deg,#1c2232,#373041 60%,#272c30)}.monitor{position:absolute;left:0;top:0;bottom:0;width:52%;border-right:1px dashed #8f8580;pointer-events:none}.monitor.hidden{display:none}.monitor span{position:absolute;top:12px;left:14px;color:#6c555c;font-size:12px}.dark .monitor span{color:#d5c6bd}#rightLabel{left:calc(52% + 14px);position:absolute;top:12px;color:#6c555c;font-size:12px;pointer-events:none}.dark #rightLabel{color:#d5c6bd}.desktop-note{position:absolute;bottom:12px;left:14px;font-size:12px;color:#6c555c;pointer-events:none}.dark .desktop-note{color:#d5c6bd}#pet{position:absolute;display:block;object-fit:contain;cursor:grab;user-select:none;-webkit-user-drag:none;touch-action:none}#pet:active{cursor:grabbing}#bubble{position:absolute;max-width:330px;min-width:140px;pointer-events:none;background:#fffaf2;color:#2b2024;border:1px solid #ad777a;border-radius:17px;padding:12px 16px;box-shadow:0 5px 18px #30232926;font-size:14px;line-height:1.55;overflow-wrap:anywhere}#bubble[hidden]{display:none}#bubble[data-side=above]:after{content:'';position:absolute;bottom:-7px;left:var(--tail,50%);width:12px;height:12px;background:#fffaf2;border-right:1px solid #ad777a;border-bottom:1px solid #ad777a;transform:translateX(-50%) rotate(45deg)}#bubble[data-side=below]:after{content:'';position:absolute;top:-7px;left:var(--tail,50%);width:12px;height:12px;background:#fffaf2;border-left:1px solid #ad777a;border-top:1px solid #ad777a;transform:translateX(-50%) rotate(45deg)}#bubble.b{border-radius:6px 16px 16px 16px;padding:0;min-width:215px}#bubble.b .host-row{padding:9px 13px;border-bottom:1px solid #e6d4ca}#bubble.b .host-row:last-child{border-bottom:0}.host-name{display:block;font-size:11px;letter-spacing:.5px;color:#8b535a}.counts{display:flex;gap:14px;flex-wrap:wrap;border-bottom:1px solid #d4bbb3;padding-bottom:8px;margin-bottom:8px}.counts strong{font-size:22px;font-weight:500;line-height:1.2}.counts span{font-size:12px}.bubble-sub{font-size:12px;color:#79565b;margin-top:5px}aside{background:#faf7f2;border:1px solid #d5cac1;border-radius:12px;padding:16px;height:fit-content}aside h2{font-size:14px;margin:0 0 12px}aside p{margin:7px 0}#facts{font-size:13px;white-space:pre-line}#lifetime{font-size:13px;color:#79565b;margin-top:14px}.hint{font-size:12px;color:#7d6768}.switcher{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:#30232c;color:#fff9f0;border-radius:30px;padding:7px 9px;box-shadow:0 5px 25px #231c2840;z-index:5;white-space:nowrap}.switcher button{background:#55404b;color:#fff9f0;border:0;border-radius:50%;width:35px;height:35px;padding:0}.switcher span{min-width:192px;text-align:center}.note{font-size:12px;color:#786367;margin-top:12px}input[type=range]{width:85px}@media(max-width:850px){.layout{grid-template-columns:1fr}aside{display:flex;gap:15px;flex-wrap:wrap}main{padding:14px 12px 95px}#screen{height:490px}#scenario{min-width:0}h1{font-size:21px}}
+</style>
+<main>
+<div class="eyebrow">可丢弃原型 · 所有任务均为示例 · 待真人确认</div>
+<h1>他开口时，你能一眼看懂吗？</h1>
+<div class="toolbar"><label>情景 <select id="scenario"></select></label><button id="again">重放此情景</button><button id="later">快进 10 秒</button></div>
+<div class="toolbar"><label>显示 <select id="policy"><option value="stay">运行／等待期间常驻</option><option value="change">变化时显示 6 秒</option></select></label><label>结束停留 <select id="terminal"><option value="8">8 秒</option><option value="4">4 秒</option><option value="12">12 秒</option></select></label><label>背景 <select id="background"><option value="light">浅色</option><option value="dark">深色</option></select></label></div>
+<div class="layout">
+<div id="screen" aria-label="模拟桌面，可拖动角色查看气泡位置">
+<div class="monitor hidden" id="leftMonitor"><span>屏幕 1 · 100%（逻辑坐标示意）</span></div><span id="rightLabel" hidden>屏幕 2 · 150%（示意）</span>
+<img id="pet" draggable="false" alt="宿傩角色，单击推进视线，拖动调整位置"><div id="bubble" role="status" aria-live="polite"></div>
+<div class="desktop-note">单击角色看眼动／回弹；拖动角色看气泡避让。</div></div>
+<aside><h2>当前示例的真实含义</h2><div id="facts"></div><div id="lifetime"></div><p class="hint" id="placement"></p><p class="hint">接入能力示例：DeepSeek 已接入；Codex 暂不支持。双端情景仅模拟将来两端均可用时的呈现。</p></aside>
+</div>
+<div class="toolbar"><label>位置 <select id="position"><option value="middle">中间</option><option value="top">靠上</option><option value="left">左边</option><option value="right">右边</option><option value="corner">右上角</option><option value="seam">跨屏边界</option></select></label><label>尺寸 <select id="size"><option value="188">188</option><option value="271" selected>271</option><option value="320">320</option></select></label><label>文字 <select id="font"><option value="14">14 px</option><option value="16">16 px</option><option value="18">18 px</option></select></label><label><input type="checkbox" id="two">双屏示意</label><label>动作 <select id="mode"><option value="linked">任务联动模式</option><option value="click">点击跳动模式</option><option value="always">持续跳动模式</option></select></label></div>
+<p class="note">三案只比较气泡结构；同一情景、口吻与显示策略保持一致。混合 DPI、多屏定位是逻辑坐标示意，尚未做 Windows 实机验收。动作帧采自本仓库现有渲染与播放逻辑；网页连点仅播放采样片段，不验证原生途中改目标。</p>
+</main>
+<nav class="switcher" aria-label="原型方案切换"><button id="prev" aria-label="上一个方案">←</button><span id="variantName"></span><button id="next" aria-label="下一个方案">→</button></nav>
+<script id="assets" type="application/json">/*ASSETS*/</script>
+<script>
+const $=id=>document.getElementById(id),asset=JSON.parse($('assets').textContent);
+const scenarios=[
+ {id:'running',name:'一个任务运行',r:1,w:0,hosts:[['DeepSeek','哼，还在办。等着。']],speech:'哼，还在办。等着。',facts:'DeepSeek：1 个运行任务。'},
+ {id:'approval',name:'等你批准',r:0,w:1,hosts:[['DeepSeek','小鬼，等你点头。']],speech:'小鬼，等你点头。',facts:'DeepSeek：1 个等待任务，等待批准。'},
+ {id:'answer',name:'等你回答',r:0,w:1,hosts:[['DeepSeek','话说清楚，小鬼。等你回答。']],speech:'话说清楚，小鬼。等你回答。',facts:'DeepSeek：1 个等待任务，等待你的回答。'},
+ {id:'mixed',name:'双端：2 个运行 + 1 个等待',r:2,w:1,hosts:[['DeepSeek','哼，2 个还在办。'],['Codex','小鬼，1 个等你点头。']],speech:'哼，2 个还在办。小鬼，1 个等你点头。',facts:'双端接入的未来示例。\nDeepSeek：2 个运行任务。\nCodex：1 个等待任务。\n合计 3 个任务。'},
+ {id:'inside',name:'同一轮：子代理执行 + 主代理待审批',r:1,w:0,action:1,hosts:[['DeepSeek','还在办。小鬼，另有 1 处等你点头。']],speech:'还在办。小鬼，另有 1 处等你点头。',facts:'整轮只算 1 个运行任务。\n内部仍有助手执行，另有 1 处待审批。\n待审批事项不额外计作等待任务。'},
+ {id:'partial',name:'已知一部分，其余尚未查清',r:1,w:0,partial:true,hosts:[['DeepSeek','已查清的，1 个还在办。']],speech:'已查清的，1 个还在办。',facts:'只掌握 1 个运行任务。\n其余部分状态未知，不计作空闲。\n气泡只声明已查清部分。'},
+ {id:'unknown',name:'刚启动：全部尚未查清',r:0,w:0,hidden:true,hosts:[],speech:'',facts:'全部任务状态尚未查清。\n气泡无文字；任务联动模式不自动跳动。'},
+ {id:'complete',name:'一个任务完成',r:0,w:0,ended:true,hosts:[['DeepSeek','哼，办完了。']],speech:'哼，办完了。',facts:'收到本轮已完成的可靠结果。\n仅结束这一轮，没有其他运行任务。'},
+ {id:'failed',name:'一个任务失败',r:0,w:0,ended:true,hosts:[['DeepSeek','啧，失败了。回去看。']],speech:'啧，失败了。回去看。',facts:'收到本轮失败结果。\n不能当作完成或空闲成功。'},
+ {id:'cancelled',name:'一个任务中断',r:0,w:0,ended:true,hosts:[['DeepSeek','哼，中断了。']],speech:'哼，中断了。',facts:'本轮被取消或中断；不宣称成功。'},
+ {id:'doneOthers',name:'一个完成，另一个仍在运行',r:1,w:0,hosts:[['DeepSeek','1 个办完，1 个还在办。']],speech:'1 个办完，1 个还在办。',after:'哼，1 个还在办。',facts:'两个任务中，只有一轮完成。\n短暂提示完成后继续显示仍运行的一轮。'},
+ {id:'disconnect',name:'确认断线：隐藏文字 + 跳动宽限',r:0,w:0,disconnect:true,hidden:true,hosts:[],speech:'',facts:'刚确认 DeepSeek 断线，立即隐藏旧文字。\n断线前运行状态仅供跳动宽限，最多 10 秒。\n到期停止联动不等于任务完成。'},
+ {id:'otherOnline',name:'一端断线，另一端仍在运行',r:1,w:0,hosts:[['Codex','哼，1 个还在办。']],speech:'哼，1 个还在办。',facts:'双端接入的未来示例。\nDeepSeek 确认断线：隐藏旧文字。\nCodex 已确认的 1 个任务继续运行。'},
+ {id:'idle',name:'已确认空闲',r:0,w:0,hidden:true,hosts:[],speech:'',facts:'已确认没有运行、等待或新结束的任务。\n不添加无状态依据的闲聊。'}
+];
+scenarios.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;$('scenario').append(o)});
+const variants=['A','B','C'],names={A:'A · 一句话气泡',B:'B · 按宿主分行',C:'C · 状态在上，台词在下'};
+let variant=variants.includes(new URL(location.href).searchParams.get('variant'))?new URL(location.href).searchParams.get('variant'):'A';
+let start=performance.now(),advance=0,x=100,y=200,stage=0,animation=null,lastAuto=0,drag=null;
+const current=()=>scenarios.find(s=>s.id===$('scenario').value),elapsed=()=>Math.max(0,(performance.now()-start)/1000+advance);
+const active=s=>s.r>0||s.w>0,shouldMove=s=>!!($('mode').value==='always'||($('mode').value==='linked'&&(s.r>0||(s.disconnect&&elapsed()<10))));
+function setVariant(v){variant=v;const u=new URL(location.href);u.searchParams.set('variant',v);history.replaceState(null,'',u);$('variantName').textContent=names[v];render()}
+function selectScene(){start=performance.now();advance=0;lastAuto=0;render()}
+function nextMotion(){const next=(stage+1)%4;animation={frames:asset.transitions[stage],start:performance.now()};stage=next;lastAuto=performance.now()}
+function safeHTML(text){const d=document.createElement('div');d.textContent=text;return d.innerHTML}
+function content(s,t){
+ const speech=s.after&&t>=+$('terminal').value?s.after:s.speech;
+ if(variant==='A')return safeHTML(speech);
+ if(variant==='B')return s.hosts.map(([host,text])=>'<div class="host-row"><span class="host-name">'+safeHTML(host)+'</span>'+safeHTML(s.after&&t>=+$('terminal').value?s.after:text)+'</div>').join('');
+ const counts=[s.r?`<span><strong>${s.r}</strong> 运行</span>`:'',s.w?`<span><strong>${s.w}</strong> 等你</span>`:'',s.action?'<span>另有 1 处待审批</span>':'',s.ended?'<span>'+({complete:'完成',failed:'失败',cancelled:'中断'}[s.id])+'</span>':''].join('');
+ return (counts?'<div class="counts">'+counts+'</div>':'')+safeHTML(speech)+(s.partial?'<div class="bubble-sub">仅已查清部分</div>':'');
+}
+function workarea(){const w=$('screen').clientWidth,h=$('screen').clientHeight;if(!$('two').checked)return {left:0,right:w,top:0,bottom:h};const seam=w*.52;return x+$('pet').offsetWidth/2<seam?{left:0,right:seam,top:0,bottom:h}:{left:seam,right:w,top:0,bottom:h}}
+function positionBubble(){const b=$('bubble'),area=workarea(),p=$('pet'),pad=9;b.style.maxWidth=Math.min(330,area.right-area.left-pad*2)+'px';const center=x+p.offsetWidth/2,head=y+p.offsetHeight*.13,foot=y+p.offsetHeight*.92;let top=head-b.offsetHeight-12,side='above';if(top<pad){top=foot+12;side='below'}if(top+b.offsetHeight>area.bottom-pad){top=Math.max(pad,head);side='beside'}let left=center-b.offsetWidth/2;if(side==='beside')left=center<($('screen').clientWidth/2)?x+p.offsetWidth+8:x-b.offsetWidth-8;left=Math.max(area.left+pad,Math.min(area.right-b.offsetWidth-pad,left));top=Math.max(pad,Math.min(area.bottom-b.offsetHeight-pad,top));b.style.left=left+'px';b.style.top=top+'px';b.dataset.side=side;b.style.setProperty('--tail',Math.max(16,Math.min(b.offsetWidth-16,center-left))+'px');$('placement').textContent='位置候选：'+({above:'优先头顶',below:'顶部空间不足，移到角色下方',beside:'上下空间不足，移到侧旁'}[side])+'；约束在角色中心所在屏幕的工作区。'}
+function render(){const s=current(),t=elapsed(),duration=s.ended?+$('terminal').value:6,visible=!s.hidden&&!(s.ended&&t>=duration)&&!(!s.ended&&$('policy').value==='change'&&t>=6);const b=$('bubble');b.className=variant.toLowerCase();b.style.fontSize=$('font').value+'px';b.innerHTML=content(s,t);b.hidden=!visible;$('facts').textContent=s.facts;$('lifetime').textContent=(visible?'气泡显示中':'气泡已隐藏')+' · 示例经过 '+Math.floor(t)+' 秒\n'+(s.disconnect?'断线跳动宽限：'+Math.max(0,10-t).toFixed(0)+' 秒':shouldMove(s)?'任务联动／持续动作示意：播放':'自动播放：停止，单击仍可推进');positionBubble()}
+function geometry(recenter=false){const h=+$('size').value,w=h*1250/1220;$('pet').style.width=w+'px';$('pet').style.height=h+'px';if(recenter){x=($('screen').clientWidth-w)/2;y=$('screen').clientHeight-h-28}x=Math.max(0,Math.min($('screen').clientWidth-w,x));y=Math.max(0,Math.min($('screen').clientHeight-h,y));$('pet').style.left=x+'px';$('pet').style.top=y+'px';render()}
+function place(){const w=$('pet').offsetWidth,h=$('pet').offsetHeight,W=$('screen').clientWidth,H=$('screen').clientHeight;const p=$('position').value;x=p==='left'?0:p==='right'||p==='corner'?W-w:p==='seam'?W*.52-w*.5:(W-w)/2;y=p==='top'||p==='corner'?0:(H-h)/2;geometry()}
+$('pet').src=asset.rest;$('scenario').value='mixed';
+$('prev').onclick=()=>setVariant(variants[(variants.indexOf(variant)+2)%3]);$('next').onclick=()=>setVariant(variants[(variants.indexOf(variant)+1)%3]);
+document.addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.target.isContentEditable)return;if(e.key==='ArrowLeft')$('prev').click();if(e.key==='ArrowRight')$('next').click()});
+$('scenario').onchange=selectScene;$('again').onclick=selectScene;$('later').onclick=()=>{advance+=10;render()};$('policy').onchange=selectScene;$('terminal').onchange=render;$('font').onchange=render;$('mode').onchange=render;$('background').onchange=()=>$('screen').classList.toggle('dark',$('background').value==='dark');$('position').onchange=place;$('size').onchange=()=>geometry();$('two').onchange=()=>{$('leftMonitor').classList.toggle('hidden',!$('two').checked);$('rightLabel').hidden=!$('two').checked;render()};
+$('pet').onpointerdown=e=>{e.preventDefault();drag={sx:e.clientX,sy:e.clientY,x,y,moved:false};$('pet').setPointerCapture(e.pointerId)};
+$('pet').onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag.sx,dy=e.clientY-drag.sy;if(Math.abs(dx)+Math.abs(dy)>7)drag.moved=true;if(drag.moved){x=drag.x+dx;y=drag.y+dy;geometry()}};
+$('pet').onpointerup=()=>{if(drag&&!drag.moved)nextMotion();drag=null};$('pet').onpointercancel=()=>drag=null;
+function frame(now){if(animation){const i=Math.min(animation.frames.length-1,Math.floor((now-animation.start)/20));$('pet').src=animation.frames[i];if(i===animation.frames.length-1)animation=null}if(!drag&&!animation&&shouldMove(current())&&now-lastAuto>770)nextMotion();requestAnimationFrame(frame)}
+window.addEventListener('resize',()=>geometry());setVariant(variant);geometry(true);setInterval(render,150);requestAnimationFrame(frame);
+</script></html>
