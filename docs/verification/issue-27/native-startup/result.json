@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "samples": 64,
+  "closed": true,
+  "acceptance": "Manual review required; samples are observations, not hardware scenario passes"
+}

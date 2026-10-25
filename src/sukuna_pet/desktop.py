@@ -64,20 +64,19 @@ class PetWindow(QWidget):
         return self._frame.copy()
 
     def _refresh_frame(self) -> None:
+        if not self._update_frame():
+            return
+        self._keep_visible()
+
+    def _update_frame(self) -> bool:
         key = (self._pet.view, self.height(), self.devicePixelRatioF())
         if key == self._render_key:
-            return
+            return False
         self._frame = self._renderer.render(*key)
         self.setMask(_character_region(self._frame))
         self._render_key = key
-        previous_position = self.pos()
-        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
-        if self._pointer_compensation is not None:
-            # The application drag origin is fixed at press time. Carry only
-            # contour compensation forward so the next pointer event cannot
-            # undo a frame's movement, including release at an unchanged cursor.
-            self._pointer_compensation += self.pos() - previous_position
         self.update()
+        return True
 
     def _watch_screen(self, screen: QScreen) -> None:
         screen.availableGeometryChanged.connect(self._schedule_visibility)
@@ -89,14 +88,23 @@ class PetWindow(QWidget):
         QTimer.singleShot(0, self, self._keep_visible)
 
     def _keep_visible(self) -> None:
-        self._refresh_frame()
-        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
+        screen: QScreen | None = self.screen()
+        if screen not in QApplication.screens():
+            screen = _screen_at(self.mask().boundingRect().translated(self.pos()).center())
+        if screen is not None:
+            self._move_visible((self.x(), self.y()), screen, follow_edges=True)
 
     def _move_visible(
         self, destination: tuple[int, int], screen: QScreen, *, follow_edges: bool = False,
     ) -> None:
         # Both rectangles are in Qt logical pixels, including on negative-origin
         # screens. Transparent margins may extend outside the work area.
+        previous_position = self.pos()
+        if self.screen() != screen:
+            self.setScreen(screen)
+        # Screen selection must precede rasterization and logical constraints.
+        # Native DPI notifications also recheck after Qt completes the change.
+        self._update_frame()
         area = screen.availableGeometry()
         visible = self.mask().boundingRect()
         if follow_edges:
@@ -112,9 +120,11 @@ class PetWindow(QWidget):
             destination = x, y
         x = max(area.left() - visible.left(), min(destination[0], area.right() - visible.right()))
         y = max(area.top() - visible.top(), min(destination[1], area.bottom() - visible.bottom()))
-        if self.screen() != screen:
-            self.setScreen(screen)
         self.move(x, y)
+        if follow_edges and self._pointer_compensation is not None:
+            # Carry contour/layout corrections, but not pointer clamping, into
+            # the fixed application drag origin for the next move or release.
+            self._pointer_compensation += self.pos() - previous_position
         self._edges = Qt.Edge(0)
         if x + visible.left() == area.left():
             self._edges |= Qt.Edge.LeftEdge
@@ -129,17 +139,7 @@ class PetWindow(QWidget):
         if self._pointer_compensation is not None:
             destination = (destination[0] + self._pointer_compensation.x(),
                            destination[1] + self._pointer_compensation.y())
-        screen = QApplication.screenAt(cursor)
-        if screen is None:
-            # Qt's Windows virtual desktop can have gaps between logical screen
-            # rectangles. Never treat their union as one usable work area.
-            def distance(candidate: QScreen) -> int:
-                rect = candidate.geometry()
-                dx = max(rect.left() - cursor.x(), 0, cursor.x() - rect.right())
-                dy = max(rect.top() - cursor.y(), 0, cursor.y() - rect.bottom())
-                return dx * dx + dy * dy
-
-            screen = min(QApplication.screens(), key=distance, default=None)
+        screen = _screen_at(cursor)
         if screen is not None:
             self._move_visible(destination, screen)
 
@@ -149,8 +149,7 @@ class PetWindow(QWidget):
         # motion into <=4ms steps, but keeps automatic waits frame-granular.
         self._pet.advance(min(150, (now - self._last_time) * 1000))
         self._last_time = now
-        self._refresh_frame()
-        self._move_visible((self.x(), self.y()), self.screen(), follow_edges=True)
+        self._keep_visible()
 
     def paintEvent(self, event: QPaintEvent) -> None:
         painter = QPainter(self)
@@ -255,6 +254,21 @@ class PetWindow(QWidget):
         self._refresh_frame()
         self._move_visible((centre_x - self.width() // 2, bottom - height), self.screen(), follow_edges=True)
         self.update()
+
+
+def _screen_at(point: QPoint) -> QScreen | None:
+    screen = QApplication.screenAt(point)
+    if screen is not None:
+        return screen
+    # Qt logical desktops can have gaps. Compare individual screens, never
+    # their outer rectangle, including when recovering from screen removal.
+    def distance(candidate: QScreen) -> int:
+        rect = candidate.geometry()
+        dx = max(rect.left() - point.x(), 0, point.x() - rect.right())
+        dy = max(rect.top() - point.y(), 0, point.y() - rect.bottom())
+        return dx * dx + dy * dy
+
+    return min(QApplication.screens(), key=distance, default=None)
 
 
 def _character_region(frame: QImage) -> QRegion:

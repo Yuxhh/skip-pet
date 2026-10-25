@@ -1,0 +1,28 @@
+{
+  "recorded_utc": "2026-10-25T07:11:06.513228+00:00",
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+  "pyside": "6.12.0",
+  "qt": "6.12.0",
+  "qpa": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0,
+      "logical_dpi": 96.0
+    }
+  ],
+  "evidence": "Real screen inventory only; no hardware scenario accepted by this tool"
+}
