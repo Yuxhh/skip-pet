@@ -1,0 +1,155 @@
+{
+  "kind": "prototype numerical observations, not human approval",
+  "html_script_syntax": "compiled successfully",
+  "single_click": [
+    {
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    },
+    {
+      "age_ms": 55,
+      "sx": 1.0707106781186548,
+      "sy": 0.8939339828220179,
+      "active": true,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    },
+    {
+      "age_ms": 110,
+      "sx": 1.1,
+      "sy": 0.85,
+      "active": true,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    },
+    {
+      "age_ms": 165,
+      "sx": 1.0707106781186548,
+      "sy": 0.8939339828220179,
+      "active": true,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    },
+    {
+      "age_ms": 220,
+      "sx": 1,
+      "sy": 1,
+      "active": false,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    },
+    {
+      "age_ms": 500,
+      "sx": 1,
+      "sy": 1,
+      "active": false,
+      "anchor": [
+        709.5,
+        1108
+      ]
+    }
+  ],
+  "sequential_stage_endpoints": [
+    {
+      "stage": 1,
+      "eye": 13,
+      "body": 13,
+      "blinks": 0,
+      "clicks": 1
+    },
+    {
+      "stage": 2,
+      "eye": 24,
+      "body": 24,
+      "blinks": 0,
+      "clicks": 2
+    },
+    {
+      "stage": 3,
+      "eye": 34,
+      "body": 34,
+      "blinks": 1,
+      "clicks": 3
+    },
+    {
+      "stage": 0,
+      "eye": 41,
+      "body": 41,
+      "blinks": 1,
+      "clicks": 4
+    }
+  ],
+  "rapid_click_restarts": [
+    {
+      "click": 1,
+      "stage": 1,
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true
+    },
+    {
+      "click": 2,
+      "stage": 2,
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true
+    },
+    {
+      "click": 3,
+      "stage": 3,
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true
+    },
+    {
+      "click": 4,
+      "stage": 0,
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true
+    },
+    {
+      "click": 5,
+      "stage": 1,
+      "age_ms": 0,
+      "sx": 1,
+      "sy": 1,
+      "active": true
+    }
+  ],
+  "rapid_final": {
+    "stage": 1,
+    "clicks": 5,
+    "blinks": 1,
+    "bounce": {
+      "sx": 1,
+      "sy": 1,
+      "active": false
+    }
+  },
+  "disabled_at_peak": {
+    "sx": 1,
+    "sy": 1,
+    "active": false
+  },
+  "eyes_unchanged": true,
+  "rig_unchanged": true
+}
