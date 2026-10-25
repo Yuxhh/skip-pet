@@ -36,7 +36,7 @@ const scenarios=[
  {id:'failed',name:'一个任务失败',r:0,w:0,ended:true,hosts:[['DeepSeek','啧，失败了。回去看。']],speech:'啧，失败了。回去看。',facts:'收到本轮失败结果。\n不能当作完成或空闲成功。'},
  {id:'cancelled',name:'一个任务中断',r:0,w:0,ended:true,hosts:[['DeepSeek','哼，中断了。']],speech:'哼，中断了。',facts:'本轮被取消或中断；不宣称成功。'},
  {id:'doneOthers',name:'一个完成，另一个仍在运行',r:1,w:0,hosts:[['DeepSeek','1 个办完，1 个还在办。']],speech:'1 个办完，1 个还在办。',after:'哼，1 个还在办。',facts:'两个任务中，只有一轮完成。\n短暂提示完成后继续显示仍运行的一轮。'},
- {id:'disconnect',name:'确认断线：隐藏文字 + 跳动宽限',r:0,w:0,disconnect:true,hidden:true,hosts:[],speech:'',facts:'刚确认 DeepSeek 断线，立即隐藏旧文字。\n断线前运行状态仅供跳动宽限，最多 10 秒。\n到期停止联动不等于任务完成。'},
+ {id:'disconnect',name:'确认断线：隐藏文字 + 跳动宽限',r:0,w:0,disconnect:true,hidden:true,hosts:[],speech:'',facts:'刚确认 DeepSeek 断线，立即隐藏旧文字。\n断线前运行状态仅供跳动宽限，最多 5 秒。\n到期停止联动不等于任务完成。'},
  {id:'otherOnline',name:'一端断线，另一端仍在运行',r:1,w:0,hosts:[['Codex','哼，1 个还在办。']],speech:'哼，1 个还在办。',facts:'双端接入的未来示例。\nDeepSeek 确认断线：隐藏旧文字。\nCodex 已确认的 1 个任务继续运行。'},
  {id:'idle',name:'已确认空闲',r:0,w:0,hidden:true,hosts:[],speech:'',facts:'已确认没有运行、等待或新结束的任务。\n不添加无状态依据的闲聊。'}
 ];
@@ -45,7 +45,7 @@ const variants=['A','B','C'],names={A:'A · 一句话气泡',B:'B · 按宿主�
 let variant=variants.includes(new URL(location.href).searchParams.get('variant'))?new URL(location.href).searchParams.get('variant'):'A';
 let start=performance.now(),advance=0,x=100,y=200,stage=0,animation=null,lastAuto=0,drag=null;
 const current=()=>scenarios.find(s=>s.id===$('scenario').value),elapsed=()=>Math.max(0,(performance.now()-start)/1000+advance);
-const active=s=>s.r>0||s.w>0,shouldMove=s=>!!($('mode').value==='always'||($('mode').value==='linked'&&(s.r>0||(s.disconnect&&elapsed()<10))));
+const active=s=>s.r>0||s.w>0,shouldMove=s=>!!($('mode').value==='always'||($('mode').value==='linked'&&(s.r>0||(s.disconnect&&elapsed()<5))));
 function setVariant(v){variant=v;const u=new URL(location.href);u.searchParams.set('variant',v);history.replaceState(null,'',u);$('variantName').textContent=names[v];render()}
 function selectScene(){start=performance.now();advance=0;lastAuto=0;render()}
 function nextMotion(){const next=(stage+1)%4;animation={frames:asset.transitions[stage],start:performance.now()};stage=next;lastAuto=performance.now()}
@@ -59,7 +59,7 @@ function content(s,t){
 }
 function workarea(){const w=$('screen').clientWidth,h=$('screen').clientHeight;if(!$('two').checked)return {left:0,right:w,top:0,bottom:h};const seam=w*.52;return x+$('pet').offsetWidth/2<seam?{left:0,right:seam,top:0,bottom:h}:{left:seam,right:w,top:0,bottom:h}}
 function positionBubble(){const b=$('bubble'),area=workarea(),p=$('pet'),pad=9;b.style.maxWidth=Math.min(330,area.right-area.left-pad*2)+'px';const center=x+p.offsetWidth/2,head=y+p.offsetHeight*.13,foot=y+p.offsetHeight*.92;let top=head-b.offsetHeight-12,side='above';if(top<pad){top=foot+12;side='below'}if(top+b.offsetHeight>area.bottom-pad){top=Math.max(pad,head);side='beside'}let left=center-b.offsetWidth/2;if(side==='beside')left=center<($('screen').clientWidth/2)?x+p.offsetWidth+8:x-b.offsetWidth-8;left=Math.max(area.left+pad,Math.min(area.right-b.offsetWidth-pad,left));top=Math.max(pad,Math.min(area.bottom-b.offsetHeight-pad,top));b.style.left=left+'px';b.style.top=top+'px';b.dataset.side=side;b.style.setProperty('--tail',Math.max(16,Math.min(b.offsetWidth-16,center-left))+'px');$('placement').textContent='位置候选：'+({above:'优先头顶',below:'顶部空间不足，移到角色下方',beside:'上下空间不足，移到侧旁'}[side])+'；约束在角色中心所在屏幕的工作区。'}
-function render(){const s=current(),t=elapsed(),duration=s.ended?+$('terminal').value:6,visible=!s.hidden&&!(s.ended&&t>=duration)&&!(!s.ended&&$('policy').value==='change'&&t>=6);const b=$('bubble');b.className=variant.toLowerCase();b.style.fontSize=$('font').value+'px';b.innerHTML=content(s,t);b.hidden=!visible;$('facts').textContent=s.facts;$('lifetime').textContent=(visible?'气泡显示中':'气泡已隐藏')+' · 示例经过 '+Math.floor(t)+' 秒\n'+(s.disconnect?'断线跳动宽限：'+Math.max(0,10-t).toFixed(0)+' 秒':shouldMove(s)?'任务联动／持续动作示意：播放':'自动播放：停止，单击仍可推进');positionBubble()}
+function render(){const s=current(),t=elapsed(),duration=s.ended?+$('terminal').value:6,visible=!s.hidden&&!(s.ended&&t>=duration)&&!(!s.ended&&$('policy').value==='change'&&t>=6);const b=$('bubble');b.className=variant.toLowerCase();b.style.fontSize=$('font').value+'px';b.innerHTML=content(s,t);b.hidden=!visible;$('facts').textContent=s.facts;$('lifetime').textContent=(visible?'气泡显示中':'气泡已隐藏')+' · 示例经过 '+Math.floor(t)+' 秒\n'+(s.disconnect?'断线跳动宽限：'+Math.max(0,5-t).toFixed(0)+' 秒':shouldMove(s)?'任务联动／持续动作示意：播放':'自动播放：停止，单击仍可推进');positionBubble()}
 function geometry(recenter=false){const h=+$('size').value,w=h*1250/1220;$('pet').style.width=w+'px';$('pet').style.height=h+'px';if(recenter){x=($('screen').clientWidth-w)/2;y=$('screen').clientHeight-h-28}x=Math.max(0,Math.min($('screen').clientWidth-w,x));y=Math.max(0,Math.min($('screen').clientHeight-h,y));$('pet').style.left=x+'px';$('pet').style.top=y+'px';render()}
 function place(){const w=$('pet').offsetWidth,h=$('pet').offsetHeight,W=$('screen').clientWidth,H=$('screen').clientHeight;const p=$('position').value;x=p==='left'?0:p==='right'||p==='corner'?W-w:p==='seam'?W*.52-w*.5:(W-w)/2;y=p==='top'||p==='corner'?0:(H-h)/2;geometry()}
 $('pet').src=asset.rest;$('scenario').value='mixed';

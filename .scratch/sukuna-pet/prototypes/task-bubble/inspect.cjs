@@ -17,7 +17,9 @@ const fs=require('node:fs'),path=require('node:path'),{pathToFileURL}=require('n
  for(const s of ['unknown','disconnect']){
   await page.selectOption('#scenario',s);observations.push({scenario:s,hidden:await page.locator('#bubble').isHidden(),moving:await page.evaluate(()=>shouldMove(current()))});
  }
- await page.click('#later');observations.push({disconnect_after_10s:await page.evaluate(()=>shouldMove(current()))});
+ observations.push({disconnect_before_5s:await page.evaluate(()=>{start=performance.now();advance=4.9;return shouldMove(current())})});
+ observations.push({disconnect_at_5s:await page.evaluate(()=>{start=performance.now();advance=5;return shouldMove(current())})});
+ await page.selectOption('#scenario','otherOnline');await page.click('#later');observations.push({other_host_still_running:await page.evaluate(()=>shouldMove(current()))});
  await page.selectOption('#scenario','complete');await page.click('#later');observations.push({terminal_expired:await page.locator('#bubble').isHidden()});
  await page.selectOption('#scenario','mixed');await page.selectOption('#policy','change');await page.click('#later');observations.push({change_expired:await page.locator('#bubble').isHidden()});
  await page.selectOption('#policy','stay');

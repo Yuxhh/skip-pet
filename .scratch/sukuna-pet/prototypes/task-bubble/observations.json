@@ -27,7 +27,13 @@
       "moving": true
     },
     {
-      "disconnect_after_10s": false
+      "disconnect_before_5s": true
+    },
+    {
+      "disconnect_at_5s": false
+    },
+    {
+      "other_host_still_running": true
     },
     {
       "terminal_expired": true
