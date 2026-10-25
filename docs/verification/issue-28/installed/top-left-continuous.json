@@ -1,0 +1,2409 @@
+{
+  "scope": "Installed binary, read-only OS samples, one real screen DPR1.0; not all continuous time or multi-screen proof. Window and region read sequentially, not atomically.",
+  "work_area": [
+    0,
+    0,
+    1920,
+    1032
+  ],
+  "samples": [
+    {
+      "elapsed_ms": 0.22479996550828218,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 50.83659989759326,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 101.42209997866303,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 151.8498999066651,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 202.21649995073676,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 252.56599998101592,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 303.0995998997241,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 353.3358999993652,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 403.63109996542335,
+      "window": [
+        -26,
+        -50,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        273,
+        253
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 454.1746999602765,
+      "window": [
+        -18,
+        -69,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 504.4826999073848,
+      "window": [
+        -15,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 554.8186999512836,
+      "window": [
+        -20,
+        -52,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        284,
+        252
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 605.3794999606907,
+      "window": [
+        -28,
+        -26,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        269,
+        277
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 655.6976999854669,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 706.3319999724627,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 756.5898000029847,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 806.6973999375477,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 857.2365998988971,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 907.4762999080122,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 957.7804999426007,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1008.5054999217391,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1058.6804999038577,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1109.2098999070004,
+      "window": [
+        -21,
+        -50,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        282,
+        254
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1159.8309999099001,
+      "window": [
+        -15,
+        -77,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        228
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1210.333399940282,
+      "window": [
+        -17,
+        -73,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        291,
+        232
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1260.9058999223635,
+      "window": [
+        -23,
+        -53,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        278,
+        251
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1311.4522999385372,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1361.9687999598682,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1412.4913999112323,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1462.759199901484,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1513.3234999375418,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1563.5904999217018,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1614.1091999597847,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1664.6568999858573,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1714.9908998981118,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1765.3835999080911,
+      "window": [
+        -21,
+        -60,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        244
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1815.5132998945192,
+      "window": [
+        -16,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1866.174199967645,
+      "window": [
+        -16,
+        -72,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        233
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1916.5876999031752,
+      "window": [
+        -21,
+        -54,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        250
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1967.1196999261156,
+      "window": [
+        -29,
+        -28,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        279
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2017.6386999664828,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2068.162699928507,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2118.692399933934,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2168.7934999354184,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2219.3674999289215,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2269.9394999071956,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2320.455899927765,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2371.0167999379337,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2421.6318998951465,
+      "window": [
+        -25,
+        -39,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        275,
+        264
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2472.188299987465,
+      "window": [
+        -18,
+        -70,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        235
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2522.495999932289,
+      "window": [
+        -15,
+        -82,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        223
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2573.107299976982,
+      "window": [
+        -20,
+        -68,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        285,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2623.4007999300957,
+      "window": [
+        -27,
+        -45,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        270,
+        258
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2673.501699930057,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2723.658600007184,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2774.0044998936355,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2824.6327999513596,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2875.147799961269,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2925.693199969828,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2975.910999928601,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3026.6725999535993,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3076.7978999065235,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3127.0885999547318,
+      "window": [
+        -21,
+        -56,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        248
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3177.606499986723,
+      "window": [
+        -16,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        -1,
+        -1,
+        294,
+        231
+      ],
+      "contacts": [],
+      "inside": false
+    },
+    {
+      "elapsed_ms": 3228.3668000018224,
+      "window": [
+        -18,
+        -60,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        245
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3278.9539999794215,
+      "window": [
+        -26,
+        -35,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        273,
+        268
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3329.4613999314606,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3380.0185999134555,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3430.575499893166,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3481.084999977611,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3531.6094999434426,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3582.1192999137565,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3632.3034999659285,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3682.83939990215,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3733.0158998956904,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3783.274499932304,
+      "window": [
+        -21,
+        -52,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        252
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3833.807499962859,
+      "window": [
+        -15,
+        -77,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        228
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3884.383999975398,
+      "window": [
+        -18,
+        -70,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        235
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3934.919099905528,
+      "window": [
+        -21,
+        -60,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        244
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3985.0767999887466,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4035.62559990678,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4086.171899922192,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4136.596099939197,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4187.060199910775,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4237.545399926603,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4288.046199944802,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4338.603899930604,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4388.886099914089,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4439.227299997583,
+      "window": [
+        -21,
+        -59,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        245
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4489.706699969247,
+      "window": [
+        -16,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4539.942999952473,
+      "window": [
+        -16,
+        -71,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        238
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4590.440599946305,
+      "window": [
+        -23,
+        -47,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        279,
+        257
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4640.880499966443,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4691.345899947919,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4741.925199981779,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4792.470499989577,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4843.036499922164,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4893.66079994943,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4943.876599892974,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4994.374300003983,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5044.750300003216,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5095.340300002135,
+      "window": [
+        -26,
+        -38,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        273,
+        265
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5145.690299919806,
+      "window": [
+        -18,
+        -69,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        235
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5196.1410999065265,
+      "window": [
+        -15,
+        -82,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        223
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5246.422199998051,
+      "window": [
+        -20,
+        -68,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        285,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5296.905900002457,
+      "window": [
+        -27,
+        -45,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        271,
+        258
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5347.474699956365,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5397.955199936405,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5448.5178999602795,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5499.038799898699,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5549.290499999188,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5599.832099978812,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5650.3265999490395,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5700.821499922313,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5751.417399966158,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5801.921899896115,
+      "window": [
+        -19,
+        -68,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        287,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5852.435999899171,
+      "window": [
+        -15,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5902.684299973771,
+      "window": [
+        -17,
+        -65,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        291,
+        240
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5953.106099972501,
+      "window": [
+        -23,
+        -43,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        4,
+        -15,
+        274,
+        260
+      ],
+      "contacts": [],
+      "inside": false
+    },
+    {
+      "elapsed_ms": 6003.414699924178,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "inside": true
+    }
+  ],
+  "all_inside": false,
+  "common_contacts": [],
+  "different_window_positions": 34,
+  "different_visible_rectangles": 38
+}

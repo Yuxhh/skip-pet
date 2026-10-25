@@ -1,0 +1,2524 @@
+{
+  "scope": "Installed binary, read-only OS samples, one real screen DPR1.0; not all continuous time or multi-screen proof. Window and region read sequentially, not atomically.",
+  "work_area": [
+    0,
+    0,
+    1920,
+    1032
+  ],
+  "samples": [
+    {
+      "elapsed_ms": 0.05430006422102451,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 50.23110006004572,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 100.62150005251169,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 150.7632000138983,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 201.32280001416802,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 251.80050008930266,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 302.3606000933796,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        -4,
+        15,
+        276,
+        278
+      ],
+      "contacts": [],
+      "consistent_double_read": true,
+      "inside": false
+    },
+    {
+      "elapsed_ms": 352.9683999950066,
+      "window": [
+        -18,
+        -65,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        240
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 403.5172000294551,
+      "window": [
+        -15,
+        -82,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        223
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 454.0371000766754,
+      "window": [
+        -18,
+        -76,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        2,
+        -9,
+        292,
+        228
+      ],
+      "contacts": [],
+      "consistent_double_read": true,
+      "inside": false
+    },
+    {
+      "elapsed_ms": 504.7034000745043,
+      "window": [
+        -28,
+        -44,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        269,
+        259
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 554.9188000150025,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 605.4770000046119,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 655.7296999963,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 706.4589000074193,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 756.8290000781417,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 807.4071999872103,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 857.9083000076935,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 908.2919000647962,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 958.8661000598222,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1009.1077000834048,
+      "window": [
+        -20,
+        -65,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        290,
+        239
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1059.438000083901,
+      "window": [
+        -16,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1109.622500021942,
+      "window": [
+        -16,
+        -67,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        292,
+        238
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1159.9847000325099,
+      "window": [
+        -22,
+        -46,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        281,
+        262
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1210.6016000034288,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1260.9836000483483,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1311.2609999952838,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1361.858900054358,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1412.1591000584885,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1462.5616000266746,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1513.0696999840438,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1563.306000083685,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1613.4662000695243,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1663.8284000800923,
+      "window": [
+        -21,
+        -47,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        257
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1714.0027000568807,
+      "window": [
+        -16,
+        -73,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        232
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1764.5259000128135,
+      "window": [
+        -16,
+        -76,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        229
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1815.0810999795794,
+      "window": [
+        -21,
+        -61,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        243
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1865.4532000655308,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1916.0387000301853,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 1966.2127000046894,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2016.779400059022,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2067.0637000584975,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2117.593300063163,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2168.0305000627413,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2218.3176000835374,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2268.450300092809,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2319.0008000237867,
+      "window": [
+        -25,
+        -47,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        275,
+        256
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2369.3672000663355,
+      "window": [
+        -18,
+        -68,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        237
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2419.911100063473,
+      "window": [
+        -15,
+        -69,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2470.431199995801,
+      "window": [
+        -19,
+        -59,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        286,
+        245
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2520.572500070557,
+      "window": [
+        -27,
+        -34,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        271,
+        269
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2570.9185000741854,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2621.468900004402,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2671.7022000811994,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2722.1997000742704,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2772.7802000008523,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2823.016699985601,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2873.187500052154,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2923.360100015998,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 2973.7908000824973,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3023.975700023584,
+      "window": [
+        -21,
+        -55,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        282,
+        249
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3074.364800006151,
+      "window": [
+        -16,
+        -73,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        236
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3124.9305000528693,
+      "window": [
+        -17,
+        -77,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        291,
+        228
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3175.233200076036,
+      "window": [
+        -22,
+        -60,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        280,
+        248
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3225.680400035344,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3275.883399997838,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3326.063400018029,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3376.5569999814034,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3426.788800046779,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3477.3997000884265,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3527.7172999922186,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3578.3925000578165,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3629.0381000144407,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3679.6384000917897,
+      "window": [
+        -25,
+        -51,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        275,
+        252
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3730.1583000225946,
+      "window": [
+        -18,
+        -70,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        235
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3780.720000038855,
+      "window": [
+        -17,
+        -66,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        291,
+        239
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3831.256699981168,
+      "window": [
+        -19,
+        -56,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        287,
+        248
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3881.519000045955,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        -9,
+        267,
+        282
+      ],
+      "contacts": [
+        "left"
+      ],
+      "consistent_double_read": true,
+      "inside": false
+    },
+    {
+      "elapsed_ms": 3932.146599981934,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 3982.3804000625387,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4032.7858000528067,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4083.11590005178,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4133.711300091818,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4184.348399983719,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4234.641900053248,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4285.2187000680715,
+      "window": [
+        -29,
+        -16,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        291
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4335.777800064534,
+      "window": [
+        -25,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        280,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4386.1225000582635,
+      "window": [
+        -18,
+        -64,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        289,
+        241
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4436.636500060558,
+      "window": [
+        -15,
+        -77,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        295,
+        228
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4486.864200094715,
+      "window": [
+        -21,
+        -61,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        283,
+        243
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4537.372500053607,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4587.759900023229,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4638.2885000202805,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4688.708500005305,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4739.102200022899,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4789.634200045839,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4839.970700093545,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4890.1703000301495,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4940.404299995862,
+      "window": [
+        -29,
+        -37,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        270
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 4990.885299979709,
+      "window": [
+        -26,
+        -46,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        273,
+        257
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5041.4171000011265,
+      "window": [
+        -18,
+        -67,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        288,
+        237
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5091.817200067453,
+      "window": [
+        -15,
+        -74,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        294,
+        231
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5142.449700040743,
+      "window": [
+        -19,
+        -56,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        287,
+        248
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5192.810700042173,
+      "window": [
+        -26,
+        -35,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        272,
+        268
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5243.193000089377,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5293.439900036901,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5343.8185000559315,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5394.381100079045,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5444.547199993394,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5494.825400062837,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5545.32650008332,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5595.884800073691,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5646.473800064996,
+      "window": [
+        -29,
+        -25,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        282
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5696.765500004403,
+      "window": [
+        -25,
+        -40,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        -4,
+        18,
+        279,
+        264
+      ],
+      "contacts": [],
+      "consistent_double_read": true,
+      "inside": false
+    },
+    {
+      "elapsed_ms": 5747.299600043334,
+      "window": [
+        -16,
+        -81,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        224
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5797.825900022872,
+      "window": [
+        -16,
+        -80,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        293,
+        229
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5848.36050006561,
+      "window": [
+        -21,
+        -65,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        3,
+        -11,
+        279,
+        238
+      ],
+      "contacts": [],
+      "consistent_double_read": true,
+      "inside": false
+    },
+    {
+      "elapsed_ms": 5898.732600035146,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5949.228700017557,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    },
+    {
+      "elapsed_ms": 5999.523699982092,
+      "window": [
+        -29,
+        -41,
+        328,
+        320
+      ],
+      "visible_exclusive": [
+        0,
+        0,
+        267,
+        266
+      ],
+      "contacts": [
+        "left",
+        "top"
+      ],
+      "consistent_double_read": true,
+      "inside": true
+    }
+  ],
+  "all_inside": false,
+  "consistent_samples": 120,
+  "consistent_violations": 5,
+  "common_contacts": [],
+  "different_window_positions": 39,
+  "different_visible_rectangles": 41
+}

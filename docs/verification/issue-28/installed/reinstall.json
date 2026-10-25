@@ -1,0 +1,14 @@
+{
+  "process_id": 77476,
+  "installer_sha256": "49c1a6f7a10568adfc972f6e4717beee93ff384e34d1d2c282e4fc253b69db98",
+  "version": "0.2.0",
+  "start_menu_exists": true,
+  "preference": {
+    "mode": "click",
+    "size": 320
+  },
+  "verified_files": 161,
+  "desktop_shortcut_exists": true,
+  "file_mismatches": [],
+  "process_path": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\SukunaPet.exe"
+}

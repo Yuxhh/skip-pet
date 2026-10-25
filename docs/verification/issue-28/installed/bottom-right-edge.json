@@ -1,0 +1,48 @@
+{
+  "name": "bottom-right-edge",
+  "hwnd": 143992128,
+  "pid": 77476,
+  "window": [
+    1624,
+    725,
+    328,
+    320
+  ],
+  "region_bounds": [
+    29,
+    41,
+    267,
+    266
+  ],
+  "topmost": true,
+  "points": [
+    {
+      "local": [
+        2,
+        2
+      ],
+      "in_region": false,
+      "hit_hwnd": 88155300
+    },
+    {
+      "local": [
+        162,
+        174
+      ],
+      "in_region": true,
+      "hit_hwnd": 143992128
+    },
+    {
+      "local": [
+        31,
+        305
+      ],
+      "in_region": false,
+      "hit_hwnd": 3869982
+    }
+  ],
+  "expected_height": 320,
+  "screenshot_sha256": "8a6e8e7c47623d26eb40dc80c46b0a91a138330da5821e7c2149c01e8592bb0a",
+  "reference": "current production renderer; static opaque pixels only",
+  "scope": "Uncontrolled pose; geometry and OS hit observation only, no fixed-stage pixel comparison"
+}
