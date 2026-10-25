@@ -1,0 +1,371 @@
+{
+  "source_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+  "source_files": [
+    "preview.py",
+    "frozen/character.png",
+    "frozen/head-neck-repair.png",
+    "frozen/rear-collar-complete.png",
+    "frozen/eyes.js",
+    "frozen/rig.js",
+    "frozen/motion-parameters.json"
+  ],
+  "note": "Executed frozen native Model and Renderer, <=4ms model substeps. Compare whole final Qt images; <=1 channel raster rounding tolerance. DPR 1.5 is synthetic, not hardware evidence.",
+  "samples": [
+    {
+      "file": "first_peak-188-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 110,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "first_peak-271-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 110,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "first_peak-320-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 110,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "first_peak-320-1.5.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 110,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "first_recovered-188-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 220,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "first_recovered-271-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 220,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "first_recovered-320-1.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 220,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "first_recovered-320-1.5.png",
+      "clicks_ms": [
+        0
+      ],
+      "at_ms": 220,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "second_peak-188-1.png",
+      "clicks_ms": [
+        0,
+        300
+      ],
+      "at_ms": 410,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "second_peak-271-1.png",
+      "clicks_ms": [
+        0,
+        300
+      ],
+      "at_ms": 410,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "second_peak-320-1.png",
+      "clicks_ms": [
+        0,
+        300
+      ],
+      "at_ms": 410,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "second_peak-320-1.5.png",
+      "clicks_ms": [
+        0,
+        300
+      ],
+      "at_ms": 410,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "blink_peak-188-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600
+      ],
+      "at_ms": 710,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "blink_peak-271-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600
+      ],
+      "at_ms": 710,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "blink_peak-320-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600
+      ],
+      "at_ms": 710,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "blink_peak-320-1.5.png",
+      "clicks_ms": [
+        0,
+        300,
+        600
+      ],
+      "at_ms": 710,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "closing_retarget_peak-188-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        660
+      ],
+      "at_ms": 770,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "closing_retarget_peak-271-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        660
+      ],
+      "at_ms": 770,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "closing_retarget_peak-320-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        660
+      ],
+      "at_ms": 770,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "closing_retarget_peak-320-1.5.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        660
+      ],
+      "at_ms": 770,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "opening_retarget_peak-188-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        760
+      ],
+      "at_ms": 870,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "opening_retarget_peak-271-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        760
+      ],
+      "at_ms": 870,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "opening_retarget_peak-320-1.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        760
+      ],
+      "at_ms": 870,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "opening_retarget_peak-320-1.5.png",
+      "clicks_ms": [
+        0,
+        300,
+        600,
+        760
+      ],
+      "at_ms": 870,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "rapid_peak-188-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 290,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_peak-271-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 290,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_peak-320-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 290,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_peak-320-1.5.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 290,
+      "height": 320,
+      "dpr": 1.5
+    },
+    {
+      "file": "rapid_recovered-188-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 1500,
+      "height": 188,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_recovered-271-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 1500,
+      "height": 271,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_recovered-320-1.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 1500,
+      "height": 320,
+      "dpr": 1
+    },
+    {
+      "file": "rapid_recovered-320-1.5.png",
+      "clicks_ms": [
+        0,
+        45,
+        90,
+        135,
+        180
+      ],
+      "at_ms": 1500,
+      "height": 320,
+      "dpr": 1.5
+    }
+  ]
+}

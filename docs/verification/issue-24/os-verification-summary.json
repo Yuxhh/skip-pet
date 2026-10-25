@@ -1,0 +1,86 @@
+{
+  "input_source": "computer-use @oai/sky real OS mouse actions; logs emitted by production PetWindow observer",
+  "first_session": {
+    "manual_stage_sequence_before_first_menu": [
+      0,
+      1,
+      2,
+      3,
+      0
+    ],
+    "receiver_clicks": 1,
+    "animated_bounce_observations": 19,
+    "drag_from": [
+      650,
+      300
+    ],
+    "drag_to": [
+      750,
+      350
+    ],
+    "exit": {
+      "exit_code": 0,
+      "pet_closed": true,
+      "receiver_clicks": 1,
+      "final_view": {
+        "stage": 2,
+        "holding": true,
+        "right_eye": [
+          621.15,
+          469.0
+        ],
+        "left_eye": [
+          789.0,
+          458.0
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 24.0,
+        "head_angle": 1.17,
+        "head_scale": 1.025,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "second_session": {
+    "native_capture_samples": 3,
+    "distinct_captured_head_phases": 2,
+    "drag_from": [
+      650,
+      300
+    ],
+    "drag_to": [
+      770,
+      360
+    ],
+    "no_bounce_triggered_by_drag": true,
+    "exit": {
+      "exit_code": 0,
+      "pet_closed": true,
+      "receiver_clicks": 0,
+      "final_view": {
+        "stage": 0,
+        "holding": false,
+        "right_eye": [
+          648.455528553494,
+          473.27348350268767
+        ],
+        "left_eye": [
+          812.5469670053753,
+          462.27348350268767
+        ],
+        "eyelid_closure": 0.0,
+        "head_phase": 39.444852791398944,
+        "head_angle": -1.135258057578449,
+        "head_scale": 1.0081990859713998,
+        "bounce_scale": [
+          1.0,
+          1.0
+        ]
+      }
+    }
+  },
+  "limits": "Real OS animated drag used continuous head motion. Controlled bounce-time drag, return, ungrab and hide validated separately via application and Qt events. One physical screen only."
+}

@@ -22,7 +22,7 @@ _KEYS = (
 
 @dataclass(frozen=True)
 class PetView:
-    """Source-space eyes, uniform head pose, eyelid closure and visible status."""
+    """Source-space head/eyes and holding status, plus independent whole bounce."""
 
     stage: int
     holding: bool
@@ -32,6 +32,7 @@ class PetView:
     head_phase: float = 0
     head_angle: float = 0
     head_scale: float = 1
+    bounce_scale: tuple[float, float] = (1, 1)
 
 
 def _head_pose(position: float) -> tuple[float, float]:
@@ -78,6 +79,7 @@ class PetApplication:
         self._head_to = 0.0
         self._head_age = 0.0
         self._head_duration = 0.0
+        self._bounce_age = 220.0
         self._pointer_start: tuple[int, int] | None = None
         self._window_start = (0, 0)
         self._drag_distance = 0
@@ -147,14 +149,17 @@ class PetApplication:
         if self._blink_age is not None:
             closure = 0.5 - 0.5 * math.cos(2 * math.pi * self._blink_age / 240)
         angle, scale = _head_pose(self._head_position)
+        pulse = math.sin(math.pi * self._bounce_age / 220) if self._bounce_age < 220 else 0
         return PetView(
             self._stage, self._mode == "click" and not self._moving
             and self._blink_age is None and self._head_age >= self._head_duration,
             right, left, closure,
             self._head_position % 41, angle, scale,
+            (1 + .1 * pulse, 1 - .15 * pulse),
         )
 
     def click(self) -> None:
+        self._bounce_age = 0
         # The prototype commits a pending closed-eye jump before retargeting.
         # Keep the current blink envelope even when a new target replaces it.
         if self._blink_destination is not None:
@@ -191,6 +196,7 @@ class PetApplication:
     def advance(self, elapsed_ms: float) -> None:
         if not math.isfinite(elapsed_ms) or elapsed_ms < 0:
             raise ValueError("elapsed_ms must be finite and nonnegative")
+        self._bounce_age = min(220, self._bounce_age + elapsed_ms)
         if self._mode == "always":
             self._advance_continuous(elapsed_ms)
             return

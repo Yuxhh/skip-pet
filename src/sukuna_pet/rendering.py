@@ -135,6 +135,12 @@ class CharacterRenderer:
         painter.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform)
         painter.scale(scale, scale)
         painter.translate(-SOURCE_BOUNDS.x(), -SOURCE_BOUNDS.y())
+        # One outer transform for every composed layer, about the full RGBA
+        # material's bottom centre (transparent margins included). Viewport and
+        # display scaling stay outside it; the collar shares the same bounce.
+        painter.translate(709.5, 1108)
+        painter.scale(*view.bounce_scale)
+        painter.translate(-709.5, -1108)
         painter.drawImage(0, 0, self._rear)
         painter.drawImage(0, 0, self._body)
         radians = math.radians(view.head_angle)

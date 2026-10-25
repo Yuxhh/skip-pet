@@ -28,6 +28,8 @@ def test_first_launch_is_stationary_until_one_click_then_holds() -> None:
     assert end.holding
     assert end.right_eye == (639, 467)
     assert end.left_eye == (798, 456)
+    pet.advance(39)  # Head/eyes hold at 181ms; independent bounce ends at 220ms.
+    end = pet.view
     pet.advance(60_000)
     assert pet.view == end
 
@@ -86,6 +88,8 @@ def test_stage_two_holds_until_separate_click_blinks_and_jumps_while_closed() ->
     assert stage_two.holding
     assert stage_two.right_eye == (621.15, 469)  # Includes the approved -12px.
     assert stage_two.left_eye == (789, 458)  # No extra correction on this eye.
+    pet.advance(67)  # Wait for the second click's bounce to recover as well.
+    stage_two = pet.view
     pet.advance(10_000)
     assert pet.view == stage_two
 
@@ -114,6 +118,7 @@ def test_stage_two_holds_until_separate_click_blinks_and_jumps_while_closed() ->
     assert pet.view.stage == 0
     assert pet.view.right_eye == (652, 476)
     assert pet.view.holding
+    pet.advance(122)  # Return-to-zero head motion also finishes before bounce.
     initial = pet.view
     pet.advance(10_000)
     assert pet.view == initial

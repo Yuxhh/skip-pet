@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "pet_closed": true,
+  "receiver_clicks": 1,
+  "final_view": {
+    "stage": 2,
+    "holding": true,
+    "right_eye": [
+      621.15,
+      469.0
+    ],
+    "left_eye": [
+      789.0,
+      458.0
+    ],
+    "eyelid_closure": 0.0,
+    "head_phase": 24.0,
+    "head_angle": 1.17,
+    "head_scale": 1.025,
+    "bounce_scale": [
+      1.0,
+      1.0
+    ]
+  }
+}

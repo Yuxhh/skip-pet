@@ -1,0 +1,1539 @@
+{
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "input": "Qt public events and exact PetApplication virtual time",
+  "limits": [
+    "Single screen DPR 1.0 only; no real multi-screen/mixed-DPI validation.",
+    "V5 automatic scheduler, dynamic edge pinning and installer are later tickets."
+  ],
+  "sizes": [
+    {
+      "height": 188,
+      "canvas": [
+        193,
+        188
+      ],
+      "samples": [
+        {
+          "name": "initial",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            24,
+            157,
+            154
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              645.565,
+              471.05
+            ],
+            "left_eye": [
+              808.1,
+              460.05
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 7.919999999999999,
+            "head_angle": -4.258383090832953,
+            "head_scale": 1.0528991688302232,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            9,
+            43,
+            173,
+            136
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-220ms",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            14,
+            157,
+            164
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-1-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            14,
+            157,
+            164
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-peak",
+          "view": {
+            "stage": 2,
+            "holding": false,
+            "right_eye": [
+              625.0105,
+              468.23
+            ],
+            "left_eye": [
+              789.77,
+              457.23
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 20.919999999999998,
+            "head_angle": -0.285762560000002,
+            "head_scale": 1.03552128,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            9,
+            45,
+            173,
+            134
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-220ms",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            22,
+            157,
+            156
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-2-held",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            22,
+            157,
+            156
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-peak",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.9829629131445341,
+            "head_phase": 28.583333333333332,
+            "head_angle": -3.2808463541666644,
+            "head_scale": 1.042505787037037,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            9,
+            44,
+            173,
+            135
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-220ms",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.06698729810778059,
+            "head_phase": 33.166666666666664,
+            "head_angle": -8.799895833333332,
+            "head_scale": 1.0642129629629629,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            17,
+            157,
+            161
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-3-held",
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            16,
+            157,
+            162
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-peak",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            9,
+            49,
+            173,
+            130
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-220ms",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            24,
+            157,
+            154
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-0-held",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            24,
+            157,
+            154
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              648.62,
+              473.4
+            ],
+            "left_eye": [
+              812.8,
+              462.4
+            ],
+            "eyelid_closure": 0.24999999999999994,
+            "head_phase": 22.800000000000004,
+            "head_angle": 0.9180638317054859,
+            "head_scale": 1.0268208264462808,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            9,
+            46,
+            173,
+            133
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            17,
+            14,
+            157,
+            164
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        }
+      ]
+    },
+    {
+      "height": 271,
+      "canvas": [
+        278,
+        271
+      ],
+      "samples": [
+        {
+          "name": "initial",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            35,
+            227,
+            221
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              645.565,
+              471.05
+            ],
+            "left_eye": [
+              808.1,
+              460.05
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 7.919999999999999,
+            "head_angle": -4.258383090832953,
+            "head_scale": 1.0528991688302232,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            13,
+            62,
+            249,
+            196
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-220ms",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            21,
+            227,
+            235
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-1-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            21,
+            227,
+            235
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-peak",
+          "view": {
+            "stage": 2,
+            "holding": false,
+            "right_eye": [
+              625.0105,
+              468.23
+            ],
+            "left_eye": [
+              789.77,
+              457.23
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 20.919999999999998,
+            "head_angle": -0.285762560000002,
+            "head_scale": 1.03552128,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            13,
+            65,
+            249,
+            193
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-220ms",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            31,
+            227,
+            225
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-2-held",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            31,
+            227,
+            225
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-peak",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.9829629131445341,
+            "head_phase": 28.583333333333332,
+            "head_angle": -3.2808463541666644,
+            "head_scale": 1.042505787037037,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            13,
+            64,
+            249,
+            194
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-220ms",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.06698729810778059,
+            "head_phase": 33.166666666666664,
+            "head_angle": -8.799895833333332,
+            "head_scale": 1.0642129629629629,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            23,
+            227,
+            233
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-3-held",
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            24,
+            227,
+            232
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-peak",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            13,
+            70,
+            249,
+            188
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-220ms",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            35,
+            227,
+            221
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-0-held",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            35,
+            227,
+            221
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              648.62,
+              473.4
+            ],
+            "left_eye": [
+              812.8,
+              462.4
+            ],
+            "eyelid_closure": 0.24999999999999994,
+            "head_phase": 22.800000000000004,
+            "head_angle": 0.9180638317054859,
+            "head_scale": 1.0268208264462808,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            13,
+            67,
+            249,
+            191
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            24,
+            21,
+            227,
+            235
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        }
+      ]
+    },
+    {
+      "height": 320,
+      "canvas": [
+        328,
+        320
+      ],
+      "samples": [
+        {
+          "name": "initial",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            41,
+            267,
+            266
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              645.565,
+              471.05
+            ],
+            "left_eye": [
+              808.1,
+              460.05
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 7.919999999999999,
+            "head_angle": -4.258383090832953,
+            "head_scale": 1.0528991688302232,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            15,
+            73,
+            295,
+            232
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-1-220ms",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            16,
+            267,
+            291
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-1-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            16,
+            267,
+            291
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-peak",
+          "view": {
+            "stage": 2,
+            "holding": false,
+            "right_eye": [
+              625.0105,
+              468.23
+            ],
+            "left_eye": [
+              789.77,
+              457.23
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 20.919999999999998,
+            "head_angle": -0.285762560000002,
+            "head_scale": 1.03552128,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            15,
+            77,
+            295,
+            228
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-2-220ms",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            37,
+            267,
+            270
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-2-held",
+          "view": {
+            "stage": 2,
+            "holding": true,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 24.0,
+            "head_angle": 1.17,
+            "head_scale": 1.025,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            37,
+            267,
+            270
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-peak",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              621.15,
+              469.0
+            ],
+            "left_eye": [
+              789.0,
+              458.0
+            ],
+            "eyelid_closure": 0.9829629131445341,
+            "head_phase": 28.583333333333332,
+            "head_angle": -3.2808463541666644,
+            "head_scale": 1.042505787037037,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            15,
+            75,
+            295,
+            230
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-3-220ms",
+          "view": {
+            "stage": 3,
+            "holding": false,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.06698729810778059,
+            "head_phase": 33.166666666666664,
+            "head_angle": -8.799895833333332,
+            "head_scale": 1.0642129629629629,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            28,
+            267,
+            279
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-3-held",
+          "view": {
+            "stage": 3,
+            "holding": true,
+            "right_eye": [
+              642.25,
+              483.0
+            ],
+            "left_eye": [
+              803.0,
+              472.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 34.0,
+            "head_angle": -9.0,
+            "head_scale": 1.065,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            25,
+            267,
+            282
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-peak",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            15,
+            82,
+            295,
+            223
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "to-0-220ms",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            41,
+            267,
+            266
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "stage-0-held",
+          "view": {
+            "stage": 0,
+            "holding": true,
+            "right_eye": [
+              652.0,
+              476.0
+            ],
+            "left_eye": [
+              818.0,
+              465.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 0.0,
+            "head_angle": 0.0,
+            "head_scale": 1.0,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            41,
+            267,
+            266
+          ],
+          "changed_native_hits": 0,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-peak",
+          "view": {
+            "stage": 1,
+            "holding": false,
+            "right_eye": [
+              648.62,
+              473.4
+            ],
+            "left_eye": [
+              812.8,
+              462.4
+            ],
+            "eyelid_closure": 0.24999999999999994,
+            "head_phase": 22.800000000000004,
+            "head_angle": 0.9180638317054859,
+            "head_scale": 1.0268208264462808,
+            "bounce_scale": [
+              1.1,
+              0.85
+            ]
+          },
+          "bounds": [
+            15,
+            72,
+            295,
+            233
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        },
+        {
+          "name": "rapid-five-held",
+          "view": {
+            "stage": 1,
+            "holding": true,
+            "right_eye": [
+              639.0,
+              467.0
+            ],
+            "left_eye": [
+              798.0,
+              456.0
+            ],
+            "eyelid_closure": 0.0,
+            "head_phase": 13.0,
+            "head_angle": -6.44,
+            "head_scale": 1.08,
+            "bounce_scale": [
+              1.0,
+              1.0
+            ]
+          },
+          "bounds": [
+            29,
+            16,
+            267,
+            291
+          ],
+          "changed_native_hits": 20,
+          "visible_target": "pet",
+          "transparent_target": "receiver"
+        }
+      ]
+    }
+  ],
+  "range_diagnostics": [
+    {
+      "height": 188,
+      "head_phases": 165,
+      "bounce_extrema": 2,
+      "frames": 330,
+      "all_inside": true,
+      "union_bounds": [
+        9,
+        14,
+        181,
+        178
+      ],
+      "boundary": "165 uniform source phases 0..41, step .25; two bounce extrema. Diagnostic raster sampling, not an analytic proof or input seam."
+    },
+    {
+      "height": 271,
+      "head_phases": 165,
+      "bounce_extrema": 2,
+      "frames": 330,
+      "all_inside": true,
+      "union_bounds": [
+        13,
+        16,
+        269,
+        257
+      ],
+      "boundary": "165 uniform source phases 0..41, step .25; two bounce extrema. Diagnostic raster sampling, not an analytic proof or input seam."
+    },
+    {
+      "height": 320,
+      "head_phases": 165,
+      "bounce_extrema": 2,
+      "frames": 330,
+      "all_inside": true,
+      "union_bounds": [
+        15,
+        16,
+        309,
+        306
+      ],
+      "boundary": "165 uniform source phases 0..41, step .25; two bounce extrema. Diagnostic raster sampling, not an analytic proof or input seam."
+    }
+  ]
+}

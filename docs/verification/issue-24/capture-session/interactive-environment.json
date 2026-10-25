@@ -1,0 +1,27 @@
+{
+  "platform": "windows",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "work_area": [
+        0,
+        0,
+        1920,
+        1032
+      ],
+      "dpr": 1.0
+    }
+  ],
+  "input": "Real OS input",
+  "limits": [
+    "Single screen DPR 1.0 only; no real multi-screen/mixed-DPI validation.",
+    "V5 automatic scheduler, dynamic edge pinning and installer are later tickets."
+  ],
+  "sizes": []
+}

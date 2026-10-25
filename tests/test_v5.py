@@ -24,6 +24,7 @@ def test_head_and_eyes_advance_together_and_hold_the_approved_stage() -> None:
     assert pet.view.head_angle == pytest.approx(-6.44)
     assert pet.view.head_scale == pytest.approx(1.08)
     assert pet.view.holding
+    pet.advance(39)  # Independent whole-character bounce finishes at 220ms.
     end = pet.view
     pet.advance(60_000)
     assert pet.view == end
@@ -58,3 +59,4 @@ def test_head_progress_blink_and_hold_match_executed_frozen_v5(trace: dict) -> N
             assert view.eyelid_closure == pytest.approx(expected["eyelid_closure"], abs=1e-8)
             assert view.right_eye == pytest.approx(expected["right_eye"], abs=1e-8)
             assert view.left_eye == pytest.approx(expected["left_eye"], abs=1e-8)
+            assert view.bounce_scale == pytest.approx(expected["bounce_scale"], abs=1e-8)

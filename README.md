@@ -1,7 +1,7 @@
 # 宿傩桌宠
 
 原生 Windows 透明半身角色，首次启动静止，点击一次使头颈与眼睛推进一个视线阶段并停留。
-当前源码已接入 [#23](https://github.com/xyd-0811/skip-pet/issues/23) 的冻结 V5 分层头颈动作、固定 3× 眼动及动态透明命中。三张素材随包提供；整体点击回弹、V5 自动节奏和动态贴边由后续票接入。正式窗口证据见 [#23 验证记录](docs/verification/issue-23/README.md)。
+当前源码已接入 [#23](https://github.com/xyd-0811/skip-pet/issues/23) 的冻结 V5 分层头颈动作、固定 3× 眼动及动态透明命中，以及 [#24](https://github.com/xyd-0811/skip-pet/issues/24) 的整体点击回弹与连点接续。三张素材随包提供；V5 自动节奏和动态贴边由后续票接入。正式窗口证据见 [#23 验证记录](docs/verification/issue-23/README.md)和 [#24 验证记录](docs/verification/issue-24/README.md)。
 
 ## 安装版
 
@@ -22,6 +22,8 @@ python -m venv .venv
 
 单击角色依次进入视线 1、2、3、0，头颈与眼睛连续运动，每次结束保持。肩胸固定，头部等比偏转，上颈随动并平滑连回领口。视线 2 不自行眨眼；下一次单独点击进入视线 3 时眨眼，240ms 完成，闭合 120ms 时只换眼位，头部仍连续运动。连点覆盖前方目标，从当前位置衔接。按住可见角色拖动调整位置，拖动及释放不推进阶段；透明区域鼠标穿透到下方 Windows 应用，其他普通应用前置时角色仍置顶。
 
+每次点击同时触发整个人物的 220ms 回弹，110ms 时宽 110%、高 85%，随后恢复，头眼继续停在目标阶段。连点从当前头部动作接续，每次仅重启一次回弹，幅度不叠加、不排队。拖动、拖回起点后释放、捕获中断和隐藏窗口均不触发点击动作。
+
 右键菜单提供“点击跳动”“持续跳动”“调整大小”和“退出”，勾选当前模式与大小。“调整大小”可选 188px、271px、320px（最大）画布高度（Qt 逻辑像素），对应 193×188、278×271、328×320 的固定完整运动视口，默认 320px。切换后即时更新显示与鼠标命中轮廓，并保持角色在屏幕工作区内。持续模式暂保留旧版连续眼动调度并附带头部运动，仍接受点击互动；切回点击模式完成当前视线阶段后保持，并保留正在进行的眨眼。V5 的段间 450ms 等待与自动回弹由后续票替换。
 
 选择模式或大小后立即保存，下次启动恢复；首次无设置或设置损坏时使用点击模式与 320px。设置存放于 Qt 的用户配置目录（Windows 通常为 `%LOCALAPPDATA%\skip-pet\sukuna-pet\mode.json`），兼容旧版只含模式的偏好。保存失败时提示重试，继续使用原选项。选择“退出”结束进程。
@@ -40,16 +42,20 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pytest tests/test_pointer.py -q
 .\.venv\Scripts\python.exe -m pytest tests/test_desktop.py -q
 .\.venv\Scripts\python.exe -m pytest tests/test_v5.py tests/test_v5_desktop.py -q
+.\.venv\Scripts\python.exe -m pytest tests/test_bounce.py tests/test_bounce_desktop.py -q
 .\.venv\Scripts\python.exe -m pytest -q
 .\.venv\Scripts\python.exe tools/visual_check.py --show
 .\.venv\Scripts\python.exe tools/verify_modes_native.py
 .\.venv\Scripts\python.exe tools/verify_pointer_native.py
 .\.venv\Scripts\python.exe tools/verify_pointer_native.py --output docs/verification/issue-16
 .\.venv\Scripts\python.exe tools/verify_v5_native.py --capture
+.\.venv\Scripts\python.exe tools/verify_bounce_native.py --capture
 ```
 
 `PetApplication.click()`、`select_mode("click" | "always")`、`advance(elapsed_ms)` 与只读 `view`/`mode` 是父规格已确认的应用级测试边界；通过同一设置路径建立新实例验证模式恢复。
 `view` 提供源图坐标下两眼中心、眼皮闭合程度、头部连续相位/角度/等比缩放及阶段/停留状态；Qt 将真实帧时间至多计入 150ms，并以不超过 4ms 的子步接入此边界。应用的虚拟时间入口不截断。绘制不决定播放时序。V5 轨迹直接执行冻结提交 `32c9f985d4467c1527b09c34f6868a3ccd3f85b4` 的 `Motion`、`Rig` 与眼睛绘制生成，可用 `node tools/capture_v5_traces.mjs` 重建；测试不需要 Node.js 或历史 Git 对象。
+
+`view.bounce_scale` 表达独立的整体回弹比例；`holding` 仍只表示头眼阶段已到位，回弹可能还在恢复。冻结轨迹现含 `Bounce.sample` 输出。`tools/capture_bounce_references.py` 从不可变原生提交生成 32 张组合动作 PNG，Qt 公开输入测试与它们逐像素对照；日常测试不执行实验代码。原生工具另对三档各作 165 头部相位 × 两个回弹极值的范围采样，并记录真实可达的点击轨迹，采样不构成连续空间证明。
 
 同一入口的 `pointer_press(position, window_position, drag_distance=...)`、`pointer_move(position)`、`pointer_release(position)` 和 `cancel_pointer()` 接收左键手势。坐标与拖动距离采用 Qt 逻辑像素，距离由 `QApplication.startDragDistance()` 提供；移动/释放返回需要移动到的窗口位置，只有未达到拖动阈值的释放才调用统一 `click()`。已进入拖动的手势即使回到起点也不变成点击，丢失鼠标捕获时取消手势。
 
