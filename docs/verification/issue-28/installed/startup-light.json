@@ -1,0 +1,52 @@
+{
+  "name": "startup-light",
+  "hwnd": 20127928,
+  "pid": 22840,
+  "window": [
+    1559,
+    679,
+    328,
+    320
+  ],
+  "region_bounds": [
+    29,
+    41,
+    267,
+    266
+  ],
+  "topmost": true,
+  "points": [
+    {
+      "local": [
+        2,
+        2
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    },
+    {
+      "local": [
+        162,
+        174
+      ],
+      "in_region": true,
+      "hit_hwnd": 20127928
+    },
+    {
+      "local": [
+        31,
+        305
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    }
+  ],
+  "expected_stage_clicks": 0,
+  "expected_height": 320,
+  "opaque_pixel_comparison": {
+    "pixels": 8780,
+    "max_channel_difference": 0,
+    "different_pixels": 0
+  },
+  "screenshot_sha256": "e44688ade6f3afd939fecc127c67f095b5bfd4fce37764ad0144b251c53bf373"
+}

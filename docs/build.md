@@ -1,6 +1,6 @@
 # Windows 运行与构建
 
-交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.1.0-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
+交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.2.0-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
 
 ## 固定工具链
 
@@ -12,7 +12,7 @@
 
 将源码 ZIP 解压到新的可写目录，不需要原仓库、Git 历史、参考程序或原视频。构建依赖从 Python 包索引安装，构建时需要网络或预先准备的 wheelhouse。下列命令在源码根目录的 PowerShell 执行：
 
-Windows 未启用长路径支持时，源码和虚拟环境应使用较短路径（例如 `C:\src\sp`）；PySide6 的 QML 依赖中含很深的文件名，过长的 `.venv` 路径会导致 pip 安装失败。本次没有修改系统长路径设置；独立源码检验将虚拟环境放在工作区的 `.scratch/i17e`，成功安装同一锁定依赖。
+Windows 未启用长路径支持时，源码和虚拟环境应使用较短路径（例如 `C:\src\sp`）；PySide6 的 QML 依赖中含很深的文件名，过长的 `.venv` 路径会导致 pip 安装失败。建议将虚拟环境放在较短的独立路径。本轮实际路径和结果见 #28 验证记录。
 
 ```powershell
 python -m venv .venv
@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Force .scratch/checks | Out-Null
 
 安装项目时使用 `--no-build-isolation`，避免构建隔离临时解析未锁定的 setuptools。PyInstaller 从 `src` 收集代码，从包资源收集 PNG 与 provenance.json；程序、Python DLL、Qt DLL 和插件位于同一个目录包，不依赖目标机 Python。Qt WebEngine/PDF/QML 不进入运行包。包中保留动态 Qt DLL 与上游许可文本。
 
-构建脚本为 PyInstaller 使用仅含当前解释器目录及 Windows System32 的 PATH，防止从其他开发工具误收集同名 DLL。Qt 使用目标 Windows 自带 ICU，不能把其他工具的 ICU 拷贝进 `_internal`。源码与构建命令从任意工作目录调用时，输出仍相对于源码根目录。
+构建脚本在运行前核对 CPython 3.14.4、全部锁定包版本及三张冻结素材哈希，打包后再次核对包内素材。报告保留依赖文件哈希与素材来源。使用说明及验收范围随安装提供。构建脚本为 PyInstaller 使用仅含当前解释器目录及 Windows System32 的 PATH，防止从其他开发工具误收集同名 DLL。Qt 使用目标 Windows 自带 ICU，不能把其他工具的 ICU 拷贝进 `_internal`。源码与构建命令从任意工作目录调用时，输出仍相对于源码根目录。
 
 `build_release.py` 会覆盖本项目 `dist/app/SukunaPet` 与同名交付文件；请勿将用户资料放入构建目录。源码 ZIP 显式包含 src、tests、tools、packaging、docs、词表及依赖配置，不收集 `.scratch`、`.venv`、Git 数据、原视频、参考安装目录或主机配置。源码 ZIP 是当前文件快照；报告中的 Git SHA 仅为基点，不能据此断言 ZIP 与该提交完全相同。重新运行会更新 SHA-256 清单；不承诺二进制按位可重现。
 
@@ -40,7 +40,7 @@ New-Item -ItemType Directory -Force .scratch/checks | Out-Null
 2. 无设置首次启动为点击跳动，依次点击观察阶段停留、视线 2 停留、下一点击眨眼、连点接续。
 3. 切换持续跳动，点击仍可互动；切回点击模式观察阶段收尾。保存持续模式后退出，重启确认恢复；再保存点击模式，重启复核。
 4. 在其他应用上复核透明处穿透、可见处拖动、拖动不触发点击、置顶、工作区四边及右键退出；真实多屏/不同 DPI 可用时逐屏补验。
-5. 退出，从“已安装的应用”或开始菜单卸载入口卸载，检查安装文件、开始菜单及桌面快捷方式被移除，记录保留的模式偏好。
+5. 退出，从“已安装的应用”或开始菜单卸载入口卸载，检查安装文件、开始菜单及桌面快捷方式被移除，记录保留的模式和大小偏好。
 6. 保存 Windows 版本、屏幕/DPI、安装路径、开始菜单与卸载条目、进程路径、操作记录和截图；区分新 venv、独立源码目录、本机安装和干净 Windows，不能互相代替。
 
-本次实测结论与限制见 [#17 验证记录](verification/issue-17/README.md)。
+本次实测结论与限制见 [#28 验证记录](verification/issue-28/README.md)。

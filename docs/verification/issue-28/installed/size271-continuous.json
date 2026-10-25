@@ -1,0 +1,47 @@
+{
+  "name": "size271-continuous",
+  "hwnd": 324669564,
+  "pid": 70280,
+  "window": [
+    1669,
+    776,
+    278,
+    271
+  ],
+  "region_bounds": [
+    24,
+    21,
+    227,
+    235
+  ],
+  "topmost": true,
+  "points": [
+    {
+      "local": [
+        2,
+        2
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    },
+    {
+      "local": [
+        137,
+        138
+      ],
+      "in_region": true,
+      "hit_hwnd": 324669564
+    },
+    {
+      "local": [
+        26,
+        254
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    }
+  ],
+  "expected_height": 271,
+  "screenshot_sha256": "eb9afd9eac1e9b0eea6677876897363c1aced95f8692223d5dbfe9da11c46023",
+  "scope": "Continuous uncontrolled pose; geometry and OS hit observation only, no fixed-stage pixel comparison"
+}

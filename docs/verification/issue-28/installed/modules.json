@@ -1,0 +1,38 @@
+[
+  {
+    "ModuleName": "python314.dll",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\python314.dll"
+  },
+  {
+    "ModuleName": "python3.DLL",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\python3.DLL"
+  },
+  {
+    "ModuleName": "Shiboken.pyd",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\shiboken6\\Shiboken.pyd"
+  },
+  {
+    "ModuleName": "shiboken6.abi3.dll",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\shiboken6\\shiboken6.abi3.dll"
+  },
+  {
+    "ModuleName": "Qt6Core.dll",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\PySide6\\Qt6Core.dll"
+  },
+  {
+    "ModuleName": "icuuc.dll",
+    "FileName": "C:\\WINDOWS\\SYSTEM32\\icuuc.dll"
+  },
+  {
+    "ModuleName": "icu.DLL",
+    "FileName": "C:\\WINDOWS\\SYSTEM32\\icu.DLL"
+  },
+  {
+    "ModuleName": "Qt6Gui.dll",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\PySide6\\Qt6Gui.dll"
+  },
+  {
+    "ModuleName": "Qt6Widgets.dll",
+    "FileName": "C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\_internal\\PySide6\\Qt6Widgets.dll"
+  }
+]

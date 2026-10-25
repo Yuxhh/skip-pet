@@ -1,0 +1,26 @@
+[
+  {
+    "name": "stage1-light",
+    "reference": "tests/fixtures/bounce-native/first_recovered-320-1.png",
+    "reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+    "opaque_pixels": 8900,
+    "different_pixels": 1,
+    "max_difference": 254
+  },
+  {
+    "name": "stage1-dark",
+    "reference": "tests/fixtures/bounce-native/first_recovered-320-1.png",
+    "reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+    "opaque_pixels": 8900,
+    "different_pixels": 0,
+    "max_difference": 0
+  },
+  {
+    "name": "stage1-texture",
+    "reference": "tests/fixtures/bounce-native/first_recovered-320-1.png",
+    "reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",
+    "opaque_pixels": 8900,
+    "different_pixels": 0,
+    "max_difference": 0
+  }
+]

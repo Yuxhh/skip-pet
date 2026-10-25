@@ -1,0 +1,13 @@
+{
+  "source_directory": ".scratch\\issue28-source\\sukuna-pet-source",
+  "environment": ".scratch/i28e (fresh locked dependencies; editable source installed from extracted ZIP)",
+  "source_git_directory_exists": false,
+  "rebuilt_version": "0.2.0",
+  "source_base_commit": null,
+  "locked_requirements_match": true,
+  "three_asset_manifests_match": true,
+  "bundled_files": 161,
+  "rebuilt_setup_sha256": "160ed2691cc5b36e4816171693f779104d40236d3b4b5e24405cfb082f440216",
+  "source_runtime": "pip check and mypy (8 files) passed; offscreen Qt test_v5_desktop.py 14 passed in 17.58s",
+  "limitation": "Same Windows host, fresh venv and extracted source directory; not clean Windows hardware."
+}

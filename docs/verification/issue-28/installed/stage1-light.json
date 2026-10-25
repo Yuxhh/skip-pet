@@ -1,0 +1,52 @@
+{
+  "name": "stage1-light",
+  "hwnd": 20127928,
+  "pid": 22840,
+  "window": [
+    1589,
+    709,
+    328,
+    320
+  ],
+  "region_bounds": [
+    29,
+    16,
+    267,
+    291
+  ],
+  "topmost": true,
+  "points": [
+    {
+      "local": [
+        2,
+        2
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    },
+    {
+      "local": [
+        162,
+        161
+      ],
+      "in_region": true,
+      "hit_hwnd": 20127928
+    },
+    {
+      "local": [
+        31,
+        305
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    }
+  ],
+  "expected_stage_clicks": 1,
+  "expected_height": 320,
+  "opaque_pixel_comparison": {
+    "pixels": 8900,
+    "max_channel_difference": 254,
+    "different_pixels": 1
+  },
+  "screenshot_sha256": "23d1e394da7fdfd38addf6038b93266ba191cc8d000fa5b9ab5fa7d63b0e1976"
+}

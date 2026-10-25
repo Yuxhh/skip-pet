@@ -1,0 +1,9 @@
+{
+  "start_menu_exists": false,
+  "desktop_shortcut_exists": false,
+  "process_exists": false,
+  "preference_bytes_preserved": true,
+  "uninstall_key_exists": false,
+  "install_directory_exists": false,
+  "exit_code": 0
+}

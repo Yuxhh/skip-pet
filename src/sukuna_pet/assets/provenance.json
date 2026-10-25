@@ -31,6 +31,6 @@
     1250,
     1220
   ],
-  "animation": "Fixed-neck uniform head poses and feathered neck mesh; original 3x eyes and 240ms blink. Click bounce is a subsequent ticket.",
+  "animation": "Frozen V5 uniform head poses and feathered neck mesh; original 3x eyes and 240ms blink. Whole-character 220ms click bounce, with 450ms inter-stage waiting in continuous mode. Models are included in playback.py and rendering.py; no external model files.",
   "runtime": "Only bundled package assets; no prototype checkout, browser, reference program or original video."
 }

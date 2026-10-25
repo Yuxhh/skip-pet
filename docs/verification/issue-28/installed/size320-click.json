@@ -1,0 +1,48 @@
+{
+  "name": "size320-click",
+  "hwnd": 324669564,
+  "pid": 70280,
+  "window": [
+    1624,
+    725,
+    328,
+    320
+  ],
+  "region_bounds": [
+    29,
+    25,
+    267,
+    282
+  ],
+  "topmost": true,
+  "points": [
+    {
+      "local": [
+        2,
+        2
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    },
+    {
+      "local": [
+        162,
+        166
+      ],
+      "in_region": true,
+      "hit_hwnd": 324669564
+    },
+    {
+      "local": [
+        31,
+        305
+      ],
+      "in_region": false,
+      "hit_hwnd": 11149876
+    }
+  ],
+  "expected_height": 320,
+  "screenshot_sha256": "d752ab3a5f146cd4b8132157d1feda52be4258dc5bf6cbab26dd7f32071ffe69",
+  "reference": "current production renderer; static opaque pixels only",
+  "scope": "Uncontrolled pose; geometry and OS hit observation only, no fixed-stage pixel comparison"
+}

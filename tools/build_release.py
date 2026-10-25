@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import re
 import shutil
 import subprocess
 import sys
@@ -19,6 +20,37 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def check_inputs() -> dict[str, str]:
+    """Fail before freezing if the declared toolchain or frozen layers drift."""
+    if platform.python_version() != "3.14.4":
+        raise RuntimeError("Release builds require x64 CPython 3.14.4")
+    locks: dict[str, str] = {}
+    for name in ("requirements.txt", "requirements-dev.txt", "requirements-build.txt"):
+        path = ROOT / name
+        locks[name] = sha256(path.read_bytes()).hexdigest()
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith(("#", "-r ")):
+                continue
+            match = re.fullmatch(r"([A-Za-z0-9_.-]+)==([^\s]+)", line)
+            if match is None:
+                raise ValueError(f"Unpinned build requirement: {line}")
+            package, expected = match.groups()
+            actual = metadata.version(package)
+            if actual != expected:
+                raise RuntimeError(f"{package}: expected {expected}, installed {actual}")
+    check_assets(ROOT / "src" / "sukuna_pet" / "assets")
+    return locks
+
+
+def check_assets(directory: Path) -> None:
+    provenance = json.loads((directory / "provenance.json").read_text(encoding="utf-8"))
+    for asset in provenance["assets"]:
+        path = directory / asset["asset"]
+        if sha256(path.read_bytes()).hexdigest() != asset["sha256"]:
+            raise RuntimeError(f"Frozen asset hash mismatch: {path}")
 
 
 def run(arguments: list[str], *, env: dict[str, str] | None = None) -> None:
@@ -50,6 +82,7 @@ def main() -> int:
         version = tomllib.load(source)["project"]["version"]
     release = ROOT / "dist" / "release"
     release.mkdir(parents=True, exist_ok=True)
+    locks = check_inputs()
     run([sys.executable, "-m", "pip", "check"])
     # Dependency discovery must not collect unrelated DLLs from developer tools
     # on PATH (e.g. Poppler's ICU has a different ABI from Windows' system ICU).
@@ -61,7 +94,9 @@ def main() -> int:
          "--workpath", str(ROOT / "build" / "pyinstaller"),
          str(ROOT / "packaging" / "sukuna-pet.spec")], env=build_env)
     bundle = ROOT / "dist" / "app" / "SukunaPet"
+    check_assets(bundle / "_internal" / "sukuna_pet" / "assets")
     shutil.copyfile(ROOT / "docs" / "user-guide.md", bundle / "使用说明.md")
+    shutil.copyfile(ROOT / "docs" / "release-status.md", bundle / "验收说明.md")
     # Include upstream license texts next to the replaceable Qt runtime DLLs.
     licenses = bundle / "THIRD-PARTY-LICENSES"
     shutil.copytree(ROOT / "packaging" / "licenses", licenses / "Qt", dirs_exist_ok=True)
@@ -87,6 +122,8 @@ def main() -> int:
         "version": version, "python": sys.version, "platform": platform.platform(),
         "source_base_commit": commit,
         "source_snapshot": "working tree; source ZIP is authoritative, not an exact commit export",
+        "requirements_sha256": locks,
+        "assets": json.loads((bundle / "_internal" / "sukuna_pet" / "assets" / "provenance.json").read_text(encoding="utf-8")),
         "compiler": "Inno Setup 6.7.3", "compiler_sha256": sha256(iscc.read_bytes()).hexdigest(),
         "packages": sorted(f"{d.metadata['Name']}=={d.version}" for d in metadata.distributions()),
         "bundled_files": {p.relative_to(bundle).as_posix(): sha256(p.read_bytes()).hexdigest()

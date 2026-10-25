@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sukuna-pet"
-version = "0.1.0"
-description = "宿傩桌宠的原生 Windows 点击逐阶段眼动"
+version = "0.2.0"
+description = "宿傩桌宠 V5：头眼阶段推进、点击回弹、持续跳动与动态贴边"
 requires-python = ">=3.12"
 dependencies = ["PySide6==6.12.0"]
 
