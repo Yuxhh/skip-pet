@@ -2,6 +2,7 @@
 import { EventEmitter } from 'node:events';
 import { createInterface } from 'node:readline';
 import { apply } from '../src/sukuna_pet/integrations/dsh-bridge/index.js';
+import assert from 'node:assert/strict';
 const events = new EventEmitter();
 let cleanups = [];
 const browserPeer = {};
@@ -18,9 +19,12 @@ const agent = { id: 'root', session, status: 'running', ctx: {
 } };
 const live = [agent];
 let activeQuestions = [];
+let finishJob;
+let job;
 pendingRemoteEvents.set('remote-question', { id: 'remote-question',
-  source: { context: { subject: agent }, request: { wait: { callId: 'question' } } },
-  frame: { event: 'user-questions/request', agentId: 'root', request: { wait: { callId: 'question' } } },
+  // Default legacy ask passes questions/agent/signal, without callId or wait.
+  source: { context: { subject: agent }, request: { agent, questions: ['PRIVATE_QUESTION'] } },
+  frame: { event: 'user-questions/request', agentId: 'root' },
   deliveries: new Set([{ peer: browserPeer, answers: true }]),
 });
 const ctx = {
@@ -103,6 +107,26 @@ for await (const command of input) {
   }
   if (command === 'machine') {
     for (const pending of pendingRemoteEvents.values()) pending.deliveries.add({ peer: {}, answers: true });
+  }
+  if (command === 'parallel-job') {
+    log.push({ type: 'tool/call', seq: log.length, time: 111,
+      data: { turn: 1, callId: 'job', name: 'read_file' } });
+    job = events.listeners('tools/execute')[0]({ agent, callId: 'job' },
+      () => new Promise(resolve => { finishJob = resolve; }));
+  }
+  if (command === 'finish-job') {
+    finishJob({ content: ['PRIVATE_RESULT'] });
+    await job;
+    // The earlier question prevents the host from committing this result.
+  }
+  if (command === 'post-job') {
+    const decision = { kind: 'accept' };
+    const outcome = await events.listeners('tools/post-execute')[0]({ agent, callId: 'job' },
+      { content: ['PRIVATE_RESULT'] }, async () => decision);
+    assert.equal(outcome, decision);
+    const failure = new Error('PRIVATE_TOOL_ERROR');
+    await assert.rejects(events.listeners('tools/execute')[0]({ agent, callId: 'job' },
+      async () => { throw failure; }), error => error === failure);
   }
   if (command === 'new-turn') {
     pendingRemoteEvents.clear();

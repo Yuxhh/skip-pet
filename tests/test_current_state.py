@@ -91,25 +91,18 @@ def test_turn_failure_is_transient_and_not_replayed_after_reload(host: Host) -> 
     assert summary.text == ""
 
 
-def test_late_plugin_recovers_existing_question_wait(tmp_path: Path) -> None:
-    env = dict(os.environ, SUKUNA_PET_BRIDGE_DIR=str(tmp_path))
-    with subprocess.Popen(["node", "tests/bridge_current_state.mjs"],
-                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                          text=True, env=env, creationflags=subprocess.CREATE_NO_WINDOW) as child:
-        assert child.stdout is not None and child.stdin is not None
-        assert child.stdout.readline().strip() == "ready"
-        reader = BridgeReader(tmp_path)
-        deadline = monotonic() + 5
-        summary = reader.poll(monotonic())
-        try:
-            while monotonic() < deadline and summary.waiting != 1:
-                sleep(.1)
-                summary = reader.poll(monotonic())
-            assert summary.waiting == 1 and not summary.jump
-            assert "回答" in summary.text
-        finally:
-            child.stdin.write("close\n")
-            child.stdin.flush()
-            child.wait(timeout=5)
-        assert child.returncode == 0
-        assert "PRIVATE_QUESTION" not in next(tmp_path.glob("*.snapshot.json")).read_text()
+def test_completed_parallel_call_does_not_keep_waiting_task_jumping(host: Host) -> None:
+    summary = host("parallel-job", lambda summary: summary.running == 1)
+    assert summary.jump and summary.questions == 1
+    summary = host("finish-job", lambda summary: summary.waiting == 1)
+    assert not summary.jump
+    summary = host("post-job", lambda summary: summary.waiting == 1)
+    assert not summary.jump
+    summary = host("reload", lambda summary: summary.partial)
+    assert summary.running == summary.waiting == 0 and summary.text == ""
+
+
+def test_late_plugin_recovers_existing_question_wait(host: Host, tmp_path: Path) -> None:
+    summary = host("", lambda summary: summary.waiting == 1)
+    assert not summary.jump and "回答" in summary.text
+    assert "PRIVATE_QUESTION" not in next(tmp_path.glob("*.snapshot.json")).read_text()

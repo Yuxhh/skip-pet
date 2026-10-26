@@ -112,6 +112,13 @@ export function apply(ctx) {
     return [...agents.values()].map(publicState);
   });
   const record = (event, data = {}) => transport.record(event, data);
+  const observeExecution = (exec, next) => host.observeExecution(exec, next, () => {
+      if (disposed || !exec.agent) return;
+      const state = track(exec.agent);
+      if (state) refresh(exec.agent, state);
+  });
+  ctx.on('tools/execute', (exec, next) => observeExecution(exec, next));
+  ctx.on('tools/post-execute', (exec, _result, next) => observeExecution(exec, next));
   ctx.on('agent/created', ({ agent }) => { if (!disposed && agent) track(agent); });
   ctx.on('session/event', (session, event) => {
     try {

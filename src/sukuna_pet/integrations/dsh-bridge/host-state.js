@@ -8,6 +8,31 @@ const callIdOf = data => data.callId ?? data.message?.toolCallId
 
 export function currentState(ctx) {
   const caches = new WeakMap();
+  const executions = new WeakMap();
+  async function observeExecution(exec, next, changed) {
+    // Pass through the exact result/rejection. Never inspect arguments/results.
+    let entry;
+    try {
+      const cache = fold(exec.agent);
+      if (cache && validId(exec.callId)) {
+        let calls = executions.get(exec.agent.session);
+        if (!calls || calls.turn !== cache.turn) {
+          calls = { turn: cache.turn, states: new Map() };
+          executions.set(exec.agent.session, calls);
+        }
+        if (calls.states.size < 4096) {
+          entry = { working: true };
+          calls.states.set(exec.callId, entry);
+          changed();
+        }
+      }
+    } catch { /* Observation cannot fail a tool execution. */ }
+    try { return await next(); }
+    finally {
+      if (entry) entry.working = false;
+      try { changed(); } catch { /* Preserve the exact host outcome. */ }
+    }
+  }
   function fold(agent) {
     const session = agent.session;
     if (!Number.isSafeInteger(session.seq) || typeof session.eventAt !== 'function') return undefined;
@@ -98,7 +123,15 @@ export function currentState(ctx) {
         if (frame?.agentId !== agent.id || !['approval/request', 'user-questions/request'].includes(frame.event)) continue;
         if (pending.source?.context?.subject !== agent) { waitsKnown = false; continue; }
         const request = pending.source.request;
-        const call = request.callId ?? request.wait?.callId;
+        let call = request.callId ?? request.wait?.callId;
+        if (call === undefined && frame.event === 'user-questions/request') {
+          const candidates = [...cache.tools].filter(([, item]) => item.name === 'ask_user_question');
+          const requests = [...gateway.pendingRemoteEvents.values()].filter(item =>
+            item.frame?.agentId === agent.id && item.frame?.event === frame.event);
+          // Legacy ask omits correlation. A unique call and unique request are
+          // sufficient; parallel/nested ambiguity stays unknown.
+          if (candidates.length === 1 && requests.length === 1) call = candidates[0][0];
+        }
         const deliveries = [...pending.deliveries];
         const human = deliveries.some(client => client.peer === browser && client.answers);
         const machine = deliveries.some(client => client.peer !== browser && client.answers);
@@ -134,12 +167,18 @@ export function currentState(ctx) {
       const children = childrenByParent.get(id) ?? [];
       return children.length > 0 && children.every(child => isBlocked(child, new Set(seen)));
     };
-    const work = [...cache.tools.keys()].some(id => !isBlocked(id));
+    const unblocked = [...cache.tools.keys()].filter(id => !isBlocked(id));
+    const calls = executions.get(agent.session);
+    const stateOf = id => calls?.turn === cache.turn ? calls.states.get(id) : undefined;
+    const observedWork = unblocked.some(id => stateOf(id)?.working);
+    const unknownWork = unblocked.some(id => !stateOf(id));
+    const work = observedWork || unknownWork;
     // A run_code wrapper can run independent code while its nested calls wait.
     // The rc.2 log does not expose that program's suspended/runnable state.
     const nestedOnlyWait = !work && [...cache.tools.keys()].some(id =>
       !blocked.has(id) && childrenByParent.has(id));
     const pending = questions.size + approvals.size > 0;
+    if (pending && unknownWork && !observedWork) waitsKnown = false;
     const status = cache.open ? (pending && cache.tools.size > 0 && !work ? 'waiting' : 'running')
       : pending ? 'waiting' : 'idle';
     return { id: agent.id, root: root.id, rootTurn, turn: cache.turn, status,
@@ -147,5 +186,5 @@ export function currentState(ctx) {
       questions, approvals, tools: new Set(cache.tools.keys()),
       sourceSeq: agent.session.seq };
   }
-  return { read };
+  return { read, observeExecution };
 }

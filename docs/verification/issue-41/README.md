@@ -9,8 +9,8 @@
 - `dsh-api-gateway/lib/index.js:1003–1014,1062–1154`：`typertGateway.pendingRemoteEvents` 保存远程交互的请求身份、所属 Agent、投递及结束生命周期；`connection.browserPeer` 可区分共享浏览器 Peer 和其他 API Peer。仅把实际投递给浏览器且没有机器答复 Peer 的 `approval/request` / `user-questions/request` 计为人工待操作；审计 `approval/asked` 不触发等待。
 - `dsh-api-remotes/lib/index.js:165–176,233–252`：转发阶段发生在 answerer waterfall 内，携带实际 Agent。观察者只读取已有集合，不注册 answerer、不调用 next、不获取 claim。
 - `dsh-session/lib/index.js:1470–1486,1579–1595`：Session 连续 seq 和同步发布；先装监听，再同步复制注册表与当前 Session 水位，扫描期间不 await、不做文件 I/O。每次状态变化记录自身桥修订号；对消费者沿用 #40 的快照边界与独立健康恢复。
-- `dsh-agent-loop/lib/index.js:682–711,1365–1412`：从当前轮的真实 call/result 配对恢复未完成工具；支持安装版 `message.toolCallId`，不再只读旧参考的 callId 形状。工具失败只结束调用，整轮结局由 turn/end 决定。
-- `dsh-user-questions/lib/index.js:169–293,613–690`：legacy 的前台等待从网关恢复；timed 的 continued 从宿主投影恢复，仍显示待回答，已有前台调用结束后继续执行。不读取问题或答案正文，不调用 attachWait/answer。
+- `dsh-agent-loop/lib/index.js:542–610,682–711,1365–1412`：从当前轮 call/result 配对恢复调用身份；支持安装版 `message.toolCallId`。并行结果按模型顺序提交，未提交不等于仍在执行，因此结合 `tools/execute`、`tools/post-execute` 的被动 pass-through 生命周期观察。观察代码不读参数/结果，不修改 exec，所有记账失败被隔离，精确保留 next 的结果或异常。晚加载遇到人类等待加未观察的其他调用时保留未知，避免结束的并行调用造成持续跳动。工具失败只结束调用，整轮结局由 turn/end 决定。
+- `dsh-user-questions/lib/index.js:169–293,613–690` 与 `dsh-tool-ask-user/lib/index.js:305–320`：默认 legacy 不传 callId/wait；只在同一 Agent 恰好一个未完成提问调用、一个远程提问时关联。这是普通安装工具路径的有界假设，不推广至任意插件直接调用 ask 的情况；多个候选保持未知。timed 的 continued 从宿主投影恢复，仍显示待回答，已有前台调用结束后继续执行。不读取问题或答案正文，不调用 attachWait/answer。
 - `dsh-agent/lib/index.js:594–625`：按运行时 owner 沿链归并。同一宿主轮次时间窗口内的本地子代理计入根轮；旧轮不归入最新根轮。时间相同、缺少窗口或归属循环时保留未知。窗口只是版本适配依据，尚未通过实机并行验收，不能声明任意 provider 的父轮次归属已完整证明。
 
 传递机制仍参考 dsh-pet `34d810b1eadd98d00e7cb9b3b51428a45b5bf03e`，参考仓库未改动。必要差异是恢复使用宿主现态，不将裸审批审计升级为等待，不把消费端重连当作新一轮。
@@ -19,7 +19,7 @@
 
 `tests/test_current_state.py` 启动真实插件和文件发布器，经 BridgeReader 观察任务、跳动和文案。宿主侧是按照安装源码构造的边界替身，因此这些结果只证明适配算法及传递，不冒充真实日常实例验收。
 
-覆盖：等待中晚加载、批准与回答文案区分、子代理执行与提问并存、timed continued 后继续执行及重载恢复、回答移除提示、机器答复者不冒充真人、旧子代理及旧结束事件不覆盖新轮、失败及重载不回放历史结束。`bridge_harness.mjs` 和 `bridge_transport_harness.mjs` 验证已有参考回退路径、身份、健康、隐私和退出。
+覆盖：默认 legacy 等待中晚加载、批准与回答文案区分、子代理执行与提问并存、timed continued 后继续执行及重载恢复、回答移除提示、机器答复者不冒充真人、旧子代理及旧结束事件不覆盖新轮、失败及重载不回放历史结束、并行调用已结束但结果未提交时停止跳动、工具中间件原始结果/异常保持。`bridge_harness.mjs` 和 `bridge_transport_harness.mjs` 验证已有参考回退路径、身份、健康、隐私和退出。
 
 新路径每秒重新采样现存远程交互，即使没有 Session 事件也能发现交互结束；健康保持独立。首次和插件重载依旧须观察新代际健康增长，端到端测试不会直接信任首份快照。原有断线、5 秒宽限和结束 8 秒提示逻辑保持。
 
