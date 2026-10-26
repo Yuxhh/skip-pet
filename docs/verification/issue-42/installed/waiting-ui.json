@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-26T13:17:22.219Z",
+  "state": "Window: \"宿傩桌宠\", App: SukunaPet.exe.\n\t0 窗口 (settable, string) 宿傩桌宠 Secondary Actions: Raise ID: QApplication.PetWindow\n\t\t10 窗口 话说清楚，小鬼。等你回答。 Secondary Actions: Raise ID: QApplication.TaskBubble\n\t\t10 窗口 话说清楚，小鬼。等你回答。 Secondary Actions: Raise ID: QApplication.TaskBubble\n\nThe focused UI element is 0 窗口 (settable, string) 宿傩桌宠 Secondary Actions: Raise ID: QApplication.PetWindow.\n\nFocused element: 0 窗口 (settable, string) 宿傩桌宠 Secondary Actions: Raise ID: QApplication.PetWindow",
+  "regions": [
+    {
+      "id": "screenshot-0",
+      "originX": 1694,
+      "originY": 696,
+      "width": 193,
+      "height": 188
+    },
+    {
+      "id": "screenshot-1",
+      "originX": 1686,
+      "originY": 666,
+      "width": 206,
+      "height": 44
+    }
+  ],
+  "evidence": "installed SukunaPet.exe, real daily host waiting; native UI accessibility and window capture"
+}

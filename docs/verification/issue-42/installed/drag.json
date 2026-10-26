@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-26T13:13:22.675Z",
+  "app": "process:C:\\Users\\xing\\AppData\\Local\\Programs\\SukunaPet\\SukunaPet.exe",
+  "action": "sky.drag with OS mouse input",
+  "from": [
+    95,
+    160
+  ],
+  "to": [
+    95,
+    45
+  ],
+  "before": [
+    1694,
+    811,
+    193,
+    188
+  ],
+  "after": [
+    [
+      1694,
+      696,
+      193,
+      188
+    ]
+  ],
+  "evidence": "installed process; no synthetic Qt mouse events"
+}

@@ -1,7 +1,7 @@
 """Build an onedir Windows app, Setup.exe and a self-contained source archive.
 
 Run from the locked build environment; see docs/build.md. No reference media or
-installed reference application is accessed. Outputs remain inside dist/.
+installed reference application is accessed. Outputs default to dist/.
 """
 
 import argparse
@@ -53,6 +53,22 @@ def check_assets(directory: Path) -> None:
             raise RuntimeError(f"Frozen asset hash mismatch: {path}")
 
 
+def check_bundle(bundle: Path) -> dict[str, object]:
+    """Do not compile an installer that silently omits or ships an old bridge."""
+    package = bundle / "_internal" / "sukuna_pet"
+    check_assets(package / "assets")
+    source = ROOT / "src" / "sukuna_pet" / "integrations" / "dsh-bridge"
+    manifest = json.loads((source / "package.json").read_text(encoding="utf-8"))
+    hashes: dict[str, str] = {}
+    for name in ("package.json", *manifest["files"]):
+        path = package / "integrations" / "dsh-bridge" / name
+        expected = sha256((source / name).read_bytes()).hexdigest()
+        if not path.is_file() or sha256(path.read_bytes()).hexdigest() != expected:
+            raise RuntimeError(f"Bundled bridge missing or different from source: {name}")
+        hashes[name] = expected
+    return {"name": manifest["name"], "version": manifest["version"], "sha256": hashes}
+
+
 def run(arguments: list[str], *, env: dict[str, str] | None = None) -> None:
     subprocess.run(arguments, cwd=ROOT, env=env, check=True)
 
@@ -74,13 +90,16 @@ def source_archive(destination: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--iscc", type=Path, required=True, help="Inno Setup 6.7.3 ISCC.exe")
+    parser.add_argument("--output-root", type=Path, default=ROOT / "dist",
+                        help="Separate app, release and build directories (default: dist)")
     args = parser.parse_args()
     if sys.platform != "win32" or platform.machine().upper() not in ("AMD64", "X86_64"):
         parser.error("Build on Windows x64 with x64 CPython")
     iscc = args.iscc.resolve(strict=True)
     with (ROOT / "pyproject.toml").open("rb") as source:
         version = tomllib.load(source)["project"]["version"]
-    release = ROOT / "dist" / "release"
+    output = args.output_root.resolve()
+    release = output / "release"
     release.mkdir(parents=True, exist_ok=True)
     locks = check_inputs()
     run([sys.executable, "-m", "pip", "check"])
@@ -90,11 +109,11 @@ def main() -> int:
     build_env["PATH"] = os.pathsep.join((str(Path(sys.executable).parent),
                                        sys.base_prefix, str(Path(os.environ["SystemRoot"]) / "System32")))
     run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean",
-         "--distpath", str(ROOT / "dist" / "app"),
-         "--workpath", str(ROOT / "build" / "pyinstaller"),
+         "--distpath", str(output / "app"),
+         "--workpath", str(output / "build" / "pyinstaller"),
          str(ROOT / "packaging" / "sukuna-pet.spec")], env=build_env)
-    bundle = ROOT / "dist" / "app" / "SukunaPet"
-    check_assets(bundle / "_internal" / "sukuna_pet" / "assets")
+    bundle = output / "app" / "SukunaPet"
+    bridge = check_bundle(bundle)
     shutil.copyfile(ROOT / "docs" / "user-guide.md", bundle / "使用说明.md")
     shutil.copyfile(ROOT / "docs" / "release-status.md", bundle / "验收说明.md")
     # Include upstream license texts next to the replaceable Qt runtime DLLs.
@@ -123,6 +142,7 @@ def main() -> int:
         "source_base_commit": commit,
         "source_snapshot": "working tree; source ZIP is authoritative, not an exact commit export",
         "requirements_sha256": locks,
+        "bridge": bridge,
         "assets": json.loads((bundle / "_internal" / "sukuna_pet" / "assets" / "provenance.json").read_text(encoding="utf-8")),
         "compiler": "Inno Setup 6.7.3", "compiler_sha256": sha256(iscc.read_bytes()).hexdigest(),
         "packages": sorted(f"{d.metadata['Name']}=={d.version}" for d in metadata.distributions()),

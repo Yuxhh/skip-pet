@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-26T21:33:32.443064+08:00",
+  "evidence": "Static comparison of frozen code objects with current source; not runtime QA",
+  "executable_sha256": "3ab18214bbef38607d534acb82219fde1d6a4058467c082a76b8a994f335a4fb",
+  "modules": {
+    "sukuna_pet": {
+      "source_sha256": "5f0105f6d02e3347bea78d4ffe9730d860dd39fe315a727c5b3cf72db5d863f0",
+      "code_matches": true
+    },
+    "sukuna_pet.bridge_cleanup": {
+      "source_sha256": "db1b6cd13e6d8af7a3e88e5431fe28269f06599ee00462b62eccdb562f68dc86",
+      "code_matches": true
+    },
+    "sukuna_pet.bridge_control": {
+      "source_sha256": "cf8bc607cfd0e03186fa83016cf3c1db876feff9646a257c193b05891b5424cb",
+      "code_matches": true
+    },
+    "sukuna_pet.bridge_install": {
+      "source_sha256": "0977af2e33bf6e6b6ee07f5b284deab2bcb90c97ad9dae63e2197881e705c066",
+      "code_matches": true
+    },
+    "sukuna_pet.bridge_protocol": {
+      "source_sha256": "996eac7e15d357ad67cca38872d9df38831a7bc23e2acc32e6a969bdd26a3d30",
+      "code_matches": true
+    },
+    "sukuna_pet.desktop": {
+      "source_sha256": "3aa8298b25e1c52466c8f8f7de1003ecfd67d76f1e3f5eac00863e1c9cbffa8d",
+      "code_matches": true
+    },
+    "sukuna_pet.playback": {
+      "source_sha256": "f600433b9486d0be05bc095e38be0b661d3658a43a01857bd3ac43e27fd4d3d8",
+      "code_matches": true
+    },
+    "sukuna_pet.rendering": {
+      "source_sha256": "32b8d1c5be9a944b2fea8f08f5dbebb15e4f70f40b0f7401dc8c994d252ee26f",
+      "code_matches": true
+    },
+    "sukuna_pet.settings": {
+      "source_sha256": "114e0aabd73baf8249f97ddbaa3d0a9c422caafe2d7335cc819c0692e9fdb98c",
+      "code_matches": true
+    },
+    "sukuna_pet.task_bridge": {
+      "source_sha256": "6f967457e1dd12e680216503cd9cf0cde15c3b5508ccc9c2b88ff2d12f3b9a15",
+      "code_matches": true
+    },
+    "sukuna_pet.task_bubble": {
+      "source_sha256": "04b1c809208b5f5d16c2654ebd2bab59e03aa39f779ef988a8a22bee08830a77",
+      "code_matches": true
+    },
+    "sukuna_pet.uninstall_cleanup": {
+      "source_sha256": "c16c74ab29619dbe18132add5e381db35ff3e5b957433c0fe1180bdcb4d61154",
+      "code_matches": true
+    }
+  }
+}

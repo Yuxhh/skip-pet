@@ -1,0 +1,130 @@
+{
+  "recorded_at": "2026-10-26T21:35:21.934172+08:00",
+  "evidence": "Real current-user Inno Setup upgrade, uninstall, reinstallation and actual daily desktop profile; not isolated fake profile",
+  "initial_preferences": {
+    "mode": "click",
+    "size": 188
+  },
+  "upgrade": {
+    "from": "0.2.1",
+    "to": "0.3.0",
+    "exit": 0,
+    "preferences_preserved": true
+  },
+  "uninstall": {
+    "exit": 0,
+    "application_exe_removed": true,
+    "peer_pid": 34492,
+    "shared_bridge_preserved": true
+  },
+  "last_occupant_cleanup": {
+    "exit": 0,
+    "own_dependency_and_bundle_removed": true
+  },
+  "reinstall": {
+    "exit": 0,
+    "mode_and_size_preserved": true,
+    "enabled_only_after_confirmation": true
+  },
+  "unrelated_manifest_restored_exactly": true,
+  "temporary_manifest_difference": "pnpm remove omitted an empty dependencies object; re-enable restored it; no other fields differed",
+  "installed_bundle_files_verified": 174,
+  "stages": {
+    "before-shared": {
+      "at": "2026-10-26T21:23:12.145518+08:00",
+      "dependency": "link:C:/Users/xing/AppData/Local/Programs/SukunaPet/_internal/sukuna_pet/integrations/dsh-bridge",
+      "registered": true,
+      "unrelated_manifest_sha256": "e4fcf1bc958004f62f88dae35f588252322335919c4453c08b02c8466483a190",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": true,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    },
+    "peer-refreshed": {
+      "at": "2026-10-26T21:23:53.444877+08:00",
+      "dependency": "link:C:/Users/xing/Documents/ChatGPT/宿傩蹦哒pet/.scratch/issue42/peer/_internal/sukuna_pet/integrations/dsh-bridge",
+      "registered": true,
+      "unrelated_manifest_sha256": "e4fcf1bc958004f62f88dae35f588252322335919c4453c08b02c8466483a190",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": true,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    },
+    "after-shared-uninstall": {
+      "at": "2026-10-26T21:23:58.368980+08:00",
+      "dependency": "link:C:/Users/xing/AppData/Local/sukuna-pet/preserved-bridge/de98c4c9f9764be299ebbe2e9d62f490",
+      "registered": true,
+      "unrelated_manifest_sha256": "e4fcf1bc958004f62f88dae35f588252322335919c4453c08b02c8466483a190",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": false,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    },
+    "last-occupant-cleanup": {
+      "at": "2026-10-26T21:25:00.963995+08:00",
+      "dependency": null,
+      "registered": false,
+      "unrelated_manifest_sha256": "e95498ea5ed84166206a62ff555ea823d7dc9afdee83243a6c610ee7ba014226",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": false,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    },
+    "reinstalled": {
+      "at": "2026-10-26T21:25:06.289814+08:00",
+      "dependency": null,
+      "registered": false,
+      "unrelated_manifest_sha256": "e95498ea5ed84166206a62ff555ea823d7dc9afdee83243a6c610ee7ba014226",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": false,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    },
+    "restored-enabled-actual": {
+      "at": "2026-10-26T21:29:20.363966+08:00",
+      "dependency": "link:C:/Users/xing/AppData/Local/Programs/SukunaPet/_internal/sukuna_pet/integrations/dsh-bridge",
+      "registered": true,
+      "unrelated_manifest_sha256": "e4fcf1bc958004f62f88dae35f588252322335919c4453c08b02c8466483a190",
+      "preferences": {
+        "mode": "always",
+        "size": 320,
+        "dsh_bridge": {
+          "enabled": true,
+          "profiles": [
+            "C:\\Users\\xing\\.dsh\\profiles\\desktop"
+          ]
+        }
+      }
+    }
+  }
+}

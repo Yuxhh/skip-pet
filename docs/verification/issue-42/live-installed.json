@@ -1,0 +1,152 @@
+{
+  "recorded_at": "2026-10-26T21:35:20.108804+08:00",
+  "evidence": "Status-only external BridgeReader observing the same real daily host as installed app; UI waiting capture separate",
+  "user_confirmed": [
+    "normal daily host restart and preserved question wait",
+    "answered and completed"
+  ],
+  "installed_pid": 40396,
+  "completion_first_sample_to_hidden_seconds": 7.872739,
+  "samples": [
+    {
+      "at": "2026-10-26T21:17:53.856682+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "bubble_text": "",
+      "versions": [
+        {
+          "pid": 108940,
+          "schema_version": 1,
+          "host_version": "0.2.1-rc.2",
+          "plugin_version": "0.3.2",
+          "boot_id": "8fce8d93-7e29-48cc-bed7-3b846b25aed0",
+          "health_seq": 308,
+          "revision": 15,
+          "lifecycle": "active",
+          "coverage": "observed"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T21:17:54.373651+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "versions": [
+        {
+          "pid": 108940,
+          "schema_version": 1,
+          "host_version": "0.2.1-rc.2",
+          "plugin_version": "0.3.2",
+          "boot_id": "8fce8d93-7e29-48cc-bed7-3b846b25aed0",
+          "health_seq": 309,
+          "revision": 15,
+          "lifecycle": "active",
+          "coverage": "observed"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T21:19:42.239083+08:00",
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "bubble_text": "哼，还在办。等着。",
+      "versions": [
+        {
+          "pid": 108940,
+          "schema_version": 1,
+          "host_version": "0.2.1-rc.2",
+          "plugin_version": "0.3.2",
+          "boot_id": "8fce8d93-7e29-48cc-bed7-3b846b25aed0",
+          "health_seq": 416,
+          "revision": 15,
+          "lifecycle": "active",
+          "coverage": "observed"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T21:19:43.539473+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "bubble_text": "哼，1 个办完。",
+      "versions": [
+        {
+          "pid": 108940,
+          "schema_version": 1,
+          "host_version": "0.2.1-rc.2",
+          "plugin_version": "0.3.2",
+          "boot_id": "8fce8d93-7e29-48cc-bed7-3b846b25aed0",
+          "health_seq": 417,
+          "revision": 24,
+          "lifecycle": "active",
+          "coverage": "observed"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T21:19:51.412212+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "bubble_text": "",
+      "versions": [
+        {
+          "pid": 108940,
+          "schema_version": 1,
+          "host_version": "0.2.1-rc.2",
+          "plugin_version": "0.3.2",
+          "boot_id": "8fce8d93-7e29-48cc-bed7-3b846b25aed0",
+          "health_seq": 425,
+          "revision": 24,
+          "lifecycle": "active",
+          "coverage": "observed"
+        }
+      ]
+    }
+  ]
+}

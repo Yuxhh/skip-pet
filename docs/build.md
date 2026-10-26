@@ -1,6 +1,6 @@
 # Windows 运行与构建
 
-交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.2.1-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
+默认交付文件在 `dist/release/`：`Setup.exe`、`sukuna-pet-0.3.0-source.zip`、`build-report.json`、`SHA256SUMS.txt`。目录式程序在 `dist/app/SukunaPet/`。本次候选使用 `--output-root dist/issue-42`，避免覆盖既有 0.2.1 安装包。日常用户只需 Setup.exe；使用说明见 [user-guide.md](user-guide.md)。
 
 ## 固定工具链
 
@@ -23,14 +23,14 @@ python -m venv .venv
 New-Item -ItemType Directory -Force .scratch/checks | Out-Null
 .\.venv\Scripts\python.exe -m mypy src
 .\.venv\Scripts\python.exe -m pytest -q --basetemp=.scratch/checks/pytest
-.\.venv\Scripts\python.exe tools/build_release.py --iscc 'C:\path\to\Inno Setup 6\ISCC.exe'
+.\.venv\Scripts\python.exe tools/build_release.py --iscc 'C:\path\to\Inno Setup 6\ISCC.exe' --output-root dist/issue-42
 ```
 
 安装项目时使用 `--no-build-isolation`，避免构建隔离临时解析未锁定的 setuptools。PyInstaller 从 `src` 收集代码，从包资源收集 PNG 与 provenance.json；程序、Python DLL、Qt DLL 和插件位于同一个目录包，不依赖目标机 Python。Qt WebEngine/PDF/QML 不进入运行包。包中保留动态 Qt DLL 与上游许可文本。
 
-构建脚本在运行前核对 CPython 3.14.4、全部锁定包版本及三张冻结素材哈希，打包后再次核对包内素材。报告保留依赖文件哈希与素材来源。使用说明及验收范围随安装提供。构建脚本为 PyInstaller 使用仅含当前解释器目录及 Windows System32 的 PATH，防止从其他开发工具误收集同名 DLL。Qt 使用目标 Windows 自带 ICU，不能把其他工具的 ICU 拷贝进 `_internal`。源码与构建命令从任意工作目录调用时，输出仍相对于源码根目录。
+构建脚本在运行前核对 CPython 3.14.4、全部锁定包版本及三张冻结素材哈希，打包后再次核对包内素材及插件清单中每个文件与本次源码一致。插件版本、逐文件哈希、依赖文件哈希与素材来源写入报告。PyInstaller 明确读取本次源码目录的素材和桥插件，避免旧 editable 安装漏打新资源。使用说明及验收范围随安装提供。构建脚本为 PyInstaller 使用仅含当前解释器目录及 Windows System32 的 PATH，防止从其他开发工具误收集同名 DLL。Qt 使用目标 Windows 自带 ICU，不能把其他工具的 ICU 拷贝进 `_internal`。默认输出相对于源码根目录；显式相对 `--output-root` 相对于调用目录。
 
-`build_release.py` 会覆盖本项目 `dist/app/SukunaPet` 与同名交付文件；请勿将用户资料放入构建目录。源码 ZIP 显式包含 src、tests、tools、packaging、docs、词表及依赖配置，不收集 `.scratch`、`.venv`、Git 数据、原视频、参考安装目录或主机配置。源码 ZIP 是当前文件快照；报告中的 Git SHA 仅为基点，不能据此断言 ZIP 与该提交完全相同。重新运行会更新 SHA-256 清单；不承诺二进制按位可重现。
+`build_release.py` 会覆盖选定输出根目录下的 `app/SukunaPet`、`build/pyinstaller` 和同名交付文件；请勿将用户资料放入构建目录。源码 ZIP 显式包含 src、tests、tools、packaging、docs、词表及依赖配置，不收集 `.scratch`、`.venv`、Git 数据、原视频、参考安装目录或主机配置。源码 ZIP 是当前文件快照；报告中的 Git SHA 仅为基点，不能据此断言 ZIP 与该提交完全相同。重新运行会更新 SHA-256 清单；不承诺二进制按位可重现。
 
 ## 安装与卸载验收
 
