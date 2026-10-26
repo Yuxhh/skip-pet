@@ -25,8 +25,8 @@ def main(argv: list[str] | None = None) -> int:
         code, detail = (0 if report.ok else 1), report.message
     except Exception as error:
         code, detail = 1, f"清理失败：{error}"
-    args.maintenance_dir.mkdir(parents=True, exist_ok=True)
     try:
+        args.maintenance_dir.mkdir(parents=True, exist_ok=True)
         with (args.maintenance_dir / "uninstall-cleanup.log").open("a", encoding="utf-8") as stream:
             stream.write(f"[{datetime.now().isoformat(timespec='seconds')}] exit={code}\n{detail}\n")
     except OSError:

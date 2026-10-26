@@ -14,6 +14,6 @@
 
 命令行仍可使用 `python -m sukuna_pet.bridge_install inspect|install|refresh|remove`，重复 `--profile` 可明确指定多个已有 profile。`--pnpm-cli` 指定现有入口；`--maintenance-dir` 用于隔离验证。本项目的 `.sukuna-bridge.json` 是安装归属记录，修改后会失去自动维护与清理凭据。
 
-原生启动器的 `--uninstall-cleanup` 参数会在创建桌宠窗口前分流。安装脚本已接入该入口；结果记录在当前用户数据目录 `sukuna-pet/uninstall-cleanup.log`，后台安装维护诊断在同目录 `maintenance.log`。本次提供卸载接线，不代表新版 Setup 已构建或发布。
+原生启动器的 `--uninstall-cleanup` 参数会在创建桌宠窗口前分流。安装脚本在删除程序文件前调用该入口，清理失败会停止卸载并保留程序文件；结果记录在当前用户数据目录 `sukuna-pet/uninstall-cleanup.log`，后台安装维护诊断在同目录 `maintenance.log`。共享迁移先记录旧、新依赖归属，写入中途失败仍可重试。本次提供卸载接线，不代表新版 Setup 已构建或发布。
 
 本次实现与验收见[接入安装与自动维护验证](verification/issue-39/README.md)。任务状态仍按当前文件桥的能力范围呈现；完整等待和现态恢复由独立议题跟进。

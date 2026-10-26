@@ -221,3 +221,60 @@ def test_registry_override_with_missing_actual_plugin_is_not_install_success(tmp
     result = installer.install(installer.preflight((profile,)))
     assert not result.ok and "实际插件缺失" in result.message
     assert installer.inspect(profile).dependency == "^9.0.0"
+
+
+def test_shared_preservation_does_not_replace_link_after_user_changed_dependency(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    profile = profile_at(tmp_path)
+    installer = BridgeInstaller(data_dir=tmp_path / "data")
+    assert installer.install(installer.preflight((profile,))).ok
+    original_link = (profile / "node_modules" / PLUGIN).resolve()
+    real_copy = shutil.copy2
+
+    def change_during_copy(source: Path, destination: Path) -> object:
+        result = real_copy(source, destination)
+        if Path(source).name == "index.js":
+            path = profile / "package.json"
+            value = json.loads(path.read_text())
+            value["dependencies"][PLUGIN] = "^user-choice"
+            path.write_text(json.dumps(value))
+        return result
+
+    lease = installer.acquire_use((profile,))
+    try:
+        monkeypatch.setattr(shutil, "copy2", change_during_copy)
+        report = installer.remove((profile,), preserve_shared=True)
+        assert not report.ok
+        assert installer.inspect(profile).dependency == "^user-choice"
+        assert (profile / "node_modules" / PLUGIN).resolve() == original_link
+    finally:
+        lease.close()
+
+
+def test_shared_preservation_owner_write_failure_remains_owned_and_can_retry(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from sukuna_pet.bridge_install import OWNER_FILE
+
+    profile = profile_at(tmp_path)
+    installer = BridgeInstaller(data_dir=tmp_path / "data")
+    assert installer.install(installer.preflight((profile,))).ok
+    real_replace = os.replace
+
+    def deny_final_owner(source: Path, destination: Path) -> None:
+        if Path(destination) == profile / OWNER_FILE and "pending_dependency" not in json.loads(Path(source).read_text()):
+            raise PermissionError("injected final owner failure")
+        real_replace(source, destination)
+
+    lease = installer.acquire_use((profile,))
+    try:
+        monkeypatch.setattr(os, "replace", deny_final_owner)
+        report = installer.remove((profile,), preserve_shared=True)
+        assert not report.ok and "injected" in report.message
+        assert installer.inspect(profile).owned
+    finally:
+        monkeypatch.setattr(os, "replace", real_replace)
+        lease.close()
+    retry = installer.remove((profile,))
+    assert retry.ok and not installer.inspect(profile).registered

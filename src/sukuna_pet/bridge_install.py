@@ -135,7 +135,8 @@ class BridgeInstaller:
         owner = _read_owner(profile)
         return ProfileState(profile, dependency, path_target(dependency, profile),
                             tuple(bundles), bool(owner.get("dependency")
-                            and (not dependency or owner.get("dependency") == dependency)))
+                            and (not dependency or dependency in (owner.get("dependency"),
+                                                                 owner.get("pending_dependency")))))
 
     def install(self, plan: InstallPlan) -> InstallReport:
         lock = self._lock()
@@ -274,7 +275,17 @@ class BridgeInstaller:
             shutil.copy2(source, destination)
         if not (saved / "index.js").is_file():
             raise ValueError("共享插件缺少入口")
+        value = _read_manifest(profile)
+        if value.get("dependencies", {}).get(PLUGIN) != state.dependency:
+            raise RuntimeError(f"共享配置在维护期间已改变；备份：{backup}")
         link = profile / "node_modules" / PLUGIN
+        if link.exists() and link.resolve() != state.target:
+            raise RuntimeError(f"共享插件链接在维护期间已改变；备份：{backup}")
+        dependency = "link:" + saved.resolve().as_posix()
+        # A migration journal proves ownership on either side of a partial
+        # write. Publish it before changing the link or dependency manifest.
+        _write_json(profile / OWNER_FILE, {"dependency": state.dependency,
+                                          "pending_dependency": dependency})
         if link.is_symlink():
             link.unlink()
         elif link.is_junction():
@@ -287,10 +298,6 @@ class BridgeInstaller:
             CreateJunction(str(saved), str(link))
         else:
             link.symlink_to(saved, target_is_directory=True)
-        value = _read_manifest(profile)
-        if value.get("dependencies", {}).get(PLUGIN) != state.dependency:
-            raise RuntimeError(f"共享配置在维护期间已改变；备份：{backup}")
-        dependency = "link:" + saved.resolve().as_posix()
         value["dependencies"][PLUGIN] = dependency
         _write_json(profile / "package.json", value)
         _write_json(profile / OWNER_FILE, {"dependency": dependency})
