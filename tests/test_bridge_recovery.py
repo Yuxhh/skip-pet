@@ -254,3 +254,58 @@ def test_unidentified_round_never_earns_disconnect_jump_grace(tmp_path: Path) ->
     files.publish(2, rows=[agent(turn=0)])
     assert not reader.poll(1).jump
     assert not reader.poll(4).jump
+
+@pytest.mark.parametrize("corruption", ["missing-revision", "unknown-event", "invalid-end", "invalid-outcome"])
+def test_malformed_live_record_is_unknown_without_crashing_reader(tmp_path: Path, corruption: str) -> None:
+    reader = BridgeReader(tmp_path)
+    files = BridgeFiles(tmp_path)
+    files.connect(reader)
+    row = files.event(1)
+    if corruption == "missing-revision":
+        del row["revision"]
+    elif corruption == "unknown-event":
+        row["event"] = "not-a-state-event"
+    else:
+        row["event"] = "turn/end"
+        row["outcome"] = "completed" if corruption == "invalid-end" else "not-an-outcome"
+        row["status"] = "running" if corruption == "invalid-end" else "idle"
+    files.append(row)
+    summary = reader.poll(1.1)
+    assert summary.partial and not summary.text and not summary.jump
+    files.publish(3, 1, [agent("waiting")])
+    assert reader.poll(2).waiting == 1
+
+def test_omitting_ended_root_in_snapshot_does_not_erase_round_watermark(tmp_path: Path) -> None:
+    reader = BridgeReader(tmp_path)
+    files = BridgeFiles(tmp_path)
+    files.connect(reader)
+    files.append(files.event(1, event="turn/end", state=agent("idle"), outcome="completed"))
+    assert reader.poll(1.1).completed == 1
+    files.publish(3, 2, [])
+    assert reader.poll(2).running == 0
+    files.append(files.event(3))
+    assert reader.poll(2.1).running == 0
+
+
+def test_overflow_skips_to_consistent_cursor_and_recovers_without_log_rewrite(tmp_path: Path) -> None:
+    reader = BridgeReader(tmp_path)
+    files = BridgeFiles(tmp_path)
+    files.connect(reader)
+    for revision in range(1, 2500):
+        files.append(files.event(revision, state=agent("waiting")))
+    assert files.log.stat().st_size > 1024 * 1024
+    assert not reader.poll(1.1).text
+    files.publish(3, 2499, [agent("waiting")])
+    assert reader.poll(2).waiting == 1
+
+def test_old_idle_child_in_observed_registry_does_not_block_recovery(tmp_path: Path) -> None:
+    reader = BridgeReader(tmp_path)
+    files = BridgeFiles(tmp_path)
+    files.connect(reader)
+    files.append(files.event(1, state=agent(turn=2)))
+    assert reader.poll(1.1).running == 1
+    files.append(files.event(3, state=agent(turn=2)))
+    assert not reader.poll(1.2).text
+    child = dict(agent("idle"), agent_id="old-child", turn_id=3)
+    files.publish(3, 3, [agent(turn=2), child])
+    assert reader.poll(2).running == 1

@@ -5,17 +5,18 @@
 ## 自动化与实际文件
 
 - 已确认的测试边界：真实文件 → `BridgeReader.poll()` → 状态结果；`apply(ctx)` → 真实文件；Qt 最终气泡和播放状态。
-- 定向 Python/Qt：36 passed。覆盖连续状态、缺号、迟到/退役及未见旧代、启动 EOF、部分已知、半行、同尺寸重写、轮转、8MiB 快照、64KiB 记录、1MiB/1024 条缓冲、端到端健康、固定 5 秒宽限、结束剩余 8 秒、暂停恢复及保守清理。
+- 定向恢复测试：35 passed（另有原有任务桥及 Qt 回归）。覆盖连续状态、缺号、迟到/退役及未见旧代、启动 EOF、部分已知、半行、同尺寸重写、轮转、8MiB 快照、64KiB 记录、1MiB/1024 条缓冲、端到端健康、固定 5 秒宽限、结束剩余 8 秒、暂停恢复及保守清理。
 - `node tests/bridge_harness.mjs <新目录>`：插件原有问题/并发工具/结束/健康/隐私/释放回归通过。
 - `node tests/bridge_transport_harness.mjs <新目录>`：版本身份、原子快照边界、独立健康、旧 turn/start、12,000 条同批溢出、连续批次 NTFS 轮转、单记录及队列上限、同 PID 插件换代与明确退出通过。事件源是宿主形状替身，插件和文件 I/O 为实际实现。
+- 完整回归：`pytest -q --basetemp=.scratch/issue40/final-full --junitxml=.scratch/issue40/final-full.xml`：**254 passed，161.12 秒**。初次沙箱内运行 236 passed / 13 failed，失败为 pnpm 项目登记链接的 EPERM；最终在获准的沙箱外执行，隔离 profile 与离线安装测试全部通过。未修改实际 Harness 配置。
 - 类型检查：`mypy src tools/build_release.py` 通过。
-- 全量测试和双轴审查结果在最终验证后追加。
+- 双轴独立审查发现 3 个 P1 恢复边界和 1 个维护建议，均已修复并复审；详见 [审查记录](review.md)。
 
 ## 原生窗口与受控进程
 
-命令：`.venv/Scripts/python.exe tools/verify_bridge_recovery.py .scratch/issue40/native-v1`。实际 Windows/本地 NTFS、Node 24.18.0、Python 3.14.4、PySide6 6.12.0。仅创建并控制专属 Node 子进程和临时数据，不接触实际用户 profile、任务正文或偏好。
+命令：`.venv/Scripts/python.exe tools/verify_bridge_recovery.py .scratch/issue40/native-final`。实际 Windows/本地 NTFS、Node 24.18.0、Python 3.14.4、PySide6 6.12.0。仅创建并控制专属 Node 子进程和临时数据，不接触实际用户 profile、任务正文或偏好。
 
-[原生报告](native-report.json)记录 7 个阶段、877 次 Qt 计时器采样、最大间隔 **78.55ms**，并验证鼠标点击推进及拖动几何变化。
+[原生报告](native-report.json)记录 7 个阶段、912 次 Qt 计时器采样、最大间隔 **79.50ms**，并验证鼠标点击推进及拖动几何变化。
 
 | 操作 | 实际结果 |
 | --- | --- |
@@ -27,3 +28,7 @@
 | 插件明确退出，子进程正常关闭 | 气泡立即隐藏，固定 5 秒宽限到期后停止判断 |
 
 此结果证明受控事件源 → 实际插件 → 本机文件 → 后台监测 → 原生 Qt 的链路。进程暂停测试不是整机休眠；时序测试模拟消费者暂停与 PID 复用，未强制操作系统真的复用某个 PID。完整 Harness 当前轮次/等待覆盖、普通桌面宿主的重载/退出、真实整机休眠与多屏 DPI 仍未形成新的现场证明，继续保留产品发布验收边界。不能以本票测试通过宣称这些完整覆盖。
+
+实际运行气泡截图（本脚本创建的独立 Qt 窗口）：
+
+![运行气泡](running-bubble.png)

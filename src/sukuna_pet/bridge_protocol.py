@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 import hashlib
+import json
 import os
 import math
 from pathlib import Path
@@ -13,6 +14,20 @@ SNAPSHOT_BYTES = 8 * 1024 * 1024
 BUFFER_BYTES = 1024 * 1024
 BUFFER_RECORDS = 1024
 CAPABILITIES = {"observed-state", "snapshot-boundary", "contiguous-events", "independent-health"}
+
+
+def read_envelope(path: Path, limit: int) -> dict[str, Any]:
+    """Bound the actual read and reject links before decoding an envelope."""
+    if path.is_symlink() or path.is_junction():
+        raise OSError("linked bridge file")
+    with path.open("rb") as stream:
+        data = stream.read(limit + 1)
+    if len(data) > limit:
+        raise ValueError("capacity")
+    value = json.loads(data)
+    if not isinstance(value, dict):
+        raise ValueError("not an envelope")
+    return value
 
 
 def path_id(path: Path) -> str:

@@ -32,7 +32,7 @@
       },
       "bubble_visible": true,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 0,
+      "stage": 1,
       "holding": false
     },
     {
@@ -48,7 +48,7 @@
       },
       "bubble_visible": false,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 1,
+      "stage": 3,
       "holding": true
     },
     {
@@ -64,8 +64,8 @@
       },
       "bubble_visible": false,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 1,
-      "holding": false
+      "stage": 2,
+      "holding": true
     },
     {
       "name": "resumed",
@@ -80,7 +80,7 @@
       },
       "bubble_visible": true,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 2,
+      "stage": 3,
       "holding": false
     },
     {
@@ -96,7 +96,7 @@
       },
       "bubble_visible": false,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 2,
+      "stage": 3,
       "holding": true
     },
     {
@@ -112,15 +112,15 @@
       },
       "bubble_visible": false,
       "bubble_text": "哼，还在办。等着。",
-      "stage": 2,
-      "holding": true
+      "stage": 3,
+      "holding": false
     }
   ],
-  "qt_timer_samples": 877,
-  "max_qt_gap_ms": 78.55,
+  "qt_timer_samples": 912,
+  "max_qt_gap_ms": 79.5,
   "mouse_click": true,
   "mouse_drag": true,
-  "writer_pid": 101820,
+  "writer_pid": 47000,
   "protocol_version": 1,
   "plugin_version": "0.2.0"
 }

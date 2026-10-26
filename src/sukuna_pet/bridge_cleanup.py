@@ -3,22 +3,8 @@
 import json
 import os
 from pathlib import Path
-from typing import Any
 
-from .bridge_protocol import BUFFER_BYTES, Identity, RECORD_BYTES, SNAPSHOT_BYTES
-
-
-def _load(path: Path, limit: int) -> dict[str, Any]:
-    if path.is_symlink() or path.is_junction():
-        raise OSError("linked bridge file")
-    with path.open("rb") as stream:
-        data = stream.read(limit + 1)
-    if len(data) > limit:
-        raise ValueError("capacity")
-    value = json.loads(data)
-    if not isinstance(value, dict):
-        raise ValueError("not an envelope")
-    return value
+from .bridge_protocol import BUFFER_BYTES, Identity, RECORD_BYTES, SNAPSHOT_BYTES, read_envelope
 
 
 def cleanup_retired(directory: Path, user: str, wall_time: float) -> None:
@@ -39,14 +25,14 @@ def cleanup_retired(directory: Path, user: str, wall_time: float) -> None:
             pid_text = prefix.name.removeprefix("dsh-")
             if not pid_text.isdigit():
                 continue
-            health = _load(health_file, RECORD_BYTES)
+            health = read_envelope(health_file, RECORD_BYTES)
             identity = Identity.read(health, int(pid_text), user)
             if identity is None or health.get("lifecycle") != "stopped":
                 continue
             snapshot_file = prefix.with_suffix(".snapshot.json")
             if wall_time - snapshot_file.stat().st_mtime <= 86400:
                 continue
-            snapshot = _load(snapshot_file, SNAPSHOT_BYTES)
+            snapshot = read_envelope(snapshot_file, SNAPSHOT_BYTES)
             if (Identity.read(snapshot, int(pid_text), user) != identity
                     or snapshot.get("lifecycle") != "stopped"):
                 continue

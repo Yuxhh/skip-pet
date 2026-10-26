@@ -17,7 +17,7 @@ from typing import Any, Iterator
 
 from .bridge_cleanup import cleanup_retired
 from .bridge_protocol import (Identity, RECORD_BYTES, SNAPSHOT_BYTES, BUFFER_BYTES,
-                              BUFFER_RECORDS, integer, path_id, state_row)
+                              BUFFER_RECORDS, integer, path_id, read_envelope, state_row)
 
 
 def bridge_directory() -> Path:
@@ -86,6 +86,15 @@ class _Tail:
     pending: bytes = b""
     anchor: bytes = b""
 
+    @classmethod
+    def at_end(cls, path: Path) -> "_Tail":
+        if path.is_symlink() or path.is_junction():
+            raise OSError("linked log")
+        with path.open("rb") as stream:
+            stat = os.fstat(stream.fileno())
+            stream.seek(max(0, stat.st_size - 64))
+            return cls(stat.st_ino, stat.st_size, anchor=stream.read(64))
+
 
 class BridgeReader:
     """Consume bounded files off the GUI thread; unknown state never drives motion."""
@@ -143,34 +152,16 @@ class BridgeReader:
         if prefix in self._tails:
             return
         try:
-            log = prefix.with_suffix(".jsonl")
-            if log.is_symlink() or log.is_junction():
-                raise OSError("linked log")
-            with log.open("rb") as stream:
-                stat = os.fstat(stream.fileno())
-                stream.seek(max(0, stat.st_size - 64))
-                self._tails[prefix] = _Tail(stat.st_ino, stat.st_size, anchor=stream.read(64))
+            self._tails[prefix] = _Tail.at_end(prefix.with_suffix(".jsonl"))
         except OSError:
             self._tails[prefix] = _Tail(0, 0)
-
-    def _read(self, path: Path, limit: int) -> dict[str, Any]:
-        if path.is_symlink() or path.is_junction():
-            raise OSError("linked bridge file")
-        with path.open("rb") as stream:
-            value = stream.read(limit + 1)
-        if len(value) > limit:
-            raise ValueError("capacity")
-        parsed = json.loads(value)
-        if not isinstance(parsed, dict):
-            raise ValueError("object required")
-        return parsed
 
     def _identity(self, value: dict[str, Any], prefix: Path) -> Identity | None:
         return Identity.read(value, int(prefix.name.removeprefix("dsh-")), self._user)
 
     def _health(self, prefix: Path, now: float) -> None:
         try:
-            value = self._read(prefix.with_suffix(".health.json"), RECORD_BYTES)
+            value = read_envelope(prefix.with_suffix(".health.json"), RECORD_BYTES)
             identity = self._identity(value, prefix)
             if identity is None or not integer(value.get("health_seq"), 1):
                 if prefix in self._writers:
@@ -259,7 +250,7 @@ class BridgeReader:
             token = stat.st_mtime_ns, stat.st_size
             if writer.trusted and token == writer.last_snapshot:
                 return
-            value = self._read(path, SNAPSHOT_BYTES)
+            value = read_envelope(path, SNAPSHOT_BYTES)
             identity = self._identity(value, prefix)
             if identity in self._retired.get(prefix, set()):
                 return
@@ -285,16 +276,24 @@ class BridgeReader:
             if writer.rejected_snapshot == token:
                 return
             # Snapshot rebasing never replays buffered or historical end banners.
+            turns = dict(writer.turns)
+            for row in rows:
+                root = row["root_id"]
+                turns[root] = max(turns.get(root, 0), row["root_turn"])
+            # A registry can retain idle children from earlier root rounds.
+            # They cannot count in, or prevent recovery of, the current round.
+            rows = [row for row in rows if row["agent_id"] == row["root_id"]
+                    or row["root_turn"] == turns[row["root_id"]]]
             if any(row["root_turn"] < writer.turns.get(row["root_id"], 0)
                    or ((row["root_id"], row["root_turn"]) in writer.ended and row["status"] != "idle")
                    for row in rows):
                 raise ValueError("snapshot regresses a completed/newer turn")
+            if len(turns) > 4096:
+                raise ValueError("round watermark capacity")
             writer.agents = {row["agent_id"]: row for row in rows}
-            writer.turns = {}
-            for row in rows:
-                root = row["root_id"]
-                writer.turns[root] = max(writer.turns.get(root, 0), row["root_turn"])
-            writer.ended = {(root, turn) for root, turn in writer.ended if writer.turns.get(root) == turn}
+            writer.turns = turns
+            # Snapshot omission removes activity, not the proof that a round ended.
+            writer.ended = {(root, turn) for root, turn in writer.ended if turns.get(root) == turn}
             writer.last_snapshot = token
             writer.revision, writer.snapshot_seq = revision, sequence
             writer.trusted = True
@@ -323,7 +322,7 @@ class BridgeReader:
                 stream.seek(max(0, tail.offset - 64))
                 tail.anchor = stream.read(min(64, tail.offset))
             if len(chunk) + len(tail.pending) > BUFFER_BYTES:
-                tail.offset, tail.pending = stat.st_size, b""
+                self._tails[prefix] = _Tail.at_end(path)
                 self._invalidate(prefix, writer)
                 return
             lines = (tail.pending + chunk).split(b"\n")
@@ -331,7 +330,8 @@ class BridgeReader:
             if (tail.pending and chunk) or len(lines) > BUFFER_RECORDS:
                 self._invalidate(prefix, writer)
             if len(tail.pending) > RECORD_BYTES:
-                tail.offset, tail.pending = stat.st_size, b""
+                self._tails[prefix] = _Tail.at_end(path)
+                return
             if len(lines) > BUFFER_RECORDS:
                 return
             for line in lines:
@@ -379,6 +379,9 @@ class BridgeReader:
             return
         if event not in ("agent/state", "agent/removed", "turn/end", "approval/asked", "approval/decided") or not state_row(row):
             raise ValueError("unrecognized state")
+        if event == "turn/end" and (row["status"] != "idle"
+                or row.get("outcome") not in ("completed", "failed", "interrupted")):
+            raise ValueError("invalid end fact")
         root, turn = row["root_id"], row["root_turn"]
         current = writer.turns.get(root, -1)
         if turn < current or (root, turn) in writer.ended:

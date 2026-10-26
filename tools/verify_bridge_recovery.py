@@ -3,6 +3,7 @@
 The event source is controlled, so this proves transport and rendering, not host
 coverage. Suspend/resume applies only to the child created by this script.
 """
+from collections.abc import Callable
 import ctypes
 from dataclasses import asdict
 import json
@@ -55,7 +56,9 @@ def main() -> None:
                            bubble_visible=bubble.isVisible(), bubble_text=bubble.text(),
                            stage=pet.view.stage, holding=pet.view.holding))
         window.grab().save(str(root / f"{name}.png"))
-    def wait_for(predicate: object, seconds: float = 5) -> None:
+        if bubble.isVisible():
+            bubble.grab().save(str(root / f"{name}-bubble.png"))
+    def wait_for(predicate: Callable[[], bool], seconds: float = 5) -> None:
         until = monotonic() + seconds
         while monotonic() < until:
             if predicate():
