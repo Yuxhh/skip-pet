@@ -1,0 +1,2731 @@
+{
+  "pid": 101132,
+  "host_version": "0.2.1-rc.2",
+  "plugin_version": "0.3.1",
+  "schema_version": 1,
+  "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+  "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+  "preview": {
+    "pid": 76836,
+    "started_at": "2026-10-26T19:34:45.914292+08:00",
+    "bridge": "C:\\Users\\xing\\AppData\\Local\\sukuna-pet\\bridge\\dsh",
+    "source_hashes": {
+      "desktop.py": "3aa8298b25e1c52466c8f8f7de1003ecfd67d76f1e3f5eac00863e1c9cbffa8d",
+      "task_bridge.py": "6f967457e1dd12e680216503cd9cf0cde15c3b5508ccc9c2b88ff2d12f3b9a15",
+      "task_bubble.py": "04b1c809208b5f5d16c2654ebd2bab59e03aa39f779ef988a8a22bee08830a77"
+    }
+  },
+  "user_confirmed_approval_appeared": true,
+  "user_confirmed_approval_and_recovery": true,
+  "approval_completion_visible_seconds": 7.875852,
+  "native_observations": [
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 1,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，小鬼，1 处等你批准。",
+      "at": "2026-10-26T19:47:55.705114+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，小鬼，1 处等你批准。",
+      "at": "2026-10-26T19:48:46.781715+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T19:48:46.911161+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:48:54.437311+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:49:02.313163+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T19:50:08.513353+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，1 个还在办。小鬼，1 处等你回答。",
+      "at": "2026-10-26T19:50:13.733349+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T19:51:21.784849+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T19:52:00.713623+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:52:05.077367+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:52:13.170481+08:00"
+    }
+  ],
+  "bridge_observations": [
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 89,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 19
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:47:53.300561+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 89,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 19
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:47:53.670745+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 92,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 22
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:47:55.292072+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 1,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 93,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [
+                "a3fee86e-ec72-46f4-9529-81867b37b3e7"
+              ],
+              "source_seq": 22
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:47:55.654148+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 95,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 24
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:48:46.768753+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 98,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 27
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:48:47.872902+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 99,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 28
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:48:48.061930+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 100,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 29
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:48:48.427795+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 104,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 32
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:48:54.312159+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 104,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 32
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:49:02.172712+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [],
+      "at": "2026-10-26T19:49:26.206764+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 104,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 1,
+              "turn_id": 1,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 32
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:49:26.384215+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 107,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 35
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:08.370207+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 109,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 37
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:08.567279+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 110,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 38
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:08.944012+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 128,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 43
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 15
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:13.146730+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 130,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 43
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 16
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:13.709563+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 133,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 43
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 19
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:50:15.405171+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 137,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 43
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 23
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:16.544335+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 138,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 43
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 24
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:16.902603+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 144,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 44
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 29
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:19.601433+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 145,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 44
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 30
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:19.965608+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 150,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 45
+            },
+            {
+              "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 1,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 33
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:21.760149+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 151,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "waiting",
+              "known": true,
+              "question_ids": [
+                "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+              ],
+              "approval_ids": [],
+              "source_seq": 45
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:51:22.289922+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 158,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 51
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:52:00.732777+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 159,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 52
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:52:01.101338+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 159,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "running",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 52
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:52:05.027734+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 163,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 55
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:52:05.216284+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "revision": 163,
+          "coverage": "observed",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 2,
+              "turn_id": 2,
+              "status": "idle",
+              "known": true,
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 55
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T19:52:13.110299+08:00"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-26T19:47:55.037000+08:00",
+      "event": "agent/state",
+      "revision": 90,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 20,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:47:55.037000+08:00",
+      "event": "agent/state",
+      "revision": 91,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 21,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:47:55.044000+08:00",
+      "event": "agent/state",
+      "revision": 92,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 22,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:47:55.499000+08:00",
+      "event": "agent/state",
+      "revision": 93,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 22,
+      "question_ids": [],
+      "approval_ids": [
+        "a3fee86e-ec72-46f4-9529-81867b37b3e7"
+      ]
+    },
+    {
+      "at": "2026-10-26T19:48:46.662000+08:00",
+      "event": "agent/state",
+      "revision": 94,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 23,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:46.690000+08:00",
+      "event": "agent/state",
+      "revision": 95,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 24,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:47.796000+08:00",
+      "event": "agent/state",
+      "revision": 96,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 25,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:47.799000+08:00",
+      "event": "agent/state",
+      "revision": 97,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 26,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:47.799000+08:00",
+      "event": "agent/state",
+      "revision": 98,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 27,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:47.824000+08:00",
+      "event": "agent/state",
+      "revision": 99,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 28,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:48.265000+08:00",
+      "event": "agent/state",
+      "revision": 100,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 29,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:54.063000+08:00",
+      "event": "agent/state",
+      "revision": 101,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 30,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:54.064000+08:00",
+      "event": "agent/state",
+      "revision": 102,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 31,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:54.065000+08:00",
+      "event": "agent/state",
+      "revision": 103,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 32,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:48:54.065000+08:00",
+      "event": "turn/end",
+      "revision": 104,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 32,
+      "outcome": "completed",
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.229000+08:00",
+      "event": "agent/state",
+      "revision": 105,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 1,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 33,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.230000+08:00",
+      "event": "agent/state",
+      "revision": 106,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 34,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.230000+08:00",
+      "event": "agent/state",
+      "revision": 107,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 35,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.271000+08:00",
+      "event": "agent/state",
+      "revision": 108,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 36,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.273000+08:00",
+      "event": "agent/state",
+      "revision": 109,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 37,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:08.758000+08:00",
+      "event": "agent/state",
+      "revision": 110,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 38,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.871000+08:00",
+      "event": "agent/state",
+      "revision": 111,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 39,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.872000+08:00",
+      "event": "agent/state",
+      "revision": 112,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 40,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.898000+08:00",
+      "event": "agent/state",
+      "revision": 113,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 0,
+      "turn_id": 0,
+      "status": "idle",
+      "known": false,
+      "source_seq": 3,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.902000+08:00",
+      "event": "agent/state",
+      "revision": 114,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 0,
+      "turn_id": 0,
+      "status": "idle",
+      "known": false,
+      "source_seq": 4,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.903000+08:00",
+      "event": "agent/state",
+      "revision": 115,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 5,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.904000+08:00",
+      "event": "agent/state",
+      "revision": 116,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 6,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.908000+08:00",
+      "event": "agent/state",
+      "revision": 117,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 41,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.910000+08:00",
+      "event": "agent/state",
+      "revision": 118,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 42,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.910000+08:00",
+      "event": "agent/state",
+      "revision": 119,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 43,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.946000+08:00",
+      "event": "agent/state",
+      "revision": 120,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 7,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.947000+08:00",
+      "event": "agent/state",
+      "revision": 121,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 8,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.948000+08:00",
+      "event": "agent/state",
+      "revision": 122,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 9,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.948000+08:00",
+      "event": "agent/state",
+      "revision": 123,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 10,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.949000+08:00",
+      "event": "agent/state",
+      "revision": 124,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 11,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.950000+08:00",
+      "event": "agent/state",
+      "revision": 125,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 12,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.951000+08:00",
+      "event": "agent/state",
+      "revision": 126,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 13,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.951000+08:00",
+      "event": "agent/state",
+      "revision": 127,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 14,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:12.953000+08:00",
+      "event": "agent/state",
+      "revision": 128,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 15,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:13.515000+08:00",
+      "event": "agent/state",
+      "revision": 129,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 16,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:13.545000+08:00",
+      "event": "agent/state",
+      "revision": 130,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 43,
+      "question_ids": [
+        "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+      ],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:15.158000+08:00",
+      "event": "agent/state",
+      "revision": 131,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 17,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:15.159000+08:00",
+      "event": "agent/state",
+      "revision": 132,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 18,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:50:15.167000+08:00",
+      "event": "agent/state",
+      "revision": 133,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 19,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:16.330000+08:00",
+      "event": "agent/state",
+      "revision": 134,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 20,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:16.334000+08:00",
+      "event": "agent/state",
+      "revision": 135,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 21,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:16.335000+08:00",
+      "event": "agent/state",
+      "revision": 136,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 22,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:16.364000+08:00",
+      "event": "agent/state",
+      "revision": 137,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 23,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:16.728000+08:00",
+      "event": "agent/state",
+      "revision": 138,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 24,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.407000+08:00",
+      "event": "agent/state",
+      "revision": 139,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 25,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.408000+08:00",
+      "event": "agent/state",
+      "revision": 140,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 26,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.416000+08:00",
+      "event": "agent/state",
+      "revision": 141,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 44,
+      "question_ids": [
+        "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+      ],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.420000+08:00",
+      "event": "agent/state",
+      "revision": 142,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 27,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.421000+08:00",
+      "event": "agent/state",
+      "revision": 143,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 28,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.451000+08:00",
+      "event": "agent/state",
+      "revision": 144,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 29,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:19.803000+08:00",
+      "event": "agent/state",
+      "revision": 145,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 30,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:21.610000+08:00",
+      "event": "agent/state",
+      "revision": 146,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 31,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:21.610000+08:00",
+      "event": "agent/state",
+      "revision": 147,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "running",
+      "known": true,
+      "source_seq": 32,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:21.611000+08:00",
+      "event": "agent/state",
+      "revision": 148,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 33,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:21.611000+08:00",
+      "event": "turn/end",
+      "revision": 149,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 33,
+      "outcome": "completed",
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:21.627000+08:00",
+      "event": "agent/state",
+      "revision": 150,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 45,
+      "question_ids": [
+        "2d73d1c8-eba7-4c8a-8358-f84cfe211f6c"
+      ],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:51:22.161000+08:00",
+      "event": "agent/removed",
+      "revision": 151,
+      "agent_id": "abcbfd4f-258f-4cea-bfa6-dcaef07564c1",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 1,
+      "status": "idle",
+      "known": true,
+      "source_seq": 33,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.491000+08:00",
+      "event": "agent/state",
+      "revision": 152,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 45,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.492000+08:00",
+      "event": "agent/state",
+      "revision": 153,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 46,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.493000+08:00",
+      "event": "agent/state",
+      "revision": 154,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 47,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.493000+08:00",
+      "event": "agent/state",
+      "revision": 155,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 48,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.516000+08:00",
+      "event": "agent/state",
+      "revision": 156,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 49,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.518000+08:00",
+      "event": "agent/state",
+      "revision": 157,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 50,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.518000+08:00",
+      "event": "agent/state",
+      "revision": 158,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 51,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:00.882000+08:00",
+      "event": "agent/state",
+      "revision": 159,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 52,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:04.943000+08:00",
+      "event": "agent/state",
+      "revision": 160,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 53,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:04.944000+08:00",
+      "event": "agent/state",
+      "revision": 161,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "running",
+      "known": true,
+      "source_seq": 54,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:04.945000+08:00",
+      "event": "agent/state",
+      "revision": 162,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "idle",
+      "known": true,
+      "source_seq": 55,
+      "question_ids": [],
+      "approval_ids": []
+    },
+    {
+      "at": "2026-10-26T19:52:04.945000+08:00",
+      "event": "turn/end",
+      "revision": 163,
+      "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+      "root_turn": 2,
+      "turn_id": 2,
+      "status": "idle",
+      "known": true,
+      "source_seq": 55,
+      "outcome": "completed",
+      "question_ids": [],
+      "approval_ids": []
+    }
+  ],
+  "user_confirmed_parallel_started_and_question_held": true,
+  "parallel_execution_observed_at": "2026-10-26T19:50:13.709563+08:00",
+  "child_finished_wait_observed_at": "2026-10-26T19:51:21.760149+08:00",
+  "user_confirmed_parallel_answer_and_recovery": true,
+  "parallel_completion_visible_seconds": 8.093114
+}
