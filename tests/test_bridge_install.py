@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import os
 
 import pytest
 
@@ -186,3 +187,37 @@ def test_startup_repairs_missing_physical_plugin_link(tmp_path: Path) -> None:
         link.rmdir()
     report = installer.refresh((profile,))
     assert report.ok and link.joinpath("index.js").is_file(), report.message
+
+
+def test_remove_can_retry_after_pnpm_succeeded_but_bundle_write_failed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    profile = profile_at(tmp_path)
+    installer = BridgeInstaller(data_dir=tmp_path / "data")
+    assert installer.install(installer.preflight((profile,))).ok
+    real_replace = os.replace
+
+    def denied(source: Path, destination: Path) -> None:
+        if Path(destination) == profile / "package.json":
+            raise PermissionError("injected bundle write failure")
+        real_replace(source, destination)
+
+    monkeypatch.setattr(os, "replace", denied)
+    failed = installer.remove((profile,))
+    assert not failed.ok and "injected" in failed.message
+    monkeypatch.setattr(os, "replace", real_replace)
+    retry = installer.remove((profile,))
+    assert retry.ok and not installer.inspect(profile).registered, retry.message
+
+
+def test_registry_override_with_missing_actual_plugin_is_not_install_success(tmp_path: Path) -> None:
+    profile = profile_at(tmp_path)
+    path = profile / "package.json"
+    value = json.loads(path.read_text())
+    value["dependencies"][PLUGIN] = "^9.0.0"
+    value["dsh"]["profile"]["bundles"].append(PLUGIN)
+    path.write_text(json.dumps(value))
+    installer = BridgeInstaller(data_dir=tmp_path / "data")
+    result = installer.install(installer.preflight((profile,)))
+    assert not result.ok and "实际插件缺失" in result.message
+    assert installer.inspect(profile).dependency == "^9.0.0"

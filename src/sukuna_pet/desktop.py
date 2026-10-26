@@ -16,6 +16,7 @@ from .bridge_install import BridgeInstaller, InstallPlan, maintenance_directory
 from .rendering import CharacterRenderer, SOURCE_BOUNDS
 from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
 from .task_bridge import TaskMonitor
+from .task_bridge import TaskSummary
 from .task_bubble import TaskBubble
 
 
@@ -170,23 +171,18 @@ class PetWindow(QWidget):
 
     def _advance(self) -> None:
         now = perf_counter()
-        if self._task_monitor is not None:
-            self._pet.set_task_running(self._task_monitor.summary.jump)
-        elif self._bridge is not None:
-            self._pet.set_task_running(self._bridge.summary.jump)
+        summary = (self._task_monitor.summary if self._task_monitor is not None else
+                   self._bridge.summary if self._bridge is not None else TaskSummary())
+        self._pet.set_task_running(summary.jump)
         # One capped real frame enters the model once. PetApplication splits
         # motion into <=4ms steps, but keeps automatic waits frame-granular.
         self._pet.advance(min(150, (now - self._last_time) * 1000))
         self._last_time = now
         self._keep_visible()
-        if self._task_monitor is not None and self.isVisible():
+        if self.isVisible():
             area = self.screen().availableGeometry()
             character = self._visible_region.boundingRect().translated(self.pos())
-            self._bubble.present(self._task_monitor.summary.text, character, area)
-        elif self._bridge is not None and self.isVisible():
-            area = self.screen().availableGeometry()
-            character = self._visible_region.boundingRect().translated(self.pos())
-            self._bubble.present(self._bridge.summary.text, character, area)
+            self._bubble.present(summary.text, character, area)
 
     def closeEvent(self, event: QCloseEvent) -> None:
         self._timer.stop()

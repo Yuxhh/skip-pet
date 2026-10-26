@@ -7,7 +7,8 @@ from datetime import datetime
 
 from PySide6.QtCore import QObject, QTimer, Signal
 
-from .bridge_install import BridgeInstaller, BridgeUse, InstallPlan, InstallReport, desktop_profile
+from .bridge_install import (BridgeInstaller, BridgeUse, InstallPlan, InstallReport,
+                             MaintenanceBusyError, desktop_profile)
 from .settings import load_bridge, save_bridge
 from .task_bridge import TaskMonitor, TaskSummary
 
@@ -27,6 +28,7 @@ class BridgeController(QObject):
         self._monitor: TaskMonitor | None = None
         self._lease: BridgeUse | None = None
         self._closed = False
+        self._refresh_attempts = 0
         self._executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="sukuna-bridge")
         self._preflight: Future[InstallPlan] | None = None
         self._operation: Future[InstallReport] | None = None
@@ -41,7 +43,8 @@ class BridgeController(QObject):
         return self._monitor.summary if self._monitor is not None else TaskSummary()
 
     def start(self) -> None:
-        if self.enabled and not self.busy:
+        if self.enabled and not self.busy and not self._closed:
+            self._refresh_attempts += 1
             self._submit("refresh", self._refresh)
 
     def _refresh(self) -> InstallReport:
@@ -49,12 +52,12 @@ class BridgeController(QObject):
         return self.installer.refresh(self.profiles)
 
     def prepare(self) -> None:
-        if not self.busy:
+        if not self.busy and not self._closed:
             self.busy = True
             self._preflight = self._executor.submit(self.installer.preflight)
 
     def confirm(self, plan: InstallPlan) -> None:
-        if not self.busy:
+        if not self.busy and not self._closed:
             self.profiles = plan.profiles
             self._submit("install", lambda: self._install(plan))
 
@@ -63,7 +66,7 @@ class BridgeController(QObject):
         return self.installer.install(plan)
 
     def disable(self) -> None:
-        if self.busy:
+        if self.busy or self._closed:
             return
         try:
             save_bridge(self.settings_path, False, self.profiles)
@@ -105,6 +108,8 @@ class BridgeController(QObject):
             stream.write(f"[{datetime.now().isoformat(timespec='seconds')}] {action}\n{detail}\n")
 
     def _poll(self) -> None:
+        if self._closed:
+            return
         if self._preflight is not None and self._preflight.done():
             future, self._preflight = self._preflight, None
             self.busy = False
@@ -133,6 +138,9 @@ class BridgeController(QObject):
             except Exception as error:
                 if not self.enabled:
                     self._release_use()
+                if self._action == "refresh" and isinstance(error, MaintenanceBusyError):
+                    QTimer.singleShot(min(500 * 2 ** min(self._refresh_attempts, 4), 5000), self.start)
+                    return
                 self.notice.emit("DeepSeek 接入维护失败", str(error)
                                  + f"\n诊断：{self.installer.data_dir / 'maintenance.log'}")
 

@@ -10,7 +10,7 @@ import os
 from collections.abc import Callable
 
 import pytest
-from PySide6.QtCore import QEvent, QPoint, QTimer
+from PySide6.QtCore import QEvent, QPoint, QTimer, QLockFile
 from PySide6.QtGui import QContextMenuEvent
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox
@@ -28,7 +28,7 @@ def publish_running(directory: Path, health: int) -> None:
     identity = dict(schema=1, schema_version=1, owner="@sukuna-pet/dsh-bridge",
                     user_id=hashlib.sha256(os.path.normcase(str(Path.home().resolve())).encode()).hexdigest(),
                     profile_id="test-profile", instance_id="test-instance", pid=1,
-                    process_start_id="test-process", boot_id="test-boot",
+                    process_start_id="1000", boot_id="test-boot", boot_started_at=1000,
                     host_version="test-host", plugin_version="test-plugin",
                     capabilities=["observed-state", "snapshot-boundary", "contiguous-events", "independent-health"],
                     health_seq=health, lifecycle="active")
@@ -207,6 +207,45 @@ def test_menu_install_monitors_in_click_mode_and_disable_removes_plugin(
         assert json.loads(settings.read_text())["dsh_bridge"]["enabled"] is False
         assert not window._bubble.isVisible()
     finally:
+        publisher.stop()
+        window.close()
+        window.deleteLater()
+        app.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+
+
+def test_startup_retries_maintenance_lock_then_registers_shared_use_and_monitors(
+    app: QApplication, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    profile = profile_at(tmp_path / "dsh")
+    events = tmp_path / "events"
+    events.mkdir()
+    monkeypatch.setenv("SUKUNA_PET_BRIDGE_DIR", str(events))
+    installer = BridgeInstaller(data_dir=tmp_path / "data")
+    assert installer.install(installer.preflight((profile,))).ok
+    settings = tmp_path / "mode.json"
+    save_bridge(settings, True, (profile,))
+    other = QLockFile(str(installer.data_dir / "maintenance.lock"))
+    assert other.tryLock(0)
+    monkeypatch.setattr(QMessageBox, "warning", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    window = PetWindow(settings_path=settings, bridge_installer=installer)
+    publisher = QTimer()
+    health = iter(range(1, 1000))
+    publisher.timeout.connect(lambda: publish_running(events, next(health)))
+    try:
+        window.show()
+        publisher.start(100)
+        deadline = time.monotonic() + 1.5
+        while time.monotonic() < deadline:
+            QTest.qWait(20)
+            time.sleep(.01)
+        other.unlock()
+        wait_until(lambda: window._bubble.isVisible())
+        result = installer.remove((profile,))
+        assert result.ok and "其他实例" in result.message
+        assert installer.inspect(profile).registered
+    finally:
+        other.unlock()
         publisher.stop()
         window.close()
         window.deleteLater()

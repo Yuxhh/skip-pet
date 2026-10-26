@@ -27,6 +27,10 @@ PLUGIN = "@sukuna-pet/dsh-bridge"
 OWNER_FILE = ".sukuna-bridge.json"
 
 
+class MaintenanceBusyError(RuntimeError):
+    """Another process currently owns the bridge mutation boundary."""
+
+
 @dataclass(frozen=True)
 class ProfileState:
     profile: Path
@@ -115,9 +119,7 @@ class BridgeInstaller:
         for profile in selected:
             _read_manifest(profile)
             manifests.append((profile / "package.json").read_bytes())
-        package = json.loads((self.plugin / "package.json").read_text(encoding="utf-8"))
-        if package.get("name") != PLUGIN or not (self.plugin / "index.js").is_file():
-            raise ValueError("随包桥接插件不完整")
+        _plugin_files(self.plugin)
         pnpm = self.pnpm if self.pnpm is not None else pnpm_cli()
         if not pnpm.is_file():
             raise FileNotFoundError(f"找不到 pnpm 入口：{pnpm}")
@@ -130,11 +132,10 @@ class BridgeInstaller:
         value = _read_manifest(profile)
         dependency = str(value.get("dependencies", {}).get(PLUGIN, ""))
         bundles = value.get("dsh", {}).get("profile", {}).get("bundles", [])
-        if not isinstance(bundles, list) or not all(isinstance(b, str) for b in bundles):
-            raise ValueError(f"无效的 profile bundles：{profile}")
         owner = _read_owner(profile)
         return ProfileState(profile, dependency, path_target(dependency, profile),
-                            tuple(bundles), bool(dependency and owner.get("dependency") == dependency))
+                            tuple(bundles), bool(owner.get("dependency")
+                            and (not dependency or owner.get("dependency") == dependency)))
 
     def install(self, plan: InstallPlan) -> InstallReport:
         lock = self._lock()
@@ -149,6 +150,8 @@ class BridgeInstaller:
                     if state.dependency and state.target is None:
                         if not state.registered:
                             raise RuntimeError("保留用户指定的 registry 依赖；请先确认其 bundles 配置。")
+                        if not (profile / "node_modules" / PLUGIN / "index.js").is_file():
+                            raise RuntimeError("保留用户指定的 registry 依赖，但其实际插件缺失；请在该 profile 安装指定版本后重试。")
                         results.append(ProfileResult(profile, True, "保留用户指定的 registry 依赖"))
                         continue
                     backup = _backup(profile)
@@ -206,7 +209,8 @@ class BridgeInstaller:
                 return True  # Unreadable live claims are not permission to remove.
         return False
 
-    def remove(self, profiles: tuple[Path, ...] | None = None) -> InstallReport:
+    def remove(self, profiles: tuple[Path, ...] | None = None, *,
+               preserve_shared: bool = False) -> InstallReport:
         lock = self._lock()
         try:
             results = []
@@ -218,7 +222,12 @@ class BridgeInstaller:
                         continue
                     state = self.inspect(profile)
                     if self._in_use(profile):
-                        results.append(ProfileResult(profile, True, "其他实例仍在使用，保留插件"))
+                        if preserve_shared and state.owned and state.target is not None:
+                            backup = self._preserve_shared(profile, state)
+                            results.append(ProfileResult(profile, True,
+                                "其他实例仍在使用，已保留独立插件副本，卸载程序目录不影响共享链接", backup))
+                        else:
+                            results.append(ProfileResult(profile, True, "其他实例仍在使用，保留插件"))
                         continue
                     if not state.owned:
                         results.append(ProfileResult(profile, True, "保留用户修改或非本项目拥有的配置"))
@@ -229,7 +238,7 @@ class BridgeInstaller:
                         cli = self.pnpm if self.pnpm is not None else pnpm_cli()
                     except FileNotFoundError:
                         node, cli = None, None
-                    if cli and cli.is_file() and (node or cli.suffix.lower() == ".exe"):
+                    if state.dependency and cli and cli.is_file() and (node or cli.suffix.lower() == ".exe"):
                         _run_pnpm(profile, node or "", cli, "remove", PLUGIN)
                     else:
                         # Read the latest file; never restore an old whole manifest.
@@ -250,12 +259,49 @@ class BridgeInstaller:
         finally:
             lock.unlock()
 
+    def _preserve_shared(self, profile: Path, state: ProfileState) -> Path:
+        assert state.target is not None
+        backup = _backup(profile)
+        files = _plugin_files(state.target)
+        saved = self.data_dir / "preserved-bridge" / uuid4().hex
+        saved.mkdir(parents=True)
+        for name in files:
+            source = (state.target / name).resolve()
+            if not source.is_relative_to(state.target.resolve()) or not source.is_file():
+                raise ValueError(f"共享插件文件不完整：{name}；备份：{backup}")
+            destination = saved / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+        if not (saved / "index.js").is_file():
+            raise ValueError("共享插件缺少入口")
+        link = profile / "node_modules" / PLUGIN
+        if link.is_symlink():
+            link.unlink()
+        elif link.is_junction():
+            link.rmdir()
+        elif link.exists():
+            raise RuntimeError(f"插件入口不是本地链接，保留原目录；备份：{backup}")
+        link.parent.mkdir(parents=True, exist_ok=True)
+        if os.name == "nt":
+            from _winapi import CreateJunction
+            CreateJunction(str(saved), str(link))
+        else:
+            link.symlink_to(saved, target_is_directory=True)
+        value = _read_manifest(profile)
+        if value.get("dependencies", {}).get(PLUGIN) != state.dependency:
+            raise RuntimeError(f"共享配置在维护期间已改变；备份：{backup}")
+        dependency = "link:" + saved.resolve().as_posix()
+        value["dependencies"][PLUGIN] = dependency
+        _write_json(profile / "package.json", value)
+        _write_json(profile / OWNER_FILE, {"dependency": dependency})
+        return backup
+
     def _lock(self) -> QLockFile:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         lock = QLockFile(str(self.data_dir / "maintenance.lock"))
         lock.setStaleLockTime(0)
         if not lock.tryLock(1000):
-            raise RuntimeError("另一个桌宠正在维护接入，请稍后重试。")
+            raise MaintenanceBusyError("另一个桌宠正在维护接入，请稍后重试。")
         return lock
 
 
@@ -269,6 +315,23 @@ def path_target(spec: str, profile: Path) -> Path | None:
         return None
     path = Path(text)
     return (profile / path).resolve() if not path.is_absolute() else path.resolve()
+
+
+def _plugin_files(plugin: Path) -> tuple[str, ...]:
+    package = json.loads((plugin / "package.json").read_text(encoding="utf-8"))
+    if not isinstance(package, dict) or package.get("name") != PLUGIN:
+        raise ValueError("随包桥接插件身份不符")
+    listed = package.get("files", [])
+    if not isinstance(listed, list) or not all(isinstance(name, str) for name in listed):
+        raise ValueError("随包桥接插件文件清单无效")
+    names = tuple(dict.fromkeys(["package.json", "index.js", *listed]))
+    for name in names:
+        path = Path(name)
+        source = (plugin / path).resolve()
+        if (path.is_absolute() or ".." in path.parts or not source.is_relative_to(plugin.resolve())
+                or not source.is_file()):
+            raise ValueError(f"随包桥接插件文件不完整：{name}")
+    return names
 
 
 def _read_owner(profile: Path) -> dict[str, Any]:
@@ -394,8 +457,6 @@ def _read_manifest(profile: Path) -> dict[str, Any]:
 def _set_bundle(profile: Path, present: bool) -> None:
     value = _read_manifest(profile)
     bundles = value.setdefault("dsh", {}).setdefault("profile", {}).setdefault("bundles", [])
-    if not isinstance(bundles, list):
-        raise ValueError("无效的 profile bundles")
     bundles[:] = [entry for entry in bundles if entry != PLUGIN]
     if present:
         bundles.append(PLUGIN)

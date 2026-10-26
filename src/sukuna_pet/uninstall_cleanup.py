@@ -21,7 +21,7 @@ def main(argv: list[str] | None = None) -> int:
         profiles = saved.profiles or (desktop_profile(),)
         if saved.enabled:
             save_bridge(args.settings, False, profiles)
-        report = BridgeInstaller(data_dir=args.maintenance_dir).remove(profiles)
+        report = BridgeInstaller(data_dir=args.maintenance_dir).remove(profiles, preserve_shared=True)
         code, detail = (0 if report.ok else 1), report.message
     except Exception as error:
         code, detail = 1, f"清理失败：{error}"

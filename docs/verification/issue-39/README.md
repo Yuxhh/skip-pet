@@ -10,9 +10,9 @@
 
 ## 自动化验证
 
-- `tests/test_bridge_install.py`：预检不创建 profile，真实 pnpm 安装与备份，旧构建及失效路径刷新，实际链接丢失修复，预检后配置变化，registry 与后续修改保护，多实例占用，无 pnpm JSON 移除兜底，多 profile 部分失败及重试，坏依赖诊断。
-- `tests/test_bridge_desktop.py`：原生菜单拒绝/确认、后台慢安装期间帧继续推进、失败重试、开关成功后持久化、切换模式保持气泡、启动自动刷新与退出保留共享插件。Qt 测试使用隔离 profile；协议测试发布器提供身份、独立健康与观察快照。
-- `tests/test_bridge_uninstall.py`：真实子进程经 `--uninstall-cleanup` 入口，跨进程仍有占用时保留，无占用时移除自己的条目并留下结果日志。
+- `tests/test_bridge_install.py`：预检不创建 profile，真实 pnpm 安装与备份，旧构建及失效路径刷新，实际链接丢失修复，预检后配置变化，registry 与后续修改保护，registry 实体缺失拒绝误报成功，多实例占用，无 pnpm JSON 移除兜底，多 profile 部分失败及重试，移除依赖后 bundle 写入失败的重试，坏依赖诊断。
+- `tests/test_bridge_desktop.py`：原生菜单拒绝/确认、后台慢安装期间帧继续推进、失败重试、开关成功后持久化、切换模式保持气泡、启动自动刷新与退出保留共享插件；启动锁冲突后重试、登记占用再恢复监测。Qt 测试使用隔离 profile；协议测试发布器提供身份、独立健康与观察快照。
+- `tests/test_bridge_uninstall.py`：真实子进程经 `--uninstall-cleanup` 入口，跨进程仍有占用时复制并重连至独立数据目录，不依赖即将删除的程序目录；无占用时移除自己的条目并留下结果日志。
 
 完整回归、类型检查及双轴审查结果将在最终提交前补记。
 
