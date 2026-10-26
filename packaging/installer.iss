@@ -53,22 +53,24 @@ Name: "{userdesktop}\宿傩桌宠"; Filename: "{app}\SukunaPet.exe"; WorkingDir:
 Filename: "{app}\SukunaPet.exe"; Description: "Launch 宿傩桌宠"; Flags: nowait postinstall skipifsilent
 
 [Code]
-function InitializeUninstall(): Boolean;
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
   CleanupCode: Integer;
   ProgramPath: String;
+  CleanupSucceeded: Boolean;
 begin
-  Result := True;
-  ProgramPath := ExpandConstant('{app}\SukunaPet.exe');
-  if FileExists(ProgramPath) then
+  if CurUninstallStep = usUninstall then
   begin
-    if not Exec(ProgramPath, '--uninstall-cleanup', ExpandConstant('{app}'),
-      SW_HIDE, ewWaitUntilTerminated, CleanupCode) then
-      Result := False
-    else
-      Result := CleanupCode = 0;
-    if not Result then
-      MsgBox('Bridge cleanup failed. Application files were kept. See ' +
-        ExpandConstant('{localappdata}\sukuna-pet\uninstall-cleanup.log'), mbError, MB_OK);
+    ProgramPath := ExpandConstant('{app}\SukunaPet.exe');
+    if FileExists(ProgramPath) then
+    begin
+      CleanupSucceeded := Exec(ProgramPath, '--uninstall-cleanup', ExpandConstant('{app}'),
+        SW_HIDE, ewWaitUntilTerminated, CleanupCode);
+      if CleanupSucceeded then
+        CleanupSucceeded := CleanupCode = 0;
+      if not CleanupSucceeded then
+        RaiseException('Bridge cleanup failed. Application files were kept. See ' +
+          ExpandConstant('{localappdata}\sukuna-pet\uninstall-cleanup.log'));
+    end;
   end;
 end;
