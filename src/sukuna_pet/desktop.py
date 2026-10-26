@@ -11,6 +11,8 @@ from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QImage, 
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
 from .playback import PetApplication, PetView
+from .bridge_control import BridgeController
+from .bridge_install import BridgeInstaller, InstallPlan, maintenance_directory
 from .rendering import CharacterRenderer, SOURCE_BOUNDS
 from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
 from .task_bridge import TaskMonitor
@@ -21,6 +23,7 @@ class PetWindow(QWidget):
     def __init__(
         self, application: PetApplication | None = None, *, settings_path: Path | None = None,
         task_monitor: TaskMonitor | None = None,
+        bridge_installer: BridgeInstaller | None = None,
     ) -> None:
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
@@ -38,6 +41,13 @@ class PetWindow(QWidget):
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
         self._task_monitor = task_monitor
+        self._bridge: BridgeController | None = None
+        if task_monitor is None and settings_path is not None:
+            installer = bridge_installer or BridgeInstaller(data_dir=maintenance_directory())
+            self._bridge = BridgeController(settings_path, installer, self)
+            self._bridge.prepared.connect(self._confirm_bridge)
+            self._bridge.notice.connect(self._bridge_notice)
+            QTimer.singleShot(0, self._bridge.start)
         self._bubble = TaskBubble(self)
         self._renderer = CharacterRenderer()
         self._frame = QImage()
@@ -162,6 +172,8 @@ class PetWindow(QWidget):
         now = perf_counter()
         if self._task_monitor is not None:
             self._pet.set_task_running(self._task_monitor.summary.jump)
+        elif self._bridge is not None:
+            self._pet.set_task_running(self._bridge.summary.jump)
         # One capped real frame enters the model once. PetApplication splits
         # motion into <=4ms steps, but keeps automatic waits frame-granular.
         self._pet.advance(min(150, (now - self._last_time) * 1000))
@@ -171,12 +183,18 @@ class PetWindow(QWidget):
             area = self.screen().availableGeometry()
             character = self._visible_region.boundingRect().translated(self.pos())
             self._bubble.present(self._task_monitor.summary.text, character, area)
+        elif self._bridge is not None and self.isVisible():
+            area = self.screen().availableGeometry()
+            character = self._visible_region.boundingRect().translated(self.pos())
+            self._bubble.present(self._bridge.summary.text, character, area)
 
     def closeEvent(self, event: QCloseEvent) -> None:
         self._timer.stop()
         self._bubble.hide()
         if self._task_monitor is not None:
             self._task_monitor.close()
+        if self._bridge is not None:
+            self._bridge.close()
         super().closeEvent(event)
 
     def paintEvent(self, event: QPaintEvent) -> None:
@@ -241,6 +259,11 @@ class PetWindow(QWidget):
             modes.addAction(action)
             action.triggered.connect(lambda checked=False, chosen=value: self._select_mode(chosen))
         menu.addSeparator()
+        if self._bridge is not None:
+            bridge_action = menu.addAction("关闭 DeepSeek 接入" if self._bridge.enabled else "启用 DeepSeek 接入")
+            bridge_action.setEnabled(not self._bridge.busy)
+            bridge_action.triggered.connect(self._bridge.disable if self._bridge.enabled else self._bridge.prepare)
+            menu.addSeparator()
         size_menu = menu.addMenu("调整大小")
         sizes = QActionGroup(size_menu)
         for size in DISPLAY_SIZES:
@@ -254,6 +277,18 @@ class PetWindow(QWidget):
         exit_action.triggered.connect(self.close)
         menu.exec(event.globalPos())
         menu.deleteLater()
+
+    def _confirm_bridge(self, plan: InstallPlan) -> None:
+        answer = QMessageBox.question(self, "启用 DeepSeek 接入", plan.description,
+                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if answer == QMessageBox.StandardButton.Yes and self._bridge is not None:
+            self._bridge.confirm(plan)
+
+    def _bridge_notice(self, title: str, text: str) -> None:
+        if title == "DeepSeek 接入已更新":
+            QMessageBox.information(self, title, text)
+        else:
+            QMessageBox.warning(self, title, text)
 
     def _select_mode(self, mode: Mode) -> None:
         self._advance()
@@ -314,10 +349,13 @@ def _character_region(frame: QImage) -> QRegion:
 
 
 def main() -> int:
+    if len(sys.argv) > 1 and sys.argv[1] == "--uninstall-cleanup":
+        from .uninstall_cleanup import main as cleanup_main
+        return cleanup_main(sys.argv[2:])
     app = QApplication(sys.argv)
     app.setOrganizationName("skip-pet")
     app.setApplicationName("sukuna-pet")
     app.setApplicationDisplayName("宿傩桌宠")
-    window = PetWindow(task_monitor=TaskMonitor())
+    window = PetWindow()
     window.show()
     return app.exec()

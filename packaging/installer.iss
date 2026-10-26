@@ -51,3 +51,6 @@ Name: "{userdesktop}\宿傩桌宠"; Filename: "{app}\SukunaPet.exe"; WorkingDir:
 
 [Run]
 Filename: "{app}\SukunaPet.exe"; Description: "Launch 宿傩桌宠"; Flags: nowait postinstall skipifsilent
+
+[UninstallRun]
+Filename: "{app}\SukunaPet.exe"; Parameters: "--uninstall-cleanup"; Flags: runhidden waituntilterminated skipifdoesntexist; RunOnceId: "SukunaBridgeCleanup"

@@ -4,12 +4,33 @@ import json
 import os
 from pathlib import Path
 import tempfile
+from dataclasses import dataclass
 from typing import Literal
 
 
 Mode = Literal["click", "always", "task"]
 DISPLAY_SIZES = (188, 271, 320)
 DEFAULT_SIZE = 320
+
+
+@dataclass(frozen=True)
+class BridgeSettings:
+    enabled: bool = False
+    profiles: tuple[Path, ...] = ()
+
+
+def load_bridge(path: Path) -> BridgeSettings:
+    value = _load_settings(path).get("dsh_bridge")
+    if not isinstance(value, dict):
+        return BridgeSettings()
+    profiles = value.get("profiles", [])
+    if not isinstance(profiles, list) or not all(isinstance(p, str) and p for p in profiles):
+        return BridgeSettings()
+    return BridgeSettings(value.get("enabled") is True, tuple(Path(p) for p in profiles))
+
+
+def save_bridge(path: Path, enabled: bool, profiles: tuple[Path, ...]) -> None:
+    _save_setting(path, "dsh_bridge", {"enabled": enabled, "profiles": [str(p) for p in profiles]})
 
 
 def _load_settings(path: Path) -> dict[str, object]:
