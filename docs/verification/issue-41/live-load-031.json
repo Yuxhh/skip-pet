@@ -1,0 +1,44 @@
+[
+  {
+    "pid": 101132,
+    "schema_version": 1,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.3.1",
+    "profile_id": "708098f88cf392116a8e5e1151bd703a582c591ef39e652efb9ae375385faf6a",
+    "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+    "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+    "health_seq": 76,
+    "revision": 2,
+    "lifecycle": "active",
+    "coverage": "observed",
+    "agents": [
+      {
+        "status": "idle",
+        "known": true,
+        "source_seq": 78,
+        "root_turn": 6
+      }
+    ]
+  },
+  {
+    "pid": 101132,
+    "schema_version": 1,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.3.1",
+    "profile_id": "708098f88cf392116a8e5e1151bd703a582c591ef39e652efb9ae375385faf6a",
+    "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+    "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+    "health_seq": 77,
+    "revision": 2,
+    "lifecycle": "active",
+    "coverage": "observed",
+    "agents": [
+      {
+        "status": "idle",
+        "known": true,
+        "source_seq": 78,
+        "root_turn": 6
+      }
+    ]
+  }
+]
