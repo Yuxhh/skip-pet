@@ -1,11 +1,11 @@
 {
   "name": "@sukuna-pet/dsh-bridge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "main": "index.js",
   "exports": { ".": "./index.js" },
   "license": "MIT",
-  "files": ["index.js", "cordis.patch.yml", "LICENSE"],
+  "files": ["index.js", "file-publisher.js", "cordis.patch.yml", "LICENSE"],
   "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
 }

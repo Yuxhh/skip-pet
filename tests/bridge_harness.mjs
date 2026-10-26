@@ -46,7 +46,7 @@ assert.ok(snap().health_seq > before);
 send('turn/end', { turn: 1, reason: { kind: 'completed' } });
 await pause(100);
 assert.equal(snap().agents[0].status, 'idle');
-for (const fn of dispose) fn();
+for (const fn of dispose) await fn();
 assert.equal(snap().lifecycle, 'stopped');
 const lines = fs.readFileSync(path.join(directory, `dsh-${process.pid}.jsonl`), 'utf8');
 assert.ok(!lines.includes('DO_NOT_EXPORT'));

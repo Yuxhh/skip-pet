@@ -1,0 +1,126 @@
+{
+  "platform": "win32",
+  "filesystem": "Windows local NTFS workspace",
+  "source": "actual plugin with controlled host event source",
+  "stages": [
+    {
+      "name": "running",
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 1,
+      "holding": false
+    },
+    {
+      "name": "after-load",
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 0,
+      "holding": false
+    },
+    {
+      "name": "suspended-hidden-grace",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": false,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 1,
+      "holding": true
+    },
+    {
+      "name": "suspended-expired",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": false,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 1,
+      "holding": false
+    },
+    {
+      "name": "resumed",
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 2,
+      "holding": false
+    },
+    {
+      "name": "closed-hidden-grace",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": false,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 2,
+      "holding": true
+    },
+    {
+      "name": "closed-expired",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0
+      },
+      "bubble_visible": false,
+      "bubble_text": "哼，还在办。等着。",
+      "stage": 2,
+      "holding": true
+    }
+  ],
+  "qt_timer_samples": 877,
+  "max_qt_gap_ms": 78.55,
+  "mouse_click": true,
+  "mouse_drag": true,
+  "writer_pid": 101820,
+  "protocol_version": 1,
+  "plugin_version": "0.2.0"
+}

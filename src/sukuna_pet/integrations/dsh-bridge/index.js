@@ -1,10 +1,9 @@
 // File bridge adapted from the architecture of Merzlin/dsh-pet-indesktop
 // 34d810b1 (MIT, copyright Merzlin 2026). See LICENSE and docs/verification.
 // Export only IDs/enums: never forward event payloads, messages or questions.
-import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { publisher } from './file-publisher.js';
 
 export const name = 'sukuna-pet-dsh-bridge';
 export const inject = ['agents', 'sessionProjections'];
@@ -14,17 +13,14 @@ export function apply(ctx) {
     process.env.LOCALAPPDATA || path.join(os.homedir(), '.local', 'share'),
     'sukuna-pet', 'bridge', 'dsh',
   );
-  fs.mkdirSync(directory, { recursive: true });
-  const file = path.join(directory, `dsh-${process.pid}.jsonl`);
-  const snapshotFile = path.join(directory, `dsh-${process.pid}.snapshot.json`);
-  const boot = randomUUID();
-  let revision = 0;
-  let health = 0;
-  let records = [];
   let disposed = false;
   const agents = new Map();
   const stops = new Map();
-  const idOf = agent => String(agent?.session?.id || agent?.id || '');
+  let coverageComplete = true;
+  const idOf = agent => {
+    const id = String(agent?.session?.id || agent?.id || '');
+    return id.length <= 256 ? id : '';
+  };
   const registry = ctx.agents;
   const boundaryOf = session => {
     try {
@@ -43,25 +39,6 @@ export function apply(ctx) {
     }
     return root;
   }
-  function record(event, data = {}) {
-    records.push({ schema: 1, boot_id: boot, pid: process.pid, revision: ++revision,
-      event, ...data });
-    if (records.length > 1024) {
-      // Current observed state remains in the next snapshot; never grow unbounded.
-      records = [];
-    }
-  }
-  function flush() {
-    if (!records.length) return;
-    try {
-      if (fs.existsSync(file) && fs.statSync(file).size > 1024 * 1024) {
-        fs.rmSync(`${file}.1`, { force: true });
-        fs.renameSync(file, `${file}.1`);
-      }
-      fs.appendFileSync(file, records.map(row => JSON.stringify(row)).join('\n') + '\n');
-      records = [];
-    } catch { records = []; } // The reader detects the sequence gap / stale health.
-  }
   function publicState(state) {
     return { agent_id: state.id, root_id: state.root, root_turn: state.rootTurn,
       turn_id: state.turn, status: state.status, known: state.known,
@@ -69,7 +46,11 @@ export function apply(ctx) {
   }
   function track(agent) {
     const id = idOf(agent);
-    if (!id || agents.has(id)) return agents.get(id);
+    if (!id || agents.size >= 4096 && !agents.has(id)) {
+      coverageComplete = false;
+      return undefined;
+    }
+    if (agents.has(id)) return agents.get(id);
     const root = ownerOf(agent);
     const boundary = boundaryOf(agent.session);
     const rootBoundary = boundaryOf(root.session);
@@ -92,37 +73,35 @@ export function apply(ctx) {
   }
   function syncAgents() {
     const live = registry.list();
-    for (const agent of live) track(agent);
+    const liveIds = new Set(live.map(idOf));
+    coverageComplete = live.length <= 4096 && !liveIds.has('');
     for (const [id, state] of agents) {
-      if (!live.some(agent => idOf(agent) === id)) {
+      if (!liveIds.has(id)) {
         stops.get(id)?.();
         stops.delete(id);
         agents.delete(id);
         record('agent/removed', publicState(state));
       }
     }
+    for (const agent of live) track(agent);
   }
-  function snapshot(lifecycle = 'active') {
-    try {
-      const value = { schema: 1, boot_id: boot, pid: process.pid, revision,
-        health_seq: ++health, lifecycle, coverage: 'observed',
-        // This baseline reproduces observed state, not an authoritative host snapshot.
-        agents: [...agents.values()].map(publicState) };
-      const temporary = `${snapshotFile}.${boot}.tmp`;
-      fs.writeFileSync(temporary, JSON.stringify(value));
-      fs.renameSync(temporary, snapshotFile);
-    } catch { /* A failed publication cannot renew reader health. */ }
-  }
-  ctx.on('agent/created', ({ agent }) => { if (agent) track(agent); });
+  const transport = publisher(directory, () => {
+    if (!coverageComplete) throw new Error('observation capacity');
+    return [...agents.values()].map(publicState);
+  });
+  const record = (event, data = {}) => transport.record(event, data);
+  ctx.on('agent/created', ({ agent }) => { if (!disposed && agent) track(agent); });
   ctx.on('session/event', (session, event) => {
     try {
       if (disposed) return;
       const agent = registry.list().find(candidate => idOf(candidate) === String(session.id));
       if (!agent) return;
       const state = track(agent);
+      if (!state) return;
       const data = event.data || {};
       const type = event.type;
       if (type === 'turn/start') {
+        if (!Number.isSafeInteger(data.turn) || data.turn <= state.turn) return;
         const root = ownerOf(agent);
         state.root = idOf(root);
         state.turn = Number(data.turn) || 0;
@@ -143,8 +122,15 @@ export function apply(ctx) {
           : reason === 'completed' ? 'completed' : 'interrupted';
         record('turn/end', { ...publicState(state), outcome });
       } else if (type === 'tool/call') {
-        state.tools.add(String(data.callId));
-        if (data.name === 'ask_user_question') state.questions.add(String(data.callId));
+        const callId = String(data.callId || '');
+        if (!callId || callId.length > 256 || state.tools.size >= 4096) {
+          state.known = false;
+          state.tools.clear();
+          state.questions.clear();
+        } else {
+          state.tools.add(callId);
+          if (data.name === 'ask_user_question') state.questions.add(callId);
+        }
       } else if (type === 'tool/result') {
         const callId = data.callId || data.message?.callId || data.message?.source?.callId;
         state.questions.delete(String(callId));
@@ -167,9 +153,9 @@ export function apply(ctx) {
   });
   syncAgents();
   record('bridge/started');
-  snapshot();
-  const flushTimer = setInterval(() => { if (records.length) { flush(); snapshot(); } }, 80);
-  const healthTimer = setInterval(() => { syncAgents(); flush(); snapshot(); }, 1000);
+  transport.request(true);
+  const flushTimer = setInterval(() => { if (transport.pending) transport.request(); }, 80);
+  const healthTimer = setInterval(() => { syncAgents(); transport.request(true); }, 1000);
   flushTimer.unref?.();
   healthTimer.unref?.();
   ctx.effect(() => () => {
@@ -177,8 +163,6 @@ export function apply(ctx) {
     clearInterval(flushTimer);
     clearInterval(healthTimer);
     for (const stop of stops.values()) stop?.();
-    record('bridge/stopped');
-    flush();
-    snapshot('stopped');
+    return transport.close();
   });
 }
