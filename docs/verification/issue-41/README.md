@@ -50,3 +50,9 @@
 用户再次正常重开后，日常 PID `101132` 成功发布 **0.3.1**；已有轮次恢复为 `known=true`，Session 水位为 78。间隔采样确认同一新代际健康增长，消费汇总由首次未知转为已知空闲，见 [live-load-031.json](live-load-031.json)。这确认服务访问修复已在日常实例生效；真实等待交互另行验证。
 
 修复提交 `e74f574` 的隔离源码快照完整回归再次 **263 passed（181.58 秒）**，JUnit `.scratch/issue41/servicefix-full.xml`；mypy 13 文件、两套 Node harness 通过，双轴复查均新增 0 项。
+
+## 真实提问等待
+
+用户在同一个日常实例发起提问，并明确确认“问题已出现，尚未回答”。PID `101132`、插件 `0.3.1`、原加载代际保持不变，第 8 轮记录由已知运行进入已知等待，未决 question=1、approval=0。重新启动消费读取器后，先未知，随后凭同代际健康增长恢复 `waiting=1/running=0/questions=1/partial=false/jump=false`，气泡文案为“话说清楚，小鬼。等你回答。”，见 [等待采样](live-question-wait-031.json)。这验证了真实单一提问等待及消费端晚接入恢复，不扩大为插件晚加载或所有嵌套等待通过。
+
+状态事件序列保存于 [live-question-sequence-031.json](live-question-sequence-031.json)，仅有身份、修订、水位、状态和交互 ID，不包含问题或答复正文。已请求用户核对原生桌宠表现后回答，后续恢复结果另行补充。

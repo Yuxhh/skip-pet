@@ -1,0 +1,107 @@
+{
+  "pid": 101132,
+  "host_version": "0.2.1-rc.2",
+  "plugin_version": "0.3.1",
+  "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+  "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+  "events": [
+    {
+      "event": "agent/state",
+      "revision": 25,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 98,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:48.036000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 26,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 99,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:48.037000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 27,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 100,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:48.075000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 28,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 101,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:48.076000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 29,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 102,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:48.513000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 30,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 103,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:49.621000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 31,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 104,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:49.622000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 32,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 104,
+      "question_ids": [
+        "9d93f11d-5f99-42fe-893a-725031857cdf"
+      ],
+      "approval_ids": [],
+      "at": "2026-10-26T19:22:50.563000+08:00"
+    }
+  ]
+}

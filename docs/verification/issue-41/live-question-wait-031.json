@@ -1,0 +1,116 @@
+[
+  {
+    "pid": 101132,
+    "schema_version": 1,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.3.1",
+    "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+    "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+    "health_seq": 2251,
+    "revision": 32,
+    "lifecycle": "active",
+    "coverage": "observed",
+    "at": "2026-10-26T19:23:47.346799+08:00",
+    "agents": [
+      {
+        "root_turn": 8,
+        "turn_id": 8,
+        "status": "waiting",
+        "known": true,
+        "source_seq": 104,
+        "question_ids": [
+          "9d93f11d-5f99-42fe-893a-725031857cdf"
+        ],
+        "approval_ids": []
+      }
+    ],
+    "summary": {
+      "running": 0,
+      "waiting": 0,
+      "partial": true,
+      "jump": false,
+      "completed": 0,
+      "failed": 0,
+      "interrupted": 0,
+      "approvals": 0,
+      "questions": 0
+    },
+    "bubble_text": ""
+  },
+  {
+    "pid": 101132,
+    "schema_version": 1,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.3.1",
+    "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+    "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+    "health_seq": 2252,
+    "revision": 32,
+    "lifecycle": "active",
+    "coverage": "observed",
+    "at": "2026-10-26T19:23:48.578095+08:00",
+    "agents": [
+      {
+        "root_turn": 8,
+        "turn_id": 8,
+        "status": "waiting",
+        "known": true,
+        "source_seq": 104,
+        "question_ids": [
+          "9d93f11d-5f99-42fe-893a-725031857cdf"
+        ],
+        "approval_ids": []
+      }
+    ],
+    "summary": {
+      "running": 0,
+      "waiting": 1,
+      "partial": false,
+      "jump": false,
+      "completed": 0,
+      "failed": 0,
+      "interrupted": 0,
+      "approvals": 0,
+      "questions": 1
+    },
+    "bubble_text": "话说清楚，小鬼。等你回答。"
+  },
+  {
+    "pid": 101132,
+    "schema_version": 1,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.3.1",
+    "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+    "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+    "health_seq": 2253,
+    "revision": 32,
+    "lifecycle": "active",
+    "coverage": "observed",
+    "at": "2026-10-26T19:23:49.805427+08:00",
+    "agents": [
+      {
+        "root_turn": 8,
+        "turn_id": 8,
+        "status": "waiting",
+        "known": true,
+        "source_seq": 104,
+        "question_ids": [
+          "9d93f11d-5f99-42fe-893a-725031857cdf"
+        ],
+        "approval_ids": []
+      }
+    ],
+    "summary": {
+      "running": 0,
+      "waiting": 1,
+      "partial": false,
+      "jump": false,
+      "completed": 0,
+      "failed": 0,
+      "interrupted": 0,
+      "approvals": 0,
+      "questions": 1
+    },
+    "bubble_text": "话说清楚，小鬼。等你回答。"
+  }
+]
