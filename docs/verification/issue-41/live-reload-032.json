@@ -1,0 +1,1133 @@
+{
+  "recorded_at": "2026-10-26T20:30:19.254924+08:00",
+  "issue": 41,
+  "implementation_commit": "d28de35",
+  "source_candidate": "b9f7ad18dee1ea50137d3b2299434ee34bf6a4af",
+  "scope": "Real daily instance: unanswered question during bridge disable/re-enable; no replacement host",
+  "user_confirmed_wait_unanswered": true,
+  "native_pid": 76836,
+  "daily_host_pid": 101132,
+  "source_hashes": {
+    "index.js": "9fd86a5109c22c85717493f9ae18ba7bc85c3427af6fd907500f39f91adb3bd3",
+    "host-state.js": "a765c06e8f5f3e399a33e379c659147da00eb0de40e68e3b7319ec378ec89560",
+    "file-publisher.js": "16cad00b20ee67bde36076d4a105c3fa4a3f2ec078e33a4ab16dd2d72a26f6c9",
+    "package.json": "783c48ca0a82f2a7db7d2bc3cc8695725b270874b8b982a9fbb243fc233fa483"
+  },
+  "automated": {
+    "tests_passed": 265,
+    "elapsed_seconds": 208.32,
+    "mypy_source_files": 13,
+    "targeted_passed": 11,
+    "node_harnesses_passed": 2
+  },
+  "samples": [
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "boot_started_at": 1793011562141,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 173,
+          "snapshot_seq": 5328,
+          "health_seq": 5277,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:14:36.361386+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "boot_started_at": 1793011562141,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 173,
+          "snapshot_seq": 5329,
+          "health_seq": 5278,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:14:36.717276+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "boot_started_at": 1793011562141,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 174,
+          "snapshot_seq": 5466,
+          "health_seq": 5415,
+          "coverage": "observed",
+          "lifecycle": "stopped",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:16:54.558172+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+          "boot_started_at": 1793011562141,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.1",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 174,
+          "snapshot_seq": 5466,
+          "health_seq": 5415,
+          "coverage": "observed",
+          "lifecycle": "stopped",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:17:42.447653+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 3,
+          "snapshot_seq": 1,
+          "health_seq": 1,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:17:42.642270+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 3,
+          "snapshot_seq": 2,
+          "health_seq": 2,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "waiting",
+              "question_ids": [
+                "6a782bda-cd87-470e-8ad1-76d8a0296d61"
+              ],
+              "approval_ids": [],
+              "source_seq": 64
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:17:43.407565+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 8,
+          "snapshot_seq": 348,
+          "health_seq": 347,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "running",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 68
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:23:31.808064+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 9,
+          "snapshot_seq": 349,
+          "health_seq": 347,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "running",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 69
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:23:32.198136+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 13,
+          "snapshot_seq": 351,
+          "health_seq": 348,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 72
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:23:33.365283+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 13,
+          "snapshot_seq": 359,
+          "health_seq": 356,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 72
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:23:41.242791+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "instances": [
+        {
+          "pid": 101132,
+          "boot_id": "c456cece-f36c-4145-adce-e390f2a8f01c",
+          "boot_started_at": 1793017062317,
+          "process_start_id": "1793011560477.805",
+          "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+          "plugin_version": "0.3.2",
+          "host_version": "0.2.1-rc.2",
+          "schema_version": 1,
+          "revision": 13,
+          "snapshot_seq": 754,
+          "health_seq": 751,
+          "coverage": "observed",
+          "lifecycle": "active",
+          "agents": [
+            {
+              "agent_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_id": "session-2c86f703-5dfd-4f10-a18a-9834bc05be15",
+              "root_turn": 10,
+              "turn_id": 10,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 136
+            },
+            {
+              "agent_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_id": "session-11a9bb2b-3703-455a-8e84-0609e53ba331",
+              "root_turn": 3,
+              "turn_id": 3,
+              "known": true,
+              "status": "idle",
+              "question_ids": [],
+              "approval_ids": [],
+              "source_seq": 72
+            }
+          ]
+        }
+      ],
+      "at": "2026-10-26T20:30:18.360824+08:00"
+    }
+  ],
+  "native_samples": [
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T20:13:31.820040+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T20:13:34.281609+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T20:16:54.673415+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T20:17:42.578523+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T20:17:43.561321+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T20:23:31.824511+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T20:23:33.562447+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T20:23:41.329171+08:00"
+    }
+  ],
+  "user_confirmed_answer_and_normal_recovery": true,
+  "reconnect_samples": [
+    {
+      "stage": "first_unknown",
+      "at": "2026-10-26T20:18:23.368810+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "establish_wait",
+      "at": "2026-10-26T20:18:23.590684+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "establish_wait",
+      "at": "2026-10-26T20:18:23.826977+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:01.968787+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:02.199025+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:02.426180+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:02.654381+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": true,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:02.880270+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:03.102005+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:03.326104+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:03.546448+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:03.771326+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:03.996642+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:04.223843+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:04.445173+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:04.672859+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:04.897426+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:05.124745+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:05.347893+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:05.572382+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:05.794520+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:06.022202+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    },
+    {
+      "stage": "resume",
+      "at": "2026-10-26T20:24:06.252347+08:00",
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      }
+    }
+  ],
+  "reconnect_scope": "Pause the same public reader after a confirmed wait; human answer and host completion occur while polling is suspended; resume from latest facts without replaying completion",
+  "limitations": [
+    "Single legacy question; not all nested/timed waits or initial installation",
+    "No claim of complete internal execution or cross-turn continued coverage"
+  ]
+}
