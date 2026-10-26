@@ -1,0 +1,22 @@
+{
+  "dsh-90916.snapshot.json": {
+    "owner": "@sukuna-pet/dsh-bridge",
+    "pid": 90916,
+    "host_version": "0.2.1-rc.2",
+    "plugin_version": "0.2.0",
+    "schema_version": 1,
+    "capabilities": [
+      "observed-state",
+      "snapshot-boundary",
+      "contiguous-events",
+      "independent-health"
+    ],
+    "profile_id": "708098f88cf392116a8e5e1151bd703a582c591ef39e652efb9ae375385faf6a",
+    "boot_id": "d7393b19-7b40-44f5-9a4a-189ae89a599e",
+    "health_seq": 3317,
+    "lifecycle": "active",
+    "matches_desktop_profile": true,
+    "observed_agent_count": 1,
+    "health_advanced": true
+  }
+}

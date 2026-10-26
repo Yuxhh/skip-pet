@@ -1,0 +1,38 @@
+{
+  "desktop_version": "0.2.1-rc.2",
+  "build_commit": "332895e0f7c9d4dbfb29729f5eb367fa263ff986",
+  "build_dirty": false,
+  "archive_sha256": "47874618bf5b3011fcaac10cd4c85f69da333e70d4f99b921207c78d0999512a",
+  "members": [
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-agent/lib/index.js",
+      "sha256": "7b59cf82c2784c25bdce4e3e24e5e5303b02b9f1003efacf50255492d17baf8b",
+      "matches_preserved_source": true
+    },
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-agent-loop/lib/index.js",
+      "sha256": "cf57e3ecd487ac5c2553455aaa5cef2c6fb41e6bd61be5aa455675d1d7193033",
+      "matches_preserved_source": true
+    },
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-user-approval/lib/index.js",
+      "sha256": "6a5ad1ba3c3dc3abbbae52e6c8c4463970ee0c1c8988cebb0d5cf2acd17ee90b",
+      "matches_preserved_source": true
+    },
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-user-questions/lib/index.js",
+      "sha256": "e1c51afac2e31be8593c6426976e5f31dbe2a709b85ae1ea43ed406146f54265",
+      "matches_preserved_source": true
+    },
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-session-projection/lib/index.js",
+      "sha256": "7dc2b212819baf4fc292751054d30b97afcbdee0a4733230abf92c6722e6550c",
+      "matches_preserved_source": false
+    },
+    {
+      "member": "dsh/node_modules/@deepseek-ai/dsh-session/lib/index.js",
+      "sha256": "2f5dd07cb5c744a29abbb8003a8a4cefd9e582c6e2538074ca299a0ddd02a3bf",
+      "matches_preserved_source": false
+    }
+  ]
+}
