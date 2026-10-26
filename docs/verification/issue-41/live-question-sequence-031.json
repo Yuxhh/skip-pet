@@ -102,6 +102,127 @@
       ],
       "approval_ids": [],
       "at": "2026-10-26T19:22:50.563000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 33,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 104,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:14.287000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 34,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 105,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:14.288000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 35,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 106,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:14.289000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 36,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 107,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:14.311000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 37,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 108,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:14.709000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 38,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 109,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:15.787000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 39,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "running",
+      "known": true,
+      "source_seq": 110,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:15.787000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 40,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "idle",
+      "known": true,
+      "source_seq": 111,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:15.788000+08:00"
+    },
+    {
+      "event": "turn/end",
+      "revision": 41,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "idle",
+      "known": true,
+      "source_seq": 111,
+      "outcome": "completed",
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:26:15.788000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 42,
+      "root_turn": 8,
+      "turn_id": 8,
+      "status": "idle",
+      "known": true,
+      "source_seq": 112,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:27:16.783000+08:00"
     }
   ]
 }

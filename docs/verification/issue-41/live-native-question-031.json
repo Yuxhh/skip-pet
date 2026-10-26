@@ -1,0 +1,345 @@
+{
+  "pid": 101132,
+  "host_version": "0.2.1-rc.2",
+  "plugin_version": "0.3.1",
+  "schema_version": 1,
+  "instance_id": "52f3b263c3bf218fc2c9cde1707db4fa105abdeaea415f34223c479e3f9f7df5",
+  "boot_id": "5b4536f3-6b6b-465e-8b28-1418bf9893f1",
+  "preview": {
+    "pid": 76836,
+    "started_at": "2026-10-26T19:34:45.914292+08:00",
+    "source_hashes": {
+      "desktop.py": "3aa8298b25e1c52466c8f8f7de1003ecfd67d76f1e3f5eac00863e1c9cbffa8d",
+      "task_bridge.py": "6f967457e1dd12e680216503cd9cf0cde15c3b5508ccc9c2b88ff2d12f3b9a15",
+      "task_bubble.py": "04b1c809208b5f5d16c2654ebd2bab59e03aa39f779ef988a8a22bee08830a77"
+    }
+  },
+  "user_confirmed_waiting_visible": true,
+  "user_confirmed_answer_and_recovery": true,
+  "completion_visible_seconds": 7.871899,
+  "native_observations": [
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "",
+      "at": "2026-10-26T19:34:46.017635+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T19:36:07.699332+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 1,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 1
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "话说清楚，小鬼。等你回答。",
+      "at": "2026-10-26T19:36:10.463490+08:00"
+    },
+    {
+      "summary": {
+        "running": 1,
+        "waiting": 0,
+        "partial": false,
+        "jump": true,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，还在办。等着。",
+      "at": "2026-10-26T19:36:55.972307+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 1,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": true,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:36:57.157555+08:00"
+    },
+    {
+      "summary": {
+        "running": 0,
+        "waiting": 0,
+        "partial": false,
+        "jump": false,
+        "completed": 0,
+        "failed": 0,
+        "interrupted": 0,
+        "approvals": 0,
+        "questions": 0
+      },
+      "mode": "task",
+      "bubble_visible": false,
+      "bubble_text": "哼，1 个办完。",
+      "at": "2026-10-26T19:37:05.029454+08:00"
+    }
+  ],
+  "events": [
+    {
+      "event": "agent/state",
+      "revision": 53,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 122,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.359000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 54,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 123,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.359000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 55,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 124,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.404000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 56,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 125,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.405000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 57,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 126,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.406000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 58,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 127,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:07.828000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 59,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 128,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:09.280000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 60,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 129,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:09.280000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 61,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "waiting",
+      "known": true,
+      "source_seq": 129,
+      "question_ids": [
+        "e266a190-c27c-438b-be38-5b5067f3eeba"
+      ],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:10.208000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 62,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 129,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:55.640000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 63,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 130,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:55.642000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 64,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 131,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:55.642000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 65,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 132,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:55.664000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 66,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 133,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:56.106000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 67,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 134,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:56.830000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 68,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "running",
+      "known": true,
+      "source_seq": 135,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:56.831000+08:00"
+    },
+    {
+      "event": "agent/state",
+      "revision": 69,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "idle",
+      "known": true,
+      "source_seq": 136,
+      "question_ids": [],
+      "approval_ids": [],
+      "at": "2026-10-26T19:36:56.832000+08:00"
+    },
+    {
+      "event": "turn/end",
+      "revision": 70,
+      "root_turn": 10,
+      "turn_id": 10,
+      "status": "idle",
+      "known": true,
+      "source_seq": 136,
+      "question_ids": [],
+      "approval_ids": [],
+      "outcome": "completed",
+      "at": "2026-10-26T19:36:56.832000+08:00"
+    }
+  ]
+}
