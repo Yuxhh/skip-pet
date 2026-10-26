@@ -7,17 +7,20 @@ from pathlib import Path
 from time import perf_counter
 
 from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer
-from PySide6.QtGui import QActionGroup, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
+from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
 from .playback import PetApplication, PetView
 from .rendering import CharacterRenderer, SOURCE_BOUNDS
 from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
+from .task_bridge import TaskMonitor
+from .task_bubble import TaskBubble
 
 
 class PetWindow(QWidget):
     def __init__(
         self, application: PetApplication | None = None, *, settings_path: Path | None = None,
+        task_monitor: TaskMonitor | None = None,
     ) -> None:
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
@@ -34,6 +37,8 @@ class PetWindow(QWidget):
         height = load_size(settings_path) if settings_path is not None else DEFAULT_SIZE
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
+        self._task_monitor = task_monitor
+        self._bubble = TaskBubble(self)
         self._renderer = CharacterRenderer()
         self._frame = QImage()
         self._visible_region = QRegion()
@@ -155,11 +160,24 @@ class PetWindow(QWidget):
 
     def _advance(self) -> None:
         now = perf_counter()
+        if self._task_monitor is not None:
+            self._pet.set_task_running(self._task_monitor.summary.jump)
         # One capped real frame enters the model once. PetApplication splits
         # motion into <=4ms steps, but keeps automatic waits frame-granular.
         self._pet.advance(min(150, (now - self._last_time) * 1000))
         self._last_time = now
         self._keep_visible()
+        if self._task_monitor is not None and self.isVisible():
+            area = self.screen().availableGeometry()
+            character = self._visible_region.boundingRect().translated(self.pos())
+            self._bubble.present(self._task_monitor.summary.text, character, area)
+
+    def closeEvent(self, event: QCloseEvent) -> None:
+        self._timer.stop()
+        self._bubble.hide()
+        if self._task_monitor is not None:
+            self._task_monitor.close()
+        super().closeEvent(event)
 
     def paintEvent(self, event: QPaintEvent) -> None:
         painter = QPainter(self)
@@ -216,14 +234,12 @@ class PetWindow(QWidget):
         self._cancel_pointer()
         menu = QMenu(self)
         modes = QActionGroup(menu)
-        for value, label in (("click", "点击跳动"), ("always", "持续跳动")):
+        for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):
             action = menu.addAction(label)
             action.setCheckable(True)
             action.setChecked(self._pet.mode == value)
             modes.addAction(action)
-        click_action, always_action = modes.actions()
-        click_action.triggered.connect(lambda: self._select_mode("click"))
-        always_action.triggered.connect(lambda: self._select_mode("always"))
+            action.triggered.connect(lambda checked=False, chosen=value: self._select_mode(chosen))
         menu.addSeparator()
         size_menu = menu.addMenu("调整大小")
         sizes = QActionGroup(size_menu)
@@ -302,6 +318,6 @@ def main() -> int:
     app.setOrganizationName("skip-pet")
     app.setApplicationName("sukuna-pet")
     app.setApplicationDisplayName("宿傩桌宠")
-    window = PetWindow()
+    window = PetWindow(task_monitor=TaskMonitor())
     window.show()
     return app.exec()

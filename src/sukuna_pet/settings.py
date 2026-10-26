@@ -7,7 +7,7 @@ import tempfile
 from typing import Literal
 
 
-Mode = Literal["click", "always"]
+Mode = Literal["click", "always", "task"]
 DISPLAY_SIZES = (188, 271, 320)
 DEFAULT_SIZE = 320
 
@@ -21,8 +21,9 @@ def _load_settings(path: Path) -> dict[str, object]:
 
 
 def load_mode(path: Path) -> Mode:
-    if _load_settings(path).get("mode") == "always":
-        return "always"
+    value = _load_settings(path).get("mode")
+    if value in ("always", "task"):
+        return "always" if value == "always" else "task"
     return "click"
 
 

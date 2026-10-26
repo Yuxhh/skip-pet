@@ -28,7 +28,7 @@ def test_mode_selection_is_restored_by_a_fresh_application(tmp_path: Path) -> No
     assert json.loads(settings.read_text(encoding="utf-8")) == {"mode": "click"}
 
 
-@pytest.mark.parametrize("saved", ["not json", "[]", '{"mode":"task"}', '{"mode":null}', "\ud800"])
+@pytest.mark.parametrize("saved", ["not json", "[]", '{"mode":"unsupported"}', '{"mode":null}', "\ud800"])
 def test_invalid_settings_fall_back_to_click_mode(tmp_path: Path, saved: str) -> None:
     settings = tmp_path / "mode.json"
     settings.write_bytes(saved.encode("utf-8", errors="surrogatepass"))

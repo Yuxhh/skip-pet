@@ -82,6 +82,8 @@ class PetApplication:
         self._head_duration = 0.0
         self._bounce_age = 220.0
         self._wait_age = 0.0
+        self._task_running = False
+        self._task_finishing = False
         self._pointer_start: tuple[int, int] | None = None
         self._window_start = (0, 0)
         self._drag_distance = 0
@@ -130,16 +132,36 @@ class PetApplication:
         return self._mode
 
     def select_mode(self, mode: Mode) -> None:
-        if mode not in ("click", "always"):
+        if mode not in ("click", "always", "task"):
             raise ValueError("Unknown playback mode")
         if mode == self._mode:
             return
         if self._settings_path is not None:
             save_mode(self._settings_path, mode)
+        previous = self._mode
         self._mode = mode
+        self._task_finishing = mode == "task" and previous == "always" and (self._busy() or self._stage != 0)
         # Native V5 repeats the click action; switching off only stops scheduling.
-        if mode == "always" and not self._busy():
+        if self._automatic() and not self._busy():
             self.click()
+
+    def set_task_running(self, running: bool) -> None:
+        """Start observed tasks promptly; stop at the next complete eye cycle."""
+        if running == self._task_running:
+            return
+        was_running = self._task_running
+        self._task_running = running
+        if self._mode != "task":
+            return
+        if running:
+            self._task_finishing = False
+            if not self._busy():
+                self.click()
+        elif was_running:
+            self._task_finishing = self._busy() or self._stage != 0
+
+    def _automatic(self) -> bool:
+        return self._mode == "always" or self._mode == "task" and (self._task_running or self._task_finishing)
 
     @property
     def view(self) -> PetView:
@@ -203,7 +225,9 @@ class PetApplication:
             self._advance_motion(step)
             remaining -= step
         self._bounce_age = min(220, self._bounce_age + elapsed_ms)
-        if self._mode == "always" and not self._busy():
+        if self._mode == "task" and self._task_finishing and self._stage == 0 and not self._busy():
+            self._task_finishing = False
+        if self._automatic() and not self._busy():
             # Match the native preview's frame-granular wait, including the
             # entire frame that first observes completion. Do not carry excess
             # time into another action or queue missed actions after a stall.

@@ -16,7 +16,7 @@ sukuna-pet = "sukuna_pet.desktop:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-sukuna_pet = ["assets/*.png", "assets/*.json"]
+sukuna_pet = ["assets/*.png", "assets/*.json", "integrations/dsh-bridge/*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
