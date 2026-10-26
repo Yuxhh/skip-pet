@@ -2727,5 +2727,7 @@
   "parallel_execution_observed_at": "2026-10-26T19:50:13.709563+08:00",
   "child_finished_wait_observed_at": "2026-10-26T19:51:21.760149+08:00",
   "user_confirmed_parallel_answer_and_recovery": true,
-  "parallel_completion_visible_seconds": 8.093114
+  "parallel_completion_visible_seconds": 8.093114,
+  "parallel_completion_bridge_observed_seconds": 8.082565,
+  "sampling_note": "Native timer 100ms; bridge observer sleeps 150ms plus I/O. Sample intervals do not independently prove a strict <=8s deadline."
 }
