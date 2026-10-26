@@ -138,7 +138,7 @@ export function currentState(ctx) {
         const deliveries = [...pending.deliveries];
         const human = deliveries.some(client => client.peer === browser && client.answers);
         const machine = deliveries.some(client => client.peer !== browser && client.answers);
-        if (!human || machine || !validId(call) || !validId(pending.id)) {
+        if (!human || machine || !validId(call) || !validId(pending.id) || !cache.tools.has(call)) {
           waitsKnown = false;
           continue;
         }
@@ -181,7 +181,10 @@ export function currentState(ctx) {
     const nestedOnlyWait = !work && [...cache.tools.keys()].some(id =>
       !blocked.has(id) && childrenByParent.has(id));
     const pending = questions.size + approvals.size > 0;
-    if (pending && unknownWork && !observedWork) waitsKnown = false;
+    // A missing remote request only proves the interaction ended. In particular,
+    // a late-attached call can have finished without its result being committed,
+    // or still be blocked elsewhere. Require current execution/result evidence.
+    if (unknownWork && !observedWork) waitsKnown = false;
     const status = cache.open ? (pending && cache.tools.size > 0 && !work ? 'waiting' : 'running')
       : pending ? 'waiting' : 'idle';
     return { id: agent.id, root: root.id, rootTurn, turn: cache.turn, status,

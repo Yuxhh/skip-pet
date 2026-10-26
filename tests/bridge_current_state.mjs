@@ -88,6 +88,12 @@ for await (const command of input) {
     pendingRemoteEvents.clear();
     activeQuestions = [];
   }
+  if (command === 'question-result') {
+    log.push({ type: 'tool/result', seq: log.length, time: 115,
+      data: { turn: 1, message: { toolCallId: 'question' },
+        error: { code: 'ASK_ABORTED' } } });
+    events.emit('session/event', session, log.at(-1));
+  }
   if (command === 'reload') {
     for (const cleanup of cleanups) await cleanup();
     events.removeAllListeners();
@@ -143,6 +149,13 @@ for await (const command of input) {
   }
   if (command === 'old-end') events.emit('session/event', session,
     { type: 'turn/end', data: { turn: 1, reason: { kind: 'error' } } });
+  if (command === 'stale-approval') {
+    pendingRemoteEvents.set('old-approval', { id: 'old-approval',
+      source: { context: { subject: agent }, request: { callId: 'old-shell' } },
+      frame: { event: 'approval/request', agentId: 'root' },
+      deliveries: new Set([{ peer: browserPeer, answers: true }]),
+    });
+  }
   if (command === 'fail') {
     pendingRemoteEvents.clear();
     activeQuestions = [];

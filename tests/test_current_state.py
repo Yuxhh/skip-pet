@@ -50,6 +50,8 @@ def host(tmp_path: Path) -> Iterator[Host]:
 def test_real_approval_uses_approval_copy(host: Host) -> None:
     summary = host("approval", lambda summary: "批准" in summary.text)
     assert summary.waiting == 1 and not summary.jump and "回答" not in summary.text
+    summary = host("reload", lambda summary: summary.waiting == 1 and summary.approvals == 1)
+    assert not summary.jump and summary.completed == summary.failed == summary.interrupted == 0
 
 
 def test_child_work_keeps_one_task_running_and_preserves_question(host: Host) -> None:
@@ -106,3 +108,16 @@ def test_late_plugin_recovers_existing_question_wait(host: Host, tmp_path: Path)
     summary = host("", lambda summary: summary.waiting == 1)
     assert not summary.jump and "回答" in summary.text
     assert "PRIVATE_QUESTION" not in next(tmp_path.glob("*.snapshot.json")).read_text()
+
+
+def test_answer_removal_needs_execution_evidence_before_resuming(host: Host) -> None:
+    summary = host("answer", lambda summary: summary.questions == 0)
+    assert summary.partial and not summary.jump and summary.running == summary.waiting == 0
+    summary = host("question-result", lambda summary: summary.running == 1)
+    assert not summary.partial and summary.failed == summary.completed == summary.interrupted == 0
+
+
+def test_unattributed_approval_cannot_be_assigned_to_current_turn(host: Host) -> None:
+    host("new-turn", lambda summary: summary.running == 1)
+    summary = host("stale-approval", lambda summary: summary.partial or summary.approvals > 0)
+    assert summary.partial and summary.approvals == 0 and not summary.text and not summary.jump
