@@ -36,6 +36,8 @@ class TaskSummary:
     completed: int = 0
     failed: int = 0
     interrupted: int = 0
+    approvals: int = 0
+    questions: int = 0
 
     @property
     def text(self) -> str:
@@ -45,14 +47,18 @@ class TaskSummary:
                 parts.append(f"{count} 个{word}")
         if self.running:
             parts.append(f"{self.running} 个还在办")
-        if self.waiting:
+        if self.approvals:
+            parts.append(f"小鬼，{self.approvals} 处等你批准")
+        if self.questions:
+            parts.append(f"小鬼，{self.questions} 处等你回答")
+        if self.waiting and not (self.approvals or self.questions):
             parts.append(f"小鬼，{self.waiting} 个等你回答")
         if not parts:
             return ""
         if not (self.completed or self.failed or self.interrupted):
-            if self.running == 1 and not self.waiting:
+            if self.running == 1 and not (self.waiting or self.approvals or self.questions):
                 return "已查清的，还在办。" if self.partial else "哼，还在办。等着。"
-            if self.waiting == 1 and not self.running:
+            if self.waiting == 1 and not (self.running or self.approvals):
                 return ("已查清的，" if self.partial else "") + "话说清楚，小鬼。等你回答。"
         return ("已查清的，" if self.partial else "哼，") + "。".join(parts) + "。"
 
@@ -410,6 +416,8 @@ class BridgeReader:
 
     def _summary(self, now: float) -> TaskSummary:
         groups: dict[tuple[Identity, str, int], list[str]] = {}
+        approvals: set[tuple[Identity, str, int, str]] = set()
+        questions: set[tuple[Identity, str, int, str]] = set()
         partial = False
         jump = False
         healthy: set[Path] = set()
@@ -425,6 +433,9 @@ class BridgeReader:
                 identity = writer.identity, row["root_id"], row["root_turn"]
                 if row["root_turn"] != writer.turns.get(row["root_id"]):
                     continue
+                if row["known"]:
+                    approvals.update((*identity, request) for request in row.get("approval_ids", []))
+                    questions.update((*identity, request) for request in row.get("question_ids", []))
                 if not row["known"] or row["root_turn"] <= 0:
                     partial = True
                     if row["status"] in ("running", "waiting"):
@@ -439,7 +450,8 @@ class BridgeReader:
                 del self._ends[key]
         outcomes = [value[0] for key, value in self._ends.items() if key not in groups]
         return TaskSummary(running, waiting, partial, jump or running > 0,
-                           outcomes.count("completed"), outcomes.count("failed"), outcomes.count("interrupted"))
+                           outcomes.count("completed"), outcomes.count("failed"), outcomes.count("interrupted"),
+                           len(approvals), len(questions))
 
 
 class TaskMonitor:

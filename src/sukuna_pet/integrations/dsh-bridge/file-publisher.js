@@ -32,7 +32,7 @@ export function publisher(directory, observed) {
     user_id: pathId(os.homedir()), profile_id: pathId(process.cwd()),
     instance_id: hash(`${pathId(process.cwd())}\0${process.pid}\0${start}`),
     pid: process.pid, process_start_id: start, boot_id: boot, boot_started_at: lastBootTime,
-    host_version: 'unknown', plugin_version: '0.2.0',
+    host_version: 'unknown', plugin_version: '0.3.0',
     capabilities: ['observed-state', 'snapshot-boundary', 'contiguous-events', 'independent-health'] };
   const previous = slots.get(prefix);
   const slot = { boot, tail: previous?.tail || Promise.resolve() };

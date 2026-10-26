@@ -86,4 +86,7 @@ def state_row(value: Any) -> bool:
     return (all(identifier(value.get(key)) for key in ("agent_id", "root_id"))
             and all(integer(value.get(key)) for key in ("root_turn", "turn_id"))
             and value.get("status") in ("idle", "running", "waiting")
-            and type(value.get("known")) is bool)
+            and type(value.get("known")) is bool
+            and all(isinstance(value.get(key, []), list) and len(value.get(key, [])) <= 4096
+                    and all(identifier(item) for item in value.get(key, []))
+                    for key in ("approval_ids", "question_ids")))

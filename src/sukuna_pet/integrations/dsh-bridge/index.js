@@ -4,11 +4,13 @@
 import os from 'node:os';
 import path from 'node:path';
 import { publisher } from './file-publisher.js';
+import { currentState } from './host-state.js';
 
 export const name = 'sukuna-pet-dsh-bridge';
 export const inject = ['agents', 'sessionProjections'];
 
 export function apply(ctx) {
+  const host = currentState(ctx);
   const directory = process.env.SUKUNA_PET_BRIDGE_DIR || path.join(
     process.env.LOCALAPPDATA || path.join(os.homedir(), '.local', 'share'),
     'sukuna-pet', 'bridge', 'dsh',
@@ -42,7 +44,22 @@ export function apply(ctx) {
   function publicState(state) {
     return { agent_id: state.id, root_id: state.root, root_turn: state.rootTurn,
       turn_id: state.turn, status: state.status, known: state.known,
-      question_ids: [...state.questions], approval_ids: [...state.approvals] };
+      question_ids: [...state.questions], approval_ids: [...state.approvals],
+      ...(state.sourceSeq === undefined ? {} : { source_seq: state.sourceSeq }) };
+  }
+  function refresh(agent, state) {
+    try {
+      const latest = host.read(agent, registry.list());
+      if (!latest) return false;
+      const before = JSON.stringify(publicState(state));
+      Object.assign(state, latest);
+      if (before !== JSON.stringify(publicState(state))) record('agent/state', publicState(state));
+      return true;
+    } catch {
+      state.known = false;
+      record('agent/state', publicState(state));
+      return true;
+    }
   }
   function track(agent) {
     const id = idOf(agent);
@@ -62,8 +79,10 @@ export function apply(ctx) {
       known: Boolean(boundary) && !possiblyActive,
       questions: new Set(), approvals: new Set(), tools: new Set() };
     agents.set(id, state);
+    refresh(agent, state);
     const stop = agent.ctx.on('agent/status', ({ status }) => {
       if (disposed) return;
+      if (refresh(agent, state)) return;
       if (status === 'idle') state.status = 'idle';
       else if (state.status === 'idle') { state.status = 'running'; state.known = false; }
       record('agent/state', publicState(state));
@@ -83,7 +102,10 @@ export function apply(ctx) {
         record('agent/removed', publicState(state));
       }
     }
-    for (const agent of live) track(agent);
+    for (const agent of live) {
+      const state = track(agent);
+      if (state) refresh(agent, state);
+    }
   }
   const transport = publisher(directory, () => {
     if (!coverageComplete) throw new Error('observation capacity');
@@ -100,6 +122,14 @@ export function apply(ctx) {
       if (!state) return;
       const data = event.data || {};
       const type = event.type;
+      if (refresh(agent, state)) {
+        if (type === 'turn/end' && data.turn === state.turn && state.status === 'idle') {
+          const reason = data.reason?.kind;
+          record('turn/end', { ...publicState(state), status: 'idle',
+            outcome: reason === 'error' ? 'failed' : reason === 'completed' ? 'completed' : 'interrupted' });
+        }
+        return;
+      }
       if (type === 'turn/start') {
         if (!Number.isSafeInteger(data.turn) || data.turn <= state.turn) return;
         const root = ownerOf(agent);
