@@ -112,8 +112,11 @@ export function currentState(ctx) {
     const approvals = new Set();
     const blocked = new Set();
     let waitsKnown = true;
-    const gateway = ctx.typertGateway;
-    const browser = ctx.connection?.browserPeer;
+    // Cordis properties require inject; get() is the supported optional read.
+    // Keep these optional so an absent gateway degrades state, not plugin loading.
+    const service = name => typeof ctx.get === 'function' ? ctx.get(name) : ctx[name];
+    const gateway = service('typertGateway');
+    const browser = service('connection')?.browserPeer;
     if (!(gateway?.pendingRemoteEvents instanceof Map) || !browser) waitsKnown = !cache.open;
     else {
       if (gateway.pendingRemoteEvents.size > 4096) throw new Error('wait capacity');

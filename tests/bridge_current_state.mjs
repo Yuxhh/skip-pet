@@ -37,7 +37,13 @@ const ctx = {
     return { lastTurn: start.data.turn,
       openTurnStartSeq: end && end.seq > start.seq ? null : start.seq };
   } },
-  typertGateway: { pendingRemoteEvents }, connection: { browserPeer },
+  // Cordis rejects undeclared service properties; get() is its optional reader.
+  get(name) {
+    if (name === 'typertGateway') return { pendingRemoteEvents };
+    if (name === 'connection') return { browserPeer };
+  },
+  get typertGateway() { throw new Error('cannot get property "typertGateway" without inject'); },
+  get connection() { throw new Error('cannot get property "connection" without inject'); },
   on(name, fn) { events.on(name, fn); return () => events.off(name, fn); },
   effect(fn) { cleanups.push(fn()); },
 };
