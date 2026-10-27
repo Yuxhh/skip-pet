@@ -115,6 +115,7 @@ class ChatWindow(QWidget):
         self.setMinimumSize(560, 480)
         available = self.screen().availableGeometry()
         self.resize(min(1040, available.width() - 40), min(760, available.height() - 64))
+        self.move(available.center() - self.rect().center())
         self.setStyleSheet("""
             QWidget { background: #111113; color: #eee9e5;
                 font-family: 'Microsoft YaHei', 'Segoe UI'; font-size: 14px; }

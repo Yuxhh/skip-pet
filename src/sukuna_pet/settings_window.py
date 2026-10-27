@@ -44,6 +44,7 @@ class SettingsWindow(QDialog):
         self.setWindowFlag(Qt.WindowType.WindowContextHelpButtonHint, False)
         self.setMinimumSize(560, 440)
         self.resize(680, 480)
+        self.move(self.screen().availableGeometry().center() - self.rect().center())
         self.setStyleSheet("""
             QDialog, QWidget { background: #191518; color: #eee9e5;
                 font-family: 'Microsoft YaHei', 'Segoe UI'; font-size: 13px; }
