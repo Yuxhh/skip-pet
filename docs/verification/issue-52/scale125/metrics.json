@@ -1,0 +1,179 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.4",
+  "pyside6": "6.12.0",
+  "platform": "windows",
+  "scale_factor": "1.25",
+  "screens": [
+    {
+      "name": "G24H1",
+      "geometry": [
+        0,
+        0,
+        1536,
+        864
+      ],
+      "available": [
+        0,
+        0,
+        1536,
+        826
+      ],
+      "dpr": 1.25
+    }
+  ],
+  "captures": {
+    "empty": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 4,
+      "outer_scroll": 0
+    },
+    "multiline": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 4,
+      "outer_scroll": 0
+    },
+    "narrow-empty-multiline": {
+      "size": [
+        560,
+        480
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 3,
+      "outer_scroll": 185
+    },
+    "conversation": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 4,
+      "outer_scroll": 0
+    },
+    "long-incomplete": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 5,
+      "outer_scroll": 0
+    },
+    "history": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 4,
+      "outer_scroll": 0
+    },
+    "collapsed": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 2,
+      "outer_scroll": 0
+    },
+    "narrow": {
+      "size": [
+        560,
+        480
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 3,
+      "outer_scroll": 104
+    },
+    "narrow-sidebar": {
+      "size": [
+        560,
+        480
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 4,
+      "outer_scroll": 16
+    },
+    "unsaved": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 5,
+      "outer_scroll": 0
+    },
+    "unsaved-close": {
+      "size": [
+        500,
+        118
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 3
+    },
+    "missing-key": {
+      "size": [
+        1000,
+        640
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 5,
+      "outer_scroll": 0
+    },
+    "settings-pet": {
+      "size": [
+        560,
+        440
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 1
+    },
+    "settings-bridge": {
+      "size": [
+        560,
+        440
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 1
+    },
+    "settings-ai": {
+      "size": [
+        560,
+        440
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 1
+    },
+    "settings-about": {
+      "size": [
+        560,
+        440
+      ],
+      "dpr": 1.25,
+      "controls_reachable": 1
+    }
+  },
+  "empty_composer": [
+    712,
+    106
+  ],
+  "empty_input_controls_do_not_overlap": true,
+  "close_choices": [
+    "重试保存",
+    "取消关闭",
+    "确认关闭"
+  ],
+  "key_save_clear_draft": true,
+  "repeated_open_close": 3,
+  "storage_closed_cleanly": true
+}
