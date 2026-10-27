@@ -1,41 +1,72 @@
-# 宿傩桌宠 V5 · 0.2.1
+# 宿傩桌宠 · skip-pet
 
-Windows 透明置顶桌宠，包含已认可的 V5 头颈与眼动、点击回弹、持续节奏、动态透明命中和贴边。首次无设置启动静止；安装后无需 Python、实验预览、原视频、参考程序或联网。
+一个运行在 Windows 桌面上的宿傩角色桌宠。点一下，头颈与眼睛随动作推进；拖到屏幕边缘，它会贴边陪伴。当前开发版还支持宿傩 AI 对话、DeepSeek Harness 任务联动和任务状态气泡。
 
-0.2.1 修复快速连点时头发与衣服边缘的瞬态残影；透明显示和原生命中使用同一张完整图像的 alpha，保留既有动作与交互。复现方式及结果见[残影修复验证](docs/verification/issue-29/README.md)。
+## 可以做什么
+
+- **点击互动**：每次点击推进一个视线阶段，到位后停留，同时触发整体回弹；连续点击可接续循环。
+- **三种跳动模式**：点击跳动、持续跳动、任务联动。任务联动时，已确认仍在执行的任务让角色持续跳动，只剩等待人工操作时停止自动跳动。
+- **桌面陪伴**：透明置顶、透明区域点击穿透、拖动与贴边，支持 188 / 271 / 320px 三档大小。
+- **宿傩 AI 对话**：使用自己的 DeepSeek API Key 聊天，支持流式回复、停止、重试，以及保存在本机的多会话记录。
+- **任务状态气泡**：接入 DeepSeek Harness，显示已确认的运行、等待批准、等待回答及任务结束状态。
+- **设置与托盘**：集中调整桌宠偏好和 AI 接入，通过系统托盘打开聊天、设置或恢复显示桌宠。
+
+## 版本与获取
+
+截至 2026-10-27：
+
+| 位置 | 状态 |
+| --- | --- |
+| 默认分支 `main` | 0.2.1 历史基线，包含角色动作、点击回弹、持续跳动、透明命中和贴边 |
+| [当前开发分支](https://github.com/xyd-0811/skip-pet/tree/codex/dsh-reference-bridge) | 0.4.0 开发代码，增加 AI 对话、桌宠设置及 DeepSeek Harness 接入 |
+| 本机交付 | 0.4.0 已完成作者安装版试聊验收，实际安装版还包含后续菜单和托盘更新；交付文件在本机 `dist/accepted-0.4.0/release/`，不随仓库提供 |
+
+上方功能清单概括当前项目能力，并非全部已合入 `main`。开发分支代码、本机安装包和验收结果的对应关系见 [0.4.0 交付任务 #53](https://github.com/xyd-0811/skip-pet/issues/53)、[菜单更新 #54](https://github.com/xyd-0811/skip-pet/issues/54)和[托盘更新 #55](https://github.com/xyd-0811/skip-pet/issues/55)。
+
+目前未创建 GitHub Release，仓库不提供安装包下载入口。乙骨忧太角色切换与左右交替跳仍在[规划中 #56](https://github.com/xyd-0811/skip-pet/issues/56)。
 
 ## 安装与使用
 
-双击 `dist/release/Setup.exe`，安装后从开始菜单“宿傩桌宠”启动；安装向导可选创建桌面快捷方式。右键角色可选择点击跳动、持续跳动、188/271/320px 三档大小或退出。模式和大小立即保存，更新兼容已有合法偏好。
+适用于 Windows 10 1809 及更新版本、Windows 11 x64。已有交付安装包的使用者可运行 `Setup.exe`，安装后从开始菜单启动“宿傩桌宠”；安装后无需另装 Python。详细操作见[当前开发版使用说明](https://github.com/xyd-0811/skip-pet/blob/codex/dsh-reference-bridge/docs/user-guide.md)。其中“候选/待试聊”文字是构建阶段记录，后续作者验收结论以 #53 为准。
 
-单击推进视线 0→1→2→3→0，头眼到位停留；进入视线 3 时眨眼。每次点击同时触发 220ms 整体回弹，连点从当前动作接续并重启一次回弹。持续模式在当前动作、眨眼和回弹完成后约等待 450ms，再推进。切回点击模式停止后续调度，当前动作自然完成。
+首次无设置启动时角色静止。单击互动，按住拖动，右键打开菜单；模式和大小会自动保存。角色动作可离线使用，AI 对话和宿主任务接入按需配置。
 
-按住可见人物拖动，释放不算点击；透明位置可操作下方应用。可将人物轮廓拖到工作区四边和四角，播放及调整大小时保持所贴边，透明留白允许越界。往内拖动即可解除对应贴边；位置和贴边不保存。
+AI 对话固定使用 `deepseek-flash`，关闭思考。API Key 由使用者提供，优先保存到 Windows 当前用户凭据管理器；连接测试、发送与重试可能产生 API 费用。会话记录保存在本机。
 
-详见[使用说明](docs/user-guide.md)。安装目录的 `验收说明.md` 列出验证范围；[本轮验证记录](docs/verification/issue-28/README.md)区分自动化、本机安装、独立源码和真实硬件结果。真实多屏、负坐标屏、混合 DPI、任务栏及屏幕连接变化仍待硬件补验，不能视为全部验收完成。
-
-交付还包含 `sukuna-pet-0.2.1-source.zip`、`build-report.json` 和 `SHA256SUMS.txt`。报告记录依赖、三张冻结素材与每个运行文件的哈希；程序模型包含在源码中。第三方许可随安装包提供。
+任务联动需要启用 DeepSeek Harness 接入，并具备相应 Node.js / pnpm 工具环境；当前适配验证基于 DeepSeek Harness 0.2.1-rc.2。AI 对话和任务联动是独立功能，桌宠自己的聊天不会触发任务联动跳动。
 
 ## 从源码运行
 
-Windows x64、Python 3.12+；本轮固定构建环境为 x64 CPython 3.14.4。其他 Python 版本打包未验证。
+源码要求 Windows x64、Python 3.12+。若要体验 AI 对话与任务联动，请检出开发分支；`main` 仍是 0.2.1 基线。
 
 ```powershell
+git clone --branch codex/dsh-reference-bridge https://github.com/xyd-0811/skip-pet.git
+cd skip-pet
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m pip install -e . --no-deps
 .\.venv\Scripts\pythonw.exe -m sukuna_pet
 ```
 
-[固定依赖与独立构建说明](docs/build.md)包含完整测试、构建及安装验收步骤。日常验证：
+开发验证：
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m mypy src tools/build_release.py
-.\.venv\Scripts\python.exe -m pytest tests/test_v5_modes.py -q
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-测试沿用已确认的两处边界：`PetApplication` 的点击、模式、可控时间、鼠标手势、设置路径及只读可绘制状态；Qt 窗口的公开输入、最终图像和几何结果。冻结轨迹与原生参考帧随测试提供，日常测试无需实验目录或历史 Git 对象。可见区域由最终帧计算，仅用于几何限位；Windows 原生显示与透明命中由整帧 alpha 决定。静止时复用该帧，不以降低动作精度换取缓存。
+固定构建环境为 x64 CPython 3.14.4，其他 Python 版本的打包未验证。依赖、构建及安装验收步骤见[开发分支构建说明](https://github.com/xyd-0811/skip-pet/blob/codex/dsh-reference-bridge/docs/build.md)。
 
-冻结动作提交 `32c9f985d4467c1527b09c34f6868a3ccd3f85b4`，原生路线及自动节奏提交 `4ecb85c8a087ca89fb99a3a2125c826801b53e1c`。素材来源见 `src/sukuna_pet/assets/provenance.json`。历史源码验证保留在 [#23](docs/verification/issue-23/README.md)、[#24](docs/verification/issue-24/README.md)、[#25](docs/verification/issue-25/README.md)、[#26](docs/verification/issue-26/README.md)、[#27](docs/verification/issue-27/README.md)，历史 #17 安装版不代表本版验收。
+## 文档与验证范围
+
+- [使用说明](https://github.com/xyd-0811/skip-pet/blob/codex/dsh-reference-bridge/docs/user-guide.md)：聊天、设置、接入及故障恢复。
+- [任务状态决策 #33](https://github.com/xyd-0811/skip-pet/issues/33)与[气泡决策 #36](https://github.com/xyd-0811/skip-pet/issues/36)：任务状态与气泡交互的确认记录。
+- [0.4.0 验证记录](https://github.com/xyd-0811/skip-pet/blob/codex/dsh-reference-bridge/docs/verification/issue-53/README.md)：自动化、安装版验证与作者试聊流程。
+- [GitHub Issues](https://github.com/xyd-0811/skip-pet/issues)：功能规划、规格与验收记录。
+
+真实多屏、负坐标屏、混合 DPI、屏幕插拔及干净无 Python Windows 环境仍有待硬件补验；自动化测试和本机试聊通过不代表这些环境均已实测。
+
+## 素材与参考
+
+素材来源见 [provenance.json](src/sukuna_pet/assets/provenance.json)。桌宠接入与维护参考 [dsh-pet-indesktop](https://github.com/MerZlin/dsh-pet-indesktop)；安装包保留第三方许可，复用范围与许可说明见随包文件。
