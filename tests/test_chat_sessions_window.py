@@ -212,20 +212,30 @@ def test_slow_disk_keeps_gui_responsive_and_pet_exit_waits_for_snapshot(
         store.close()
 
 
-@pytest.mark.parametrize("unknown", [True, False])
+@pytest.mark.parametrize("kind", ["unknown", "corrupt", "backup-failed"])
 def test_invalid_record_is_reported_in_window_and_not_replaced(
-    app: QApplication, tmp_path: Path, unknown: bool,
+    app: QApplication, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str,
 ) -> None:
     session = ChatSession()
     path = tmp_path / f"{session.id}.json"
-    original = json.dumps({"schema_version": 999, **asdict(session)}).encode() if unknown else b"{bad"
+    original = json.dumps({"schema_version": 999, **asdict(session)}).encode() if kind == "unknown" else b"{bad"
     path.write_bytes(original)
+    path_open = Path.open
+
+    def fail_backup(file, *args, **kwargs):
+        if ".corrupt-" in file.name:
+            raise PermissionError()
+        return path_open(file, *args, **kwargs)
+
+    if kind == "backup-failed":
+        monkeypatch.setattr(Path, "open", fail_backup)
     store = SessionStore(tmp_path)
     controller = ChatController(configured(), store=store)
     chat = ChatWindow(controller)
     chat.show()
     try:
-        assert "版本不受支持" in chat.status.text() if unknown else "已损坏" in chat.status.text()
+        expected = {"unknown": "版本不受支持", "corrupt": "已损坏", "backup-failed": "备份失败"}[kind]
+        assert expected in chat.status.text()
         assert controller.session.id != session.id
         assert chat.session_list.count() == 1
         assert store.flush()
@@ -273,6 +283,28 @@ def test_delete_disk_failure_is_visible_and_retry_does_not_restore_sidebar_row(
         store.retry_failed()
         store.flush()
         chat.close()
+        chat.deleteLater()
+        controller.deleteLater()
+        store.close()
+
+
+def test_unreadable_record_directory_is_visible_and_original_is_preserved(
+    app: QApplication, tmp_path: Path,
+) -> None:
+    root = tmp_path / "blocked-directory"
+    root.write_text("原内容不可覆盖", encoding="utf-8")
+    store = SessionStore(root)
+    controller = ChatController(configured(), store=store)
+    chat = ChatWindow(controller)
+    chat.show()
+    try:
+        wait_for(lambda: store.failed)
+        wait_for(lambda: chat.save_retry_button.isVisible())
+        assert "无法读取本机聊天记录目录" in chat.status.text()
+        assert "尚未保存" in chat.status.text()
+        assert root.read_text("utf-8") == "原内容不可覆盖"
+    finally:
+        chat.hide()
         chat.deleteLater()
         controller.deleteLater()
         store.close()
