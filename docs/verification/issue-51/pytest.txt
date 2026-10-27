@@ -1,0 +1,15 @@
+........F............................................................... [ 19%]
+........................................................................ [ 39%]
+........................................................................ [ 59%]
+........................................................................ [ 79%]
+........................................................................ [ 99%]
+..                                                                       [100%]
+================================== FAILURES ===================================
+_ test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr[first_peak-320-1.png] _
+tests\test_bounce_desktop.py:55: in test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr
+    assert max(abs(a - b) for a, b in zip(bytes(frame.constBits()), bytes(expected.constBits()))) <= 1
+E   assert 255 <= 1
+E    +  where 255 = max(<generator object test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr.<locals>.<genexpr> at 0x000002096DD414E0>)
+=========================== short test summary info ===========================
+FAILED tests/test_bounce_desktop.py::test_combined_bounce_matches_frozen_native_at_all_sizes_and_scaled_dpr[first_peak-320-1.png]
+1 failed, 361 passed in 267.96s (0:04:27)
