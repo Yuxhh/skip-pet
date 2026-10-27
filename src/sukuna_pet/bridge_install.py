@@ -123,7 +123,7 @@ class BridgeInstaller:
         pnpm = self.pnpm if self.pnpm is not None else pnpm_cli()
         if not pnpm.is_file():
             raise FileNotFoundError(f"找不到 pnpm 入口：{pnpm}")
-        node = self.node or _which("node") or ""
+        node = self.node or _node_cli() or ""
         if not node and pnpm.suffix.lower() != ".exe":
             raise FileNotFoundError("找不到 Node.js；请安装现有运行环境后重试。")
         return InstallPlan(selected, self.plugin.resolve(), node, pnpm, tuple(manifests))
@@ -235,7 +235,7 @@ class BridgeInstaller:
                         continue
                     backup = _backup(profile)
                     try:
-                        node = self.node or _which("node")
+                        node = self.node or _node_cli()
                         cli = self.pnpm if self.pnpm is not None else pnpm_cli()
                     except FileNotFoundError:
                         node, cli = None, None
@@ -396,7 +396,23 @@ def bundled_plugin() -> Path:
 
 
 def desktop_profile() -> Path:
-    return Path(os.environ.get("DSH_HOME", str(Path.home() / ".dsh"))) / "profiles/desktop"
+    return _dsh_home() / "profiles/desktop"
+
+
+def _dsh_home() -> Path:
+    return Path(os.environ.get("DSH_HOME") or Path.home() / ".dsh").expanduser()
+
+
+def _runtime_dependencies() -> Path:
+    """Harness provisions these tools even when Explorer has no pnpm on PATH."""
+    return _dsh_home() / "dsh-runtimes/dsh-primary-runtime/dependencies"
+
+
+def _node_cli() -> str | None:
+    if found := _which("node"):
+        return found
+    node = _runtime_dependencies() / "node/bin" / ("node.exe" if os.name == "nt" else "node")
+    return str(node.resolve()) if node.is_file() else None
 
 
 def maintenance_directory() -> Path:
@@ -404,13 +420,23 @@ def maintenance_directory() -> Path:
 
 
 def pnpm_cli() -> Path:
-    hint = os.environ.get("SUKUNA_PET_PNPM_CLI") or os.environ.get("DSH_PNPM_BIN")
-    candidates = [Path(hint)] if hint else [Path(found) for name in ("pnpm", "pnpm.cmd", "pnpm.exe")
-                                           if (found := _which(name))]
+    # Follow dsh-pet's explicit hint -> automatic discovery fallback. Also probe
+    # Harness's managed runtime: its tools are not added to the desktop PATH.
+    candidates = [Path(hint.strip()) for name in ("SUKUNA_PET_PNPM_CLI", "DSH_PNPM_BIN")
+                  if (hint := os.environ.get(name, "")).strip()]
+    candidates.extend(Path(found) for name in ("pnpm", "pnpm.cmd", "pnpm.exe")
+                      if (found := _which(name)))
+    candidates.append(_runtime_dependencies() / "pnpm")
     for shim in candidates:
         shim = shim.expanduser().resolve()
         if shim.suffix.lower() in (".mjs", ".cjs", ".js", ".exe") and shim.is_file():
             return shim
+        if shim.is_dir():
+            for directory in (shim, shim / "bin", shim / "node_modules/pnpm/bin"):
+                for extension in ("mjs", "cjs", "js", "exe"):
+                    candidate = directory / f"pnpm.{extension}"
+                    if candidate.is_file():
+                        return candidate
         for parent in (shim.parent, *list(shim.parents)[:3]):
             for extension in ("mjs", "cjs", "js"):
                 candidate = parent / f"node_modules/pnpm/bin/pnpm.{extension}"
@@ -422,7 +448,8 @@ def pnpm_cli() -> Path:
                 candidate = Path(raw).resolve()
                 if candidate.is_file():
                     return candidate
-    raise FileNotFoundError("找不到 pnpm JS 入口；可用 --pnpm-cli 指定现有入口。")
+    raise FileNotFoundError("找不到 pnpm 入口；已检查系统路径和 DeepSeek 运行时。"
+                            "可设置 SUKUNA_PET_PNPM_CLI 指定现有 pnpm 后重启桌宠。")
 
 
 def _which(name: str) -> str | None:

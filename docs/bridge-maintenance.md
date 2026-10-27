@@ -4,6 +4,8 @@
 
 默认只操作 `%DSH_HOME%/profiles/desktop`，未设置 `DSH_HOME` 时使用当前用户的 `~/.dsh/profiles/desktop`。缺少实际 profile 时报告错误，不创建替代 profile。不会安装全局工具；找不到现有 pnpm 时，可通过 `SUKUNA_PET_PNPM_CLI` 或 `DSH_PNPM_BIN` 指定现有入口后重启桌宠。
 
+工具发现也检查 `%DSH_HOME%/dsh-runtimes/dsh-primary-runtime/dependencies/`（默认位于 `~/.dsh/`）：从 `pnpm/bin/` 读取现有 JS 入口，系统找不到 Node 时使用同一运行时的 `node/bin/`。因此从桌面启动不再依赖开发终端 PATH。pnpm 环境变量可指定文件或包含入口的目录，失效提示回退到自动发现；仍采用 Node 直调 JS 的数组传参方式。此修复及本机验收见[缺 pnpm 接入故障记录](verification/issue-61/README.md)。
+
 接入和播放模式分别保存。启用后选择“点击跳动”或“持续跳动”仍显示任务气泡；选择“任务联动”才由任务驱动自动播放。“关闭 DeepSeek 接入”停止该窗口监测，并在后台尝试移除自己拥有的插件。退出桌宠只释放该实例占用，不卸载插件。
 
 启动已启用接入时，后台检查旧构建路径、失效目标和丢失的实际插件链接；只维护已安装且拥有安装记录的本地依赖。用户改为 registry 版本或安装后自行改变依赖时予以保留。CLI 参考版留下的旧安装可以通过菜单首次启用接管，不会凭一个无关 profile 宣称接通桌面。
