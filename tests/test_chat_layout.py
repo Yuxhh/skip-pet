@@ -80,3 +80,25 @@ def test_wrapped_draft_grows_when_window_becomes_narrow(app: QApplication) -> No
         chat.deleteLater()
         controller.deleteLater()
         app.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+
+
+def test_narrow_empty_multiline_and_key_notice_do_not_overlap_input_controls(app: QApplication) -> None:
+    credentials = configured()
+    credentials.clear()
+    controller = ChatController(credentials)
+    chat = ChatWindow(controller)
+    chat.resize(560, 480)
+    chat.show()
+    try:
+        chat.input.setPlainText("空会话中的长草稿\n" * 40)
+        chat.send_button.click()
+        QTest.qWait(60)
+        assert not controller.session.messages and chat.configure_button.isVisible()
+        input_bottom = chat.input.mapTo(chat, chat.input.rect().bottomRight()).y()
+        send_top = chat.send_button.mapTo(chat, chat.send_button.rect().topLeft()).y()
+        assert input_bottom < send_top
+    finally:
+        chat.close()
+        chat.deleteLater()
+        controller.deleteLater()
+        app.sendPostedEvents(None, QEvent.Type.DeferredDelete)

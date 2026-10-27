@@ -4,10 +4,10 @@ from html import escape
 from time import monotonic
 
 from PySide6.QtCore import QRectF, Qt, QTimer, Signal, QUrl
-from PySide6.QtGui import (QCloseEvent, QImage, QInputMethodEvent, QKeyEvent, QPainter,
-                           QResizeEvent, QTextOption)
+from PySide6.QtGui import (QCloseEvent, QColor, QImage, QInputMethodEvent, QKeyEvent, QPainter,
+                           QPainterPath, QPaintEvent, QPen, QResizeEvent, QTextOption, QTextTable)
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QListWidgetItem, QMessageBox, QPlainTextEdit, QPushButton,
-                               QSizePolicy, QTextBrowser, QVBoxLayout, QWidget)
+                               QFrame, QScrollArea, QSizePolicy, QTextBrowser, QVBoxLayout, QWidget)
 
 from .chat_controller import ChatController
 from .connection_test import MODEL
@@ -15,6 +15,8 @@ from .chat_visuals import SCROLLBAR_STYLE, Shrine, Sigil, paint_sigil
 
 
 class _Transcript(QTextBrowser):
+    width_changed = Signal()
+
     def loadResource(self, resource_type: int, name: QUrl | str) -> object:
         # setHtml clears document resources, so supply the vector mark on demand.
         if QUrl(name).toString() == "sukuna:sigil":
@@ -26,6 +28,35 @@ class _Transcript(QTextBrowser):
             painter.end()
             return mark
         return super().loadResource(resource_type, name)
+
+    def resizeEvent(self, event: QResizeEvent) -> None:
+        super().resizeEvent(event)
+        if event.size().width() != event.oldSize().width():
+            self.width_changed.emit()
+
+    def paintEvent(self, event: QPaintEvent) -> None:
+        super().paintEvent(event)
+        painter = QPainter(self.viewport())
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        layout = self.document().documentLayout()
+        # User messages are the document's only tables. Qt lays out their text;
+        # native painting supplies the prototype's rounded outline and corners.
+        for frame in self.document().rootFrame().childFrames():
+            if not isinstance(frame, QTextTable):
+                continue
+            padding = frame.format().cellPadding()
+            rect = layout.frameBoundingRect(frame).translated(-self.horizontalScrollBar().value() - padding,
+                                                               -self.verticalScrollBar().value() - padding)
+            if not rect.intersects(QRectF(self.viewport().rect())):
+                continue
+            rounded = QPainterPath()
+            rounded.addRoundedRect(rect, 14, 14)
+            square = QPainterPath()
+            square.addRect(rect)
+            painter.fillPath(square.subtracted(rounded), QColor("#111113"))
+            painter.setPen(QPen(QColor("#402830"), 1))
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawPath(rounded)
 
 
 class ChatInput(QPlainTextEdit):
@@ -72,6 +103,8 @@ class ChatWindow(QWidget):
         super().__init__(owner, Qt.WindowType.Window)
         self.controller = controller
         self._rendered_session_id = ""
+        self._sidebar_overlay = False
+        self._wide_sidebar_visible = True
         self._closing_requested = False
         self._allow_close = False
         self._close_deadline = 0.0
@@ -110,6 +143,7 @@ class ChatWindow(QWidget):
             QTextBrowser { border: 0; background: transparent; selection-background-color: #70404b; }
         """ + SCROLLBAR_STYLE)
         root = QHBoxLayout(self)
+        self._root_layout = root
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
         self.sidebar = QWidget()
@@ -169,7 +203,7 @@ class ChatWindow(QWidget):
         header_layout.addLayout(titles, 1)
         toggle = QPushButton("◫")
         toggle.setAccessibleName("切换侧栏")
-        toggle.clicked.connect(lambda: self.sidebar.setVisible(not self.sidebar.isVisible()))
+        toggle.clicked.connect(self._toggle_sidebar)
         header_layout.addWidget(toggle)
         key_settings = QPushButton("设置")
         key_settings.clicked.connect(self.settings_requested)
@@ -250,7 +284,12 @@ class ChatWindow(QWidget):
         centered = QHBoxLayout(body_host)
         centered.setContentsMargins(0, 0, 0, 0)
         centered.addWidget(body, 1)
-        main_layout.addWidget(body_host, 1)
+        self.content_scroll = QScrollArea()
+        self.content_scroll.setFrameShape(QFrame.Shape.NoFrame)
+        self.content_scroll.setWidgetResizable(True)
+        self.content_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.content_scroll.setWidget(body_host)
+        main_layout.addWidget(self.content_scroll, 1)
         root.addWidget(main, 1)
         if self.width() < 800:
             self.sidebar.hide()
@@ -258,8 +297,24 @@ class ChatWindow(QWidget):
         self._render_timer.setSingleShot(True)
         self._render_timer.setInterval(30)
         self._render_timer.timeout.connect(self._render_messages)
+        self.transcript.width_changed.connect(self._render_timer.start)
+        self._composer_timer = QTimer(self)
+        self._composer_timer.setSingleShot(True)
+        self._composer_timer.setInterval(20)
+        self._composer_timer.timeout.connect(self._reveal_composer)
+        self.input.textChanged.connect(self._composer_timer.start)
         controller.changed.connect(self._refresh)
         self._refresh()
+
+    def _toggle_sidebar(self) -> None:
+        self.sidebar.setVisible(not self.sidebar.isVisible())
+        if self._sidebar_overlay:
+            self.sidebar.raise_()
+
+    def _reveal_composer(self) -> None:
+        target = next((widget for widget in (self.save_retry_button, self.configure_button,
+                                             self.retry_button) if widget.isVisible()), self.send_button)
+        self.content_scroll.ensureWidgetVisible(target, 0, 12)
 
     def open_window(self) -> None:
         self.showNormal()
@@ -352,6 +407,7 @@ class ChatWindow(QWidget):
         self.title.setText(title.replace("\n", " "))
         self.title.setToolTip(title.replace("\n", " "))
         self._buttons()
+        self._composer_timer.start()
         if self.controller.busy:
             if not self._render_timer.isActive():
                 self._render_timer.start()
@@ -369,8 +425,11 @@ class ChatWindow(QWidget):
             state = {"complete": "", "generating": " · 正在生成…", "incomplete": " · 未完成"}[message.state]
             content = escape(message.content).replace("\n", "<br>")
             if user:
-                parts.append('<table width="100%" cellspacing="0" cellpadding="0"><tr><td width="16%"></td>'
-                             '<td bgcolor="#302128" style="padding:14px;color:#eee9e5;white-space:pre-wrap">'
+                text_width = max((self.transcript.fontMetrics().horizontalAdvance(line)
+                                  for line in message.content.splitlines()), default=0)
+                width = min(max(60, text_width + 28), int(self.transcript.viewport().width() * .84))
+                parts.append(f'<table width="{width}" align="right" cellspacing="0" cellpadding="14">'
+                             '<tr><td bgcolor="#302128" style="color:#eee9e5;white-space:pre-wrap">'
                              f'{content}</td></tr></table><p style="font-size:8px">&nbsp;</p>')
             else:
                 parts.append('<p style="color:#d6c7cc;font-size:12px;margin-top:18px">'
@@ -438,6 +497,18 @@ class ChatWindow(QWidget):
         self.close()
 
     def resizeEvent(self, event: QResizeEvent) -> None:
-        if self.width() < 800:
-            self.sidebar.hide()
+        compact = self.width() < 800
+        if compact != self._sidebar_overlay:
+            if compact:
+                self._wide_sidebar_visible = not self.sidebar.isHidden()
+                self._root_layout.removeWidget(self.sidebar)
+                self.sidebar.setParent(self)
+            else:
+                self._root_layout.insertWidget(0, self.sidebar)
+            self._sidebar_overlay = compact
+            self.sidebar.setVisible(not compact and self._wide_sidebar_visible)
+        if compact:
+            self.sidebar.setGeometry(0, 0, 232, self.height())
+            self.sidebar.raise_()
         super().resizeEvent(event)
+        self._composer_timer.start()

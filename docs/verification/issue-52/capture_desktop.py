@@ -39,13 +39,19 @@ metrics: dict = {"os": platform.platform(), "python": platform.python_version(),
 
 def capture(name: str, window: QWidget, controls: tuple[QWidget, ...] = ()) -> None:
     QTest.qWait(80)
+    if isinstance(window, ChatWindow) and controls and window.content_scroll.isAncestorOf(controls[-1]):
+        window.content_scroll.ensureWidgetVisible(controls[-1], 0, 12)
+    wait_for(lambda: all(window.rect().contains(w.mapTo(window, w.rect().bottomRight())) for w in controls))
     for widget in controls:
         assert widget.isVisible(), (name, widget.accessibleName())
         assert window.rect().contains(widget.mapTo(window, widget.rect().topLeft())), name
-        assert window.rect().contains(widget.mapTo(window, widget.rect().bottomRight())), name
+        assert window.rect().contains(widget.mapTo(window, widget.rect().bottomRight())), (
+            name, widget.accessibleName(), widget.objectName(), widget.mapTo(window, widget.rect().bottomRight()))
     assert window.grab().save(str(output / f"{name}.png"))
     metrics["captures"][name] = {"size": [window.width(), window.height()], "dpr": window.devicePixelRatioF(),
                                   "controls_reachable": len(controls)}
+    if isinstance(window, ChatWindow):
+        metrics["captures"][name]["outer_scroll"] = window.content_scroll.verticalScrollBar().value()
 
 
 with TemporaryDirectory(prefix="desktop-", dir=output) as folder:
@@ -69,7 +75,17 @@ with TemporaryDirectory(prefix="desktop-", dir=output) as folder:
     metrics["empty_composer"] = [composer.width(), composer.height()]
     chat.input.setPlainText("第一行草稿\n第二行草稿\n第三行草稿\n第四行草稿\n第五行草稿")
     capture("multiline", chat, controls)
+    chat.resize(560, 480)
+    chat.input.setPlainText("空会话中的长草稿\n" * 40)
+    chat.send_button.click()
+    capture("narrow-empty-multiline", chat, (chat.input, chat.send_button, chat.configure_button))
+    assert chat.input.mapTo(chat, chat.input.rect().bottomRight()).y() < chat.send_button.mapTo(
+        chat, chat.send_button.rect().topLeft()).y()
+    metrics["empty_input_controls_do_not_overlap"] = True
     chat.input.clear()
+    controller.new_session()
+    chat.resize(1000, 640)
+    chat.sidebar.show()
     controller.session.add_message("user", "我只有一个小时，怎么复习？")
     controller.session.add_message("assistant", "先挑最薄弱的两章。\n用四十分钟做题，剩下二十分钟只订正错题。")
     controller.save_all()
@@ -151,7 +167,7 @@ with TemporaryDirectory(prefix="desktop-", dir=output) as folder:
         settings.close()
     metrics["repeated_open_close"] = 3
     assert pet.close()
-    store.close()
-    metrics["writer_stopped"] = not store.unsaved
+    assert store.close()
+    metrics["storage_closed_cleanly"] = True
 (output / "metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8")
 print(json.dumps({"output": str(output), "captures": len(metrics["captures"]), "platform": app.platformName()}))
