@@ -9,7 +9,7 @@ import threading
 import pytest
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QApplication, QMessageBox
+from PySide6.QtWidgets import QApplication, QMessageBox, QSystemTrayIcon
 
 from sukuna_pet.chat_controller import ChatController
 from sukuna_pet.chat_session import ChatSession
@@ -81,6 +81,9 @@ def test_pet_exit_waits_for_chat_and_cancel_keeps_pet_and_credentials(
 ) -> None:
     pet = PetWindow(PetApplication(), credentials=configured(), chat_data_dir=tmp_path)
     pet.show()
+    tray = pet.findChild(QSystemTrayIcon)
+    assert tray is not None and tray.isVisible()
+    exit_action = next(a for a in tray.contextMenu().actions() if a.text() == "退出")
     pet.open_chat()
     chat = pet.findChild(ChatWindow)
     assert chat is not None
@@ -93,15 +96,15 @@ def test_pet_exit_waits_for_chat_and_cancel_keeps_pet_and_credentials(
             chat.controller.session.add_message("user", "退出也要确认")
             chat.controller.save_all()
             assert not store.flush()
-            assert not pet.close()
+            exit_action.trigger()
             answer_dialog("取消关闭", seen)
             wait_for(lambda: bool(seen))
-            assert pet.isVisible() and chat.isVisible()
+            assert pet.isVisible() and chat.isVisible() and tray.isVisible()
             assert pet.credentials.snapshot() == "unit-controller"
         chat.controller.save_all()
         assert store.flush()
-        assert pet.close()
-        assert not pet.isVisible()
+        exit_action.trigger()
+        assert not pet.isVisible() and not tray.isVisible()
         restored_pet = PetWindow(PetApplication(), credentials=configured(), chat_data_dir=tmp_path)
         try:
             restored_pet.open_chat()

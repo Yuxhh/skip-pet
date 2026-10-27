@@ -7,8 +7,8 @@ from pathlib import Path
 from time import perf_counter
 
 from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer, Signal
-from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
-from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
+from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QIcon, QImage, QMouseEvent, QPaintEvent, QPainter, QPixmap, QRegion, QScreen
+from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QSystemTrayIcon, QWidget
 
 from .playback import PetApplication, PetView
 from .bridge_control import BridgeController
@@ -38,9 +38,13 @@ class PetWindow(QWidget):
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
         self.setWindowFlags(
-            Qt.WindowType.FramelessWindowHint
+            Qt.WindowType.Tool
+            | Qt.WindowType.FramelessWindowHint
             | Qt.WindowType.WindowStaysOnTopHint
         )
+        # Tool windows skip the Windows taskbar, but must still end the app on
+        # an accepted close. Qt disables QuitOnClose for tools by default.
+        self.setAttribute(Qt.WidgetAttribute.WA_QuitOnClose)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         if application is None and settings_path is None:
             settings_path = Path(QStandardPaths.writableLocation(
@@ -94,6 +98,32 @@ class PetWindow(QWidget):
         assert isinstance(app, QApplication)
         app.screenAdded.connect(self._watch_screen)
         app.screenRemoved.connect(self._schedule_visibility)
+        self._create_tray()
+
+    def _create_tray(self) -> None:
+        icon = QIcon(QPixmap.fromImage(self._frame))
+        self.setWindowIcon(icon)
+        # Keep both wrappers alive for native tray menu callbacks.
+        self._tray_menu = QMenu(self)
+        self._tray_menu.addAction("显示桌宠").triggered.connect(self._show_from_tray)
+        self._tray_menu.addAction("AI 对话").triggered.connect(self.open_chat)
+        self._tray_menu.addSeparator()
+        self._tray_menu.addAction("桌宠设置").triggered.connect(lambda: self.open_settings())
+        self._tray_menu.addAction("退出").triggered.connect(self.close)
+        self._tray = QSystemTrayIcon(icon, self)
+        self._tray.setToolTip("宿傩桌宠")
+        self._tray.setContextMenu(self._tray_menu)
+        self._tray.activated.connect(self._activate_tray)
+        self._tray.show()
+
+    def _show_from_tray(self) -> None:
+        self._keep_visible()
+        self.show()
+        self.raise_()
+
+    def _activate_tray(self, reason: QSystemTrayIcon.ActivationReason) -> None:
+        if reason == QSystemTrayIcon.ActivationReason.DoubleClick:
+            self._show_from_tray()
 
     @property
     def credentials(self) -> CredentialStore:
@@ -257,6 +287,7 @@ class PetWindow(QWidget):
             self._task_monitor.close()
         if self._bridge is not None:
             self._bridge.close()
+        self._tray.hide()
         super().closeEvent(event)
 
     def paintEvent(self, event: QPaintEvent) -> None:
