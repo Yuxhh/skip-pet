@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from time import perf_counter
 
-from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer
+from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer, Signal
 from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QImage, QMouseEvent, QPaintEvent, QPainter, QRegion, QScreen
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QWidget
 
@@ -18,13 +18,18 @@ from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
 from .task_bridge import TaskMonitor
 from .task_bridge import TaskSummary
 from .task_bubble import TaskBubble
+from .credentials import CredentialStore
+from .settings_window import SettingsWindow
 
 
 class PetWindow(QWidget):
+    preferences_changed = Signal()
+
     def __init__(
         self, application: PetApplication | None = None, *, settings_path: Path | None = None,
         task_monitor: TaskMonitor | None = None,
         bridge_installer: BridgeInstaller | None = None,
+        credentials: CredentialStore | None = None,
     ) -> None:
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
@@ -38,6 +43,8 @@ class PetWindow(QWidget):
                 QStandardPaths.StandardLocation.AppConfigLocation,
             )) / "mode.json"
         self._settings_path = settings_path
+        self._credentials = credentials
+        self._settings_window: SettingsWindow | None = None
         height = load_size(settings_path) if settings_path is not None else DEFAULT_SIZE
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
@@ -74,6 +81,25 @@ class PetWindow(QWidget):
         assert isinstance(app, QApplication)
         app.screenAdded.connect(self._watch_screen)
         app.screenRemoved.connect(self._schedule_visibility)
+
+    @property
+    def credentials(self) -> CredentialStore:
+        if self._credentials is None:
+            self._credentials = CredentialStore()
+        return self._credentials
+
+    @property
+    def pet_mode(self) -> Mode:
+        return self._pet.mode
+
+    @property
+    def bridge_controller(self) -> BridgeController | None:
+        return self._bridge
+
+    def open_settings(self, page: str = "桌宠") -> None:
+        if self._settings_window is None:
+            self._settings_window = SettingsWindow(self)
+        self._settings_window.open_page(page)
 
     @property
     def frame(self) -> QImage:
@@ -185,6 +211,10 @@ class PetWindow(QWidget):
             self._bubble.present(summary.text, character, area)
 
     def closeEvent(self, event: QCloseEvent) -> None:
+        if self._settings_window is not None:
+            self._settings_window.close()
+        if self._credentials is not None:
+            self._credentials.release()
         self._timer.stop()
         self._bubble.hide()
         if self._task_monitor is not None:
@@ -247,13 +277,16 @@ class PetWindow(QWidget):
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:
         self._cancel_pointer()
         menu = QMenu(self)
+        settings_action = menu.addAction("桌宠设置")
+        settings_action.triggered.connect(lambda: self.open_settings())
+        menu.addSeparator()
         modes = QActionGroup(menu)
         for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):
             action = menu.addAction(label)
             action.setCheckable(True)
             action.setChecked(self._pet.mode == value)
             modes.addAction(action)
-            action.triggered.connect(lambda checked=False, chosen=value: self._select_mode(chosen))
+            action.triggered.connect(lambda checked=False, chosen=value: self.select_mode(chosen))
         menu.addSeparator()
         if self._bridge is not None:
             bridge_action = menu.addAction("关闭 DeepSeek 接入" if self._bridge.enabled else "启用 DeepSeek 接入")
@@ -267,7 +300,7 @@ class PetWindow(QWidget):
             action.setCheckable(True)
             action.setChecked(self.height() == size)
             sizes.addAction(action)
-            action.triggered.connect(lambda checked=False, height=size: self._select_size(height))
+            action.triggered.connect(lambda checked=False, height=size: self.select_size(height))
         menu.addSeparator()
         exit_action = menu.addAction("退出")
         exit_action.triggered.connect(self.close)
@@ -286,15 +319,16 @@ class PetWindow(QWidget):
         else:
             QMessageBox.warning(self, title, text)
 
-    def _select_mode(self, mode: Mode) -> None:
+    def select_mode(self, mode: Mode) -> None:
         self._advance()
         try:
             self._pet.select_mode(mode)
         except OSError:
             QMessageBox.warning(self, "无法保存模式", "请检查设置目录是否可写，然后重试。")
         self._refresh_frame()
+        self.preferences_changed.emit()
 
-    def _select_size(self, height: int) -> None:
+    def select_size(self, height: int) -> None:
         if height not in DISPLAY_SIZES or height == self.height():
             return
         self._cancel_pointer()
@@ -303,6 +337,7 @@ class PetWindow(QWidget):
                 save_size(self._settings_path, height)
         except OSError:
             QMessageBox.warning(self, "无法保存大小", "请检查设置目录是否可写，然后重试。")
+            self.preferences_changed.emit()
             return
         # Anchor the feet and horizontal centre while the character grows.
         centre_x = self.x() + self.width() // 2
@@ -311,6 +346,7 @@ class PetWindow(QWidget):
         self._refresh_frame()
         self._move_visible((centre_x - self.width() // 2, bottom - height), self.screen(), follow_edges=True)
         self.update()
+        self.preferences_changed.emit()
 
 
 def _screen_at(point: QPoint) -> QScreen | None:

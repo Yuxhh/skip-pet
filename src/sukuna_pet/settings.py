@@ -30,7 +30,10 @@ def load_bridge(path: Path) -> BridgeSettings:
 
 
 def save_bridge(path: Path, enabled: bool, profiles: tuple[Path, ...]) -> None:
-    _save_setting(path, "dsh_bridge", {"enabled": enabled, "profiles": [str(p) for p in profiles]})
+    existing = _load_settings(path).get("dsh_bridge")
+    value = dict(existing) if isinstance(existing, dict) else {}
+    value.update(enabled=enabled, profiles=[str(p) for p in profiles])
+    _save_setting(path, "dsh_bridge", value)
 
 
 def _load_settings(path: Path) -> dict[str, object]:

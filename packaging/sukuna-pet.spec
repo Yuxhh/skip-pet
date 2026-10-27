@@ -6,7 +6,8 @@ analysis = Analysis(
     pathex=[str(root / "src")],
     # Read this checkout, even when the build environment has an older editable
     # installation. Runtime modules are resolved from pathex in the same tree.
-    datas=[(str(root / "src" / "sukuna_pet" / "assets"), "sukuna_pet/assets"),
+    datas=[(str(root / "pyproject.toml"), "sukuna_pet"),
+           (str(root / "src" / "sukuna_pet" / "assets"), "sukuna_pet/assets"),
            (str(root / "src" / "sukuna_pet" / "integrations" / "dsh-bridge"),
             "sukuna_pet/integrations/dsh-bridge")],
     # Only these three Python Qt modules are used.
