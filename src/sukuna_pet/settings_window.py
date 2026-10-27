@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (QComboBox, QDialog, QHBoxLayout, QLabel, QLineEdi
                                QStackedWidget, QVBoxLayout, QWidget)
 
 from .connection_test import ConnectionResult, ConnectionTester
+from .chat_visuals import SCROLLBAR_STYLE, Sigil
 from .settings import DISPLAY_SIZES, Mode
 
 if TYPE_CHECKING:
@@ -45,7 +46,7 @@ class SettingsWindow(QDialog):
         self.resize(680, 480)
         self.setStyleSheet("""
             QDialog, QWidget { background: #191518; color: #eee9e5;
-                font-family: 'Segoe UI', 'Microsoft YaHei'; font-size: 13px; }
+                font-family: 'Microsoft YaHei', 'Segoe UI'; font-size: 13px; }
             QLabel#brand { font-size: 19px; font-weight: 600; }
             QLabel#heading { font-size: 17px; font-weight: 600; }
             QLabel { background: transparent; }
@@ -60,13 +61,18 @@ class SettingsWindow(QDialog):
             QPushButton:disabled { color: #9d8c94; background: #241c22; }
             QPushButton:focus, QLineEdit:focus, QComboBox:focus { border: 1px solid #e37d87; }
             QScrollArea { border: 0; }
-        """)
+        """ + SCROLLBAR_STYLE)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
+        header = QWidget()
+        header_layout = QHBoxLayout(header)
+        header_layout.setContentsMargins(24, 18, 24, 16)
+        header_layout.setSpacing(12)
+        header_layout.addWidget(Sigil())
         brand = QLabel("Sukuna AI  /  桌宠设置")
         brand.setObjectName("brand")
-        brand.setContentsMargins(24, 20, 24, 16)
-        layout.addWidget(brand)
+        header_layout.addWidget(brand, 1)
+        layout.addWidget(header)
         body = QHBoxLayout()
         body.setSpacing(0)
         self.navigation = QListWidget()
