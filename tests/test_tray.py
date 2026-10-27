@@ -9,6 +9,7 @@ import textwrap
 import pytest
 from PySide6.QtCore import QEvent, Qt
 from PySide6.QtGui import QAction
+from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QSystemTrayIcon
 
 from sukuna_pet.chat_window import ChatWindow
@@ -42,12 +43,14 @@ def test_tray_reuses_settings_and_chat_and_restores_pet(app: QApplication) -> No
         assert settings.isVisible() and pet.findChildren(SettingsWindow) == [settings]
         settings.close()
         action(tray, "AI 对话").trigger()
+        QTest.qWait(40)
         chat = pet.findChild(ChatWindow)
         assert chat is not None and chat.isVisible()
         assert chat.windowType() == Qt.WindowType.Window
         chat.close()
         assert pet.isVisible() and tray.isVisible()
         action(tray, "AI 对话").trigger()
+        QTest.qWait(40)
         assert chat.isVisible() and pet.findChildren(ChatWindow) == [chat]
         chat.close()
         pet.hide()

@@ -230,7 +230,7 @@ def test_failed_preference_save_restores_both_controls(
 
 
 def test_about_matches_project_version() -> None:
-    assert product_version() == "0.4.1"
+    assert product_version() == "0.4.2"
 
 
 def test_bridge_preferences_preserve_unknown_fields(tmp_path: Path) -> None:

@@ -1,6 +1,6 @@
-# 宿傩桌宠 · skip-pet 0.4.1
+# 宿傩桌宠 · skip-pet 0.4.2
 
-一个运行在 Windows 桌面上的宿傩角色桌宠。点一下，头颈与眼睛随动作推进；拖到屏幕边缘，它会贴边陪伴。支持宿傩 AI 对话、DeepSeek Harness 任务联动和任务状态气泡。0.4.1 修复桌面启动时找不到 pnpm 导致任务接入失败的问题。
+一个运行在 Windows 桌面上的宿傩角色桌宠。点一下，头颈与眼睛随动作推进；拖到屏幕边缘，它会贴边陪伴。支持宿傩 AI 对话、DeepSeek Harness 任务联动和任务状态气泡。0.4.2 修复菜单打开 AI 对话窗口的时序问题，并保留 0.4.1 的 DeepSeek 接入修复。
 
 ## 可以做什么
 
@@ -17,13 +17,13 @@
 
 | 位置 | 状态 |
 | --- | --- |
-| 默认分支 `main` | 0.4.1 正式源码，包含 AI 对话、系统托盘、任务联动和接入修复 |
-| [发布标签 v0.4.1](https://github.com/xyd-0811/skip-pet/tree/v0.4.1) | 与本次安装包对应的源码版本 |
-| [GitHub Release 0.4.1](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.1) | Setup.exe、对应源码 ZIP、构建报告和 SHA256SUMS.txt |
+| 默认分支 `main` | 0.4.2 正式源码，包含 AI 对话菜单修复、系统托盘、任务联动和接入修复 |
+| [发布标签 v0.4.2](https://github.com/xyd-0811/skip-pet/tree/v0.4.2) | 与本次安装包对应的源码版本 |
+| [GitHub Release 0.4.2](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.2) | Setup.exe、对应源码 ZIP、构建报告和 SHA256SUMS.txt |
 
 本版保留此前已验收的功能，代码与本次安装包对应。历史验收记录见 [0.4.0 交付任务 #53](https://github.com/xyd-0811/skip-pet/issues/53)、[菜单更新 #54](https://github.com/xyd-0811/skip-pet/issues/54)和[托盘更新 #55](https://github.com/xyd-0811/skip-pet/issues/55)。
 
-从 [Releases](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.1) 下载 Setup.exe，可直接升级并保留设置和聊天记录。[接入修复 #61](https://github.com/xyd-0811/skip-pet/issues/61)已通过真实任务验收；升级后正常重开 DeepSeek Harness，并选择任务联动。乙骨忧太角色切换与左右交替跳仍在[规划中 #56](https://github.com/xyd-0811/skip-pet/issues/56)。
+从 [Releases](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.2) 下载 Setup.exe，可直接升级并保留设置和聊天记录。本版将桌宠右键和托盘菜单中的 AI 对话改为在菜单关闭后打开并激活窗口，验证记录见[菜单修复 #62](docs/verification/issue-62/README.md)。[接入修复 #61](https://github.com/xyd-0811/skip-pet/issues/61)已通过真实任务验收；升级后正常重开 DeepSeek Harness，并选择任务联动。乙骨忧太角色切换与左右交替跳仍在[规划中 #56](https://github.com/xyd-0811/skip-pet/issues/56)。
 
 ## 安装与使用
 
@@ -37,7 +37,7 @@ AI 对话固定使用 `deepseek-flash`，关闭思考。API Key 由使用者提�
 
 ## 从源码运行
 
-源码要求 Windows x64、Python 3.12+。默认分支已包含 0.4.1；重建本次发布时可检出标签 v0.4.1。
+源码要求 Windows x64、Python 3.12+。默认分支已包含 0.4.2；重建本次发布时可检出标签 v0.4.2。
 
 ```powershell
 git clone https://github.com/xyd-0811/skip-pet.git

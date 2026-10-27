@@ -11,8 +11,9 @@ import subprocess
 import sys
 from uuid import uuid4
 
-from PySide6.QtCore import QStandardPaths
-from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QStandardPaths, QTimer
+from PySide6.QtGui import QContextMenuEvent
+from PySide6.QtWidgets import QApplication, QMenu
 
 from .chat_session import AUTHOR_PROMPT, ChatSession
 from .credentials import CredentialStore, WindowsCredentialBackend
@@ -89,9 +90,43 @@ def verify(root: Path) -> dict[str, object]:
         try:
             pet.show()
             assert pet.pet_mode == "always" and pet.height() == 271
-            pet.open_chat()
+            # Exercise the real right-click dispatcher in the frozen runtime.
+            # A direct open_chat call misses native popup activation failures.
+            deferred: list[bool] = []
+            select = QTimer(pet)
+            select.setSingleShot(True)
+            watchdog = QTimer(pet)
+            watchdog.setSingleShot(True)
+
+            def select_chat() -> None:
+                popup = app.activePopupWidget()
+                if not isinstance(popup, QMenu):
+                    select.start(10)
+                    return
+                action = next(a for a in popup.actions() if a.text() == "AI 对话")
+                action.trigger()
+                deferred.append(pet.findChild(ChatWindow) is None)
+                popup.close()
+
+            def dismiss_popup() -> None:
+                popup = app.activePopupWidget()
+                if popup is not None:
+                    popup.close()
+
+            select.timeout.connect(select_chat)
+            watchdog.timeout.connect(dismiss_popup)
+            select.start(100)
+            watchdog.start(3000)
+            point = pet.visible_region.boundingRect().center()
+            QApplication.sendEvent(pet, QContextMenuEvent(
+                QContextMenuEvent.Reason.Mouse, point, pet.mapToGlobal(point)))
+            select.stop()
+            watchdog.stop()
+            app.processEvents()
+            assert deferred == [True], "Chat opened inside the native menu loop"
             chat = pet.findChild(ChatWindow)
-            assert chat is not None
+            assert chat is not None and chat.isVisible()
+            result["native_context_menu_opens_chat_after_popup"] = True
             pet.open_chat()
             assert len(pet.findChildren(ChatWindow)) == 1
             assert chat.controller.session.messages[-1].state == "incomplete"

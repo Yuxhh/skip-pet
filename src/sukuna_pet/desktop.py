@@ -106,7 +106,10 @@ class PetWindow(QWidget):
         # Keep both wrappers alive for native tray menu callbacks.
         self._tray_menu = QMenu(self)
         self._tray_menu.addAction("显示桌宠").triggered.connect(self._show_from_tray)
-        self._tray_menu.addAction("AI 对话").triggered.connect(self.open_chat)
+        # Present the chat after the native popup has returned. Constructing
+        # and activating a window inside QMenu.exec() can lose activation.
+        self._tray_menu.addAction("AI 对话").triggered.connect(
+            self.open_chat, Qt.ConnectionType.QueuedConnection)
         self._tray_menu.addSeparator()
         self._tray_menu.addAction("桌宠设置").triggered.connect(lambda: self.open_settings())
         self._tray_menu.addAction("退出").triggered.connect(self.close)
@@ -345,7 +348,7 @@ class PetWindow(QWidget):
         self._cancel_pointer()
         menu = QMenu(self)
         chat_action = menu.addAction("AI 对话")
-        chat_action.triggered.connect(self.open_chat)
+        chat_action.triggered.connect(self.open_chat, Qt.ConnectionType.QueuedConnection)
         menu.addSeparator()
         modes = QActionGroup(menu)
         for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):

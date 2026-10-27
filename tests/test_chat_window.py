@@ -33,6 +33,7 @@ def test_menu_opens_one_independent_window_and_close_preserves_running_session(
     pet.show()
     try:
         choose(pet, "AI 对话", monkeypatch)
+        QTest.qWait(40)
         chat = pet.findChild(ChatWindow)
         assert chat is not None and chat.isVisible() and chat.isWindow()
         pet.open_chat()
