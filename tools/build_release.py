@@ -181,7 +181,7 @@ def main() -> int:
         "bridge": bridge,
         "application_modules_sha256": modules,
         "prompt_version": AUTHOR_PROMPT.version,
-        "acceptance": "candidate; author installed-app conversation acceptance pending (#53)",
+        "acceptance": "release; validation scope and limitations are in the bundled acceptance notes",
         "assets": json.loads((bundle / "_internal" / "sukuna_pet" / "assets" / "provenance.json").read_text(encoding="utf-8")),
         "compiler": "Inno Setup 6.7.3", "compiler_sha256": sha256(iscc.read_bytes()).hexdigest(),
         "packages": sorted(f"{d.metadata['Name']}=={d.version}" for d in metadata.distributions()),

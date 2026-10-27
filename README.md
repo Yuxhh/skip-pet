@@ -1,8 +1,10 @@
-# 宿傩桌宠 0.4.0
+# 宿傩桌宠 0.4.1
 
-2026-10-27 作者已确认安装版试聊通过，#53 正式交付。最终产物位于 `dist/accepted-0.4.0/release/`，包含安装包、对应源码、构建报告、校验和及验收结论；保留当前安装的菜单和托盘更新。
+2026-10-27 发布 DeepSeek 接入修复版：桌面启动时自动发现 DeepSeek 自带的 pnpm/Node，修复找不到 pnpm 导致任务不联动的问题。保留已验收的 AI 对话、系统托盘、菜单和透明圆角气泡。
 
-请阅读[使用说明](docs/user-guide.md)和[最终验收记录](docs/verification/issue-53/acceptance.md)。提示词版本 sukuna-2026-10-27-v1，固定 deepseek-flash、关闭思考；用户自备 Key，主动测试、发送及重试可能计费。包内候选文字是构建时快照，最终作者结论见交付目录的 验收结论.md。
+从 [GitHub Releases](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.1) 下载 Setup.exe；同页提供源码 ZIP、构建报告和 SHA-256 校验和。已有用户可直接运行安装包升级，重开 DeepSeek 后使用任务联动。详见[使用说明](docs/user-guide.md)、[接入修复验收](docs/verification/issue-61/README.md)和[AI 对话验收](docs/verification/issue-53/acceptance.md)。
+
+提示词版本 sukuna-2026-10-27-v1，固定 deepseek-flash、关闭思考；用户自备 Key，主动测试、发送及重试可能计费。
 
 以下为历史说明；当前交付及验证范围以上文与最终验收记录为准。
 
