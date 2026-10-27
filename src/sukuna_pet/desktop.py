@@ -315,8 +315,6 @@ class PetWindow(QWidget):
         menu = QMenu(self)
         chat_action = menu.addAction("AI 对话")
         chat_action.triggered.connect(self.open_chat)
-        settings_action = menu.addAction("桌宠设置")
-        settings_action.triggered.connect(lambda: self.open_settings())
         menu.addSeparator()
         modes = QActionGroup(menu)
         for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):
@@ -340,6 +338,9 @@ class PetWindow(QWidget):
             sizes.addAction(action)
             action.triggered.connect(lambda checked=False, height=size: self.select_size(height))
         menu.addSeparator()
+        # Keep settings directly above Exit, which must remain the last item.
+        settings_action = menu.addAction("桌宠设置")
+        settings_action.triggered.connect(lambda: self.open_settings())
         exit_action = menu.addAction("退出")
         exit_action.triggered.connect(self.close)
         menu.exec(event.globalPos())
