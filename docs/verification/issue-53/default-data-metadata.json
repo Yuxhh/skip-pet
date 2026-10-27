@@ -1,0 +1,13 @@
+{
+  "record_count": 1,
+  "records": [
+    {
+      "prompt_version": "sukuna-2026-10-27-v1",
+      "message_count": 0,
+      "file": "7a4aeea1448a47258dbb2b9bbd774bb2.json",
+      "schema_version": 1
+    }
+  ],
+  "directory": "C:\\Users\\xing\\AppData\\Local\\skip-pet\\sukuna-pet\\chat\\sessions",
+  "evidence": "metadata only; no conversation text or credentials recorded"
+}

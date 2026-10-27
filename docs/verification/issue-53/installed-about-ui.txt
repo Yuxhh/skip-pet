@@ -1,0 +1,116 @@
+Window: "宿傩桌宠", App: SukunaPet.exe.
+	0 窗口 (settable, string) 宿傩桌宠 Secondary Actions: Raise ID: QApplication.PetWindow
+		38 窗口 (settable, string) 桌宠设置 · Sukuna AI - 宿傩桌宠 Secondary Actions: Raise ID: QApplication.SettingsWindow
+			39 标题栏 (settable, string) Value: 桌宠设置 · Sukuna AI - 宿傩桌宠
+				40 菜单栏 系统 ID: MenuBar
+					41 菜单项 系统
+				42 按钮 关闭
+			43 组 (settable, string) ID: QApplication.SettingsWindow.QWidget
+				44 组 (settable, string) 宿傩标记 ID: QApplication.SettingsWindow.QWidget.Sigil
+				45 文本 Sukuna AI / 桌宠设置 ID: QApplication.SettingsWindow.QWidget.brand
+			46 列表 (settable, string) 设置分组 ID: QApplication.SettingsWindow.QListWidget
+				47 列表项目 (selectable, settable, string) 桌宠 ID: QApplication.SettingsWindow.QListWidget
+				48 列表项目 (selectable, settable, string) 任务联动 ID: QApplication.SettingsWindow.QListWidget
+				49 列表项目 (selectable, settable, string) AI 对话 ID: QApplication.SettingsWindow.QListWidget
+				50 列表项目 (selectable, settable, string) 关于 ID: QApplication.SettingsWindow.QListWidget
+			51 窗格 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget
+				68 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea
+					69 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport
+						70 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget
+							71 文本 关于 ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget.heading
+							72 文本 宿傩桌宠 · Sukuna AI 版本 0.4.0 Python — Python Software Foundation PySide6 / Qt / shiboken6 — The Qt Company Ltd. 及贡献者，LGPL 3.0 dsh-pet 参考实现 — Copyright (c) 2026 Merzlin，MIT 许可证全文随安装包附于 THIRD-PARTY-LICENSES。 ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QLabel
+		1 窗口 (settable, string) Sukuna AI · 宿傩 AI 对话 - 宿傩桌宠 Secondary Actions: Raise ID: QApplication.ChatWindow
+			2 标题栏 (settable, string) Value: Sukuna AI · 宿傩 AI 对话 - 宿傩桌宠
+				3 菜单栏 系统 ID: MenuBar
+					4 菜单项 系统
+				5 按钮 最小化
+				6 按钮 最大化
+				7 按钮 关闭
+			8 组 (settable, string) ID: QApplication.ChatWindow.sidebar
+				9 组 (settable, string) 宿傩标记 ID: QApplication.ChatWindow.sidebar.Sigil
+				10 文本 Sukuna AI ID: QApplication.ChatWindow.sidebar.brand
+				11 按钮 (settable, string) ＋ 开启新对话 ID: QApplication.ChatWindow.sidebar.newSession
+				12 文本 会话 ID: QApplication.ChatWindow.sidebar.muted
+				13 列表 (settable, string) 聊天会话 ID: QApplication.ChatWindow.sidebar.QListWidget
+					14 列表项目 (selectable, settable, string) 新对话 ID: QApplication.ChatWindow.sidebar.QListWidget
+				15 按钮 (settable, string) 删除当前对话 ID: QApplication.ChatWindow.sidebar.QPushButton
+				16 文本 宿傩 · 伏魔御厨子 MALEVOLENT SHRINE ID: QApplication.ChatWindow.sidebar.shrineNote
+				17 按钮 (settable, string) 桌宠设置 ID: QApplication.ChatWindow.sidebar.QPushButton
+			18 组 (settable, string) ID: QApplication.ChatWindow.QWidget
+				19 组 (settable, string) ID: QApplication.ChatWindow.QWidget.header
+					20 文本 新对话 ID: QApplication.ChatWindow.QWidget.header.QLabel
+					21 文本 DeepSeek / deepseek-flash ID: QApplication.ChatWindow.QWidget.header.muted
+					22 按钮 (settable, string) 切换侧栏 ID: QApplication.ChatWindow.QWidget.header.QPushButton
+					23 按钮 (settable, string) 设置 ID: QApplication.ChatWindow.QWidget.header.QPushButton
+				24 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea
+					25 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport
+						26 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget
+							27 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget
+								28 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget
+									29 组 (settable, string) 伏魔御厨子线稿 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.Shrine
+									30 文本 有什么可以帮你的吗？ ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.hero
+									31 文本 唤来一段新的对话 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.muted
+								32 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer
+									33 编辑 (settable, string) 输入消息 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.ChatInput
+										34 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.ChatInput.qt_scrollarea_viewport
+									35 文本 Enter 发送 · Shift + Enter 换行 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.muted
+									36 按钮 (disabled, settable, string) 发送 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.send
+								37 文本 — ◆ — ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.muted
+		38 窗口 (settable, string) 桌宠设置 · Sukuna AI - 宿傩桌宠 Secondary Actions: Raise ID: QApplication.SettingsWindow
+			39 标题栏 (settable, string) Value: 桌宠设置 · Sukuna AI - 宿傩桌宠
+				40 菜单栏 系统 ID: MenuBar
+					41 菜单项 系统
+				42 按钮 关闭
+			43 组 (settable, string) ID: QApplication.SettingsWindow.QWidget
+				44 组 (settable, string) 宿傩标记 ID: QApplication.SettingsWindow.QWidget.Sigil
+				45 文本 Sukuna AI / 桌宠设置 ID: QApplication.SettingsWindow.QWidget.brand
+			46 列表 (settable, string) 设置分组 ID: QApplication.SettingsWindow.QListWidget
+				47 列表项目 (selectable, settable, string) 桌宠 ID: QApplication.SettingsWindow.QListWidget
+				48 列表项目 (selectable, settable, string) 任务联动 ID: QApplication.SettingsWindow.QListWidget
+				49 列表项目 (selectable, settable, string) AI 对话 ID: QApplication.SettingsWindow.QListWidget
+				50 列表项目 (selectable, settable, string) 关于 ID: QApplication.SettingsWindow.QListWidget
+			51 窗格 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget
+				68 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea
+					69 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport
+						70 组 (settable, string) ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget
+							71 文本 关于 ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget.heading
+							72 文本 宿傩桌宠 · Sukuna AI 版本 0.4.0 Python — Python Software Foundation PySide6 / Qt / shiboken6 — The Qt Company Ltd. 及贡献者，LGPL 3.0 dsh-pet 参考实现 — Copyright (c) 2026 Merzlin，MIT 许可证全文随安装包附于 THIRD-PARTY-LICENSES。 ID: QApplication.SettingsWindow.QStackedWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QLabel
+		1 窗口 (settable, string) Sukuna AI · 宿傩 AI 对话 - 宿傩桌宠 Secondary Actions: Raise ID: QApplication.ChatWindow
+			2 标题栏 (settable, string) Value: Sukuna AI · 宿傩 AI 对话 - 宿傩桌宠
+				3 菜单栏 系统 ID: MenuBar
+					4 菜单项 系统
+				5 按钮 最小化
+				6 按钮 最大化
+				7 按钮 关闭
+			8 组 (settable, string) ID: QApplication.ChatWindow.sidebar
+				9 组 (settable, string) 宿傩标记 ID: QApplication.ChatWindow.sidebar.Sigil
+				10 文本 Sukuna AI ID: QApplication.ChatWindow.sidebar.brand
+				11 按钮 (settable, string) ＋ 开启新对话 ID: QApplication.ChatWindow.sidebar.newSession
+				12 文本 会话 ID: QApplication.ChatWindow.sidebar.muted
+				13 列表 (settable, string) 聊天会话 ID: QApplication.ChatWindow.sidebar.QListWidget
+					14 列表项目 (selectable, settable, string) 新对话 ID: QApplication.ChatWindow.sidebar.QListWidget
+				15 按钮 (settable, string) 删除当前对话 ID: QApplication.ChatWindow.sidebar.QPushButton
+				16 文本 宿傩 · 伏魔御厨子 MALEVOLENT SHRINE ID: QApplication.ChatWindow.sidebar.shrineNote
+				17 按钮 (settable, string) 桌宠设置 ID: QApplication.ChatWindow.sidebar.QPushButton
+			18 组 (settable, string) ID: QApplication.ChatWindow.QWidget
+				19 组 (settable, string) ID: QApplication.ChatWindow.QWidget.header
+					20 文本 新对话 ID: QApplication.ChatWindow.QWidget.header.QLabel
+					21 文本 DeepSeek / deepseek-flash ID: QApplication.ChatWindow.QWidget.header.muted
+					22 按钮 (settable, string) 切换侧栏 ID: QApplication.ChatWindow.QWidget.header.QPushButton
+					23 按钮 (settable, string) 设置 ID: QApplication.ChatWindow.QWidget.header.QPushButton
+				24 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea
+					25 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport
+						26 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget
+							27 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget
+								28 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget
+									29 组 (settable, string) 伏魔御厨子线稿 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.Shrine
+									30 文本 有什么可以帮你的吗？ ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.hero
+									31 文本 唤来一段新的对话 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.QWidget.muted
+								32 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer
+									33 编辑 (settable, string) 输入消息 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.ChatInput
+										34 组 (settable, string) ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.ChatInput.qt_scrollarea_viewport
+									35 文本 Enter 发送 · Shift + Enter 换行 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.muted
+									36 按钮 (disabled, settable, string) 发送 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.send
+								37 文本 — ◆ — ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.muted
+
+The focused UI element is 33 编辑 (settable, string) 输入消息 ID: QApplication.ChatWindow.QWidget.QScrollArea.qt_scrollarea_viewport.QWidget.QWidget.composer.ChatInput.
