@@ -1,0 +1,13 @@
+{
+  "version": "0.4.0",
+  "prompt_version": "sukuna-2026-10-27-v1",
+  "setup_sha256": "df997dcaef3f675024840245b88bc6c56976a0d0a6289b719baaf507931b36fe",
+  "manifest_verified": true,
+  "installed_files_verified": 186,
+  "source_files": 659,
+  "source_runtime_modules_verified": 22,
+  "dsh_mit_text_matches": true,
+  "ssl_extension_bundled": true,
+  "source_runtime_data_and_key_pattern_scan": "no forbidden paths or key patterns found",
+  "scan_limit": "pattern/path audit, not a proof of absence of every possible secret"
+}

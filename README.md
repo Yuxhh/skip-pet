@@ -1,10 +1,10 @@
-# 宿傩桌宠 0.4.0 候选
+# 宿傩桌宠 0.4.0
 
-本候选加入宿傩 AI 对话、会话记录与集中桌宠设置，保留既有任务桥和动作。安装包输出为 `dist/issue-53/release/Setup.exe`，对应源码、build-report.json、SHA256SUMS.txt 同目录。作者安装版真实试聊仍待验收；不代表正式交付完成。
+2026-10-27 作者已确认安装版试聊通过，#53 正式交付。最终产物位于 `dist/accepted-0.4.0/release/`，包含安装包、对应源码、构建报告、校验和及验收结论；保留当前安装的菜单和托盘更新。
 
-请先阅读[当前使用说明](docs/user-guide.md)、[作者试聊步骤](docs/chat-acceptance.md)和[候选验收范围](docs/release-status.md)。版本为 0.4.0，人设为 sukuna-2026-10-27-v1，固定 deepseek-flash 并关闭思考；用户自备 Key。聊天、主动连接测试及重试可能计费，Key 使用 Windows 当前用户凭据管理器保存。构建方式见[构建说明](docs/build.md)。
+请阅读[使用说明](docs/user-guide.md)和[最终验收记录](docs/verification/issue-53/acceptance.md)。提示词版本 sukuna-2026-10-27-v1，固定 deepseek-flash、关闭思考；用户自备 Key，主动测试、发送及重试可能计费。包内候选文字是构建时快照，最终作者结论见交付目录的 验收结论.md。
 
-以下为 0.2.1 的历史说明，当前功能与候选输出路径以上文及当前使用说明为准。
+以下为历史说明；当前交付及验证范围以上文与最终验收记录为准。
 
 # 宿傩桌宠 V5 · 0.2.1
 

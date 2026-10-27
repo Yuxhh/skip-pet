@@ -1,3 +1,13 @@
+# #53：作者验收通过，正式交付
+
+2026-10-27（Asia/Shanghai），作者在本聊天明确回复“通过了”。正式交付为 `dist/accepted-0.4.0/release/`：与当前实际安装的 #55 构建逐文件一致，包含 #54 菜单顺序和 #55 托盘更新。Setup SHA-256 为 `df997dcaef3f675024840245b88bc6c56976a0d0a6289b719baaf507931b36fe`，人设版本 `sukuna-2026-10-27-v1`。原始 Setup、源码 ZIP 与报告均未重新构建。
+
+最终结论见 [验收记录](acceptance.md)、[作者确认及产物哈希](acceptance.json)、[最终安装与交付审计](accepted-installation-audit.json)和[最终安装版冻结检查](accepted-runtime.json)。186 个运行文件、源码 22 个模块、许可及交付校验和均已核对。后续构建的补充验证见 [#54](../issue-54/README.md)、[#55](../issue-55/README.md)。这些后续改动不混入本票验收收尾提交。
+
+下方是较早 #53 候选的构建时记录，其待人工状态及 a4e1216f… 哈希已被本节取代。保留未验硬件与环境限制；不宣称完成原有限制之外的验证。没有公开发布或创建 Release。
+
+---
+
 # #53：0.4.0 安装候选与作者试聊交接
 
 2026-10-27（Asia/Shanghai）。候选已构建、本机安装并验证；作者真实语气验收待进行，#53 保持开放并转 ready-for-human。规格为 [#53](https://github.com/xyd-0811/skip-pet/issues/53)、[#48 完整确认](https://github.com/xyd-0811/skip-pet/issues/48#issuecomment-6434830497)、[#46 作者决议](https://github.com/xyd-0811/skip-pet/issues/46#issuecomment-6432965439)。#52 已关闭。

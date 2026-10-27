@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "version": "0.4.0",
+  "author_confirmation_verbatim": "通过了",
+  "status": "accepted; final delivery",
+  "issue": "https://github.com/xyd-0811/skip-pet/issues/53",
+  "prompt_version": "sukuna-2026-10-27-v1",
+  "accepted_build_origin": "dist/issue-55/release; includes #54 menu and #55 tray updates",
+  "installed_files_match_report": 186,
+  "source_snapshot": "source ZIP is authoritative; includes prior working-tree changes",
+  "artifacts_sha256": {
+    "Setup.exe": "df997dcaef3f675024840245b88bc6c56976a0d0a6289b719baaf507931b36fe",
+    "sukuna-pet-0.4.0-source.zip": "477ad99000136c29a37b581c66ccbe0607bb5b16a5eb9951855d39ecb846ae11",
+    "build-report.json": "4dcac428b3eb6e15a6552953d950a60ff2d3f8160733671de33b4461875e040a"
+  },
+  "acceptance_evidence": "author's explicit reply in this chat; no Key or conversation transcript collected",
+  "binary_and_source_rebuilt_after_acceptance": false,
+  "public_release_created": false,
+  "remaining_limits": "original multi-monitor/mixed-DPI/clean-Windows limitations retained"
+}
