@@ -20,6 +20,8 @@ from .task_bridge import TaskSummary
 from .task_bubble import TaskBubble
 from .credentials import CredentialStore
 from .settings_window import SettingsWindow
+from .chat_controller import ChatController
+from .chat_window import ChatWindow
 
 
 class PetWindow(QWidget):
@@ -45,6 +47,7 @@ class PetWindow(QWidget):
         self._settings_path = settings_path
         self._credentials = credentials
         self._settings_window: SettingsWindow | None = None
+        self._chat_window: ChatWindow | None = None
         height = load_size(settings_path) if settings_path is not None else DEFAULT_SIZE
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
@@ -100,6 +103,13 @@ class PetWindow(QWidget):
         if self._settings_window is None:
             self._settings_window = SettingsWindow(self)
         self._settings_window.open_page(page)
+
+    def open_chat(self) -> None:
+        if self._chat_window is None:
+            controller = ChatController(self.credentials, self)
+            self._chat_window = ChatWindow(controller, self)
+            self._chat_window.settings_requested.connect(lambda: self.open_settings("AI 对话"))
+        self._chat_window.open_window()
 
     @property
     def frame(self) -> QImage:
@@ -211,6 +221,8 @@ class PetWindow(QWidget):
             self._bubble.present(summary.text, character, area)
 
     def closeEvent(self, event: QCloseEvent) -> None:
+        if self._chat_window is not None:
+            self._chat_window.close()
         if self._settings_window is not None:
             self._settings_window.close()
         if self._credentials is not None:
@@ -277,6 +289,8 @@ class PetWindow(QWidget):
     def contextMenuEvent(self, event: QContextMenuEvent) -> None:
         self._cancel_pointer()
         menu = QMenu(self)
+        chat_action = menu.addAction("AI 对话")
+        chat_action.triggered.connect(self.open_chat)
         settings_action = menu.addAction("桌宠设置")
         settings_action.triggered.connect(lambda: self.open_settings())
         menu.addSeparator()
