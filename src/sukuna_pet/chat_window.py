@@ -1,11 +1,12 @@
-"""Native single-session Sukuna AI window, following the confirmed layout."""
+"""Native Sukuna AI conversations, following the confirmed layout."""
 
 from html import escape
+from time import monotonic
 
 from PySide6.QtCore import QPointF, Qt, QTimer, Signal
 from PySide6.QtGui import (QCloseEvent, QColor, QInputMethodEvent, QKeyEvent, QPainter,
                            QPaintEvent, QPen, QPolygonF, QResizeEvent)
-from PySide6.QtWidgets import (QHBoxLayout, QLabel, QPlainTextEdit, QPushButton,
+from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QListWidgetItem, QMessageBox, QPlainTextEdit, QPushButton,
                                QTextBrowser, QVBoxLayout, QWidget)
 
 from .chat_controller import ChatController
@@ -82,10 +83,18 @@ class ChatInput(QPlainTextEdit):
 
 class ChatWindow(QWidget):
     settings_requested = Signal()
+    closed = Signal()
+    close_cancelled = Signal()
 
     def __init__(self, controller: ChatController, owner: QWidget | None = None) -> None:
         super().__init__(owner, Qt.WindowType.Window)
         self.controller = controller
+        self._closing_requested = False
+        self._allow_close = False
+        self._close_deadline = 0.0
+        self._close_timer = QTimer(self)
+        self._close_timer.setInterval(50)
+        self._close_timer.timeout.connect(self._check_close)
         self.setWindowTitle("Sukuna AI · 宿傩 AI 对话")
         self.setMinimumSize(560, 480)
         self.resize(1040, 760)
@@ -125,7 +134,17 @@ class ChatWindow(QWidget):
         self.session_title = QLabel("新对话")
         self.session_title.setWordWrap(True)
         side.addWidget(self.session_title)
-        side.addStretch()
+        self.new_session_button = QPushButton("＋ 新建对话")
+        self.new_session_button.clicked.connect(self._new_session)
+        side.addWidget(self.new_session_button)
+        self.session_list = QListWidget()
+        self.session_list.setAccessibleName("聊天会话")
+        self.session_list.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.session_list.currentRowChanged.connect(self._select_session)
+        side.addWidget(self.session_list, 1)
+        self.delete_session_button = QPushButton("删除当前对话")
+        self.delete_session_button.clicked.connect(self._delete_session)
+        side.addWidget(self.delete_session_button)
         foot = QLabel("宿傩 · 伏魔御厨子\nMALEVOLENT SHRINE")
         foot.setObjectName("muted")
         side.addWidget(foot)
@@ -212,9 +231,12 @@ class ChatWindow(QWidget):
         self.configure_button = QPushButton("配置 AI 对话 Key")
         self.configure_button.clicked.connect(self.settings_requested)
         actions.addWidget(self.configure_button)
+        self.save_retry_button = QPushButton("重试保存记录")
+        self.save_retry_button.clicked.connect(controller.save_all)
+        actions.addWidget(self.save_retry_button)
         actions.addStretch()
         self.body_layout.addLayout(actions)
-        note = QLabel("本次运行内保留对话，重启不保留。AI 内容请核实。")
+        note = QLabel("对话完整保存在本机。AI 内容请核实。")
         note.setObjectName("muted")
         note.setWordWrap(True)
         note.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -238,8 +260,56 @@ class ChatWindow(QWidget):
         self.input.setFocus()
 
     def _send(self) -> None:
+        if self._closing_requested:
+            return
         if self.controller.send(self.input.toPlainText()):
             self.input.clear()
+
+    def _new_session(self) -> None:
+        if self._closing_requested:
+            return
+        self.controller.new_session()
+        self.input.clear()
+
+    def _select_session(self, row: int) -> None:
+        if self._closing_requested:
+            return
+        item = self.session_list.item(row)
+        if item is not None and self.controller.select_session(str(item.data(Qt.ItemDataRole.UserRole))):
+            self.input.clear()
+
+    def _delete_session(self) -> None:
+        if self._closing_requested:
+            return
+        session_id = self.controller.session.id
+        dialog = QMessageBox(QMessageBox.Icon.Warning, "删除对话", "删除当前对话的全部本机记录？此操作无法撤销。", parent=self)
+        delete = dialog.addButton("删除", QMessageBox.ButtonRole.DestructiveRole)
+        cancel = dialog.addButton("取消", QMessageBox.ButtonRole.RejectRole)
+        dialog.setDefaultButton(cancel)
+        dialog.exec()
+        if dialog.clickedButton() is delete:
+            self.controller.delete_session(session_id)
+            self.input.clear()
+        dialog.deleteLater()
+
+    def _refresh_sessions(self) -> None:
+        rows = [(s.id, (s.messages[0].content[:22].replace("\n", " ") if s.messages else "新对话"))
+                for s in self.controller.sessions]
+        current = [(self.session_list.item(i).data(Qt.ItemDataRole.UserRole), self.session_list.item(i).text())
+                   for i in range(self.session_list.count())]
+        self.session_list.blockSignals(True)
+        if current != rows:
+            self.session_list.clear()
+            for session_id, title in rows:
+                item = QListWidgetItem(title)
+                item.setData(Qt.ItemDataRole.UserRole, session_id)
+                item.setToolTip(title)
+                self.session_list.addItem(item)
+        for row, (session_id, _) in enumerate(rows):
+            if session_id == self.controller.session.id:
+                self.session_list.setCurrentRow(row)
+                break
+        self.session_list.blockSignals(False)
 
     def _send_or_stop(self) -> None:
         if self.controller.busy:
@@ -249,18 +319,24 @@ class ChatWindow(QWidget):
 
     def _buttons(self) -> None:
         self.send_button.setText("停止" if self.controller.busy else "发送")
-        self.send_button.setEnabled(self.controller.busy or bool(self.input.toPlainText().strip()))
+        self.send_button.setEnabled(not self._closing_requested and
+                                    (self.controller.busy or bool(self.input.toPlainText().strip())))
+        for widget in (self.input, self.sidebar, self.retry_button, self.save_retry_button):
+            widget.setEnabled(not self._closing_requested)
 
     def _refresh(self) -> None:
+        self._refresh_sessions()
         has_messages = bool(self.controller.session.messages)
         self.welcome.setVisible(not has_messages)
         self.transcript.setVisible(has_messages)
         self.body_layout.setStretch(0, 0 if has_messages else 1)
         self.body_layout.setStretch(self.body_layout.count() - 1, 0 if has_messages else 1)
-        self.status.setText(self.controller.notice)
-        self.status.setVisible(bool(self.controller.notice))
+        notice = "\n".join(text for text in (self.controller.notice, self.controller.storage_notice) if text)
+        self.status.setText(notice)
+        self.status.setVisible(bool(notice))
         self.retry_button.setVisible(self.controller.can_retry)
         self.configure_button.setVisible(self.controller.needs_settings)
+        self.save_retry_button.setVisible(self.controller.store is not None and self.controller.store.failed)
         title = self.controller.session.messages[0].content[:22] if has_messages else "新对话"
         # User content stays plain text in both native labels and message HTML.
         for label in (self.title, self.session_title):
@@ -291,9 +367,57 @@ class ChatWindow(QWidget):
         scrollbar.setValue(scrollbar.maximum() if follow else old_position)
 
     def closeEvent(self, event: QCloseEvent) -> None:
+        if self._closing_requested:
+            event.ignore()
+            return
         self.controller.stop()
+        if self.controller.unsaved and not self._allow_close:
+            event.ignore()
+            self._closing_requested = True
+            self._close_deadline = monotonic() + 3.0
+            self._close_timer.start()
+            self._buttons()
+            return
+        self._allow_close = False
         self._render_timer.stop()
         super().closeEvent(event)
+        if event.isAccepted():
+            self.closed.emit()
+
+    def _check_close(self) -> None:
+        store = self.controller.store
+        if not self.controller.unsaved:
+            self._finish_close()
+            return
+        if store is not None and not store.failed and monotonic() < self._close_deadline:
+            return
+        self._close_timer.stop()
+        dialog = QMessageBox(QMessageBox.Icon.Warning, "记录尚未保存",
+                             "部分聊天记录尚未保存，关闭后可能丢失未写入内容。请选择重试保存、取消关闭或确认关闭。", parent=self)
+        retry = dialog.addButton("重试保存", QMessageBox.ButtonRole.AcceptRole)
+        cancel = dialog.addButton("取消关闭", QMessageBox.ButtonRole.RejectRole)
+        discard = dialog.addButton("确认关闭", QMessageBox.ButtonRole.DestructiveRole)
+        dialog.setDefaultButton(cancel)
+        dialog.exec()
+        clicked = dialog.clickedButton()
+        dialog.deleteLater()
+        if clicked is discard:
+            self._finish_close()
+        elif clicked is retry:
+            self.controller.save_all()
+            self._close_deadline = monotonic() + 3.0
+            self._close_timer.start()
+        else:
+            self._closing_requested = False
+            self._refresh()
+            self.close_cancelled.emit()
+
+    def _finish_close(self) -> None:
+        self._close_timer.stop()
+        self._closing_requested = False
+        self._allow_close = True
+        self._buttons()
+        self.close()
 
     def resizeEvent(self, event: QResizeEvent) -> None:
         if self.width() < 800:

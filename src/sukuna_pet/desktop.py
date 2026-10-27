@@ -22,6 +22,7 @@ from .credentials import CredentialStore
 from .settings_window import SettingsWindow
 from .chat_controller import ChatController
 from .chat_window import ChatWindow
+from .session_store import SessionStore
 
 
 class PetWindow(QWidget):
@@ -32,6 +33,7 @@ class PetWindow(QWidget):
         task_monitor: TaskMonitor | None = None,
         bridge_installer: BridgeInstaller | None = None,
         credentials: CredentialStore | None = None,
+        chat_data_dir: Path | None = None,
     ) -> None:
         super().__init__()
         self.setWindowTitle("宿傩桌宠")
@@ -44,6 +46,14 @@ class PetWindow(QWidget):
             settings_path = Path(QStandardPaths.writableLocation(
                 QStandardPaths.StandardLocation.AppConfigLocation,
             )) / "mode.json"
+            if chat_data_dir is None:
+                chat_data_dir = Path(QStandardPaths.writableLocation(
+                    QStandardPaths.StandardLocation.AppLocalDataLocation,
+                )) / "chat" / "sessions"
+        elif chat_data_dir is None and settings_path is not None:
+            chat_data_dir = settings_path.parent / "chat" / "sessions"
+        self._chat_data_dir = chat_data_dir
+        self._closing_with_chat = False
         self._settings_path = settings_path
         self._credentials = credentials
         self._settings_window: SettingsWindow | None = None
@@ -106,10 +116,21 @@ class PetWindow(QWidget):
 
     def open_chat(self) -> None:
         if self._chat_window is None:
-            controller = ChatController(self.credentials, self)
+            store = SessionStore(self._chat_data_dir) if self._chat_data_dir is not None else None
+            controller = ChatController(self.credentials, self, store=store)
             self._chat_window = ChatWindow(controller, self)
             self._chat_window.settings_requested.connect(lambda: self.open_settings("AI 对话"))
+            self._chat_window.closed.connect(self._chat_closed)
+            self._chat_window.close_cancelled.connect(self._cancel_chat_exit)
         self._chat_window.open_window()
+
+    def _chat_closed(self) -> None:
+        if self._closing_with_chat:
+            self._closing_with_chat = False
+            QTimer.singleShot(0, self.close)
+
+    def _cancel_chat_exit(self) -> None:
+        self._closing_with_chat = False
 
     @property
     def frame(self) -> QImage:
@@ -222,7 +243,10 @@ class PetWindow(QWidget):
 
     def closeEvent(self, event: QCloseEvent) -> None:
         if self._chat_window is not None:
-            self._chat_window.close()
+            if not self._chat_window.close():
+                self._closing_with_chat = True
+                event.ignore()
+                return
         if self._settings_window is not None:
             self._settings_window.close()
         if self._credentials is not None:

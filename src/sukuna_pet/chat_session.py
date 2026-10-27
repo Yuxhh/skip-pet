@@ -33,6 +33,10 @@ MessageState = Literal["complete", "generating", "incomplete"]
 Role = Literal["user", "assistant"]
 
 
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
 @dataclass
 class ChatMessage:
     role: Role
@@ -40,7 +44,7 @@ class ChatMessage:
     state: MessageState = "complete"
     request_id: str = ""
     id: str = field(default_factory=lambda: uuid4().hex)
-    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    created_at: str = field(default_factory=utc_now)
 
 
 @dataclass
@@ -48,11 +52,14 @@ class ChatSession:
     prompt: AuthorPrompt = AUTHOR_PROMPT
     id: str = field(default_factory=lambda: uuid4().hex)
     messages: list[ChatMessage] = field(default_factory=list)
+    created_at: str = field(default_factory=utc_now)
+    updated_at: str = field(default_factory=utc_now)
 
     def add_message(self, role: Role, content: str, *, state: MessageState = "complete",
                     request_id: str = "") -> ChatMessage:
         message = ChatMessage(role, content, state, request_id)
         self.messages.append(message)
+        self.updated_at = utc_now()
         return message
 
     def request_messages(self, user_text: str, *, history_end: int | None = None) -> list[dict[str, str]]:

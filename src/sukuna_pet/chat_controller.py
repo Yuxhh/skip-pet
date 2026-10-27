@@ -6,8 +6,9 @@ from uuid import uuid4
 from PySide6.QtCore import QObject, Qt, QTimer, Signal
 
 from .chat_provider import ChatError, DeepSeekProvider, ERROR_MESSAGES, ErrorKind, StreamEvent
-from .chat_session import ChatMessage, ChatSession
+from .chat_session import AUTHOR_PROMPT, AuthorPrompt, ChatMessage, ChatSession, utc_now
 from .credentials import CredentialStore
+from .session_store import SessionStore
 
 
 class ChatController(QObject):
@@ -17,10 +18,16 @@ class ChatController(QObject):
     retry_notice = "重试会替换未完成回复，可能再次消耗 API 额度。"
 
     def __init__(self, credentials: CredentialStore, parent: QObject | None = None, *,
-                 provider: DeepSeekProvider | None = None, generation_timeout_ms: int = 180000) -> None:
+                 provider: DeepSeekProvider | None = None, generation_timeout_ms: int = 180000,
+                 store: SessionStore | None = None, author_prompt: AuthorPrompt = AUTHOR_PROMPT) -> None:
         super().__init__(parent)
         self.credentials = credentials
-        self.session = ChatSession()
+        self.store = store
+        self._author_prompt = author_prompt
+        self.sessions = store.load_all() if store is not None else []
+        self.session = self.sessions[0] if self.sessions else ChatSession(prompt=author_prompt)
+        if not self.sessions:
+            self.sessions.append(self.session)
         self._provider = provider or DeepSeekProvider()
         self._workers: dict[str, tuple[threading.Thread, threading.Event]] = {}
         self._request_id = ""
@@ -32,6 +39,89 @@ class ChatController(QObject):
         self._timeout.setSingleShot(True)
         self._timeout.setInterval(generation_timeout_ms)
         self._timeout.timeout.connect(self._timed_out)
+        self._storage_timer = QTimer(self)
+        self._storage_timer.setInterval(50)
+        self._storage_timer.timeout.connect(self._storage_changed)
+        self._last_storage_notice = ""
+        if store is not None:
+            self.save_all()
+            self._storage_timer.start()
+            self.destroyed.connect(lambda: store.close(timeout=0))
+
+    @property
+    def unsaved(self) -> bool:
+        return self.store is not None and self.store.unsaved
+
+    @property
+    def storage_notice(self) -> str:
+        if self.store is None:
+            return ""
+        notices = list(self.store.problems)
+        if self.store.unsaved:
+            notices.append("尚未保存：写盘失败，请重试保存。" if self.store.failed else "尚未保存：正在写入本机记录…")
+        return "\n".join(notices)
+
+    def _storage_changed(self) -> None:
+        notice = self.storage_notice
+        if notice != self._last_storage_notice:
+            self._last_storage_notice = notice
+            self.changed.emit()
+
+    def _persist(self) -> None:
+        self.session.updated_at = utc_now()
+        if self.store is not None:
+            self.store.save(self.session)
+
+    def save_all(self) -> None:
+        if self.store is not None:
+            for session in self.sessions:
+                self.store.save(session)
+            self.store.retry_failed()
+        self.changed.emit()
+
+    def new_session(self) -> str:
+        self.stop()
+        self.session = ChatSession(prompt=self._author_prompt)
+        self.sessions.insert(0, self.session)
+        self.notice = ""
+        self.error_kind = None
+        self._persist()
+        self.changed.emit()
+        return self.session.id
+
+    def select_session(self, session_id: str) -> bool:
+        selected = next((s for s in self.sessions if s.id == session_id), None)
+        if selected is None:
+            return False
+        if selected is self.session:
+            return True
+        self.stop()
+        self.session = selected
+        self.notice = ""
+        self.error_kind = None
+        self._persist()
+        self.changed.emit()
+        return True
+
+    def delete_session(self, session_id: str) -> bool:
+        selected = next((s for s in self.sessions if s.id == session_id), None)
+        if selected is None:
+            return False
+        if selected is self.session:
+            self.stop()
+        if self.store is not None and not self.store.delete(session_id):
+            return False
+        self.sessions.remove(selected)
+        if selected is self.session:
+            if self.sessions:
+                self.session = self.sessions[0]
+                self._persist()
+            else:
+                self.new_session()
+            self.notice = ""
+            self.error_kind = None
+        self.changed.emit()
+        return True
 
     @property
     def busy(self) -> bool:
@@ -89,6 +179,7 @@ class ChatController(QObject):
     def _start(self, messages: list[dict[str, str]], key: str) -> None:
         request_id = uuid4().hex
         self._request_id = request_id
+        self.session.messages[-1].request_id = request_id
         self._reply = self.session.add_message("assistant", "", state="generating", request_id=request_id)
         self.notice = "正在生成…"
         self.error_kind = None
@@ -101,6 +192,7 @@ class ChatController(QObject):
         self._workers[request_id] = worker, cancel
         self._timeout.start()
         worker.start()
+        self._persist()
         self.changed.emit()
 
     def stop(self) -> None:
@@ -114,6 +206,7 @@ class ChatController(QObject):
         self._reply = None
         self.error_kind = None
         self.notice = "已停止，回复未完成；停止不保证服务端立即停止计算或计费。"
+        self._persist()
         self.changed.emit()
 
     def _timed_out(self) -> None:
@@ -151,12 +244,14 @@ class ChatController(QObject):
             return
         if isinstance(event, StreamEvent) and event.kind == "delta":
             self._reply.content += event.text
+            self._persist()
             self.changed.emit()
             return
         self._timeout.stop()
         self._reply.state = "incomplete" if isinstance(event, ChatError) else "complete"
         self._reply = None
         self._request_id = ""
+        self._persist()
         if isinstance(event, ChatError):
             self._error(event.kind)
         else:
