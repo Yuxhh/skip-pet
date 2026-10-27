@@ -66,11 +66,40 @@ def check_bundle(bundle: Path) -> dict[str, object]:
         if not path.is_file() or sha256(path.read_bytes()).hexdigest() != expected:
             raise RuntimeError(f"Bundled bridge missing or different from source: {name}")
         hashes[name] = expected
+    with (ROOT / "pyproject.toml").open("rb") as stream:
+        expected_version = tomllib.load(stream)["project"]["version"]
+    metadata_path = package / "pyproject.toml"
+    if not metadata_path.is_file():
+        raise RuntimeError("Bundled application version metadata missing")
+    with metadata_path.open("rb") as stream:
+        bundled_version = tomllib.load(stream)["project"]["version"]
+    if bundled_version != expected_version:
+        raise RuntimeError("Bundled application version differs from installer")
     return {"name": manifest["name"], "version": manifest["version"], "sha256": hashes}
 
 
 def run(arguments: list[str], *, env: dict[str, str] | None = None) -> None:
     subprocess.run(arguments, cwd=ROOT, env=env, check=True)
+
+
+def check_frozen_code(bundle: Path) -> dict[str, str]:
+    """Check every runtime module against this source, including chat and persona."""
+    from PyInstaller.archive.readers import CArchiveReader  # type: ignore[import-untyped]
+
+    archive = CArchiveReader(str(bundle / "SukunaPet.exe")).open_embedded_archive("PYZ.pyz")
+    hashes: dict[str, str] = {}
+    source = ROOT / "src" / "sukuna_pet"
+    for path in sorted(source.glob("*.py")):
+        if path.name == "__main__.py":  # The freezer uses packaging/run_pet.py.
+            continue
+        name = "sukuna_pet" + ("" if path.stem == "__init__" else "." + path.stem)
+        if name not in archive.toc:
+            raise RuntimeError(f"Runtime module missing from frozen application: {name}")
+        code = archive.extract(name)
+        if code != compile(path.read_bytes(), code.co_filename, "exec", dont_inherit=True, optimize=0):
+            raise RuntimeError(f"Frozen application differs from source: {name}")
+        hashes[name] = sha256(path.read_bytes()).hexdigest()
+    return hashes
 
 
 def source_archive(destination: Path) -> None:
@@ -93,6 +122,9 @@ def main() -> int:
     parser.add_argument("--output-root", type=Path, default=ROOT / "dist",
                         help="Separate app, release and build directories (default: dist)")
     args = parser.parse_args()
+    sys.path.insert(0, str(ROOT / "src"))
+    from sukuna_pet.chat_session import AUTHOR_PROMPT
+
     if sys.platform != "win32" or platform.machine().upper() not in ("AMD64", "X86_64"):
         parser.error("Build on Windows x64 with x64 CPython")
     iscc = args.iscc.resolve(strict=True)
@@ -114,11 +146,15 @@ def main() -> int:
          str(ROOT / "packaging" / "sukuna-pet.spec")], env=build_env)
     bundle = output / "app" / "SukunaPet"
     bridge = check_bundle(bundle)
+    modules = check_frozen_code(bundle)
     shutil.copyfile(ROOT / "docs" / "user-guide.md", bundle / "使用说明.md")
     shutil.copyfile(ROOT / "docs" / "release-status.md", bundle / "验收说明.md")
+    shutil.copyfile(ROOT / "docs" / "chat-acceptance.md", bundle / "试聊验收.md")
     # Include upstream license texts next to the replaceable Qt runtime DLLs.
     licenses = bundle / "THIRD-PARTY-LICENSES"
     shutil.copytree(ROOT / "packaging" / "licenses", licenses / "Qt", dirs_exist_ok=True)
+    shutil.copyfile(ROOT / "packaging" / "licenses" / "dsh-pet-MIT.txt",
+                    licenses / "dsh-pet-MIT.txt")
     for name in ("PySide6", "PySide6_Essentials", "shiboken6", "pyinstaller"):
         distribution = metadata.distribution(name)
         for item in distribution.files or ():
@@ -143,6 +179,9 @@ def main() -> int:
         "source_snapshot": "working tree; source ZIP is authoritative, not an exact commit export",
         "requirements_sha256": locks,
         "bridge": bridge,
+        "application_modules_sha256": modules,
+        "prompt_version": AUTHOR_PROMPT.version,
+        "acceptance": "candidate; author installed-app conversation acceptance pending (#53)",
         "assets": json.loads((bundle / "_internal" / "sukuna_pet" / "assets" / "provenance.json").read_text(encoding="utf-8")),
         "compiler": "Inno Setup 6.7.3", "compiler_sha256": sha256(iscc.read_bytes()).hexdigest(),
         "packages": sorted(f"{d.metadata['Name']}=={d.version}" for d in metadata.distributions()),

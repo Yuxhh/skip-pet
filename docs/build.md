@@ -44,3 +44,20 @@ New-Item -ItemType Directory -Force .scratch/checks | Out-Null
 6. 保存 Windows 版本、屏幕/DPI、安装路径、开始菜单与卸载条目、进程路径、操作记录和截图；区分新 venv、独立源码目录、本机安装和干净 Windows，不能互相代替。
 
 本次实测结论与限制见 [#28 验证记录](verification/issue-28/README.md)。
+
+## 0.4.0 候选与冻结运行验证（#53）
+
+候选输出使用独立目录 `dist/issue-53`，不覆盖历史已验收版本。版本取自本次 pyproject.toml；冻结后的每个应用模块（包括作者提示词、HTTP/SSE、凭据和会话模块）必须与本次源码编译结果一致，缺失或旧代码将拒绝打包。报告列出全部模块 SHA-256、人设版本及候选状态。源码 ZIP 是可重建的实际快照，Git SHA 只作基点；若包含既有已验收的未提交改动，在验证记录中单独列明。
+
+构建完成后，在当前交互用户的 Windows 会话运行以下命令。验证目录必须不存在；进程返回 0 后检查 result.json，不以窗口一闪而过判断通过。
+
+```powershell
+python tools/build_release.py --iscc 'C:\path\to\ISCC.exe' --output-root dist/issue-53
+$probe = Start-Process -FilePath 'dist/issue-53/app/SukunaPet/SukunaPet.exe' -ArgumentList '--verify-installation', 'C:\tmp\new-sukuna-check' -WindowStyle Hidden -Wait -PassThru
+$probe.ExitCode
+Get-Content 'C:\tmp\new-sukuna-check\result.json'
+```
+
+同一入口必须在 Setup 实际安装目录再跑一次，并比对安装文件与报告 bundled_files 的哈希。验证使用独立命名空间的合成凭据、合成会话和隔离偏好；读取/删除当前用户凭据需要 Windows 会话权限。安全适配器的过长值拒绝用于验证内存降级，不能当作所有企业策略故障实测。TLS 检查仅证明 Windows CA 已载入，真实服务连接与作者试聊另外记录。
+
+MIT 全文放在 THIRD-PARTY-LICENSES/dsh-pet-MIT.txt，并继续保留桥插件 LICENSE；使用说明、候选验收范围和试聊步骤分别为安装目录的 使用说明.md、验收说明.md、试聊验收.md。人工通过后保持所验 Setup 哈希，不能因修改说明而重编译安装器；可以在交付旁追加验收结论和证据。公开发布和 GitHub Release 需要另外授权。

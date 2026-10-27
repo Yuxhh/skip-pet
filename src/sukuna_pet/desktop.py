@@ -419,6 +419,9 @@ def _character_region(frame: QImage) -> QRegion:
 
 
 def main() -> int:
+    if len(sys.argv) > 2 and sys.argv[1] in ("--verify-installation", "--verify-installation-readback"):
+        from .installation_check import main as verify_main
+        return verify_main(sys.argv[2:], readback=sys.argv[1].endswith("-readback"))
     if len(sys.argv) > 1 and sys.argv[1] == "--uninstall-cleanup":
         from .uninstall_cleanup import main as cleanup_main
         return cleanup_main(sys.argv[2:])

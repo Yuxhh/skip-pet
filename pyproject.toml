@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sukuna-pet"
-version = "0.3.0"
-description = "宿傩桌宠：DeepSeek 任务联动、状态气泡与接入维护"
+version = "0.4.0"
+description = "宿傩桌宠：AI 对话、桌宠设置与 DeepSeek 任务联动"
 requires-python = ">=3.12"
 dependencies = ["PySide6==6.12.0"]
 

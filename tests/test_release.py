@@ -38,3 +38,14 @@ def test_release_rejects_a_bundle_missing_the_host_adapter(tmp_path: Path) -> No
     with pytest.raises(RuntimeError, match="host-state.js"):
         release["check_bundle"](tmp_path)
 
+
+def test_release_rejects_stale_application_metadata(tmp_path: Path) -> None:
+    release = runpy.run_path(str(ROOT / "tools/build_release.py"))
+    package = tmp_path / "_internal" / "sukuna_pet"
+    source = ROOT / "src" / "sukuna_pet"
+    shutil.copytree(source / "assets", package / "assets")
+    shutil.copytree(source / "integrations", package / "integrations")
+    (package / "pyproject.toml").write_text('[project]\nversion = "0.0.0"\n')
+    with pytest.raises(RuntimeError, match="version"):
+        release["check_bundle"](tmp_path)
+
