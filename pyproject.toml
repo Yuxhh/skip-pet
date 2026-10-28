@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sukuna-pet"
-version = "0.4.2"
-description = "宿傩桌宠：AI 对话、桌宠设置与 DeepSeek 任务联动"
+version = "0.4.7"
+description = "宿傩桌宠：音乐跳动、AI 对话与 DeepSeek 任务联动"
 requires-python = ">=3.12"
 dependencies = ["PySide6==6.12.0"]
 
@@ -16,7 +16,7 @@ sukuna-pet = "sukuna_pet.desktop:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-sukuna_pet = ["assets/*.png", "assets/*.json", "integrations/dsh-bridge/*"]
+sukuna_pet = ["assets/*.png", "assets/*.json", "assets/*.wav", "integrations/dsh-bridge/*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

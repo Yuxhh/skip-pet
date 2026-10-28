@@ -8,7 +8,10 @@ from dataclasses import dataclass
 from typing import Literal
 
 
-Mode = Literal["click", "always", "task"]
+Mode = Literal["click", "always", "task", "music"]
+MODE_LABELS: tuple[tuple[Mode, str], ...] = (
+    ("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动"), ("music", "音乐跳动"),
+)
 DISPLAY_SIZES = (188, 271, 320)
 DEFAULT_SIZE = 320
 
@@ -46,6 +49,8 @@ def _load_settings(path: Path) -> dict[str, object]:
 
 def load_mode(path: Path) -> Mode:
     value = _load_settings(path).get("mode")
+    if value == "music":
+        return "music"
     if value in ("always", "task"):
         return "always" if value == "always" else "task"
     return "click"

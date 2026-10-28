@@ -1,0 +1,21 @@
+{
+  "credential_read_in_second_process": true,
+  "session_and_prompt_restored_in_second_process": true,
+  "generating_restored_as_incomplete": true,
+  "credential_delete_and_memory_fallback": true,
+  "default_config_directory": "C:/Users/xing/AppData/Local/skip-pet/sukuna-pet",
+  "default_data_directory": "C:/Users/xing/AppData/Local/skip-pet/sukuna-pet",
+  "native_context_menu_opens_chat_after_popup": true,
+  "native_menu_tracking_defers_chat": true,
+  "windows_chat_visible": true,
+  "windows_reopened_chat_visible": true,
+  "native_window_lifecycle": true,
+  "preferences_upgrade_compatible": true,
+  "version": "0.4.7",
+  "prompt_version": "sukuna-2026-10-27-v1",
+  "qt_platform": "windows",
+  "frozen": true,
+  "executable": "D:\\Projects\\宿傩蹦哒pet\\dist\\chat-reopen-final-0.4.7\\app\\SukunaPet\\SukunaPet.exe",
+  "windows_tls_ca_store_available": true,
+  "synthetic_credential_absent_from_records": true
+}

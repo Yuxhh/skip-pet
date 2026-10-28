@@ -1,11 +1,11 @@
-# 宿傩桌宠 · skip-pet 0.4.2
+# 宿傩桌宠 · skip-pet 0.4.7
 
-一个运行在 Windows 桌面上的宿傩角色桌宠。点一下，头颈与眼睛随动作推进；拖到屏幕边缘，它会贴边陪伴。支持宿傩 AI 对话、DeepSeek Harness 任务联动和任务状态气泡。0.4.2 修复菜单打开 AI 对话窗口的时序问题，并保留 0.4.1 的 DeepSeek 接入修复。
+一个运行在 Windows 桌面上的宿傩角色桌宠。点一下，头颈与眼睛随动作推进；拖到屏幕边缘，它会贴边陪伴。支持音乐跳动、宿傩 AI 对话、DeepSeek Harness 任务联动和任务状态气泡。0.4.7 修复 AI 对话窗口再次打开无响应，包含音乐跳动、默认音频输出切换和设置窗口显示修复。
 
 ## 可以做什么
 
 - **点击互动**：每次点击推进一个视线阶段，到位后停留，同时触发整体回弹；连续点击可接续循环。
-- **三种跳动模式**：点击跳动、持续跳动、任务联动。任务联动时，已确认仍在执行的任务让角色持续跳动，只剩等待人工操作时停止自动跳动。
+- **四种跳动模式**：点击跳动、持续跳动、任务联动、音乐跳动。音乐跳动循环播放作者指定视频音轨的前 14 秒，约 15 秒后音乐与动作停止，保持静止；再点菜单或角色重新播放，播放中再点可提前停止。任务联动仍按已确认任务状态工作。
 - **桌面陪伴**：透明置顶、透明区域点击穿透、拖动与贴边，支持 188 / 271 / 320px 三档大小。
 - **宿傩 AI 对话**：使用自己的 DeepSeek API Key 聊天，支持流式回复、停止、重试，以及保存在本机的多会话记录。
 - **任务状态气泡**：接入 DeepSeek Harness，显示已确认的运行、等待批准、等待回答及任务结束状态。
@@ -13,17 +13,17 @@
 
 ## 版本与获取
 
-截至 2026-10-27：
+截至 2026-10-28：
 
 | 位置 | 状态 |
 | --- | --- |
-| 默认分支 `main` | 0.4.2 正式源码，包含 AI 对话菜单修复、系统托盘、任务联动和接入修复 |
-| [发布标签 v0.4.2](https://github.com/xyd-0811/skip-pet/tree/v0.4.2) | 与本次安装包对应的源码版本 |
-| [GitHub Release 0.4.2](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.2) | Setup.exe、对应源码 ZIP、构建报告和 SHA256SUMS.txt |
+| 默认分支 `main` | 0.4.7 正式源码，包含音乐跳动、音频输出切换及聊天和设置窗口修复 |
+| [发布标签 v0.4.7](https://github.com/Yuxhh/skip-pet/tree/v0.4.7) | 与本次安装包运行代码对应的源码版本 |
+| [GitHub Release 0.4.7](https://github.com/Yuxhh/skip-pet/releases/tag/v0.4.7) | Setup.exe、对应源码 ZIP、构建报告、验收记录和 SHA256SUMS.txt |
 
 本版保留此前已验收的功能，代码与本次安装包对应。历史验收记录见 [0.4.0 交付任务 #53](https://github.com/xyd-0811/skip-pet/issues/53)、[菜单更新 #54](https://github.com/xyd-0811/skip-pet/issues/54)和[托盘更新 #55](https://github.com/xyd-0811/skip-pet/issues/55)。
 
-从 [Releases](https://github.com/xyd-0811/skip-pet/releases/tag/v0.4.2) 下载 Setup.exe，可直接升级并保留设置和聊天记录。本版将桌宠右键和托盘菜单中的 AI 对话改为在菜单关闭后打开并激活窗口，验证记录见[菜单修复 #62](docs/verification/issue-62/README.md)。[接入修复 #61](https://github.com/xyd-0811/skip-pet/issues/61)已通过真实任务验收；升级后正常重开 DeepSeek Harness，并选择任务联动。乙骨忧太角色切换与左右交替跳仍在[规划中 #56](https://github.com/xyd-0811/skip-pet/issues/56)。
+从 [Releases](https://github.com/Yuxhh/skip-pet/releases/tag/v0.4.7) 下载 Setup.exe，可直接升级并保留设置和聊天记录。AI 对话在菜单完全关闭后打开，并检查 Windows 实际显示状态；用户已确认首次打开及关闭重开正常，见[修复记录 #66](docs/verification/issue-66/README.md)。音乐播放会跟随当前默认音频输出切换，见[耳机修复 #65](docs/verification/issue-65/README.md)。[接入修复 #61](https://github.com/Yuxhh/skip-pet/issues/61)已通过真实任务验收；升级后正常重开 DeepSeek Harness，并选择任务联动。乙骨忧太角色切换与左右交替跳仍在[规划中 #56](https://github.com/Yuxhh/skip-pet/issues/56)。
 
 ## 安装与使用
 
@@ -37,10 +37,10 @@ AI 对话固定使用 `deepseek-flash`，关闭思考。API Key 由使用者提�
 
 ## 从源码运行
 
-源码要求 Windows x64、Python 3.12+。默认分支已包含 0.4.2；重建本次发布时可检出标签 v0.4.2。
+源码要求 Windows x64、Python 3.12+。重建本次发布时可检出标签 v0.4.7。
 
 ```powershell
-git clone https://github.com/xyd-0811/skip-pet.git
+git clone https://github.com/Yuxhh/skip-pet.git
 cd skip-pet
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt

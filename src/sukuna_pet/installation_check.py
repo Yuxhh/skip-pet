@@ -5,6 +5,7 @@ Run SukunaPet.exe --verify-installation NEW_DIRECTORY; inspect result.json.
 """
 
 import json
+import ctypes
 from pathlib import Path
 import ssl
 import subprocess
@@ -14,6 +15,7 @@ from uuid import uuid4
 from PySide6.QtCore import QStandardPaths, QTimer
 from PySide6.QtGui import QContextMenuEvent
 from PySide6.QtWidgets import QApplication, QMenu
+from PySide6.QtTest import QTest
 
 from .chat_session import AUTHOR_PROMPT, ChatSession
 from .credentials import CredentialStore, WindowsCredentialBackend
@@ -105,6 +107,8 @@ def verify(root: Path) -> dict[str, object]:
                     return
                 action = next(a for a in popup.actions() if a.text() == "AI 对话")
                 action.trigger()
+                # Deliver queued slots while the popup is still tracking.
+                QTest.qWait(120)
                 deferred.append(pet.findChild(ChatWindow) is None)
                 popup.close()
 
@@ -122,11 +126,18 @@ def verify(root: Path) -> dict[str, object]:
                 QContextMenuEvent.Reason.Mouse, point, pet.mapToGlobal(point)))
             select.stop()
             watchdog.stop()
-            app.processEvents()
+            QTest.qWait(150)
             assert deferred == [True], "Chat opened inside the native menu loop"
             chat = pet.findChild(ChatWindow)
             assert chat is not None and chat.isVisible()
             result["native_context_menu_opens_chat_after_popup"] = True
+            result["native_menu_tracking_defers_chat"] = True
+            if sys.platform == "win32" and app.platformName() == "windows":
+                visible = ctypes.WinDLL("user32").IsWindowVisible
+                visible.argtypes = [ctypes.c_void_p]
+                visible.restype = ctypes.c_int
+                assert visible(int(chat.winId())), "Chat is hidden in Windows"
+                result["windows_chat_visible"] = True
             pet.open_chat()
             assert len(pet.findChildren(ChatWindow)) == 1
             assert chat.controller.session.messages[-1].state == "incomplete"
@@ -134,6 +145,9 @@ def verify(root: Path) -> dict[str, object]:
             assert chat.close() and pet.isVisible()
             pet.open_chat()
             assert pet.findChild(ChatWindow) is chat and chat.isVisible()
+            if sys.platform == "win32" and app.platformName() == "windows":
+                assert visible(int(chat.winId())), "Reopened chat is hidden in Windows"
+                result["windows_reopened_chat_visible"] = True
             pet.open_settings("AI 对话")
             settings = pet.findChild(SettingsWindow)
             assert settings is not None

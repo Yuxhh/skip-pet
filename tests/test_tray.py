@@ -36,10 +36,12 @@ def test_tray_reuses_settings_and_chat_and_restores_pet(app: QApplication) -> No
     assert tray.toolTip() == "宿傩桌宠"
     try:
         action(tray, "桌宠设置").trigger()
+        QTest.qWait(40)
         settings = pet.findChild(SettingsWindow)
         assert settings is not None and settings.isVisible()
         settings.close()
         action(tray, "桌宠设置").trigger()
+        QTest.qWait(40)
         assert settings.isVisible() and pet.findChildren(SettingsWindow) == [settings]
         settings.close()
         action(tray, "AI 对话").trigger()

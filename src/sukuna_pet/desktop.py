@@ -5,8 +5,9 @@ import re
 import sys
 from pathlib import Path
 from time import perf_counter
+from typing import TYPE_CHECKING
 
-from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer, Signal
+from PySide6.QtCore import QEvent, QPoint, QPointF, QStandardPaths, Qt, QTimer, Signal, Slot
 from PySide6.QtGui import QActionGroup, QCloseEvent, QContextMenuEvent, QIcon, QImage, QMouseEvent, QPaintEvent, QPainter, QPixmap, QRegion, QScreen
 from PySide6.QtWidgets import QApplication, QMenu, QMessageBox, QSystemTrayIcon, QWidget
 
@@ -14,7 +15,7 @@ from .playback import PetApplication, PetView
 from .bridge_control import BridgeController
 from .bridge_install import BridgeInstaller, InstallPlan, maintenance_directory
 from .rendering import CharacterRenderer, SOURCE_BOUNDS
-from .settings import DEFAULT_SIZE, DISPLAY_SIZES, Mode, load_size, save_size
+from .settings import DEFAULT_SIZE, DISPLAY_SIZES, MODE_LABELS, Mode, load_size, save_size
 from .task_bridge import TaskMonitor
 from .task_bridge import TaskSummary
 from .task_bubble import TaskBubble
@@ -23,6 +24,9 @@ from .settings_window import SettingsWindow
 from .chat_controller import ChatController
 from .chat_window import ChatWindow
 from .session_store import SessionStore
+
+if TYPE_CHECKING:
+    from .music import MusicPlayer
 
 
 class PetWindow(QWidget):
@@ -62,9 +66,14 @@ class PetWindow(QWidget):
         self._credentials = credentials
         self._settings_window: SettingsWindow | None = None
         self._chat_window: ChatWindow | None = None
+        self._chat_open_timer = QTimer(self)
+        self._chat_open_timer.setSingleShot(True)
+        self._chat_open_timer.setInterval(50)
+        self._chat_open_timer.timeout.connect(self.open_chat)
         height = load_size(settings_path) if settings_path is not None else DEFAULT_SIZE
         self.setFixedSize(math.ceil(height * SOURCE_BOUNDS.width() / SOURCE_BOUNDS.height()), height)
         self._pet = application if application is not None else PetApplication(settings_path=settings_path)
+        self._music: MusicPlayer | None = None
         self._task_monitor = task_monitor
         self._bridge: BridgeController | None = None
         if task_monitor is None and settings_path is not None:
@@ -111,7 +120,8 @@ class PetWindow(QWidget):
         self._tray_menu.addAction("AI 对话").triggered.connect(
             self.open_chat, Qt.ConnectionType.QueuedConnection)
         self._tray_menu.addSeparator()
-        self._tray_menu.addAction("桌宠设置").triggered.connect(lambda: self.open_settings())
+        self._tray_menu.addAction("桌宠设置").triggered.connect(
+            self._open_default_settings, Qt.ConnectionType.QueuedConnection)
         self._tray_menu.addAction("退出").triggered.connect(self.close)
         self._tray = QSystemTrayIcon(icon, self)
         self._tray.setToolTip("宿傩桌宠")
@@ -142,12 +152,50 @@ class PetWindow(QWidget):
     def bridge_controller(self) -> BridgeController | None:
         return self._bridge
 
+    @property
+    def music_playing(self) -> bool:
+        return self._music is not None and self._music.active
+
+    def _sync_music(self) -> None:
+        if self._pet.music_requested:
+            if self._music is None:
+                from .music import MusicPlayer
+                self._music = MusicPlayer(self)
+                self._music.stopped.connect(self._music_stopped)
+                self._music.failed.connect(self._music_failed, Qt.ConnectionType.QueuedConnection)
+            if not self._music.active:
+                self._music.play()
+            self._pet.set_music_position(self._music.position_ms)
+        elif self._music is not None:
+            self._music.stop()
+
+    def _music_stopped(self) -> None:
+        self._pet.stop_music()
+        self._refresh_frame()
+        self.preferences_changed.emit()
+
+    def _music_failed(self) -> None:
+        QMessageBox.warning(self, "无法播放音乐", "音乐片段无法播放，请检查系统声音输出后重试。")
+
     def open_settings(self, page: str = "桌宠") -> None:
         if self._settings_window is None:
             self._settings_window = SettingsWindow(self)
         self._settings_window.open_page(page)
 
+    @Slot()
+    def _open_default_settings(self) -> None:
+        # Discard QAction's checked argument and activate after popup teardown.
+        self.open_settings()
+
+    @Slot()
     def open_chat(self) -> None:
+        # A queued QAction can still be delivered by a nested native menu
+        # loop. Match dsh-pet's popup guard before constructing or presenting.
+        if QApplication.activePopupWidget() is not None:
+            if not self._chat_open_timer.isActive():
+                self._chat_open_timer.start()
+            return
+        self._chat_open_timer.stop()
         if self._chat_window is None:
             store = SessionStore(self._chat_data_dir) if self._chat_data_dir is not None else None
             controller = ChatController(self.credentials, self, store=store)
@@ -264,6 +312,7 @@ class PetWindow(QWidget):
         summary = (self._task_monitor.summary if self._task_monitor is not None else
                    self._bridge.summary if self._bridge is not None else TaskSummary())
         self._pet.set_task_running(summary.jump)
+        self._sync_music()
         # One capped real frame enters the model once. PetApplication splits
         # motion into <=4ms steps, but keeps automatic waits frame-granular.
         self._pet.advance(min(150, (now - self._last_time) * 1000))
@@ -282,9 +331,12 @@ class PetWindow(QWidget):
                 return
         if self._settings_window is not None:
             self._settings_window.close()
+        self._chat_open_timer.stop()
         if self._credentials is not None:
             self._credentials.release()
         self._timer.stop()
+        if self._music is not None:
+            self._music.stop()
         self._bubble.hide()
         if self._task_monitor is not None:
             self._task_monitor.close()
@@ -351,7 +403,7 @@ class PetWindow(QWidget):
         chat_action.triggered.connect(self.open_chat, Qt.ConnectionType.QueuedConnection)
         menu.addSeparator()
         modes = QActionGroup(menu)
-        for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):
+        for value, label in MODE_LABELS:
             action = menu.addAction(label)
             action.setCheckable(True)
             action.setChecked(self._pet.mode == value)
@@ -374,7 +426,7 @@ class PetWindow(QWidget):
         menu.addSeparator()
         # Keep settings directly above Exit, which must remain the last item.
         settings_action = menu.addAction("桌宠设置")
-        settings_action.triggered.connect(lambda: self.open_settings())
+        settings_action.triggered.connect(self._open_default_settings, Qt.ConnectionType.QueuedConnection)
         exit_action = menu.addAction("退出")
         exit_action.triggered.connect(self.close)
         menu.exec(event.globalPos())
@@ -398,6 +450,15 @@ class PetWindow(QWidget):
             self._pet.select_mode(mode)
         except OSError:
             QMessageBox.warning(self, "无法保存模式", "请检查设置目录是否可写，然后重试。")
+            self.preferences_changed.emit()
+            return
+        if mode == "music":
+            self._pet.click()
+        if self._pet.music_requested:
+            # Initialize the Windows audio device after the menu input event.
+            QTimer.singleShot(0, self._sync_music)
+        else:
+            self._sync_music()
         self._refresh_frame()
         self.preferences_changed.emit()
 
@@ -454,6 +515,12 @@ def _character_region(frame: QImage) -> QRegion:
 
 
 def main() -> int:
+    if len(sys.argv) > 2 and sys.argv[1] == "--verify-settings":
+        from .settings_check import main as verify_settings
+        return verify_settings(sys.argv[2:])
+    if len(sys.argv) > 2 and sys.argv[1] == "--verify-music":
+        from .music_check import main as verify_music
+        return verify_music(sys.argv[2:])
     if len(sys.argv) > 2 and sys.argv[1] in ("--verify-installation", "--verify-installation-readback"):
         from .installation_check import main as verify_main
         return verify_main(sys.argv[2:], readback=sys.argv[1].endswith("-readback"))

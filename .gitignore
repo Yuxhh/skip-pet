@@ -5,3 +5,6 @@ __pycache__/
 *.egg-info/
 build/
 dist/
+
+# Local upstream reference checkout; provenance and usage live in docs/agents.
+/references/dsh-pet-indesktop/

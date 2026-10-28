@@ -5,11 +5,13 @@ from pathlib import Path
 import time
 import subprocess
 import threading
+import tomllib
 
 import pytest
-from PySide6.QtCore import QEvent, Qt
+from PySide6.QtCore import QEvent, Qt, QTimer
+from PySide6.QtGui import QContextMenuEvent
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QApplication, QMessageBox
+from PySide6.QtWidgets import QApplication, QMessageBox, QMenu
 
 import sukuna_pet.connection_test as connection
 from sukuna_pet.credentials import CredentialStore
@@ -49,6 +51,36 @@ def opened(window: PetWindow, page: str = "桌宠") -> SettingsWindow:
     settings = window.findChild(SettingsWindow)
     assert settings is not None and settings.isVisible()
     return settings
+
+
+def test_native_settings_menu_defers_creation_until_popup_returns(
+    app: QApplication, pet: tuple[PetWindow, CredentialVault, Path],
+) -> None:
+    window, _, _ = pet
+    created_inside_popup = []
+
+    def select() -> None:
+        menu = app.activePopupWidget()
+        assert isinstance(menu, QMenu)
+        action = next(a for a in menu.actions() if a.text() == "桌宠设置")
+        QTest.mouseClick(menu, Qt.MouseButton.LeftButton, pos=menu.actionGeometry(action).center())
+        created_inside_popup.append(window.findChild(SettingsWindow) is not None)
+
+    QTimer.singleShot(100, select)
+    point = window.visible_region.boundingRect().center()
+    QApplication.sendEvent(window, QContextMenuEvent(
+        QContextMenuEvent.Reason.Mouse, point, window.mapToGlobal(point)))
+    assert created_inside_popup == [False]
+    QTest.qWait(100)
+    settings = window.findChild(SettingsWindow)
+    assert settings is not None and settings.isVisible() and settings.isActiveWindow()
+    assert settings.windowType() == Qt.WindowType.Window
+    settings.close()
+    window._tray_menu.actions()[-2].trigger()
+    assert not settings.isVisible()
+    QTest.qWait(100)
+    assert settings.isVisible() and window.findChild(SettingsWindow) is settings
+    assert settings.navigation.currentRow() == 0
 
 
 def test_settings_and_shortcuts_share_persisted_mode_and_size(
@@ -230,7 +262,8 @@ def test_failed_preference_save_restores_both_controls(
 
 
 def test_about_matches_project_version() -> None:
-    assert product_version() == "0.4.2"
+    project = tomllib.loads((Path(__file__).parents[1] / "pyproject.toml").read_text(encoding="utf-8"))
+    assert product_version() == project["project"]["version"]
 
 
 def test_bridge_preferences_preserve_unknown_fields(tmp_path: Path) -> None:

@@ -17,6 +17,18 @@
       "sha256": "ac6520d3a7422e8509ec7edf9e0d784050228044e0252a82a5fcd8522f7b8848",
       "source_commit": "32c9f985d4467c1527b09c34f6868a3ccd3f85b4",
       "source_path": ".scratch/sukuna-pet/prototypes/head-stages-v5/rear-collar-complete.png"
+    },
+    {
+      "asset": "diamond-cut-diamond.wav",
+      "sha256": "830845b01468e145a0698b375dce450e9b5de522b2b07b3793a842c12d78f215",
+      "source": "User-provided f2f9474ab24ad934512152a614eecbc2.mp4 audio track, 0–14 seconds; cutoff confirmed 2026-10-28 (Asia/Shanghai).",
+      "processing": "44.1 kHz mono PCM16, 8/20 ms edge fades"
+    },
+    {
+      "asset": "music-rhythm.json",
+      "sha256": "dd6c567aa312b181e3fcbb8206c584042cb54d007b4ae1bb524a2abbbc9b6832",
+      "source": "User-provided f2f9474ab24ad934512152a614eecbc2.mp4 audio track, 0–14 seconds; cutoff confirmed 2026-10-28 (Asia/Shanghai).",
+      "processing": "Bass-onset grid fitted locally to the bundled clip; milliseconds"
     }
   ],
   "native_reference_commit": "4ecb85c8a087ca89fb99a3a2125c826801b53e1c",

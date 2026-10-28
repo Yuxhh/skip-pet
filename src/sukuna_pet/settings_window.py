@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (QComboBox, QDialog, QHBoxLayout, QLabel, QLineEdi
 
 from .connection_test import ConnectionResult, ConnectionTester
 from .chat_visuals import SCROLLBAR_STYLE, Sigil
-from .settings import DISPLAY_SIZES, Mode
+from .settings import DISPLAY_SIZES, MODE_LABELS, Mode
 
 if TYPE_CHECKING:
     from .desktop import PetWindow
@@ -34,7 +34,9 @@ def product_version() -> str:
 
 class SettingsWindow(QDialog):
     def __init__(self, owner: "PetWindow") -> None:
-        super().__init__(owner)
+        # The pet is a native Tool window. Use the same regular window type as
+        # ChatWindow so Windows can present settings outside the tool group.
+        super().__init__(owner, Qt.WindowType.Window)
         self._owner = owner
         self._credentials = owner.credentials
         self._tester = ConnectionTester(self)
@@ -116,10 +118,13 @@ class SettingsWindow(QDialog):
         layout.addWidget(mode_label)
         self.mode = QComboBox()
         mode_label.setBuddy(self.mode)
-        for value, label in (("click", "点击跳动"), ("always", "持续跳动"), ("task", "任务联动")):
+        for value, label in MODE_LABELS:
             self.mode.addItem(label, value)
         self.mode.currentIndexChanged.connect(self._mode_selected)
         layout.addWidget(self.mode)
+        self.music_toggle = QPushButton("播放音乐 · 15 秒")
+        self.music_toggle.clicked.connect(lambda: self._owner.select_mode("music"))
+        layout.addWidget(self.music_toggle)
         size_label = QLabel("角色大小")
         layout.addWidget(size_label)
         self.size_choice = QComboBox()
@@ -222,6 +227,8 @@ class SettingsWindow(QDialog):
         layout.addStretch()
 
     def refresh(self) -> None:
+        self.music_toggle.setVisible(self._owner.pet_mode == "music")
+        self.music_toggle.setText("停止音乐" if self._owner.music_playing else "播放音乐 · 15 秒")
         for combo, value in ((self.mode, self._owner.pet_mode), (self.size_choice, self._owner.height())):
             blocked = combo.blockSignals(True)
             combo.setCurrentIndex(combo.findData(value))

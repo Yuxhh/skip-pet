@@ -10,9 +10,9 @@ analysis = Analysis(
            (str(root / "src" / "sukuna_pet" / "assets"), "sukuna_pet/assets"),
            (str(root / "src" / "sukuna_pet" / "integrations" / "dsh-bridge"),
             "sukuna_pet/integrations/dsh-bridge")],
-    # Only these three Python Qt modules are used.
+    # Multimedia supplies local audio playback; no web/PDF/QML engines.
     excludes=["PySide6.QtWebEngineCore", "PySide6.QtWebEngineWidgets", "PySide6.QtPdf",
-              "PySide6.QtQml", "PySide6.QtQuick", "PySide6.QtNetwork", "tkinter"],
+              "PySide6.QtQml", "PySide6.QtQuick", "tkinter"],
 )
 # Optional image plugins pull in PDF/QML engines; all character images are PNGs,
 # decoded by QtGui itself. Keep the native Windows platform/style plugins.

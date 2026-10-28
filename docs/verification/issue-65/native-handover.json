@@ -1,0 +1,20 @@
+{
+  "primary": "耳机 (OPPO Enco Free4（丹拿版）)",
+  "secondary": "扬声器 (Realtek(R) Audio)",
+  "simulated_default_changes": true,
+  "real_audio_sinks": true,
+  "passed": true,
+  "handovers": [
+    [
+      "扬声器 (Realtek(R) Audio)",
+      156.439,
+      202.8562335600907
+    ],
+    [
+      "耳机 (OPPO Enco Free4（丹拿版）)",
+      202.8562335600907,
+      260.33946712018144
+    ]
+  ],
+  "stopped_once": true
+}

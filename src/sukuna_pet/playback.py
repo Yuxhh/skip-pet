@@ -7,6 +7,7 @@ All coordinates are in the original 1419 x 1108 redraw, before display scaling.
 """
 
 from dataclasses import dataclass
+import json
 import math
 from pathlib import Path
 
@@ -19,6 +20,7 @@ _KEYS = (
     (24, -29, -7), (27, -27, -6), (31, -20, 3), (34, -15, 7),
     (38, -5, 6), (41, 0, 0),
 )
+_RHYTHM = json.loads((Path(__file__).parent / "assets/music-rhythm.json").read_text(encoding="utf-8"))
 
 
 @dataclass(frozen=True)
@@ -84,6 +86,8 @@ class PetApplication:
         self._wait_age = 0.0
         self._task_running = False
         self._task_finishing = False
+        self._music_requested = False
+        self._music_position: float | None = None
         self._pointer_start: tuple[int, int] | None = None
         self._window_start = (0, 0)
         self._drag_distance = 0
@@ -132,7 +136,7 @@ class PetApplication:
         return self._mode
 
     def select_mode(self, mode: Mode) -> None:
-        if mode not in ("click", "always", "task"):
+        if mode not in ("click", "always", "task", "music"):
             raise ValueError("Unknown playback mode")
         if mode == self._mode:
             return
@@ -140,6 +144,9 @@ class PetApplication:
             save_mode(self._settings_path, mode)
         previous = self._mode
         self._mode = mode
+        if previous == "music" or mode == "music":
+            self.stop_music()
+            self._reset_motion()
         self._task_finishing = mode == "task" and previous == "always" and (self._busy() or self._stage != 0)
         # Native V5 repeats the click action; switching off only stops scheduling.
         if self._automatic() and not self._busy():
@@ -165,6 +172,21 @@ class PetApplication:
 
     @property
     def view(self) -> PetView:
+        if self._mode == "music":
+            if self._music_position is None:
+                right, left = _eyes(0)
+                return PetView(0, True, right, left)
+            # Use audio position directly: neither render stalls nor looping
+            # may accumulate phase error against the soundtrack.
+            beat = (self._music_position % _RHYTHM["loop_ms"] - _RHYTHM["first_beat_ms"]) / _RHYTHM["beat_ms"]
+            phase = (beat % 4) * 41 / 4
+            distance = abs((beat + .5) % 1 - .5) * _RHYTHM["beat_ms"]
+            pulse = .5 + .5 * math.cos(math.pi * distance / 150) if distance < 150 else 0.0
+            right, left = _eyes(phase)
+            angle, scale = _head_pose(phase)
+            return PetView(int(beat % 4), False, right, left,
+                           head_phase=phase, head_angle=angle, head_scale=scale,
+                           bounce_scale=(1 + .1 * pulse, 1 - .15 * pulse))
         right, left = _eyes(self._position)
         closure = 0.0
         if self._blink_age is not None:
@@ -180,6 +202,10 @@ class PetApplication:
         )
 
     def click(self) -> None:
+        if self._mode == "music":
+            self._music_requested = not self._music_requested
+            self._music_position = None
+            return
         self._bounce_age = 0
         self._wait_age = 0
         # The prototype commits a pending closed-eye jump before retargeting.
@@ -200,6 +226,28 @@ class PetApplication:
             self._blink_destination = self._target
             self._moving = False
             self._follow_head(self._target, 240)
+
+    @property
+    def music_requested(self) -> bool:
+        return self._mode == "music" and self._music_requested
+
+    def set_music_position(self, position_ms: float | None) -> None:
+        """A loaded/playing audio clock owns the music pose; None is silent."""
+        self._music_position = position_ms if self.music_requested else None
+
+    def stop_music(self) -> None:
+        self._music_requested = False
+        self._music_position = None
+
+    def _reset_motion(self) -> None:
+        self._position = self._target = self._head_position = 0.0
+        self._stage = 0
+        self._moving = False
+        self._blink_age = self._blink_destination = None
+        self._head_from = self._head_to = self._head_age = self._head_duration = 0.0
+        self._bounce_age = 220.0
+        self._wait_age = 0.0
+        self._task_finishing = False
 
     def _follow_head(self, target: float, duration: float) -> None:
         self._head_from = self._head_position

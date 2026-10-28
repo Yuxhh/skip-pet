@@ -1,6 +1,8 @@
 """Native Sukuna AI conversations, following the confirmed layout."""
 
 from html import escape
+import ctypes
+import sys
 from time import monotonic
 
 from PySide6.QtCore import QRectF, Qt, QTimer, Signal, QUrl
@@ -319,6 +321,15 @@ class ChatWindow(QWidget):
 
     def open_window(self) -> None:
         self.showNormal()
+        if sys.platform == "win32":
+            # SW_HIDE from a windowed process's STARTUPINFO can suppress its
+            # first normal window while QWidget already reports visible.
+            visible = ctypes.WinDLL("user32").IsWindowVisible
+            visible.argtypes = [ctypes.c_void_p]
+            visible.restype = ctypes.c_int
+            if not visible(int(self.winId())):
+                self.hide()
+                self.showNormal()
         self.raise_()
         self.activateWindow()
         self.input.setFocus()
