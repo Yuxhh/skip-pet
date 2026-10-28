@@ -106,7 +106,7 @@ def source_archive(destination: Path) -> None:
     """Explicit inclusion keeps local media, venvs and credentials out of delivery."""
     paths = [ROOT / name for name in (
         "README.md", "GLOSSARY.md", "pyproject.toml", "requirements.txt",
-        "requirements-dev.txt", "requirements-build.txt", ".gitignore",
+        "requirements-dev.txt", "requirements-build.txt", ".gitignore", ".gitattributes",
     )]
     for directory in ("src", "tests", "tools", "packaging", "docs"):
         paths.extend(path for path in (ROOT / directory).rglob("*")

@@ -19,3 +19,5 @@ ChatWindow.showNormal 后查询 Windows IsWindowVisible，若仍隐藏则 hide/s
 用户随后授权推送 GitHub。完整回归 **396 passed，304.39 秒**，mypy 检查 src 与构建脚本共 **27 个文件通过**。同一最终冻结程序与实际安装目录的完整隔离自检均返回 **0**，包括隐藏启动下的菜单等待、Windows 原生可见性、关闭重开、合成凭据跨进程恢复与安全降级、合成会话恢复、兼容偏好和 TLS。此前审批超时留下的完整隔离验收缺口现已补齐。
 
 原始补验证据见 [pytest-release.xml](pytest-release.xml)、[frozen-release.json](frozen-release.json) 和 [installed-release.json](installed-release.json)。发布保留用户验收过的 Setup.exe 字节，源码 ZIP 从本次提交的干净快照生成；构建报告分别记录原安装包的构建基点和本次发布提交。运行代码、素材、桥插件及实际安装文件逐项核验，发布不改动个人设置或聊天记录。
+
+归档核验发现 Git 默认换行转换会改变桥插件字节。新增 .gitattributes 保留已打包桥文件的原始格式，源码归档也携带该规则；插件逻辑及本机文件字节不变。打包专项补测 3 项通过，类型检查仍为 27 个文件通过。

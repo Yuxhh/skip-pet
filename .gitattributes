@@ -1,0 +1,2 @@
+# Bridge installation verifies exact bundled bytes; preserve its source format.
+src/sukuna_pet/integrations/dsh-bridge/* -text whitespace=cr-at-eol
